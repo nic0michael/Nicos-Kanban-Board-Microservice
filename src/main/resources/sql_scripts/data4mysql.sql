@@ -1,3 +1,5 @@
+CREATE DATABASE kanban_board;
+
 USE kanban_board;				
 
 -- SHOW CREATE TABLE `audit`;
@@ -181,3 +183,4 @@ insert into user_story ( name, stage, description) values ( 'Improve Intranet Se
 
 alter table employee_user_story add constraint FKkexd21s49v2bf1xux0re92mq1 foreign key (user_story_id) references user_story (user_story_id);
 alter table employee_user_story add constraint FKn6vtqimtcorrhdbepgjhkg7a8 foreign key (employee_id) references employee (employee_id);
+
