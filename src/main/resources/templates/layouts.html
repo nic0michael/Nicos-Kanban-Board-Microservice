@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="header">
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" th:href="@{/css/formatting.css}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+
+<body>
+
+	<nav th:fragment="navbar1"
+		class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">ZS6BVR PM</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="/home">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/epics}">Epics</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/userstories}">Userstories</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/employees}">Employees</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/teams}">Teams</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/customers}">Customers</a>
+				</li>
+				<li class="nav-item">
+					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/logout}">Logout</a>   <div sec:authorize="hasRole('ADMIN')">
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<nav th:fragment="navbar2"
+		class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">ZS6BVR PM</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/home">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/epics}">Epics</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" th:href="@{/userstories}">Userstories</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/employees}">Employees</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/teams}">Teams</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/customers}">Customers</a>
+				</li>
+				<li class="nav-item">
+					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/logout}">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<nav th:fragment="navbar3"
+		class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">ZS6BVR PM</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/home">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/epics}">Epics</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/userstories}">Userstories</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" th:href="@{/employees}">Employees</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/teams}">Teams</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/customers}">Customers</a>
+				</li>
+				<li class="nav-item">
+					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/logout}">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<nav th:fragment="navbarE"
+		class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">ZS6BVR PM</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/home">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/epics}">Epics</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/userstories}">Userstories</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" th:href="@{/employees}">Employees</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/teams}">Teams</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/customers}">Customers</a>
+				</li>
+				<li class="nav-item">
+					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/logout}">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div th:fragment="piechartscript">
+		<script type="text/javascript">
+			var chartDataStr = decodeHtml(chartData);
+			var chartJsonArray = JSON.parse(chartDataStr);
+			var arrayLength = chartJsonArray.length;
+			var numericData = [];
+			var labelData = [];
+			var numericData = [];
+			var labelData = [];
+
+			for (var i = 0; i < arrayLength; i++) {
+				numericData[i] = chartJsonArray[i].value;
+				labelData[i] = chartJsonArray[i].label;
+			}
+
+			//For a pie chart
+			new Chart(document.getElementById("myPieChart"), {
+				type : 'pie',
+
+				// The data for our dataset
+				data : {
+					labels : labelData,
+					datasets : [ {
+						label : 'My First dataset',
+						backgroundColor : [ '#33fa33', '#3e95cd', '#8e5ea2' ],
+						//        borderColor: 'rgb(255, 11, 22)',
+						data : numericData
+					} ]
+				},
+
+				// Configuration options go here    
+				options : {
+					title : {
+						display : true,
+						text : 'Project Status'
+					}
+				}
+
+			});
+
+			function decodeHtml(html) {
+				var txt = document.createElement("textarea");
+				txt.innerHTML = html;
+				return txt.value;
+			}
+		</script>
+
+	</div>
+</body>
+</html>

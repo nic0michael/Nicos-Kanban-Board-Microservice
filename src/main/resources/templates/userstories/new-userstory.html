@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+<body>
+	<nav th:replace="layouts :: navbar2"></nav>
+<!-- 	<divsecauthorize ="isAuthenticated()">  -->
+	<div  sec:authorize=hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')>
+
+		
+
+		<br>
+
+	<div class="container">
+		<H3>Capture Project</H3>
+		<br><br>
+		<form th:action="@{/projects/save}"
+			th:object="${projectPersistRequest}" method="POST">
+
+			<div class="form-group row">
+				<input type="hidden" th:field="${projectPersistRequest.project_id}">
+			</div>
+			<div class="form-group row">
+				<input type="text" placeholder="Project Name" th:field="*{name}">
+			</div>
+
+			<div class="form-group row">
+				<select th:field="${projectPersistRequest.stage}">
+					<option th:value="NOTSTARTED">Not Started</option>
+					<option th:value="INPROGRESS">In Progress</option>
+					<option th:value="COMPLETED">Completed</option>
+				</select>
+			</div>
+
+			<div class="form-group row">
+				<textarea type="text" placeholder="Enter Project Description"
+					th:field="${projectPersistRequest.description}"></textarea>
+			</div>
+
+			<b>Add all the Employees:</b>
+			<div class="form-group row">
+				<select th:field="*{employeePersistRequests}" multiple="multiple">
+					<option
+						th:each="employeePersistRequest : ${allEemployeePersistRequests}"
+						th:value="${employeePersistRequest.employeeId}"
+						th:text="${employeePersistRequest.firstName}"></option>
+				</select>
+			</div>
+
+			<b>Project Start Date:</b>
+			<div class="form-group row">
+				<input id="dp3" type="text" class="mb-4 col-2 col-xs-4"
+					value="Start Date" th:field="${projectPersistRequest.startDate}">
+			</div>
+
+
+			<b>Project End Date:</b>
+			<div class="form-group row">
+				<input id="dp4" type="text" class="mb-4 col-2 col-xs-4"
+					value="End Date" th:field="${projectPersistRequest.endDate}">
+			</div>
+			
+			<div class="form-group row">
+				<script type="text/javascript">
+					$('#dp3').datepicker();
+					$('#dp4').datepicker();
+				</script>
+			</div>
+
+			<div class="form-group row">
+				<button class="btn btn-info col-2" type="submit">Save Project</button>
+			</div>
+		</form>
+	</div>
+	</div>
+
+</body>
+
+</html>
