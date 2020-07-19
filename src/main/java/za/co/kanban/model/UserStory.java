@@ -51,8 +51,15 @@ public class UserStory {
 	@Column(name="assigned_to")
 	private Long assignedTo;
 
+
+	@Column(name="start_date")
+	private Date startDate;
+
+	@Column(name="end_date")
+	private Date endDate;
+	
 	@Column(name="due_date")
-	private Date due_date;
+	private Date dueDate;
 
 	@Column(name="date_created", nullable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -71,9 +78,10 @@ public class UserStory {
 	
 	public UserStory() {}
 
+
 	public UserStory(@NotBlank String name, String description, String customerReference, String stage,
-			@NotBlank Long customerId, @NotBlank Long epicId, @NotBlank Long assignedTo, Date due_date, Date dateCreated,
-			@NotBlank String isActive) {
+			@NotBlank Long customerId, @NotBlank Long epicId, @NotBlank Long assignedTo, Date startDate, Date endDate,
+			Date dueDate, Date dateCreated, @NotBlank String isActive) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -82,110 +90,153 @@ public class UserStory {
 		this.customerId = customerId;
 		this.epicId = epicId;
 		this.assignedTo = assignedTo;
-		this.due_date = due_date;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.dueDate = dueDate;
 		this.dateCreated = dateCreated;
 		this.isActive = isActive;
 	}
-
 
 
 	public Long getUserStoryId() {
 		return userStoryId;
 	}
 
+
 	public void setUserStoryId(Long userStoryId) {
 		this.userStoryId = userStoryId;
 	}
+
 
 	public String getName() {
 		return name;
 	}
 
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 	public String getDescription() {
 		return description;
 	}
 
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 
 	public String getCustomerReference() {
 		return customerReference;
 	}
 
+
 	public void setCustomerReference(String customerReference) {
 		this.customerReference = customerReference;
 	}
+
 
 	public String getStage() {
 		return stage;
 	}
 
+
 	public void setStage(String stage) {
 		this.stage = stage;
 	}
+
 
 	public Long getCustomerId() {
 		return customerId;
 	}
 
+
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
+
 
 	public Long getEpicId() {
 		return epicId;
 	}
 
+
 	public void setEpicId(Long epicId) {
 		this.epicId = epicId;
 	}
+
 
 	public Long getAssignedTo() {
 		return assignedTo;
 	}
 
+
 	public void setAssignedTo(Long assignedTo) {
 		this.assignedTo = assignedTo;
 	}
 
-	public Date getDue_date() {
-		return due_date;
+
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setDue_date(Date due_date) {
-		this.due_date = due_date;
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+
+	public Date getDueDate() {
+		return dueDate;
+	}
+
+
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
+	}
 
 
 	public Date getDateCreated() {
 		return dateCreated;
 	}
 
+
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
+
 
 	public String getIsActive() {
 		return isActive;
 	}
 
+
 	public void setIsActive(String isActive) {
 		this.isActive = isActive;
 	}
+
 
 	@Override
 	public String toString() {
 		return "UserStory [userStoryId=" + userStoryId + ", name=" + name + ", description=" + description
 				+ ", customerReference=" + customerReference + ", stage=" + stage + ", customerId=" + customerId
-				+ ", epicId=" + epicId + ", assignedTo=" + assignedTo + ", due_date=" + due_date + ", dateCreated="
-				+ dateCreated + ", isActive=" + isActive + "]";
+				+ ", epicId=" + epicId + ", assignedTo=" + assignedTo + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", dueDate=" + dueDate + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 	}
+
+
 
 
 	
