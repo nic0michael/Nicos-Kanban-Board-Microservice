@@ -13,8 +13,17 @@ We are not ready to accept developers to join this team yet, as we are still bui
 ## Database Support
 MySQL ,MariaDB, and PerconaMySql are supported
 
-To use SQL script to generate the tables 
-I have created a script : **mysql-terminal**  
+
+
+### SQL Scripts provided
+In the folder : /src/main/resources/sql_scripts
+you will find a file : data4mysql.sql  
+This has all the create table SQL Scripts you will need as well as Sample Employee insert scripts  
+You need to edit that and put your own employees there allocate the admin user id to one employee
+allocate the manager user id to another employee so that you can login to the system
+
+####To use the SQL scripts to generate the tables 
+I recomend that you create a Shell script : **mysql-terminal**  
 
 run the folowing command in the terminal:
     sudo nano /usr/bin/mysql-terminal
@@ -26,14 +35,8 @@ run the folowing command in the terminal:
     sudo chmod 775 /usr/bin/mysql-terminal
  
 Now evertime you want open the MSQL terminal you you have a quicker way to get in
-
-
-### SQL Scripts provided
-In the folder : /src/main/resources/sql_scripts
-you will find a file : data4mysql.sql  
-This has all the create table SQL Scripts you will need as well as Sample Employee insert scripts  
-You need to edit that and put your own employees there allocate the admin user id to one employee
-allocate the manager user id to another employee so that you can login to the system
+just open the bash terminal and run this command :
+    **mysql-terminal**
 
 ## Programmers comments: 
 Create file : schema.sql in /resources folder
