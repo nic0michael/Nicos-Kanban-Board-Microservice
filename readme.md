@@ -22,7 +22,7 @@ This has all the create table SQL Scripts you will need as well as Sample Employ
 You need to edit that and put your own employees there allocate the admin user id to one employee
 allocate the manager user id to another employee so that you can login to the system
 
-###To use the SQL scripts provided to generate the tables 
+**To use the SQL scripts provided to generate the tables **
 I recomend that you create a Shell script : **mysql-terminal**  
 
 run the folowing command in the terminal:
