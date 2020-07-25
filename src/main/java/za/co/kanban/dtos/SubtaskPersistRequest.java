@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class SubtaskPersistRequest {
 
 	private String subtaskId;
+	private String taskId;
     private String name;	
 	private String description;
 	private String status;
@@ -19,18 +20,34 @@ public class SubtaskPersistRequest {
 	
 	public SubtaskPersistRequest() {}
 
-	public SubtaskPersistRequest(String name, String description, String status, String assignedTo, String subtaskId,
+	public SubtaskPersistRequest(String taskId, String name, String description, String status, String assignedTo,
 			String storyPoints, String due_date, String dateCreated, String isActive) {
 		super();
+		this.taskId = taskId;
 		this.name = name;
 		this.description = description;
 		this.status = status;
 		this.assignedTo = assignedTo;
-		this.subtaskId = subtaskId;
 		this.storyPoints = storyPoints;
 		this.due_date = due_date;
 		this.dateCreated = dateCreated;
 		this.isActive = isActive;
+	}
+
+	public String getSubtaskId() {
+		return subtaskId;
+	}
+
+	public void setSubtaskId(String subtaskId) {
+		this.subtaskId = subtaskId;
+	}
+
+	public String getTaskId() {
+		return taskId;
+	}
+
+	public void setTaskId(String taskId) {
+		this.taskId = taskId;
 	}
 
 	public String getName() {
@@ -63,16 +80,6 @@ public class SubtaskPersistRequest {
 
 	public void setAssignedTo(String assignedTo) {
 		this.assignedTo = assignedTo;
-	}
-
-
-
-	public String getSubtaskId() {
-		return subtaskId;
-	}
-
-	public void setSubtaskId(String subtaskId) {
-		this.subtaskId = subtaskId;
 	}
 
 	public String getStoryPoints() {
@@ -109,9 +116,10 @@ public class SubtaskPersistRequest {
 
 	@Override
 	public String toString() {
-		return "SubtaskPersistRequest [name=" + name + ", description=" + description + ", status=" + status
-				+ ", assignedTo=" + assignedTo + ", subtaskId=" + subtaskId + ", storyPoints=" + storyPoints + ", due_date="
-				+ due_date + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
+		return "SubtaskPersistRequest [subtaskId=" + subtaskId + ", taskId=" + taskId + ", name=" + name
+				+ ", description=" + description + ", status=" + status + ", assignedTo=" + assignedTo
+				+ ", storyPoints=" + storyPoints + ", due_date=" + due_date + ", dateCreated=" + dateCreated
+				+ ", isActive=" + isActive + "]";
 	}
 
 

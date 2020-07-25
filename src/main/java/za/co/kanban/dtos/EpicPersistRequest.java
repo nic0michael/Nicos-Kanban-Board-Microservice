@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "EpicPersistRequest")
 public class EpicPersistRequest {
 
+	private String epicId;
     private String name;	
 	private String description;
 	private String customerReference;	
@@ -24,6 +25,14 @@ public class EpicPersistRequest {
 		this.due_date = due_date;
 		this.dateCreated = dateCreated;
 		this.isActive = isActive;
+	}
+
+	public String getEpicId() {
+		return epicId;
+	}
+
+	public void setEpicId(String epicId) {
+		this.epicId = epicId;
 	}
 
 	public String getName() {
@@ -84,10 +93,11 @@ public class EpicPersistRequest {
 
 	@Override
 	public String toString() {
-		return "EpicPersistRequest [name=" + name + ", description=" + description + ", customerReference="
-				+ customerReference + ", customerId=" + customerId + ", due_date=" + due_date + ", dateCreated="
-				+ dateCreated + ", isActive=" + isActive + "]";
+		return "EpicPersistRequest [epicId=" + epicId + ", name=" + name + ", description=" + description
+				+ ", customerReference=" + customerReference + ", customerId=" + customerId + ", due_date=" + due_date
+				+ ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 	}
+
 
 	
 }

@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "CustomerPersistRequest")
 public class CustomerPersistRequest {
 
+	private String customerId;
     private String name;
     private String shortName;	
 	private String details;
@@ -27,6 +28,14 @@ public class CustomerPersistRequest {
 		this.email = email;
 		this.dateCreated = dateCreated;
 		this.isActive = isActive;
+	}
+
+	public String getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getName() {
@@ -95,9 +104,9 @@ public class CustomerPersistRequest {
 
 	@Override
 	public String toString() {
-		return "CustomerPersistRequest [name=" + name + ", shortName=" + shortName + ", details=" + details
-				+ ", telephone=" + telephone + ", cellphone=" + cellphone + ", email=" + email + ", dateCreated="
-				+ dateCreated + ", isActive=" + isActive + "]";
+		return "CustomerPersistRequest [customerId=" + customerId + ", name=" + name + ", shortName=" + shortName
+				+ ", details=" + details + ", telephone=" + telephone + ", cellphone=" + cellphone + ", email=" + email
+				+ ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 	}
 
 	

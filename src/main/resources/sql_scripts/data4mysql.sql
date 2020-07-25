@@ -48,24 +48,22 @@ CREATE TABLE `customer` (
 -- SHOW CREATE TABLE `employee`;  
 CREATE TABLE `employee` (
   `employee_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) DEFAULT NULL,
-  `id_number` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `user_id` varchar(255) DEFAULT NULL,
   `authority` varchar(255) DEFAULT NULL,
-  `enabled` tinyint(1) NOT NULL,
   `cellphone` varchar(255) DEFAULT NULL,
   `date_created` datetime DEFAULT NULL,
   `details` varchar(255) DEFAULT NULL,
-  `is_enabled` bit(1) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `enabled` int(1) DEFAULT NULL,
   `fullname` varchar(255) DEFAULT NULL,
+  `id_number` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `skills_category` varchar(255) DEFAULT NULL,
-  `team_id` bigint(20) DEFAULT NULL,
   `telephone` varchar(255) DEFAULT NULL,
+  `user_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`employee_id`),
-  UNIQUE KEY `user_id` (`user_id`),
+  UNIQUE KEY `UK_6djefmjx26crewgafuih51sad` (`fullname`),
   UNIQUE KEY `UK_6tpj1vwpvfk1jljoylys4ixyp` (`id_number`),
-  UNIQUE KEY `UK_6djefmjx26crewgafuih51sad` (`fullname`)
+  UNIQUE KEY `UK_mpps3d3r9pdvyjx3iqixi96fi` (`user_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 -- SHOW CREATE TABLE `employee_user_story`;
@@ -175,6 +173,7 @@ insert into employee ( fullname, email,id_number,enabled,user_id,authority,passw
 insert into employee ( fullname, email,id_number,enabled,user_id,authority,password) values ( 'Honor Miles', 'miles@gmail.com','008', 1,'admin','ROLE_ADMIN','$2a$10$XhADpGqFMvF33YzPmdV7JOTVbvRl9KqN5Tgxx3jHyOcVVxfRqPIwi');	
 insert into employee ( fullname, email,id_number,enabled,user_id,authority,password) values ( 'Nicholas Michael', 'nmichael@gmail.com','1956', 1,'klidi','ROLE_ADMIN','$2a$10$r4325krPku2wNegHS5zLY.4PWtbc4Xz7Zu4NfS2AWaiNVNONtrt.2');	
 
+
 -- INSERT user_story 			
 insert into user_story ( name, stage, description) values ( 'Large Production Deploy', 'NOTSTARTED', 'This requires all hands on deck for the final deployment of the software into production');
 insert into user_story ( name, stage, description) values ( 'New Employee Budget',  'COMPLETED', 'Decide on a new employee bonus budget for the year and figureout who will be promoted');
@@ -183,4 +182,7 @@ insert into user_story ( name, stage, description) values ( 'Improve Intranet Se
 
 alter table employee_user_story add constraint FKkexd21s49v2bf1xux0re92mq1 foreign key (user_story_id) references user_story (user_story_id);
 alter table employee_user_story add constraint FKn6vtqimtcorrhdbepgjhkg7a8 foreign key (employee_id) references employee (employee_id);
+
+update table employee set is_enabled=1;
+
 

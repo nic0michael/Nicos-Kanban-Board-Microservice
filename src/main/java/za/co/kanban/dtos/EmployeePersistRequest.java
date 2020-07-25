@@ -13,7 +13,6 @@ public class EmployeePersistRequest {
 	private String email;
     private String password;    
     private String authority;
-	private String teamId;
     private String userId;  
     private String skillsCategory;
     private String dateCreated;
@@ -22,11 +21,10 @@ public class EmployeePersistRequest {
 	public EmployeePersistRequest() {}
 
 
-	public EmployeePersistRequest(String employeeId, String fullName, String idNumber, String details, String telephone,
+	public EmployeePersistRequest( String fullName, String idNumber, String details, String telephone,
 			String cellphone, String email, String password, String authority, String teamId, String userId,
 			String skillsCategory, String dateCreated, String enabled) {
 		super();
-		this.employeeId = employeeId;
 		this.fullName = fullName;
 		this.idNumber = idNumber;
 		this.details = details;
@@ -35,17 +33,11 @@ public class EmployeePersistRequest {
 		this.email = email;
 		this.password = password;
 		this.authority = authority;
-		this.teamId = teamId;
 		this.userId = userId;
 		this.skillsCategory = skillsCategory;
 		this.dateCreated = dateCreated;
 		this.enabled = enabled;
 	}
-
-
-
-
-
 
 
 	public String getEmployeeId() {
@@ -114,14 +106,6 @@ public class EmployeePersistRequest {
 		this.authority = authority;
 	}
 
-	public String getTeamId() {
-		return teamId;
-	}
-
-	public void setTeamId(String teamId) {
-		this.teamId = teamId;
-	}
-
 	public String getUserId() {
 		return userId;
 	}
@@ -171,9 +155,11 @@ public class EmployeePersistRequest {
 	public String toString() {
 		return "EmployeePersistRequest [employeeId=" + employeeId + ", fullName=" + fullName + ", idNumber=" + idNumber
 				+ ", details=" + details + ", telephone=" + telephone + ", cellphone=" + cellphone + ", email=" + email
-				+ ", password=" + password + ", authority=" + authority + ", teamId=" + teamId + ", userId=" + userId
+				+ ", authority=" + authority + ", userId=" + userId
 				+ ", skillsCategory=" + skillsCategory + ", dateCreated=" + dateCreated + ", enabled=" + enabled + "]";
 	}
+
+
 
 
 

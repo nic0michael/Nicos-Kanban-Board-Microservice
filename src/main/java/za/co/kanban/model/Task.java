@@ -196,11 +196,14 @@ public class Task {
 
 	@Override
 	public String toString() {
-		return "Task [name=" + name + ", description=" + description + ", status=" + status + ", assignedTo="
-				+ assignedTo + ", userStoryId=" + userStoryId + ", storyPoints=" + storyPoints + ", due_date="
-				+ due_date + ", stage=" + stage + ", startDate=" + startDate + ", endDate=" + endDate + ", dateCreated="
-				+ dateCreated + ", isActive=" + isActive + "]";
+		return "Task [taskId=" + taskId + ", name=" + name + ", description=" + description + ", status=" + status
+				+ ", assignedTo=" + assignedTo + ", userStoryId=" + userStoryId + ", storyPoints=" + storyPoints
+				+ ", due_date=" + due_date + ", stage=" + stage + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 	}
+
+
+
 
 
 	

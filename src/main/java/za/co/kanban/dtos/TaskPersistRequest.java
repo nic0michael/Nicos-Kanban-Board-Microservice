@@ -25,11 +25,10 @@ public class TaskPersistRequest {
 
 
 
-	public TaskPersistRequest(String taskId, String name, String description, String status, String assignedTo,
+	public TaskPersistRequest(String name, String description, String status, String assignedTo,
 			String userStoryId, String storyPoints, String stage, String startDate, String endDate, String due_date,
 			String dateCreated, String isActive) {
 		super();
-		this.taskId = taskId;
 		this.name = name;
 		this.description = description;
 		this.status = status;
@@ -43,6 +42,9 @@ public class TaskPersistRequest {
 		this.dateCreated = dateCreated;
 		this.isActive = isActive;
 	}
+
+
+
 
 
 
@@ -170,11 +172,14 @@ public class TaskPersistRequest {
 
 	@Override
 	public String toString() {
-		return "TaskPersistRequest [name=" + name + ", description=" + description + ", status=" + status
-				+ ", assignedTo=" + assignedTo + ", userStoryId=" + userStoryId + ", storyPoints=" + storyPoints
-				+ ", stage=" + stage + ", startDate=" + startDate + ", endDate=" + endDate + ", due_date=" + due_date
-				+ ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
+		return "TaskPersistRequest [taskId=" + taskId + ", name=" + name + ", description=" + description + ", status="
+				+ status + ", assignedTo=" + assignedTo + ", userStoryId=" + userStoryId + ", storyPoints="
+				+ storyPoints + ", stage=" + stage + ", startDate=" + startDate + ", endDate=" + endDate + ", due_date="
+				+ due_date + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 	}
+
+
+
 
 
 

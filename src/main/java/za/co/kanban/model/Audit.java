@@ -95,9 +95,11 @@ public class Audit {
 
 	@Override
 	public String toString() {
-		return "Audit [dateCreated=" + dateCreated + ", operationType=" + operationType + ", request=" + request
-				+ ", employeeId=" + employeeId + "]";
+		return "Audit [auditId=" + auditId + ", dateCreated=" + dateCreated + ", operationType=" + operationType
+				+ ", request=" + request + ", employeeId=" + employeeId + "]";
 	}
+
+	
 	
 	
 }

@@ -154,10 +154,11 @@ public class Subtask {
 
 	@Override
 	public String toString() {
-		return "Subtask [name=" + name + ", description=" + description + ", status=" + status + ", assignedTo="
-				+ assignedTo + ", tasksId=" + tasksId + ", storyPoints=" + storyPoints + ", due_date=" + due_date
-				+ ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
+		return "Subtask [subtaskId=" + subtaskId + ", name=" + name + ", description=" + description + ", status="
+				+ status + ", assignedTo=" + assignedTo + ", tasksId=" + tasksId + ", storyPoints=" + storyPoints
+				+ ", due_date=" + due_date + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 	}
+
 	
 	
 }

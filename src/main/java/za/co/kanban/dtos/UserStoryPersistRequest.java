@@ -21,11 +21,10 @@ public class UserStoryPersistRequest {
 	
 	public UserStoryPersistRequest() {}
 
-	public UserStoryPersistRequest(String userStoryId, String name, String description, String customerReference,
+	public UserStoryPersistRequest( String name, String description, String customerReference,
 			String stage, String customerId, String epicId, String assignedTo, String startDate, String endDate,
 			String dueDate, String dateCreated, String isActive) {
 		super();
-		this.userStoryId = userStoryId;
 		this.name = name;
 		this.description = description;
 		this.customerReference = customerReference;

@@ -19,6 +19,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.lang.NonNull;
 
 
 @Entity
@@ -38,11 +39,7 @@ public class Employee {
 	private String cellphone;	
 	private String email;
     private String password;    
-    private String authority;
-    
-    @NotBlank
-	@Column(name="team_id")
-	private Long teamId;
+    private String authority;    
     
     @Column(name="id_number", unique=true)
 	private String idNumber;
@@ -58,9 +55,8 @@ public class Employee {
 	@CreatedDate
 	private Date dateCreated;
 	
-	@NotBlank
-	@Column(name="is_enabled")
-	private Boolean enabled;
+	@NonNull
+	private Integer enabled;
 
 	/**
      * Cascade rules set dont use ALL and REMOVE this would delete employees
@@ -74,9 +70,10 @@ public class Employee {
 	 
 	public Employee() {}
 
+
 	public Employee(@NotBlank String fullName, String details, String telephone, String cellphone, String email,
-			String password, String authority, @NotBlank Long teamId, String idNumber, String userId,
-			String skillsCategory, Date dateCreated, @NotBlank Boolean enabled) {
+			String password, String authority, String idNumber, String userId, String skillsCategory, Date dateCreated,
+			@NotBlank Integer enabled) {
 		super();
 		this.fullName = fullName;
 		this.details = details;
@@ -85,13 +82,13 @@ public class Employee {
 		this.email = email;
 		this.password = password;
 		this.authority = authority;
-		this.teamId = teamId;
 		this.idNumber = idNumber;
 		this.userId = userId;
 		this.skillsCategory = skillsCategory;
 		this.dateCreated = dateCreated;
 		this.enabled = enabled;
 	}
+
 
 	public String getIdNumber() {
 		return idNumber;
@@ -165,13 +162,6 @@ public class Employee {
 		this.authority = authority;
 	}
 
-	public Long getTeamId() {
-		return teamId;
-	}
-
-	public void setTeamId(Long teamId) {
-		this.teamId = teamId;
-	}
 
 	public String getUserId() {
 		return userId;
@@ -200,21 +190,23 @@ public class Employee {
 	}
 
 
-	public Boolean getEnabled() {
+	public Integer getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(Boolean enabled) {
+	public void setEnabled(Integer enabled) {
 		this.enabled = enabled;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [fullName=" + fullName + ", details=" + details + ", telephone=" + telephone + ", cellphone="
-				+ cellphone + ", email=" + email + ", password=" + password + ", authority=" + authority + ", teamId="
-				+ teamId + ", idNumber=" + idNumber + ", userId=" + userId + ", skillsCategory=" + skillsCategory
-				+ ", dateCreated=" + dateCreated + ", enabled=" + enabled + "]";
+		return "Employee [employeeId=" + employeeId + ", fullName=" + fullName + ", details=" + details + ", telephone="
+				+ telephone + ", cellphone=" + cellphone + ", email=" + email + ", password=" + password
+				+ ", authority=" + authority + ", idNumber=" + idNumber + ", userId=" + userId
+				+ ", skillsCategory=" + skillsCategory + ", dateCreated=" + dateCreated + ", enabled=" + enabled + "]";
 	}
+
+
 
 
 	

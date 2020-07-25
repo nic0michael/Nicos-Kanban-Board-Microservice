@@ -137,10 +137,12 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [name=" + name + ", shortName=" + shortName + ", details=" + details + ", telephone="
-				+ telephone + ", cellphone=" + cellphone + ", email=" + email + ", dateCreated=" + dateCreated
-				+ ", isActive=" + isActive + "]";
+		return "Customer [customerId=" + customerId + ", name=" + name + ", shortName=" + shortName + ", details="
+				+ details + ", telephone=" + telephone + ", cellphone=" + cellphone + ", email=" + email
+				+ ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 	}
+
+
 
 	
 }

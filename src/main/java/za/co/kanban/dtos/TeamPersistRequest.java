@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "TeamPersistRequest")
 public class TeamPersistRequest {
 
+	private String teamId;
     private String name;
 	private String description;	
 	private String dateCreated;
@@ -20,6 +21,14 @@ public class TeamPersistRequest {
 		this.isActive = isActive;
 	}
 
+
+	public String getTeamId() {
+		return teamId;
+	}
+
+	public void setTeamId(String teamId) {
+		this.teamId = teamId;
+	}
 
 	public String getName() {
 		return name;
@@ -55,9 +64,11 @@ public class TeamPersistRequest {
 
 	@Override
 	public String toString() {
-		return "Team [name=" + name + ", description=" + description + ", dateCreated=" + dateCreated + ", isActive="
-				+ isActive + "]";
+		return "TeamPersistRequest [teamId=" + teamId + ", name=" + name + ", description=" + description
+				+ ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 	}
+
+
 	
 	
 }

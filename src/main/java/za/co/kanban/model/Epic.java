@@ -131,10 +131,12 @@ public class Epic {
 
 	@Override
 	public String toString() {
-		return "Epic [name=" + name + ", description=" + description + ", customerReference=" + customerReference
-				+ ", customerId=" + customerId + ", due_date=" + due_date + ", dateCreated=" + dateCreated + ", isActive="
-				+ isActive + "]";
+		return "Epic [epicId=" + epicId + ", name=" + name + ", description=" + description + ", customerReference="
+				+ customerReference + ", customerId=" + customerId + ", due_date=" + due_date + ", dateCreated="
+				+ dateCreated + ", isActive=" + isActive + "]";
 	}
+
+
 
 	
 }

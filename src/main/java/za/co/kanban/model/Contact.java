@@ -159,10 +159,13 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		return "Contact [fullName=" + fullName + ", details=" + details + ", telephone=" + telephone + ", cellphone="
-				+ cellphone + ", email=" + email + ", password=" + password + ", authority=" + authority
-				+ ", customerd=" + customerd + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
+		return "Contact [contactId=" + contactId + ", fullName=" + fullName + ", details=" + details + ", telephone="
+				+ telephone + ", cellphone=" + cellphone + ", email=" + email + ", password=" + password
+				+ ", authority=" + authority + ", customerd=" + customerd + ", dateCreated=" + dateCreated
+				+ ", isActive=" + isActive + "]";
 	}
+
+
 
     
 	
