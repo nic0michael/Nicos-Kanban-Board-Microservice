@@ -16,7 +16,7 @@ MySQL ,MariaDB, and PerconaMySql are supported
 
 
 ### SQL Scripts provided
-In the folder : /src/main/resources/sql_scripts
+In the folder : **/src/main/resources/sql_scripts**
 you will find a file : data4mysql.sql  
 This has all the create table SQL Scripts you will need as well as Sample Employee insert scripts  
 You need to edit that and put your own employees there allocate the admin user id to one employee
@@ -44,8 +44,8 @@ Now add this to properties file
 spring.jpa.hibernate.ddl-auto=none
 
 # References
-charts : https://www.chartjs.org/
+charts : [https://www.chartjs.org/](https://www.chartjs.org/)
 
-security: https://www.baeldung.com/spring-security-thymeleaf
+security: [https://www.baeldung.com/spring-security-thymeleaf](https://www.baeldung.com/spring-security-thymeleaf)
 
 
