@@ -8,14 +8,18 @@ It is a new project and its being built one week at a time
 When this project is ready it will be delivered as a selt starting Java Archive (JAR) file 
 to deploy on a webserver on the cloud. It is hoped to also deliver this as a Docker Project
 
-We are not ready to accept developers to join this team yet, as we are still build the Master Branch.  
+We are not ready to accept developers to join this team yet, as we are still building the Master Branch.  
 
 ## Database Support
 MySQL ,MariaDB, and PerconaMySql are supported
 
 ### SQL Scripts provided
 In the folder : **/src/main/resources/sql_scripts**
-you will find a file : data4mysql.sql  
+you will find these files : 
+
+  * create_db_and_tables_4mysql.sql
+  * insert_data_4mysql.sql
+
 This has all the create table SQL Scripts you will need as well as Sample Employee insert scripts  
 You need to edit that and put your own employees there allocate the admin user id to one employee
 allocate the manager user id to another employee so that you can login to the system.
