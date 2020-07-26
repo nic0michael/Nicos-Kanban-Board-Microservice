@@ -20,8 +20,8 @@ you will find these files :
   * create_db_and_tables_4mysql.sql
   * insert_data_4mysql.sql
 
-The insert_data_4mysql.sql can save you time creating users   
-Please not the passwords are encrypted so dont set them in the query
+**The insert_data_4mysql.sql can save you time creating users **  
+Please note the passwords are encrypted so dont set them in the query
 You will need to edit and run the Insert Query at the bottom of this sql script 
 to give your administrator user the needed logon credentials .
 
