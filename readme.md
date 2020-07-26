@@ -56,4 +56,5 @@ charts : [https://www.chartjs.org/](https://www.chartjs.org/)
 
 security: [https://www.baeldung.com/spring-security-thymeleaf](https://www.baeldung.com/spring-security-thymeleaf)
 
+SQL formatting : [http://www.dpriver.com/pp/sqlformat.htm](http://www.dpriver.com/pp/sqlformat.htm)
 
