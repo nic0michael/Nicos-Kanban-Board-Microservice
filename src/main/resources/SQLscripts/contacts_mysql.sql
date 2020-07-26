@@ -1,19 +1,22 @@
-DROP TABLE IF EXISTS contacts;
+-- SHOW CREATE TABLE `contact`;  
+DROP TABLE IF EXISTS contact;
+CREATE TABLE `contact` (
+  `contact_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(255) DEFAULT NULL,
+  `details` varchar(255) DEFAULT NULL,
+  `customer_id` bigint(20) DEFAULT NULL,
+  `telephone` varchar(255) DEFAULT NULL,
+  `cellphone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `is_active` varchar(255) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  PRIMARY KEY (`contact_id`),
+  UNIQUE KEY `UK_kh2lig5t1x5hqpb18oemy4j3j` (`fullname`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE contacts(
-id INT PRIMARY KEY AUTO_INCREMENT, 
-fullname VARCHAR(300) UNIQUE, 
-title VARCHAR(10), 
-customer_id INT, 
-land_line VARCHAR(12),
-email VARCHAR(100),
-phone VARCHAR(12),
-is_active CHAR(3),
-created_at datetime);
-
-INSERT INTO contacts(fullname, is_active,customer_id,created_at) VALUES('Bill Gates','Y',1,'2020-06-17T16:17:59.304');
-INSERT INTO contacts(fullname, is_active,customer_id,created_at) VALUES('Joe Soap','Y',2,'2020-06-17T16:17:59.304');
-INSERT INTO contacts(fullname, is_active,customer_id,created_at) VALUES('Jane Doe','Y',3,'2020-06-17T16:17:59.304');
-INSERT INTO contacts(fullname, is_active,customer_id,created_at) VALUES('James Bond','Y',4,'2020-06-17T16:17:59.304');
+INSERT INTO contact(fullname, customer_id, telephone, is_active,date_created) VALUES('Bill Gates',1,'+1-123-1234','Y','2020-06-17T16:17:59.304');
+INSERT INTO contact(fullname, customer_id, telephone, is_active,date_created) VALUES('Joe Soap',2,'+271112124','Y','2020-06-17T16:17:59.304');
+INSERT INTO contact(fullname, customer_id, telephone, is_active,date_created) VALUES('Jane Doe',3'+271112784','Y','2020-06-17T16:17:59.304');
+INSERT INTO contact(fullname, customer_id, telephone, is_active,date_created) VALUES('James Bond',4,'+7-007-7000','Y','2020-06-17T16:17:59.304');
 
 

@@ -1,163 +1,21 @@
-CREATE DATABASE kanban_board;
-
 USE kanban_board;				
 
--- SHOW CREATE TABLE `audit`;
-CREATE TABLE `audit` (
-  `audit_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `date_created` datetime DEFAULT NULL,
-  `employee_id` bigint(20) DEFAULT NULL,
-  `operation_type` varchar(255) DEFAULT NULL,
-  `request` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`audit_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-     
--- SHOW CREATE TABLE `contact`;  
-CREATE TABLE `contact` (
-  `contact_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `authority` varchar(255) DEFAULT NULL,
-  `cellphone` varchar(255) DEFAULT NULL,
-  `customer_id` bigint(20) DEFAULT NULL,
-  `date_created` datetime DEFAULT NULL,
-  `details` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `fullname` varchar(255) DEFAULT NULL,
-  `is_active` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `telephone` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`contact_id`),
-  UNIQUE KEY `UK_kh2lig5t1x5hqpb18oemy4j3j` (`fullname`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
- 
--- SHOW CREATE TABLE `customer`;  
-CREATE TABLE `customer` (
-  `customer_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `cellphone` varchar(255) DEFAULT NULL,
-  `date_created` datetime DEFAULT NULL,
-  `details` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `is_active` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `short_name` varchar(255) DEFAULT NULL,
-  `telephone` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`customer_id`),
-  UNIQUE KEY `UK_crkjmjk1oj8gb6j6t5kt7gcxm` (`name`),
-  UNIQUE KEY `UK_h4mk0gialp39cjyc4m7kknt61` (`short_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+-- INSERT customer
+INSERT INTO customer(name, short_name, details, is_active,date_created) VALUES('IBM LTD','IBM','US It Firm','Y','2020-06-17T16:17:59.304');
+INSERT INTO customer(name, short_name, details, is_active,date_created) VALUES('ORACLE LTD','ORACLE','US It Firm','Y','2020-06-17T16:17:59.304');
+INSERT INTO customer(name, short_name, details, is_active,date_created) VALUES('DELL LTD','DELL','US It Firm','Y','2020-06-17T16:17:59.304');
+INSERT INTO customer(name, short_name, details, is_active,date_created) VALUES('ACME Laboratories','ACME','SA Firm','Y','2020-06-17T16:17:59.304');
 
--- SHOW CREATE TABLE `employee`;  
-CREATE TABLE `employee` (
-  `employee_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `authority` varchar(255) DEFAULT NULL,
-  `cellphone` varchar(255) DEFAULT NULL,
-  `date_created` datetime DEFAULT NULL,
-  `details` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `enabled` int(1) DEFAULT NULL,
-  `fullname` varchar(255) DEFAULT NULL,
-  `id_number` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `skills_category` varchar(255) DEFAULT NULL,
-  `telephone` varchar(255) DEFAULT NULL,
-  `user_id` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`employee_id`),
-  UNIQUE KEY `UK_6djefmjx26crewgafuih51sad` (`fullname`),
-  UNIQUE KEY `UK_6tpj1vwpvfk1jljoylys4ixyp` (`id_number`),
-  UNIQUE KEY `UK_mpps3d3r9pdvyjx3iqixi96fi` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
-
--- SHOW CREATE TABLE `employee_user_story`;
-CREATE TABLE `employee_user_story` (
-  `employee_id` bigint(20) NOT NULL,
-  `user_story_id` bigint(20) NOT NULL,
-  KEY `FKkexd21s49v2bf1xux0re92mq1` (`user_story_id`),
-  KEY `FKn6vtqimtcorrhdbepgjhkg7a8` (`employee_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+-- INSERT contact
+INSERT INTO contact(fullname, customer_id, telephone, is_active,date_created) VALUES('Bill Gates',1,'+1-123-1234','Y','2020-06-17T16:17:59.304');
+INSERT INTO contact(fullname, customer_id, telephone, is_active,date_created) VALUES('Joe Soap',2,'+271112124','Y','2020-06-17T16:17:59.304');
+INSERT INTO contact(fullname, customer_id, telephone, is_active,date_created) VALUES('Jane Doe',3'+271112784','Y','2020-06-17T16:17:59.304');
+INSERT INTO contact(fullname, customer_id, telephone, is_active,date_created) VALUES('James Bond',4,'+7-007-7000','Y','2020-06-17T16:17:59.304');
 
 
--- SHOW CREATE TABLE `epic`;   
-CREATE TABLE `epic` (
-  `epic_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `customer_id` bigint(20) DEFAULT NULL,
-  `customer_reference` varchar(255) DEFAULT NULL,
-  `date_created` datetime DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `due_date` datetime DEFAULT NULL,
-  `is_active` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`epic_id`),
-  UNIQUE KEY `UK_5o8yf45ofj85s5alalaeuvi1j` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;   
-
--- SHOW CREATE TABLE `subtask`; 
-CREATE TABLE `subtask` (
-  `subtask_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `assigned_to` bigint(20) DEFAULT NULL,
-  `date_created` datetime DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `due_date` datetime DEFAULT NULL,
-  `is_active` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `story_points` int(11) DEFAULT NULL,
-  `tasks_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`subtask_id`),
-  UNIQUE KEY `UK_kfi15xibqo0g7a3rybrbrkr6q` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-
--- SHOW CREATE TABLE `task`; 
-CREATE TABLE `task` (
-  `task_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `assigned_to` bigint(20) DEFAULT NULL,
-  `date_created` datetime DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `due_date` datetime DEFAULT NULL,
-  `end_date` datetime DEFAULT NULL,
-  `is_active` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `stage` varchar(255) DEFAULT NULL,
-  `start_date` datetime DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `story_points` int(11) DEFAULT NULL,
-  `user_story_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`task_id`),
-  UNIQUE KEY `UK_lerptdo9d67pejjpbfau899tm` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-     
--- SHOW CREATE TABLE `team`;   
-CREATE TABLE `team` (
-  `team_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `date_created` datetime DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `is_active` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`team_id`),
-  UNIQUE KEY `UK_g2l9qqsoeuynt4r5ofdt1x2td` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-
-   
--- SHOW CREATE TABLE `user_story`;
-CREATE TABLE `user_story` (
-  `user_story_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `assigned_to` bigint(20) DEFAULT NULL,
-  `customer_id` bigint(20) DEFAULT NULL,
-  `customer_reference` varchar(255) DEFAULT NULL,
-  `date_created` datetime DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `due_date` datetime DEFAULT NULL,
-  `epic_id` bigint(20) DEFAULT NULL,
-  `is_active` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `stage` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`user_story_id`),
-  UNIQUE KEY `UK_5w32xyy51n1h2yesbawuntbo5` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
-
-
+-- INSERT team
+INSERT INTO team(name, is_active,date_created) VALUES('Front-end developers','Y','2020-06-17T16:17:59.304');
+INSERT INTO team(name, is_active,date_created) VALUES('Back-end developers','Y','2020-06-17T16:17:59.304');
 	
 
 -- INSERT employee			
@@ -174,15 +32,20 @@ insert into employee ( fullname, email,id_number,enabled,user_id,authority,passw
 insert into employee ( fullname, email,id_number,enabled,user_id,authority,password) values ( 'Nicholas Michael', 'nmichael@gmail.com','1956', 1,'klidi','ROLE_ADMIN','$2a$10$r4325krPku2wNegHS5zLY.4PWtbc4Xz7Zu4NfS2AWaiNVNONtrt.2');	
 
 
+INSERT INTO epic(name, customer_id, is_active,date_created) VALUES('Create new billing Service',1,'Y','2020-06-17T16:17:59.304');
+INSERT INTO epic(name, customer_id, is_active,date_created) VALUES('Update Accounting System',2,'Y','2020-06-17T16:17:59.304');
+INSERT INTO epic(name, customer_id, is_active,date_created) VALUES('Replace Billing System',3,'Y','2020-06-17T16:17:59.304');
+INSERT INTO epic(name, customer_id, is_active,date_created) VALUES('Make gadget for James Bond',4,'Y','2020-06-17T16:17:59.304');
+
+
 -- INSERT user_story 			
-insert into user_story ( name, stage, description) values ( 'Large Production Deploy', 'NOTSTARTED', 'This requires all hands on deck for the final deployment of the software into production');
-insert into user_story ( name, stage, description) values ( 'New Employee Budget',  'COMPLETED', 'Decide on a new employee bonus budget for the year and figureout who will be promoted');
-insert into user_story ( name, stage, description) values ( 'Office Reconstruction', 'INPROGRESS', 'The office building in Monroe has been damaged due to hurricane in the region. This needs to be reconstructed');
-insert into user_story ( name, stage, description) values ( 'Improve Intranet Security', 'INPROGRESS', 'With the recent data hack, the office security needs to be improved and proper security team needs to be hired for implementation');
+insert into user_story ( name, epic_id, assigned_to, stage, description, date_created) values ( 'Large Production Deploy',1,1, 'NOTSTARTED', 'This requires all hands on deck for the final deployment of the software into production','2020-06-17T16:17:59.304');
+insert into user_story ( name, epic_id, assigned_to, stage, description, date_created) values ( 'New Employee Budget',2,2,  'COMPLETED', 'Decide on a new employee bonus budget for the year and figureout who will be promoted','2020-06-17T16:17:59.304');
+insert into user_story ( name, epic_id, assigned_to, stage,  description, date_created) values ( 'Office Reconstruction',3,3, 'INPROGRESS', 'The office building in Monroe has been damaged due to hurricane in the region. This needs to be reconstructed','2020-06-17T16:17:59.304');
+insert into user_story ( name, epic_id, assigned_to, stage,  description, date_created) values ( 'Improve Intranet Security',4,4, 'INPROGRESS', 'With the recent data hack, the office security needs to be improved and proper security team needs to be hired for implementation','2020-06-17T16:17:59.304');
 
-alter table employee_user_story add constraint FKkexd21s49v2bf1xux0re92mq1 foreign key (user_story_id) references user_story (user_story_id);
-alter table employee_user_story add constraint FKn6vtqimtcorrhdbepgjhkg7a8 foreign key (employee_id) references employee (employee_id);
 
-update table employee set is_enabled=1;
+
+
 
 

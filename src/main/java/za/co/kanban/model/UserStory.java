@@ -37,11 +37,7 @@ public class UserStory {
 	@Column(name="customer_reference")
 	private String customerReference;	
 
-	private String stage;		
-	
-	@NotBlank
-	@Column(name="customer_id")
-	private Long customerId;
+	private String stage;	
 
 	@NotBlank
 	@Column(name="epic_id")
@@ -79,15 +75,17 @@ public class UserStory {
 	public UserStory() {}
 
 
-	public UserStory(@NotBlank String name, String description, String customerReference, String stage,
-			@NotBlank Long customerId, @NotBlank Long epicId, @NotBlank Long assignedTo, Date startDate, Date endDate,
-			Date dueDate, Date dateCreated, @NotBlank String isActive) {
+
+
+	public UserStory(Long userStoryId, @NotBlank String name, String description, String customerReference,
+			String stage, @NotBlank Long epicId, @NotBlank Long assignedTo, Date startDate, Date endDate, Date dueDate,
+			Date dateCreated, @NotBlank String isActive, List<Employee> employees) {
 		super();
+		this.userStoryId = userStoryId;
 		this.name = name;
 		this.description = description;
 		this.customerReference = customerReference;
 		this.stage = stage;
-		this.customerId = customerId;
 		this.epicId = epicId;
 		this.assignedTo = assignedTo;
 		this.startDate = startDate;
@@ -95,7 +93,10 @@ public class UserStory {
 		this.dueDate = dueDate;
 		this.dateCreated = dateCreated;
 		this.isActive = isActive;
+		this.employees = employees;
 	}
+
+
 
 
 	public Long getUserStoryId() {
@@ -145,16 +146,6 @@ public class UserStory {
 
 	public void setStage(String stage) {
 		this.stage = stage;
-	}
-
-
-	public Long getCustomerId() {
-		return customerId;
-	}
-
-
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
 	}
 
 
@@ -228,13 +219,18 @@ public class UserStory {
 	}
 
 
+
+
 	@Override
 	public String toString() {
 		return "UserStory [userStoryId=" + userStoryId + ", name=" + name + ", description=" + description
-				+ ", customerReference=" + customerReference + ", stage=" + stage + ", customerId=" + customerId
-				+ ", epicId=" + epicId + ", assignedTo=" + assignedTo + ", startDate=" + startDate + ", endDate="
-				+ endDate + ", dueDate=" + dueDate + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
+				+ ", customerReference=" + customerReference + ", stage=" + stage + ", epicId=" + epicId
+				+ ", assignedTo=" + assignedTo + ", startDate=" + startDate + ", endDate=" + endDate + ", dueDate="
+				+ dueDate + ", dateCreated=" + dateCreated + ", isActive=" + isActive + ", employees=" + employees
+				+ "]";
 	}
+
+
 
 
 
