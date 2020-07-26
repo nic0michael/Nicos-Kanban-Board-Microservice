@@ -32,14 +32,14 @@ once you have lokked in with that employees user Id and password create another 
 
 ### To use the SQL scripts provided to generate the tables
 
-| I recomend that you create a Shell script : **mysql-terminal**|
-|---------------------------------------------------------------|
-| run the folowing command in the terminal:                     |
-| sudo nano /usr/bin/mysql-terminal                             |
-|                                                               |
-| place the folowing code into this shell script:               |
-| #!/bin/bash                                                   |
-| sudo mysql -u root -pPasswordForRootUserOfMySqlServer         |
+| We recomend that you create a Shell script : **mysql-terminal**|
+|----------------------------------------------------------------|
+| run the folowing command in the terminal:                      |
+| sudo nano /usr/bin/mysql-terminal                              |
+|                                                                |
+| place the folowing code into this shell script:                |
+| #!/bin/bash                                                    |
+| sudo mysql -u root -pPasswordForRootUserOfMySqlServer          |
 
 
  
