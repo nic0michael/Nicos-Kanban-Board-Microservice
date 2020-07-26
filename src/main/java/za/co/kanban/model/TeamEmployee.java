@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "team_employee")
-public class TeamEmployees {
+public class TeamEmployee {
 
 
 	@Id
@@ -18,9 +18,9 @@ public class TeamEmployees {
 	private Long employeeId;
 	private Long teamId;
 	
-	public TeamEmployees() {}
+	public TeamEmployee() {}
 
-	public TeamEmployees( Long teamId,Long employeeId) {
+	public TeamEmployee( Long teamId,Long employeeId) {
 		super();
 		this.employeeId = employeeId;
 		this.teamId = teamId;
