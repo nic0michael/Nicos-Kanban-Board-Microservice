@@ -31,16 +31,17 @@ to give your administrator user the needed logon credentials .
 once you have lokked in with that employees user Id and password create another Employee with a diferent userId and password and assign the Admin role then delete the previous userID
 
 ### To use the SQL scripts provided to generate the tables
-I recomend that you create a Shell script : **mysql-terminal**
 
-run the folowing command in the terminal:
-    sudo nano /usr/bin/mysql-terminal
-place the folowing code into this shell script:
-    #!/bin/bash
-    sudo mysql -u root -pPasswordForRootUserOfMySqlServer
+| I recomend that you create a Shell script : **mysql-terminal**|
+|---------------------------------------------------------------|
+| run the folowing command in the terminal:                     |
+| sudo nano /usr/bin/mysql-terminal                             |
+|                                                               |
+| place the folowing code into this shell script:               |
+| #!/bin/bash                                                   |
+| sudo mysql -u root -pPasswordForRootUserOfMySqlServer         |
 
-run the folowing command in the terminal:
-    sudo chmod 775 /usr/bin/mysql-terminal
+
  
 Now evertime you want open the MSQL terminal you you have a quicker way to get in
 just open the bash terminal and run this command :
