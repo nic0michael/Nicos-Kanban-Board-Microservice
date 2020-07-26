@@ -45,7 +45,29 @@ insert into user_story ( name, epic_id, assigned_to, stage,  description, date_c
 insert into user_story ( name, epic_id, assigned_to, stage,  description, date_created) values ( 'Improve Intranet Security',4,4, 'INPROGRESS', 'With the recent data hack, the office security needs to be improved and proper security team needs to be hired for implementation','2020-06-17T16:17:59.304');
 
 
-
-
-
+-- =============================== CREATE ADMINISTRATOR USER SQL SCRIPT ==================================================================
+--
+--   set your administrator user 
+--   with password = P@55w0rd 
+--   and role as administrator 
+--   and your logon user id
+-
+INSERT INTO employee 
+            (fullname, 
+             email, 
+             id_number, 
+             enabled, 
+             user_id, 
+             authority, 
+             password) 
+VALUES      ( 'Youe_administrators_fullname', 
+              'your_email@gmail.com', 
+              '123456', -- This is your identity number
+              1, 
+              'yourlogon_user_id', -- This is your logon user id
+              'ROLE_ADMIN', 
+              '$2a$10$r4325krPku2wNegHS5zLY.4PWtbc4Xz7Zu4NfS2AWaiNVNONtrt.2'); -- password = P@55w0rd
+--              
+-- =============================== END OF CREATE ADMINISTRATOR USER SQL SCRIPT ===========================================================
+              
 

@@ -20,9 +20,15 @@ you will find these files :
   * create_db_and_tables_4mysql.sql
   * insert_data_4mysql.sql
 
-This has all the create table SQL Scripts you will need as well as Sample Employee insert scripts  
-You need to edit that and put your own employees there allocate the admin user id to one employee
-allocate the manager user id to another employee so that you can login to the system.
+The insert_data_4mysql.sql can save you time creating users   
+Please not the passwords are encrypted so dont set them in the query
+You will need to edit and run the Insert Query at the bottom of this sql script 
+to give your administrator user the needed logon credentials .
+
+
+
+
+once you have lokked in with that employees user Id and password create another Employee with a diferent userId and password and assign the Admin role then delete the previous userID
 
 ### To use the SQL scripts provided to generate the tables
 I recomend that you create a Shell script : **mysql-terminal**
