@@ -121,7 +121,7 @@ public class Utils {
 	
 
 
-	private static ContactPersistRequest convertToContactPersistRequest(Contact contact) {
+	public static ContactPersistRequest convertToContactPersistRequest(Contact contact) {
 		ContactPersistRequest contactPersistRequest=new ContactPersistRequest();
 
 		if (contact.getContactId() != null) {
@@ -142,7 +142,7 @@ public class Utils {
 		return contactPersistRequest;
 	}
 
-	private static Contact convertToContact(ContactPersistRequest contactPersistRequest) {
+	public static Contact convertToContact(ContactPersistRequest contactPersistRequest) {
 		Contact contact =new Contact();
 
 		contact.setFullName(contactPersistRequest.getFullName());	
@@ -195,7 +195,7 @@ public class Utils {
 	
 
 
-	private static CustomerPersistRequest convertToCustomerersistRequest(Customer customer) {
+	public static CustomerPersistRequest convertToCustomerersistRequest(Customer customer) {
 		CustomerPersistRequest customerPersistRequest=new CustomerPersistRequest();
 
 		if (customer.getCustomerId() != null) {
@@ -216,7 +216,7 @@ public class Utils {
 		return customerPersistRequest;
 	}
 
-	private static Customer convertToCustomer(CustomerPersistRequest customerPersistRequest) {
+	public static Customer convertToCustomer(CustomerPersistRequest customerPersistRequest) {
 		Customer customer =new Customer();
 
 		customer.setName(customerPersistRequest.getName());	
@@ -249,6 +249,8 @@ public class Utils {
 		
 		return customer;
 	}
+	
+
 	
 	//////////////////// EMPLOYEE /////////////
 
@@ -370,7 +372,7 @@ public class Utils {
 	
 
 
-	private static EpicPersistRequest convertToEpicPersistRequest(Epic epic) {
+	public static EpicPersistRequest convertToEpicPersistRequest(Epic epic) {
 		EpicPersistRequest epicPersistRequest=new EpicPersistRequest();
 		if (epic.getEpicId() != null) {
 			epicPersistRequest.setEpicId(epic.getEpicId().toString());
@@ -393,7 +395,7 @@ public class Utils {
 		return epicPersistRequest;
 	}
 
-	private static Epic convertToEpic(EpicPersistRequest epicPersistRequest) {
+	public static Epic convertToEpic(EpicPersistRequest epicPersistRequest) {
 		Epic epic =new Epic();
 
 	    epic.setName(epicPersistRequest.getName());	
@@ -824,7 +826,7 @@ public class Utils {
 	
 
 
-	private static TeamPersistRequest convertToTeamPersistRequest(Team team) {
+	public static TeamPersistRequest convertToTeamPersistRequest(Team team) {
 		TeamPersistRequest teamPersistRequest=new TeamPersistRequest();
 
 		if (team.getTeamId() != null) {
@@ -841,7 +843,7 @@ public class Utils {
 		return teamPersistRequest;
 	}
 
-	private static Team convertToTeam(TeamPersistRequest teamPersistRequest) {
+	public static Team convertToTeam(TeamPersistRequest teamPersistRequest) {
 		Team team =new Team();
 
 	    team.setName(teamPersistRequest.getName());	
@@ -865,6 +867,7 @@ public class Utils {
 		
 		return team;
 	}
+
 
 
 

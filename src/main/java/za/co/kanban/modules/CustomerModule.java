@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import za.co.kanban.dtos.CustomerPersistRequest;
 import za.co.kanban.model.Customer;
 import za.co.kanban.repositories.CustomerRepository;
 import za.co.kanban.utils.Utils;
@@ -60,4 +61,5 @@ public class CustomerModule {
 			repository.save(customer);
 		}		
 	}
+
 }
