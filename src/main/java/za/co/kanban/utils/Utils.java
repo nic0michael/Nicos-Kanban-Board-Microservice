@@ -96,6 +96,160 @@ public class Utils {
 		return date;
 	}
 	
+
+
+
+	////////////////////// CONTACT /////////////////////////
+
+	public static List<ContactPersistRequest> makeContactPersistRequestList(List<Contact> contacts) {
+		List<ContactPersistRequest> contactPersistRequests = new ArrayList<>();
+		for (Contact contact : contacts) {
+			ContactPersistRequest contactPersistRequest = convertToContactPersistRequest(contact);
+			contactPersistRequests.add(contactPersistRequest);
+		}
+		return contactPersistRequests;
+	}
+
+	public static List<Contact> makeContactList(List<ContactPersistRequest> contactPersistRequests ) {
+		List<Contact> contacts = new ArrayList<>();
+		for (ContactPersistRequest contactPersistRequest : contactPersistRequests) {
+			Contact contact = convertToContact(contactPersistRequest);
+			contacts.add(contact);
+		}
+		return contacts;
+	}
+	
+
+
+	private static ContactPersistRequest convertToContactPersistRequest(Contact contact) {
+		ContactPersistRequest contactPersistRequest=new ContactPersistRequest();
+
+		if (contact.getContactId() != null) {
+			contactPersistRequest.setContactId(contact.getContactId().toString());
+		}
+	    contactPersistRequest.setFullName(contact.getFullName());	
+	    contactPersistRequest.setTelephone(contact.getTelephone());
+	    contactPersistRequest.setCellphone(contact.getCellphone());
+	    contactPersistRequest.setEmail(contact.getEmail());	    
+		contactPersistRequest.setDetails(contact.getDetails());
+		
+
+		if (contact.getDateCreated() != null) {
+			contactPersistRequest.setDateCreated(Utils.dateToString(contact.getDateCreated()));
+		}
+		
+		contactPersistRequest.setIsActive(contact.getIsActive());
+		return contactPersistRequest;
+	}
+
+	private static Contact convertToContact(ContactPersistRequest contactPersistRequest) {
+		Contact contact =new Contact();
+
+		contact.setFullName(contactPersistRequest.getFullName());	
+		contact.setTelephone(contactPersistRequest.getTelephone());
+		contact.setCellphone(contactPersistRequest.getCellphone());
+		contact.setEmail(contactPersistRequest.getEmail());	    
+		contact.setDetails(contactPersistRequest.getDetails());	
+
+		if (contactPersistRequest.getDateCreated() != null) {
+			contact.setDateCreated(Utils.convertStringToDate(contactPersistRequest.getDateCreated()));
+		}
+		
+		contact.setIsActive(contactPersistRequest.getIsActive());
+		
+		return contact;
+	}
+	
+
+	public static Contact updateContact(Contact contact , Contact theContact) {
+
+		contact.setFullName(theContact.getFullName());	
+		contact.setTelephone(theContact.getTelephone());
+		contact.setCellphone(theContact.getCellphone());
+		contact.setEmail(theContact.getEmail());	    
+		contact.setDetails(theContact.getDetails());	
+		contact.setDateCreated(theContact.getDateCreated());
+		contact.setIsActive(theContact.getIsActive());
+		return contact;
+	}
+
+	////////////////////// CUSTOMER /////////////////////////
+
+	public static List<CustomerPersistRequest> makeCustomerPersistRequestList(List<Customer> customers) {
+		List<CustomerPersistRequest> customerPersistRequests = new ArrayList<>();
+		for (Customer customer : customers) {
+			CustomerPersistRequest customerPersistRequest = convertToCustomerersistRequest(customer);
+			customerPersistRequests.add(customerPersistRequest);
+		}
+		return customerPersistRequests;
+	}
+
+	public static List<Customer> makeCustomerList(List<CustomerPersistRequest> customerPersistRequests ) {
+		List<Customer> customers = new ArrayList<>();
+		for (CustomerPersistRequest customerPersistRequest : customerPersistRequests) {
+			Customer customer = convertToCustomer(customerPersistRequest);
+			customers.add(customer);
+		}
+		return customers;
+	}
+	
+
+
+	private static CustomerPersistRequest convertToCustomerersistRequest(Customer customer) {
+		CustomerPersistRequest customerPersistRequest=new CustomerPersistRequest();
+
+		if (customer.getCustomerId() != null) {
+			customerPersistRequest.setCustomerId(customer.getCustomerId().toString());
+		}
+	    customerPersistRequest.setName(customer.getName());	
+	    customerPersistRequest.setShortName(customer.getShortName());
+	    customerPersistRequest.setTelephone(customer.getTelephone());
+	    customerPersistRequest.setCellphone(customer.getCellphone());
+	    customerPersistRequest.setEmail(customer.getEmail());	    
+		customerPersistRequest.setDetails(customer.getDetails());
+
+		if (customer.getDateCreated() != null) {
+			customerPersistRequest.setDateCreated(Utils.dateToString(customer.getDateCreated()));
+		}
+		
+		customerPersistRequest.setIsActive(customer.getIsActive());
+		return customerPersistRequest;
+	}
+
+	private static Customer convertToCustomer(CustomerPersistRequest customerPersistRequest) {
+		Customer customer =new Customer();
+
+		customer.setName(customerPersistRequest.getName());	
+		customer.setShortName(customerPersistRequest.getShortName());
+		customer.setTelephone(customerPersistRequest.getTelephone());
+		customer.setCellphone(customerPersistRequest.getCellphone());
+		customer.setEmail(customerPersistRequest.getEmail());	    
+		customer.setDetails(customerPersistRequest.getDetails());	
+
+		if (customerPersistRequest.getDateCreated() != null) {
+			customer.setDateCreated(Utils.convertStringToDate(customerPersistRequest.getDateCreated()));
+		}
+		
+		customer.setIsActive(customerPersistRequest.getIsActive());
+		
+		return customer;
+	}
+
+
+	public static Customer updateCustomer(Customer customer, Customer theCustomer) {
+
+		customer.setName(theCustomer.getName());	
+		customer.setShortName(theCustomer.getShortName());
+		customer.setTelephone(theCustomer.getTelephone());
+		customer.setCellphone(theCustomer.getCellphone());
+		customer.setEmail(theCustomer.getEmail());	    
+		customer.setDetails(theCustomer.getDetails());	
+		customer.setDateCreated(theCustomer.getDateCreated());		
+		customer.setIsActive(theCustomer.getIsActive());
+		
+		return customer;
+	}
+	
 	//////////////////// EMPLOYEE /////////////
 
 	public static List<EmployeePersistRequest> makeEmployeePersistRequestList(List<Employee> employees) {
@@ -261,6 +415,18 @@ public class Utils {
 		return epic;
 	}
 
+
+	public static Epic updateEpic(Epic epic, Epic theEpic) {
+	    epic.setName(theEpic.getName());	
+		epic.setDescription(theEpic.getDescription());
+		epic.setCustomerReference(theEpic.getCustomerReference());	
+		epic.setCustomerId(theEpic.getCustomerId());
+		epic.setDue_date(theEpic.getDue_date());
+		epic.setDateCreated(theEpic.getDateCreated());
+		epic.setIsActive(theEpic.getIsActive());
+		
+		return epic;
+	}
 	
 	////////////////////// USER STORY ///////////////////
 	
@@ -372,6 +538,21 @@ public class Utils {
 		return userStory;
 	}
 	
+
+	public static UserStory updateUserStory(UserStory userStory, UserStory theUserStory) {
+		userStory.setName	     (theUserStory.getName	     ());
+		userStory.setDescription(theUserStory.getDescription());
+		userStory.setStage	 (theUserStory.getStage	 ());
+		userStory.setIsActive   (theUserStory.getIsActive   ());	
+		userStory.setUserStoryId(theUserStory.getUserStoryId());
+		userStory.setAssignedTo (theUserStory.getAssignedTo());	
+		userStory.setDueDate(theUserStory.getDueDate());
+		userStory.setStartDate(theUserStory.getStartDate());
+		userStory.setEndDate(theUserStory.getEndDate());
+		userStory.setDateCreated(theUserStory.getDateCreated());
+		
+		return userStory;
+	}
 	/////////////////////////// TASK /////////////////
 	
 
@@ -495,6 +676,28 @@ public class Utils {
 		log.info("PROJECT_MAN : Utils : convertToProject :project:" + task);
 		return task;
 	}
+	
+
+	public static Task updateTask(Task task, Task theTask) {
+
+	    task.setName(theTask.getName());
+		task.setDescription(theTask.getDescription());
+		task.setStatus(theTask.getStatus());
+		task.setIsActive(theTask.getIsActive());	
+		task.setStage(theTask.getStage());	
+		task.setUserStoryId(theTask.getUserStoryId());
+		task.setStoryPoints(theTask.getStoryPoints());
+		task.setStartDate(theTask.getStartDate());
+		task.setEndDate(theTask.getEndDate());
+		task.setDue_date(theTask.getDue_date());
+		task.setDateCreated(theTask.getDateCreated());
+		task.setAssignedTo(theTask.getAssignedTo());	
+		task.setTaskId(theTask.getTaskId());
+		task.setStartDate(theTask.getStartDate());
+		task.setEndDate(theTask.getEndDate());
+		
+		return task;
+	}
 
 //////////////////// SUBTASK ///////////////////////
 
@@ -556,7 +759,6 @@ public class Utils {
 
 	public static Subtask convertToSubtask(SubtaskPersistRequest subtaskPersistRequest, Subtask subtask) {
 
-
 	    subtask.setName(subtaskPersistRequest.getName()); 
 		subtask.setDescription(subtaskPersistRequest.getDescription()); 
 		subtask.setIsActive(subtaskPersistRequest.getIsActive()); 
@@ -588,6 +790,18 @@ public class Utils {
 	}
 
 
+	public static Subtask updateSubtask(Subtask subtask, Subtask theSubtask) {
+
+	    subtask.setName(theSubtask.getName()); 
+		subtask.setDescription(theSubtask.getDescription()); 
+		subtask.setIsActive(theSubtask.getIsActive());
+		subtask.setAssignedTo(theSubtask.getAssignedTo()); 
+		subtask.setStoryPoints(theSubtask.getStoryPoints()); 
+		subtask.setDue_date(theSubtask.getDue_date());
+		subtask.setDateCreated(theSubtask.getDateCreated());
+
+		return subtask;
+	}
 	////////////////////// TEAM /////////////////////////
 
 	public static List<TeamPersistRequest> makeTeamPersistRequestList(List<Team> teams) {
@@ -642,132 +856,22 @@ public class Utils {
 		return team;
 	}
 
+	public static Team updateTeam(Team team, Team theTeam) {
 
-
-	////////////////////// CUSTOMER /////////////////////////
-
-	public static List<CustomerPersistRequest> makeCustomerPersistRequestList(List<Customer> customers) {
-		List<CustomerPersistRequest> customerPersistRequests = new ArrayList<>();
-		for (Customer customer : customers) {
-			CustomerPersistRequest customerPersistRequest = convertToCustomerersistRequest(customer);
-			customerPersistRequests.add(customerPersistRequest);
-		}
-		return customerPersistRequests;
-	}
-
-	public static List<Customer> makeCustomerList(List<CustomerPersistRequest> customerPersistRequests ) {
-		List<Customer> customers = new ArrayList<>();
-		for (CustomerPersistRequest customerPersistRequest : customerPersistRequests) {
-			Customer customer = convertToCustomer(customerPersistRequest);
-			customers.add(customer);
-		}
-		return customers;
-	}
-	
-
-
-	private static CustomerPersistRequest convertToCustomerersistRequest(Customer customer) {
-		CustomerPersistRequest customerPersistRequest=new CustomerPersistRequest();
-
-		if (customer.getCustomerId() != null) {
-			customerPersistRequest.setCustomerId(customer.getCustomerId().toString());
-		}
-	    customerPersistRequest.setName(customer.getName());	
-	    customerPersistRequest.setShortName(customer.getShortName());
-	    customerPersistRequest.setTelephone(customer.getTelephone());
-	    customerPersistRequest.setCellphone(customer.getCellphone());
-	    customerPersistRequest.setEmail(customer.getEmail());	    
-		customerPersistRequest.setDetails(customer.getDetails());
-
-		if (customer.getDateCreated() != null) {
-			customerPersistRequest.setDateCreated(Utils.dateToString(customer.getDateCreated()));
-		}
+	    team.setName(theTeam.getName());	
+		team.setDescription(theTeam.getDescription());	
+		team.setDateCreated(theTeam.getDateCreated());
+		team.setIsActive(theTeam.getIsActive());
 		
-		customerPersistRequest.setIsActive(customer.getIsActive());
-		return customerPersistRequest;
-	}
-
-	private static Customer convertToCustomer(CustomerPersistRequest customerPersistRequest) {
-		Customer customer =new Customer();
-
-		customer.setName(customerPersistRequest.getName());	
-		customer.setShortName(customerPersistRequest.getShortName());
-		customer.setTelephone(customerPersistRequest.getTelephone());
-		customer.setCellphone(customerPersistRequest.getCellphone());
-		customer.setEmail(customerPersistRequest.getEmail());	    
-		customer.setDetails(customerPersistRequest.getDetails());	
-
-		if (customerPersistRequest.getDateCreated() != null) {
-			customer.setDateCreated(Utils.convertStringToDate(customerPersistRequest.getDateCreated()));
-		}
-		
-		customer.setIsActive(customerPersistRequest.getIsActive());
-		
-		return customer;
+		return team;
 	}
 
 
 
-	////////////////////// CONTACT /////////////////////////
-
-	public static List<ContactPersistRequest> makeContactPersistRequestList(List<Contact> contacts) {
-		List<ContactPersistRequest> contactPersistRequests = new ArrayList<>();
-		for (Contact contact : contacts) {
-			ContactPersistRequest contactPersistRequest = convertToContactPersistRequest(contact);
-			contactPersistRequests.add(contactPersistRequest);
-		}
-		return contactPersistRequests;
-	}
-
-	public static List<Contact> makeContactList(List<ContactPersistRequest> contactPersistRequests ) {
-		List<Contact> contacts = new ArrayList<>();
-		for (ContactPersistRequest contactPersistRequest : contactPersistRequests) {
-			Contact contact = convertToContact(contactPersistRequest);
-			contacts.add(contact);
-		}
-		return contacts;
-	}
-	
 
 
-	private static ContactPersistRequest convertToContactPersistRequest(Contact contact) {
-		ContactPersistRequest contactPersistRequest=new ContactPersistRequest();
 
-		if (contact.getContactId() != null) {
-			contactPersistRequest.setContactId(contact.getContactId().toString());
-		}
-	    contactPersistRequest.setFullName(contact.getFullName());	
-	    contactPersistRequest.setTelephone(contact.getTelephone());
-	    contactPersistRequest.setCellphone(contact.getCellphone());
-	    contactPersistRequest.setEmail(contact.getEmail());	    
-		contactPersistRequest.setDetails(contact.getDetails());
-		
 
-		if (contact.getDateCreated() != null) {
-			contactPersistRequest.setDateCreated(Utils.dateToString(contact.getDateCreated()));
-		}
-		
-		contactPersistRequest.setIsActive(contact.getIsActive());
-		return contactPersistRequest;
-	}
-
-	private static Contact convertToContact(ContactPersistRequest contactPersistRequest) {
-		Contact contact =new Contact();
-
-		contact.setFullName(contactPersistRequest.getFullName());	
-		contact.setTelephone(contactPersistRequest.getTelephone());
-		contact.setCellphone(contactPersistRequest.getCellphone());
-		contact.setEmail(contactPersistRequest.getEmail());	    
-		contact.setDetails(contactPersistRequest.getDetails());	
-
-		if (contactPersistRequest.getDateCreated() != null) {
-			contact.setDateCreated(Utils.convertStringToDate(contactPersistRequest.getDateCreated()));
-		}
-		
-		contact.setIsActive(contactPersistRequest.getIsActive());
-		
-		return contact;
-	}
 
 
 

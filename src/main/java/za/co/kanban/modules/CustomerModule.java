@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import za.co.kanban.model.Customer;
 import za.co.kanban.repositories.CustomerRepository;
+import za.co.kanban.utils.Utils;
 
 @Component
 public class CustomerModule {
@@ -51,4 +52,12 @@ public class CustomerModule {
 		}		
 	}
 
+	public void update(Long contactId,Customer theCustomer) {
+		if(theCustomer != null && contactId!=null) {
+			Customer customer =findByCustomerId(contactId);
+			customer =Utils.updateCustomer(customer,theCustomer);
+			System.out.println("Saving contact contactId: "+contactId);
+			repository.save(customer);
+		}		
+	}
 }

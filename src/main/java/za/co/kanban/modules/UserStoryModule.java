@@ -106,7 +106,9 @@ public class UserStoryModule {
 		return userStory;
 	}
 	
-	
+	private UserStory findByUserStoryId(Long userStoryId) {
+		return find(userStoryId);
+	}
 
 	public void delete(Long userStoryId) {
 		log.info("PROJECT_MAN : UserStoryModule : delete : find userStoryId : "+ userStoryId);
@@ -117,6 +119,16 @@ public class UserStoryModule {
 		}
 	}
 
-	
+
+	public void update(Long userStoryId,UserStory theUserStory) {
+		if(theUserStory != null && userStoryId!=null) {
+			UserStory userStory =findByUserStoryId(userStoryId);
+			userStory =Utils.updateUserStory(userStory,theUserStory);
+			System.out.println("Saving UserStory userStoryId: "+userStoryId);
+			repository.save(userStory);
+		}		
+	}
+
+
 
 }

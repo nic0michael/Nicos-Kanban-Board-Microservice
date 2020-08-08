@@ -95,7 +95,7 @@ public class TaskController {
 	public String displayProjectFormToUpdate(@RequestParam(value = "id") Long taskId,Model model) {
 		log.info("PROJECT_MAN : ProjectController : displayProjectFormToUpdate : to update project with project_id : "+taskId);		
 		if(taskId!=null) {
-			Task task=taskmod.find(taskId);
+			Task task=taskmod.findByTaskId(taskId);
 			TaskPersistRequest projectPersistRequest=Utils.convertToTaskPersistRequest(task);
 			projectPersistRequest.setTaskId(""+taskId);
 			log.info("PROJECT_MAN : ProjectController : displayProjectFormToUpdate : creating new projectPersistRequest");

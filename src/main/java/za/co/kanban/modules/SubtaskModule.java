@@ -44,7 +44,7 @@ public class SubtaskModule {
 			Long subtaskId=Long.parseLong(subtaskPersistRequest.getSubtaskId());
 						
 			if(subtaskId!=null) {
-				Subtask subtask =find(subtaskId);	
+				Subtask subtask =findBySubtaskId(subtaskId);	
 				if(subtask!=null) {
 					subtask =Utils.convertToSubtask(subtaskPersistRequest,subtask);
 					repository.save(subtask);
@@ -89,7 +89,7 @@ public class SubtaskModule {
 	}
 
 
-	public Subtask find(Long subtaskId) {
+	public Subtask findBySubtaskId(Long subtaskId) {
 		log.info("PROJECT_MAN : SubtaskModule : find : find subtaskId : "+ subtaskId);
 		Subtask subtask =null;
 		if(subtaskId!=null) {
@@ -105,12 +105,20 @@ public class SubtaskModule {
 	public void delete(Long subtaskId) {
 		log.info("PROJECT_MAN : SubtaskModule : delete : find subtaskId : "+ subtaskId);
 		if(subtaskId!=null) {
-			Subtask subtask=find(subtaskId);
+			Subtask subtask=findBySubtaskId(subtaskId);
 			log.info("PROJECT_MAN : SubtaskModule : delete : subtask : "+ subtask);
 			repository.delete(subtask);	
 		}
 	}
 
-	
+
+	public void update(Long subtaskId,Subtask theSubtask) {
+		if(theSubtask != null && subtaskId!=null) {
+			Subtask subtask =findBySubtaskId(subtaskId);
+			subtask =Utils.updateSubtask(subtask,theSubtask);
+			System.out.println("Saving Epic epicId: "+subtaskId);
+			repository.save(subtask);
+		}		
+	}
 
 }

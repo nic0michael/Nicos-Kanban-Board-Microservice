@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import za.co.kanban.model.Team;
 import za.co.kanban.repositories.TeamRepository;
+import za.co.kanban.utils.Utils;
 
 @Component
 public class TeamModule {
@@ -51,4 +52,13 @@ public class TeamModule {
 		}		
 	}
 
+
+	public void update(Long teamId,Team theTeam) {
+		if(theTeam != null && teamId!=null) {
+			Team team =findByTeamId(teamId);
+			team =Utils.updateTeam(team,theTeam);
+			System.out.println("Saving Team teamId: "+teamId);
+			repository.save(team);
+		}		
+	}
 }

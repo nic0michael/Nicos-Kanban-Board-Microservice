@@ -45,7 +45,7 @@ public class TaskModule {
 			Long taskId=Long.parseLong(taskPersistRequest.getTaskId());
 						
 			if(taskId!=null) {
-				Task task =find(taskId);	
+				Task task =findByTaskId(taskId);	
 				if(task!=null) {
 					task =Utils.convertToTask(taskPersistRequest,task);
 					repository.save(task);
@@ -91,7 +91,7 @@ public class TaskModule {
 	}
 
 
-	public Task find(Long taskId) {
+	public Task findByTaskId(Long taskId) {
 		log.info("PROJECT_MAN : TaskModule : find : find taskId : "+ taskId);
 		Task task =null;
 		if(taskId!=null) {
@@ -107,12 +107,20 @@ public class TaskModule {
 	public void delete(Long taskId) {
 		log.info("PROJECT_MAN : TaskModule : delete : find taskId : "+ taskId);
 		if(taskId!=null) {
-			Task task=find(taskId);
+			Task task=findByTaskId(taskId);
 			log.info("PROJECT_MAN : TaskModule : delete : task : "+ task);
 			repository.delete(task);	
 		}
 	}
 
-	
+
+	public void update(Long taskId,Task theTask) {
+		if(theTask != null && taskId!=null) {
+			Task task =findByTaskId(taskId);
+			task =Utils.updateTask(task,theTask);
+			System.out.println("Saving Task taskId: "+taskId);
+			repository.save(task);
+		}		
+	}
 
 }

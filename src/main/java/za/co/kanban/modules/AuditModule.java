@@ -11,6 +11,7 @@ import za.co.kanban.model.Audit;
 import za.co.kanban.model.Employee;
 import za.co.kanban.repositories.AuditRepository;
 import za.co.kanban.repositories.EmployeeRepository;
+import za.co.kanban.utils.Utils;
 
 @Component
 public class AuditModule {
@@ -52,5 +53,6 @@ public class AuditModule {
 			repository.save(audit);
 		}		
 	}
+
 
 }

@@ -95,7 +95,7 @@ public class SubtaskController {
 	public String displayProjectFormToUpdate(@RequestParam(value = "id") Long subtaskId,Model model) {
 		log.info("PROJECT_MAN : ProjectController : displayProjectFormToUpdate : to update project with project_id : "+subtaskId);		
 		if(subtaskId!=null) {
-			Subtask subtask=subtaskmod.find(subtaskId);
+			Subtask subtask=subtaskmod.findBySubtaskId(subtaskId);
 			SubtaskPersistRequest projectPersistRequest=Utils.convertToSubtaskPersistRequest(subtask);
 			projectPersistRequest.setSubtaskId(""+subtaskId);
 			log.info("PROJECT_MAN : ProjectController : displayProjectFormToUpdate : creating new projectPersistRequest");

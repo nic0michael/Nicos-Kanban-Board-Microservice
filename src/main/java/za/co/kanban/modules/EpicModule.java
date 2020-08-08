@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import za.co.kanban.model.Epic;
 import za.co.kanban.repositories.EpicRepository;
+import za.co.kanban.utils.Utils;
 
 @Component
 public class EpicModule {
@@ -47,6 +48,16 @@ public class EpicModule {
 		if(epic != null) {
 			Long epicId = epic.getEpicId();
 			System.out.println("Saving epic epicId: "+epicId);
+			repository.save(epic);
+		}		
+	}
+	
+
+	public void update(Long epicId,Epic theEpic) {
+		if(theEpic != null && epicId!=null) {
+			Epic epic =findByEpicId(epicId);
+			epic =Utils.updateEpic(epic,theEpic);
+			System.out.println("Saving Epic epicId: "+epicId);
 			repository.save(epic);
 		}		
 	}
