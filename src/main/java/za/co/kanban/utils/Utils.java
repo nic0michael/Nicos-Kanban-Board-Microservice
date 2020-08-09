@@ -69,6 +69,7 @@ public class Utils {
 	 * 
 	 */
 	public static Date convertStringToDate(String sDate) {
+		String saDateFormat = "dd/MM/yyyy";
 		if (dateUsaFormat == null) {
 			dateUsaFormat = "MM/dd/yyyy";
 		}
@@ -80,6 +81,11 @@ public class Utils {
 		if (StringUtils.isNotEmpty(sDate)) {
 			if (sDate.contains("/")) {
 				dateFormt = dateUsaFormat;
+				try {
+					date = new SimpleDateFormat(dateFormt).parse(sDate);
+				} catch (ParseException e) {
+					dateFormt =saDateFormat;
+				}
 			} else if (sDate.contains("-")) {
 				dateFormt = dateIsoFormat;
 			}

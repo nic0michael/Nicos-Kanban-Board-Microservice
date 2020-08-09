@@ -5,82 +5,76 @@
 <head th:replace="layouts :: header"></head>
 <body>
 	<nav th:replace="layouts :: navbar3"></nav>
-	<div sec:authorize="hasRole('ADMIN')">
+	<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
 
 		
 
 		<br>
 		<div class="container">
 
-			<H3>Capture Employee</H3>
+			<H3>Capture Epic</H3>
 		<br><br>
-			<form th:action="@{/employees/save}"
-				th:object="${employeetPersistRequest}" method="POST">
+			<form th:action="@{/epics/save}" th:object="${epicPersistRequest}" method="POST">
 
 
-				<!--  This will be used to bind to the employee that was clicked on (USED FOR UPDATES)-->
-				<input type="hidden"
-					th:field="${employeetPersistRequest.employeeId}" />
+				<!--  This will be used to bind to the epic that was clicked on (USED FOR UPDATES)-->
+				<input type="hidden" th:field="${epicPersistRequest.epicId}" />
+				<input type="hidden" th:field="${epicPersistRequest.dateCreated}" />
+				
+				<div class="form-group row">
+					<input type="text" placeholder="Epic Name"
+						th:field="${epicPersistRequest.name}"> <span
+						style="color: red" th:if="${#fields.hasErrors('name')}"
+						th:errors="${epicPersistRequest.name}"> </span>
+				</div>
 
 				<div class="form-group row">
-					<input type="text" placeholder="Full Name"
-						th:field="${employeetPersistRequest.fullName}"> <span
-						style="color: red" th:if="${#fields.hasErrors('fullName')}"
-						th:errors="${employeetPersistRequest.fullNamee}"> </span>
+					<input type="text" placeholder="Description"
+						th:field="${epicPersistRequest.description}"> <span
+						style="color: red" th:if="${#fields.hasErrors('description')}"
+						th:errors="${epicPersistRequest.description}"> </span>
 				</div>
 				
 				<div class="form-group row">
-					<input type="text" placeholder="Email Address"
-						th:field="${employeetPersistRequest.email}"> <span
-						style="color: red" th:if="${#fields.hasErrors('email')}"
-						th:errors="${employeetPersistRequest.email}"> </span>
+					<input type="text" placeholder="Customer Reference"
+						th:field="${epicPersistRequest.customerReference}"> <span
+						style="color: red" th:if="${#fields.hasErrors('customerReference')}"
+						th:errors="${epicPersistRequest.customerReference}"> </span>
 				</div>
 
-				<b>Enter a unique Id Number</b>
+				<b>select the Customer:</b>
 				<div class="form-group row">
-					<input type="text" placeholder="Identity Number"
-						th:field="${employeetPersistRequest.idNumber}"> <span
-						style="color: red" th:if="${#fields.hasErrors('idNumber')}"
-						th:errors="${employeetPersistRequest.idNumber}"> </span>
-				</div>
-
-				<b>Enter a unique User Id</b><br>
-				<div class="form-group row">
-					<input type="text" placeholder="User Id"
-						th:field="${employeetPersistRequest.userId}"> <span
-						style="color: red" th:if="${#fields.hasErrors('userId')}"
-						th:errors="${employeetPersistRequest.userId}"> </span>
-				</div>
-
-				<b>Password:</b>
-				<div class="form-group row">
-					<input type="password" placeholder="User Password"
-						th:field="${employeetPersistRequest.password}"> <span
-						style="color: red" th:if="${#fields.hasErrors('password')}"
-						th:errors="${employeetPersistRequest.password}"> </span>
-				</div>
-
-				<b>Specify the Role of the Employee:</b>
-				<div class="form-group row">
-					<select th:field="${employeetPersistRequest.authority}">
-						<option value="ROLE_USER">Normal user Role</option>
-						<option value="ROLE_ADMIN">Administrator Role</option>
-						<option value="ROLE_TEAMMEMBER">Team member Role</option>
-						<option value="ROLE_MANAGER">Manager Role</option>
+					<select th:field="${epicPersistRequest.customerId}">
+					<option value="0" selected>NCC solutions</option>
+					<option value="0">NCC solutions</option>
+						<option th:each="customer : ${customers}" th:value="${customer.customerId}" th:text="${customer.name}"></option> 
 					</select>
 				</div>
 
-				<b>Is Employee Enabled:</b>
+
+			<b>Project Due Date:</b>
+			<div class="form-group row">
+				<input id="dp3" type="text" class="mb-4 col-2 col-xs-4"
+					value="Due Date" th:field="${epicPersistRequest.due_date}">
+			</div>
+
+
+			<div class="form-group row">
+				<script type="text/javascript">
+					$('#dp3').datepicker();
+				</script>
+			</div>
+
+				<b>Is Epic Active:</b>
 				<div class="form-group row">
-					<select th:field="${employeetPersistRequest.enabled}">
+					<select th:field="${epicPersistRequest.isActive}">
 						<option value="1" selected>Yes</option>
 						<option value="0">No</option>
 					</select>
 				</div>
 
 				<div class="form-group row">
-					<button class="btn btn-info col-2" type="submit">Save
-						Employee</button>
+					<button class="btn btn-info col-2" type="submit">Save Epic</button>
 				</div>
 
 			</form>

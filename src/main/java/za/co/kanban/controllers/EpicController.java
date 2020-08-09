@@ -1,6 +1,7 @@
 package za.co.kanban.controllers;
 
 import java.util.List;
+import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -25,18 +26,18 @@ public class EpicController {
 	private static final Logger log = LoggerFactory.getLogger(EpicController.class);
 
 	@Autowired
-	private EpicModule custmod;
+	private EpicModule epicmod;
 	
 	@GetMapping
 	public String displayEpics(Model model) {
-		List<Epic> epics = custmod.findAll();
+		List<Epic> epics = epicmod.findAll();
 		model.addAttribute("epicsList", epics);
 		return "epics/list-epics";
 	}
 
 	@GetMapping("/list")
 	public String displayHome(Model model) {
-		List<Epic> epics = custmod.findAll();
+		List<Epic> epics = epicmod.findAll();
 		model.addAttribute("epicsList", epics);
 		return "epics/list-epics";
 	}
@@ -44,8 +45,8 @@ public class EpicController {
 	@GetMapping("/new")
 	public String displayEpicForm(Model model) {
 		Epic epic=new Epic();
-		EpicPersistRequest  epictPersistRequest=Utils.convertToEpicPersistRequest(epic);
-		model.addAttribute("epictPersistRequest", epictPersistRequest);
+		EpicPersistRequest  epicPersistRequest=Utils.convertToEpicPersistRequest(epic);
+		model.addAttribute("epicPersistRequest", epicPersistRequest);
 		return "epics/new-epic";
 	}
 
@@ -58,11 +59,11 @@ public class EpicController {
 			log.info("PROJECT_MAN : EpicController : createEpic : updating epic");
 			Epic theEpic=Utils.convertToEpic(epicPersistRequest);
 			Long epicId=Long.parseLong(epicPersistRequest.getEpicId());
-			custmod.update(epicId,theEpic);
+			epicmod.update(epicId,theEpic);
 		} else {
 			log.info("PROJECT_MAN : EpicController : createEpic : saving new epic");
 			Epic epic=Utils.convertToEpic(epicPersistRequest);
-			custmod.save(epic);		
+			epicmod.save(epic);		
 		}
 		// use a redirect to prevent duplicate submissions
 		log.info("PROJECT_MAN : EpicController : createEpic : redirecting to epics page");
@@ -72,14 +73,14 @@ public class EpicController {
 	
 	@GetMapping("/remove}")
 	public String deleteEpic(@RequestParam(value = "id") Long epicId) {
-		custmod.delete(epicId);
+		epicmod.delete(epicId);
 		return "redirect:/projects";
 	}
 	
 
 	@GetMapping("/change}")
 	public String updateEpic(@RequestParam(value = "id") Long epicId,Model model) {
-		Epic epic=custmod.findByEpicId(epicId);
+		Epic epic=epicmod.findByEpicId(epicId);
 		model.addAttribute("epic",epic);
 		return "redirect:/epics/new";
 	}
@@ -87,7 +88,7 @@ public class EpicController {
 	@GetMapping("/maakdood")
 	public String removeEpic(@RequestParam(value = "id") Long epicId,Model model) {
 		log.info("PROJECT_MAN : EpicController : removeEpic : to update project with project_id : "+epicId);
-		custmod.delete(epicId);
+		epicmod.delete(epicId);
 		return "redirect:/epics";
 	}
 	
@@ -95,10 +96,17 @@ public class EpicController {
 	public String displayEpictFormToUpdate(@RequestParam(value = "id") Long epicId,Model model) {
 		log.info("PROJECT_MAN : EpicController : displayEpictFormToUpdate : to update project with project_id : "+epicId);		
 		if(epicId!=null) {
-			Epic epic=custmod.findByEpicId(epicId);
-			EpicPersistRequest  epictPersistRequest=Utils.convertToEpicPersistRequest(epic);
-			log.info("PROJECT_MAN : EpicController : displayEpictFormToUpdate : created EpicPersistRequest : "+epictPersistRequest);
-			model.addAttribute("epictPersistRequest", epictPersistRequest);
+			Epic epic=epicmod.findByEpicId(epicId);
+			if(epic.getDateCreated()==null) {
+				epic.setDateCreated(new Date());
+			}
+			if(epic!=null) {
+				EpicPersistRequest  epicPersistRequest=Utils.convertToEpicPersistRequest(epic);
+				log.info("PROJECT_MAN : EpicController : displayEpictFormToUpdate : created EpicPersistRequest : "+epicPersistRequest);
+				model.addAttribute("epicPersistRequest", epicPersistRequest);
+			} else {
+				return "redirect:/epics";
+			}
 		}
 		log.info("PROJECT_MAN : EpicController : displayEpictFormToUpdate : displaying form");
 		return "epics/new-epic";	

@@ -31,7 +31,6 @@ public class Epic {
 	@Column(name="customer_reference")
 	private String customerReference;	
 
-	@NotBlank
 	@Column(name="customer_id")
 	private Long customerId;
 

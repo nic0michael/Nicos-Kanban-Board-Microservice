@@ -58,6 +58,8 @@ public class EpicModule {
 			Epic epic =findByEpicId(epicId);
 			epic =Utils.updateEpic(epic,theEpic);
 			System.out.println("Saving Epic epicId: "+epicId);
+			System.out.println("got Epic: "+theEpic);
+			System.out.println("Saving Epic: "+epic);
 			repository.save(epic);
 		}		
 	}
