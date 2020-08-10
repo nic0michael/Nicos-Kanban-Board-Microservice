@@ -14,8 +14,8 @@ INSERT INTO contact(fullname, customer_id, telephone, is_active,date_created) VA
 
 
 -- INSERT team
-INSERT INTO team(name, is_active,date_created) VALUES('Front-end developers','Y','2020-06-17T16:17:59.304');
-INSERT INTO team(name, is_active,date_created) VALUES('Back-end developers','Y','2020-06-17T16:17:59.304');
+INSERT INTO team(name, description, is_active,date_created) VALUES('Front-end developers','FRONTDEVS','Y','2020-06-17T16:17:59.304');
+INSERT INTO team(name, description, is_active,date_created) VALUES('Back-end developers','BACKDEVS','Y','2020-06-17T16:17:59.304');
 	
 
 -- INSERT employee			

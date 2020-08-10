@@ -4,83 +4,54 @@
 
 <head th:replace="layouts :: header"></head>
 <body>
-	<nav th:replace="layouts :: navbar3"></nav>
-	<div sec:authorize="hasRole('ADMIN')">
+	<nav th:replace="layouts :: navbarTEAM"></nav>
+	<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
 
 		
 
 		<br>
 		<div class="container">
 
-			<H3>Capture Employee</H3>
+			<H3>Capture Team</H3>
 		<br><br>
-			<form th:action="@{/employees/save}"
-				th:object="${employeetPersistRequest}" method="POST">
+			<form th:action="@{/teams/save}" th:object="${teamtPersistRequest}" method="POST">
 
 
-				<!--  This will be used to bind to the employee that was clicked on (USED FOR UPDATES)-->
-				<input type="hidden"
-					th:field="${employeetPersistRequest.employeeId}" />
-
-				<div class="form-group row">
-					<input type="text" placeholder="Full Name"
-						th:field="${employeetPersistRequest.fullName}"> <span
-						style="color: red" th:if="${#fields.hasErrors('fullName')}"
-						th:errors="${employeetPersistRequest.fullNamee}"> </span>
+				<!--  This will be used to bind to the team that was clicked on (USED FOR UPDATES)-->
+				<input type="hidden" th:field="${teamtPersistRequest.dateCreated}" />
+				<input type="hidden" th:field="${teamtPersistRequest.teamId}" />
+				<b>Team ID:</b>
+				<div class="form-group row" th:text="${teamtPersistRequest.teamId}"> 
+				</div>
+				<b>Date created:</b>
+				<div class="form-group row" th:text="${teamtPersistRequest.dateCreated}"> 
 				</div>
 				
 				<div class="form-group row">
-					<input type="text" placeholder="Email Address"
-						th:field="${employeetPersistRequest.email}"> <span
-						style="color: red" th:if="${#fields.hasErrors('email')}"
-						th:errors="${employeetPersistRequest.email}"> </span>
+					<input type="text" placeholder="Team Name"
+						th:field="${teamtPersistRequest.name}"> <span
+						style="color: red" th:if="${#fields.hasErrors('name')}"
+						th:errors="${teamtPersistRequest.name}"> </span>
 				</div>
 
-				<b>Enter a unique Id Number</b>
 				<div class="form-group row">
-					<input type="text" placeholder="Identity Number"
-						th:field="${employeetPersistRequest.idNumber}"> <span
-						style="color: red" th:if="${#fields.hasErrors('idNumber')}"
-						th:errors="${employeetPersistRequest.idNumber}"> </span>
+					<input type="text" placeholder="Description"
+						th:field="${teamtPersistRequest.description}"> <span
+						style="color: red" th:if="${#fields.hasErrors('description')}"
+						th:errors="${teamtPersistRequest.description}"> </span>
 				</div>
 
-				<b>Enter a unique User Id</b><br>
-				<div class="form-group row">
-					<input type="text" placeholder="User Id"
-						th:field="${employeetPersistRequest.userId}"> <span
-						style="color: red" th:if="${#fields.hasErrors('userId')}"
-						th:errors="${employeetPersistRequest.userId}"> </span>
-				</div>
 
-				<b>Password:</b>
+				<b>Is Team Active:</b>
 				<div class="form-group row">
-					<input type="password" placeholder="User Password"
-						th:field="${employeetPersistRequest.password}"> <span
-						style="color: red" th:if="${#fields.hasErrors('password')}"
-						th:errors="${employeetPersistRequest.password}"> </span>
-				</div>
-
-				<b>Specify the Role of the Employee:</b>
-				<div class="form-group row">
-					<select th:field="${employeetPersistRequest.authority}">
-						<option value="ROLE_USER">Normal user Role</option>
-						<option value="ROLE_ADMIN">Administrator Role</option>
-						<option value="ROLE_TEAMMEMBER">Team member Role</option>
-						<option value="ROLE_MANAGER">Manager Role</option>
-					</select>
-				</div>
-
-				<b>Is Employee Enabled:</b>
-				<div class="form-group row">
-					<select th:field="${employeetPersistRequest.enabled}">
+					<select th:field="${teamtPersistRequest.isActive}">
 						<option value="1" selected>Yes</option>
 						<option value="0">No</option>
 					</select>
 				</div>
 
 				<div class="form-group row">
-					<button class="btn btn-info col-2" type="submit">Save
-						Employee</button>
+					<button class="btn btn-info col-2" type="submit">Save Team</button>
 				</div>
 
 			</form>

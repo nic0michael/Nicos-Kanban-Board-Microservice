@@ -58,15 +58,6 @@ public class Employee {
 	@NonNull
 	private Integer enabled;
 
-	/**
-     * Cascade rules set dont use ALL and REMOVE this would delete employees
-     * When  the Project is saved then the Employee should also be saved .... but not deleted when Project is deleted
-     * Use Lazy fetching for petter performance
-     */
-    @ManyToMany(cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},fetch=FetchType.LAZY)
-    @JoinTable(name="employee_user_story",joinColumns=@JoinColumn(name="employee_id"),inverseJoinColumns=@JoinColumn(name="user_story_id"))
-    private List<UserStory> userStorys;
-	
 	 
 	public Employee() {}
 

@@ -184,7 +184,7 @@ public class Utils {
 	public static List<CustomerPersistRequest> makeCustomerPersistRequestList(List<Customer> customers) {
 		List<CustomerPersistRequest> customerPersistRequests = new ArrayList<>();
 		for (Customer customer : customers) {
-			CustomerPersistRequest customerPersistRequest = convertToCustomerersistRequest(customer);
+			CustomerPersistRequest customerPersistRequest = convertToCustomerPersistRequest(customer);
 			customerPersistRequests.add(customerPersistRequest);
 		}
 		return customerPersistRequests;
@@ -201,14 +201,14 @@ public class Utils {
 	
 
 
-	public static CustomerPersistRequest convertToCustomerersistRequest(Customer customer) {
+	public static CustomerPersistRequest convertToCustomerPersistRequest(Customer customer) {
 		CustomerPersistRequest customerPersistRequest=new CustomerPersistRequest();
 
 		if (customer.getCustomerId() != null) {
 			customerPersistRequest.setCustomerId(customer.getCustomerId().toString());
 		}
-	    customerPersistRequest.setName(customer.getName());	
-	    customerPersistRequest.setShortName(customer.getShortName());
+	    customerPersistRequest.setName(customer.getName().toUpperCase());
+	    customerPersistRequest.setShortName(customer.getShortName().toUpperCase());
 	    customerPersistRequest.setTelephone(customer.getTelephone());
 	    customerPersistRequest.setCellphone(customer.getCellphone());
 	    customerPersistRequest.setEmail(customer.getEmail());	    
@@ -225,8 +225,8 @@ public class Utils {
 	public static Customer convertToCustomer(CustomerPersistRequest customerPersistRequest) {
 		Customer customer =new Customer();
 
-		customer.setName(customerPersistRequest.getName());	
-		customer.setShortName(customerPersistRequest.getShortName());
+		customer.setName(customerPersistRequest.getName().toUpperCase());
+		customer.setShortName(customerPersistRequest.getShortName().toUpperCase());
 		customer.setTelephone(customerPersistRequest.getTelephone());
 		customer.setCellphone(customerPersistRequest.getCellphone());
 		customer.setEmail(customerPersistRequest.getEmail());	    
@@ -286,7 +286,7 @@ public class Utils {
 			employeePersistRequest.setEmployeeId(employee.getEmployeeId().toString());
 		}
 
-		employeePersistRequest.setFullName(employee.getFullName());
+		employeePersistRequest.setFullName(employee.getFullName().toUpperCase());
 		employeePersistRequest.setIdNumber(employee.getIdNumber());
 		employeePersistRequest.setDetails(employee.getDetails());
 		employeePersistRequest.setTelephone(employee.getTelephone());
@@ -315,7 +315,7 @@ public class Utils {
 
 	public static Employee convertToEmployee(EmployeePersistRequest employeePersistRequest, Employee employee) {
 		log.info("PROJECT_MAN : Utils : convertToEmployee : EmployeePersistRequest :" + employeePersistRequest);
-		employee.setFullName(employeePersistRequest.getFullName());
+		employee.setFullName(employeePersistRequest.getFullName().toUpperCase());
 		employee.setIdNumber(employeePersistRequest.getIdNumber());
 		employee.setDetails(employeePersistRequest.getDetails());
 		employee.setTelephone(employeePersistRequest.getTelephone());
@@ -471,6 +471,7 @@ public class Utils {
 		}			
 	    persistRequest.setName	     (userStory.getName	     ());
 		persistRequest.setDescription(userStory.getDescription());
+		persistRequest.setCustomerReference(userStory.getCustomerReference());
 		persistRequest.setStage	 (userStory.getStage	 ());
 		persistRequest.setIsActive   (userStory.getIsActive   ());	
 		
@@ -507,6 +508,7 @@ public class Utils {
 
 			userStory.setName	     (userStoryPersistRequest.getName	     ());
 			userStory.setDescription(userStoryPersistRequest.getDescription());
+			userStory.setCustomerReference(userStoryPersistRequest.getCustomerReference());
 			userStory.setStage	 (userStoryPersistRequest.getStage	 ());
 			userStory.setIsActive   (userStoryPersistRequest.getIsActive   ());	
 
@@ -550,6 +552,7 @@ public class Utils {
 	public static UserStory updateUserStory(UserStory userStory, UserStory theUserStory) {
 		userStory.setName	     (theUserStory.getName	     ());
 		userStory.setDescription(theUserStory.getDescription());
+		userStory.setCustomerReference(theUserStory.getCustomerReference());
 		userStory.setStage	 (theUserStory.getStage	 ());
 		userStory.setIsActive   (theUserStory.getIsActive   ());	
 		userStory.setUserStoryId(theUserStory.getUserStoryId());

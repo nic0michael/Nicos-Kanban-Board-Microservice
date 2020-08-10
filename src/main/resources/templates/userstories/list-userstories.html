@@ -6,40 +6,40 @@
 <nav th:replace="layouts :: navbar2"></nav>
 	<div sec:authorize="isAuthenticated()">
 	<div>
-		<h4>Current Projects</h4>
+		<h4>Current UserStories</h4>
 		<div sec:authorize="hasRole('ADMIN')">
-			<a th:href="@{/projects/new}" class="btn-primary btn-sm mb-3">Add new Project</a>
+			<a th:href="@{/userstories/new}" class="btn-primary btn-sm mb-3">Add new UserStory</a>
 		</div>
 		<div sec:authorize="hasRole('MANAGER')">
-			<a th:href="@{/projects/new}" class="btn-primary btn-sm mb-3">Add new Project</a>
+			<a th:href="@{/userstories/new}" class="btn-primary btn-sm mb-3">Add new UserStory</a>
 		</div>
 		<br><br>
 		
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th>Project Name</th>
-					<th>Project Stage</th>
+					<th>UserStory Name</th>
+					<th>UserStory Stage</th>
 					<th>Start Date</th>
 					<th>End Date</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="aProject : ${projectsList}" >	
-					<td th:text="${aProject.name}" ></td>
-					<td th:text="${aProject.stage}" ></td>
-					<td th:text="${aProject.startDate}" ></td>
-					<td th:text="${aProject.endDate}" ></td>
+				<tr th:each="aUserStory : ${userStoryList}" >	
+					<td th:text="${aUserStory.name}" ></td>
+					<td th:text="${aUserStory.stage}" ></td>
+					<td th:text="${aUserStory.startDate}" ></td>
+					<td th:text="${aUserStory.endDate}" ></td>
 					<td>
 					<div  sec:authorize=hasAnyRole('ADMIN','MANAGER')>
-					 	<a th:href="@{/projects/verander/(id=${aProject.project_id})}" class="btn-info btn-sm" >Update</a>&nbsp;&nbsp;&nbsp;
-					 	<a th:href="@{/projects/maakdood/(id=${aProject.project_id})}" class="btn-danger btn-sm" 
+					 	<a th:href="@{/userstories/verander/(id=${aUserStory.userStoryId})}" class="btn-info btn-sm" >Update</a>&nbsp;&nbsp;&nbsp;
+					 	<a th:href="@{/userstories/maakdood/(id=${aUserStory.userStoryId})}" class="btn-danger btn-sm" 
 			  		 	onClick="if (!(confirm('Are you sure you want to delete this project?'))) return false" >Delete</a> 
 			  		 </div>  	
 			  		 
 					<div sec:authorize="hasRole('TEAMMEMBER')">
-					 	<a th:href="@{/projects/verander/(id=${aProject.project_id})}" class="btn-info btn-sm" >Update</a>
+					 	<a th:href="@{/userstories/verander/(id=${aUserStory.userStoryId})}" class="btn-info btn-sm" >Update</a>
 			  		 </div>  		
 				  	 <div sec:authorize="hasRole('USER')">No Action</div>			
 					</td>

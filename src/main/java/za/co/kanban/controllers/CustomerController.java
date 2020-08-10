@@ -1,5 +1,6 @@
 package za.co.kanban.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -11,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import za.co.kanban.dtos.CustomerPersistRequest;
@@ -44,8 +44,10 @@ public class CustomerController {
 	@GetMapping("/new")
 	public String displayCustomerForm(Model model) {
 		Customer customer=new Customer();
-		CustomerPersistRequest  customertPersistRequest=Utils.convertToCustomerersistRequest(customer);
-		model.addAttribute("customertPersistRequest", customertPersistRequest);
+		CustomerPersistRequest  customerPersistRequest=Utils.convertToCustomerPersistRequest(customer);
+		List<Customer>customers =custmod.findAll();
+		model.addAttribute("customers", customers);
+		model.addAttribute("customerPersistRequest", customerPersistRequest);
 		return "customers/new-customer";
 	}
 
@@ -96,9 +98,18 @@ public class CustomerController {
 		log.info("PROJECT_MAN : CustomerController : displayCustomertFormToUpdate : to update project with project_id : "+customerId);		
 		if(customerId!=null) {
 			Customer customer=custmod.findByCustomerId(customerId);
-			CustomerPersistRequest  customertPersistRequest=Utils.convertToCustomerersistRequest(customer);
-			log.info("PROJECT_MAN : CustomerController : displayCustomertFormToUpdate : created CustomerPersistRequest : "+customertPersistRequest);
-			model.addAttribute("customertPersistRequest", customertPersistRequest);
+			if(customer.getDateCreated()==null) {
+				customer.setDateCreated(new Date());
+			}
+			if(customer!=null) {
+				CustomerPersistRequest  customerPersistRequest=Utils.convertToCustomerPersistRequest(customer);
+				List<Customer>customers =custmod.findAll();
+				model.addAttribute("customers", customers);
+				log.info("PROJECT_MAN : CustomerController : displayCustomertFormToUpdate : created CustomerPersistRequest : "+customerPersistRequest);
+				model.addAttribute("customerPersistRequest", customerPersistRequest);
+			} else {
+				return "redirect:/customers";
+			}
 		}
 		log.info("PROJECT_MAN : CustomerController : displayCustomertFormToUpdate : displaying form");
 		return "customers/new-customer";	

@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import za.co.kanban.dtos.EmployeePersistRequest;
 import za.co.kanban.dtos.TaskPersistRequest;
 import za.co.kanban.model.Employee;
 import za.co.kanban.model.Task;
+import za.co.kanban.model.UserStory;
 import za.co.kanban.modules.EmployeeModule;
 import za.co.kanban.modules.TaskModule;
+import za.co.kanban.modules.UserStoryModule;
 import za.co.kanban.utils.Utils;
 
 
@@ -32,79 +33,84 @@ public class TaskController {
 	TaskModule taskmod;
 
 	@Autowired 
-	EmployeeModule emplmod;	
+	UserStoryModule userstmod;	
+	
+	@Autowired 
+	EmployeeModule empmod;
 
 	@GetMapping
 	public String displayTasks(Model model) {
 		List<Task> tasks = taskmod.findAll();
-		model.addAttribute("projectsList", tasks);
+		model.addAttribute("tasksList", tasks);
 		if(tasks!=null) {
-			log.info("PROJECT_MAN : ProjectController : displayProjects : displaying :"+tasks.size()+" projects");
+			log.info("PROJECT_MAN : TaskController : displayTasks : displaying :"+tasks.size()+" tasks");
 		}
-		return "projects/list-projects";
+		return "tasks/list-tasks";
 	}
 	@GetMapping("/list")
 	public String displayHome(Model model) {
 		List<Task> tasks = taskmod.findAll();
 		if(tasks!=null) {
-			log.info("PROJECT_MAN : ProjectController : displayHome : displaying :"+tasks.size()+" projects");
+			log.info("PROJECT_MAN : TaskController : displayHome : displaying :"+tasks.size()+" tasks");
 		}
-		model.addAttribute("projectsList", tasks);
-		return "projects/list-projects";
+		model.addAttribute("tasksList", tasks);
+		return "tasks/list-tasks";
 	}
 	
 	@GetMapping("/new")
-	public String displayProjectForm(Model model) {
+	public String displayTaskForm(Model model) {
 		TaskPersistRequest taskPersistRequest=new TaskPersistRequest();
-		log.info("PROJECT_MAN : ProjectController : displayProjectForm : creating new projectPersistRequest");
-//		Project project=new Project();
+		log.info("PROJECT_MAN : TaskController : displayTaskForm : creating new taskPersistRequest");
+//		Task task=new Task();
 		model.addAttribute("taskPersistRequest",taskPersistRequest);
-		List<Employee> employees = emplmod.findAll();
-		List<EmployeePersistRequest> employeePersistRequests=Utils.makeEmployeePersistRequestList(employees);
-		model.addAttribute("allEemployeePersistRequests", employeePersistRequests);
-		log.info("PROJECT_MAN : ProjectController : displayProjectForm : displaying form");
-		return "projects/new-project";
+		List<UserStory> userStories = userstmod.findAll();
+		List<Employee> employees = empmod.findAll();
+		model.addAttribute("employees", employees);
+		model.addAttribute("userStories", userStories);
+		log.info("PROJECT_MAN : TaskController : displayTaskForm : displaying form");
+		return "tasks/new-task";
 	}
 
 
 	@PostMapping("/save")
 	public String createTask( TaskPersistRequest taskPersistRequest,Model model) {
-		log.info("PROJECT_MAN : ProjectController : createProject : saving project from  ProjectPersistRequest: "+taskPersistRequest);
+		log.info("PROJECT_MAN : TaskController : createTask : saving task from  TaskPersistRequest: "+taskPersistRequest);
 		
 		if(StringUtils.isNotBlank(taskPersistRequest.getTaskId())  && StringUtils.isNumeric(taskPersistRequest.getTaskId()) ) {				
-			log.info("PROJECT_MAN : ProjectController : createProject : updating project");
+			log.info("PROJECT_MAN : TaskController : createTask : updating task");
 			taskmod.update(taskPersistRequest);
 		} else {
-			log.info("PROJECT_MAN : ProjectController : createProject : saving new project");
+			log.info("PROJECT_MAN : TaskController : createTask : saving new task");
 			taskmod.save(taskPersistRequest);
 		}
 		
 		// use a redirect to prevent duplicate submissions
-		return "redirect:/projects";
+		return "redirect:/tasks";
 	}
 
 
 	@GetMapping("/maakdood")
-	public String removeProject(@RequestParam(value = "id") Long project_id,Model model) {
-		log.info("PROJECT_MAN : ProjectController : removeProject : to update project with project_id : "+project_id);
-		taskmod.delete(project_id);
-		return "redirect:/projects";
+	public String removeTask(@RequestParam(value = "id") Long task_id,Model model) {
+		log.info("PROJECT_MAN : TaskController : removeTask : to update task with task_id : "+task_id);
+		taskmod.delete(task_id);
+		return "redirect:/tasks";
 	}
 	
 	@GetMapping("/verander")
-	public String displayProjectFormToUpdate(@RequestParam(value = "id") Long taskId,Model model) {
-		log.info("PROJECT_MAN : ProjectController : displayProjectFormToUpdate : to update project with project_id : "+taskId);		
+	public String displayTaskFormToUpdate(@RequestParam(value = "id") Long taskId,Model model) {
+		log.info("PROJECT_MAN : TaskController : displayTaskFormToUpdate : to update task with task_id : "+taskId);		
 		if(taskId!=null) {
 			Task task=taskmod.findByTaskId(taskId);
-			TaskPersistRequest projectPersistRequest=Utils.convertToTaskPersistRequest(task);
-			projectPersistRequest.setTaskId(""+taskId);
-			log.info("PROJECT_MAN : ProjectController : displayProjectFormToUpdate : creating new projectPersistRequest");
-			model.addAttribute("projectPersistRequest",projectPersistRequest);
-			List<Employee> employees = emplmod.findAll();
-			List<EmployeePersistRequest> employeePersistRequests=Utils.makeEmployeePersistRequestList(employees);
-			model.addAttribute("allEemployeePersistRequests", employeePersistRequests);
+			TaskPersistRequest taskPersistRequest=Utils.convertToTaskPersistRequest(task);
+			taskPersistRequest.setTaskId(""+taskId);
+			log.info("PROJECT_MAN : TaskController : displayTaskFormToUpdate : creating new taskPersistRequest");
+			model.addAttribute("taskPersistRequest",taskPersistRequest);
+			List<UserStory> userStories = userstmod.findAll();
+			 List<Employee> employees = empmod.findAll();
+			model.addAttribute("employees", employees);
+			model.addAttribute("userStories", userStories);
 		}
-		log.info("PROJECT_MAN : ProjectController : displayProjectFormToUpdate : displaying form");
-		return "projects/new-project";		
+		log.info("PROJECT_MAN : TaskController : displayTaskFormToUpdate : displaying form");
+		return "tasks/new-task";		
 	}
 }

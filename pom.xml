@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>za.co.kanban</groupId>
 	<artifactId>spring-boot-kanban-board</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0B-SNAPSHOT</version>
 	<name>spring-boot-kanban-board</name>
 	<description>Kanban Board with MySQL in Spring Boot </description>
 

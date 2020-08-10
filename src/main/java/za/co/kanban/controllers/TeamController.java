@@ -97,8 +97,8 @@ public class TeamController {
 		if(teamId!=null) {
 			Team team=custmod.findByTeamId(teamId);
 			TeamPersistRequest  teamtPersistRequest=Utils.convertToTeamPersistRequest(team);
-			log.info("PROJECT_MAN : TeamController : displayTeamtFormToUpdate : created TeamPersistRequest : "+teamtPersistRequest);
 			model.addAttribute("teamtPersistRequest", teamtPersistRequest);
+			log.info("PROJECT_MAN : TeamController : displayTeamtFormToUpdate : created TeamPersistRequest : "+teamtPersistRequest);			
 		}
 		log.info("PROJECT_MAN : TeamController : displayTeamtFormToUpdate : displaying form");
 		return "teams/new-team";	

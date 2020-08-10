@@ -1,7 +1,7 @@
 package za.co.kanban.controllers;
 
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -12,11 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import za.co.kanban.dtos.EpicPersistRequest;
+import za.co.kanban.model.Customer;
 import za.co.kanban.model.Epic;
+import za.co.kanban.modules.CustomerModule;
 import za.co.kanban.modules.EpicModule;
 import za.co.kanban.utils.Utils;
 
@@ -27,6 +28,9 @@ public class EpicController {
 
 	@Autowired
 	private EpicModule epicmod;
+	
+	@Autowired
+	private CustomerModule custmod;
 	
 	@GetMapping
 	public String displayEpics(Model model) {
@@ -46,6 +50,8 @@ public class EpicController {
 	public String displayEpicForm(Model model) {
 		Epic epic=new Epic();
 		EpicPersistRequest  epicPersistRequest=Utils.convertToEpicPersistRequest(epic);
+		List<Customer>customers =custmod.findAll();
+		model.addAttribute("customers", customers);
 		model.addAttribute("epicPersistRequest", epicPersistRequest);
 		return "epics/new-epic";
 	}
@@ -102,6 +108,8 @@ public class EpicController {
 			}
 			if(epic!=null) {
 				EpicPersistRequest  epicPersistRequest=Utils.convertToEpicPersistRequest(epic);
+				List<Customer>customers =custmod.findAll();
+				model.addAttribute("customers", customers);
 				log.info("PROJECT_MAN : EpicController : displayEpictFormToUpdate : created EpicPersistRequest : "+epicPersistRequest);
 				model.addAttribute("epicPersistRequest", epicPersistRequest);
 			} else {

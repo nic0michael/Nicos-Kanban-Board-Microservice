@@ -4,7 +4,7 @@
 
 <head th:replace="layouts :: header"></head>
 <body>
-	<nav th:replace="layouts :: navbar3"></nav>
+	<nav th:replace="layouts :: navbarEPIC"></nav>
 	<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
 
 		
@@ -18,8 +18,11 @@
 
 
 				<!--  This will be used to bind to the epic that was clicked on (USED FOR UPDATES)-->
-				<input type="hidden" th:field="${epicPersistRequest.epicId}" />
 				<input type="hidden" th:field="${epicPersistRequest.dateCreated}" />
+				<input type="hidden" th:field="${epicPersistRequest.epicId}" />
+				<b>Epic ID:</b>
+				<div class="form-group row" th:text="${epicPersistRequest.epicId}"> 
+				</div>
 				
 				<div class="form-group row">
 					<input type="text" placeholder="Epic Name"
@@ -45,8 +48,6 @@
 				<b>select the Customer:</b>
 				<div class="form-group row">
 					<select th:field="${epicPersistRequest.customerId}">
-					<option value="0" selected>NCC solutions</option>
-					<option value="0">NCC solutions</option>
 						<option th:each="customer : ${customers}" th:value="${customer.customerId}" th:text="${customer.name}"></option> 
 					</select>
 				</div>
@@ -59,7 +60,7 @@
 			</div>
 
 
-			<div class="form-group row">
+			<div class="mb-4 col-2 col-xs-4">
 				<script type="text/javascript">
 					$('#dp3').datepicker();
 				</script>

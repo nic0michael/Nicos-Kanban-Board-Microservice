@@ -29,11 +29,9 @@ public class Task {
 	private String description;
 	private String status;	
 
-	@NotBlank
 	@Column(name="assigned_to")
 	private Long assignedTo;
 
-	@NotBlank
 	@Column(name="user_story_id")
 	private Long userStoryId;
 	
@@ -56,7 +54,6 @@ public class Task {
 	@CreatedDate
 	private Date dateCreated;
 	
-	@NotBlank
 	@Column(name="is_active")
 	private String isActive;
 	

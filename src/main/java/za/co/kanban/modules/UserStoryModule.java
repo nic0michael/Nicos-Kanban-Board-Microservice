@@ -38,7 +38,7 @@ public class UserStoryModule {
 	
 
 	public void update(UserStoryPersistRequest userStoryPersistRequest) {
-		log.info("PROJECT_MAN : UserStoryModule : update : userStory : "+ userStoryPersistRequest);	
+		log.info("USER_STRY : UserStoryModule : update : userStory : "+ userStoryPersistRequest);	
 		boolean employeesFound=false;
 		List<Employee> employees =new ArrayList<>();
 		if(userStoryPersistRequest!=null) {
@@ -79,42 +79,42 @@ public class UserStoryModule {
 	
 
 	public List<UserStory> findAllById(Long userStoryId) {
-		log.info("PROJECT_MAN : UserStoryModule : findAllById : userStoryId : "+ userStoryId);
+		log.info("USER_STRY : UserStoryModule : findAllById : userStoryId : "+ userStoryId);
 		List<UserStory> userStorys = null;
 		if(userStoryId!=null) {
 			boolean res = repository.existsById(userStoryId);
 			if(res) {
-				log.info("PROJECT_MAN : UserStoryModule : findAllById : exists userStoryId : "+ userStoryId);
+				log.info("USER_STRY : UserStoryModule : findAllById : exists userStoryId : "+ userStoryId);
 				List<Long> ids = new ArrayList();
 				ids.add(userStoryId);
 				userStorys = repository.findAllById(ids);
 			}
-			log.info("PROJECT_MAN : UserStoryModule : findAllById : userStorys found : "+ userStorys);
+			log.info("USER_STRY : UserStoryModule : findAllById : userStorys found : "+ userStorys);
 		}
 		return userStorys;
 	}
 
 
 	public UserStory find(Long userStoryId) {
-		log.info("PROJECT_MAN : UserStoryModule : find : find userStoryId : "+ userStoryId);
+		log.info("USER_STRY : UserStoryModule : find : find userStoryId : "+ userStoryId);
 		UserStory userStory =null;
 		if(userStoryId!=null) {
 			List<UserStory> userStorys = findAllById( userStoryId);
 			userStory = userStorys.get(0);
 		}
-		log.info("PROJECT_MAN : UserStoryModule : find : userStory : "+ userStory);
+		log.info("USER_STRY : UserStoryModule : find : userStory : "+ userStory);
 		return userStory;
 	}
 	
-	private UserStory findByUserStoryId(Long userStoryId) {
+	public UserStory findByUserStoryId(Long userStoryId) {
 		return find(userStoryId);
 	}
 
 	public void delete(Long userStoryId) {
-		log.info("PROJECT_MAN : UserStoryModule : delete : find userStoryId : "+ userStoryId);
+		log.info("USER_STRY : UserStoryModule : delete : find userStoryId : "+ userStoryId);
 		if(userStoryId!=null) {
 			UserStory userStory=find(userStoryId);
-			log.info("PROJECT_MAN : UserStoryModule : delete : userStory : "+ userStory);
+			log.info("USER_STRY : UserStoryModule : delete : userStory : "+ userStory);
 			repository.delete(userStory);	
 		}
 	}
@@ -125,6 +125,7 @@ public class UserStoryModule {
 			UserStory userStory =findByUserStoryId(userStoryId);
 			userStory =Utils.updateUserStory(userStory,theUserStory);
 			System.out.println("Saving UserStory userStoryId: "+userStoryId);
+			log.info("USER_STRY : UserStoryModule : saving updated : userStory : "+ userStory);
 			repository.save(userStory);
 		}		
 	}

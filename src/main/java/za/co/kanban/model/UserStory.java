@@ -39,14 +39,11 @@ public class UserStory {
 
 	private String stage;	
 
-	@NotBlank
 	@Column(name="epic_id")
 	private Long epicId;
 
-	@NotBlank
 	@Column(name="assigned_to")
 	private Long assignedTo;
-
 
 	@Column(name="start_date")
 	private Date startDate;
@@ -61,16 +58,15 @@ public class UserStory {
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreatedDate
 	private Date dateCreated;
-	
-	@NotBlank
+
 	@Column(name="is_active")
 	private String isActive;
 	
 	
 
-	@ManyToMany(cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},fetch=FetchType.LAZY)
-    @JoinTable(name="employee_user_story",joinColumns=@JoinColumn(name="user_story_id"),inverseJoinColumns=@JoinColumn(name="employee_id"))
-    private List<Employee>employees;
+//	@ManyToMany(cascade ={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},fetch=FetchType.LAZY)
+//    @JoinTable(name="employee_user_story",joinColumns=@JoinColumn(name="user_story_id"),inverseJoinColumns=@JoinColumn(name="employee_id"))
+//    private List<Employee>employees;
 	
 	public UserStory() {}
 
@@ -93,7 +89,6 @@ public class UserStory {
 		this.dueDate = dueDate;
 		this.dateCreated = dateCreated;
 		this.isActive = isActive;
-		this.employees = employees;
 	}
 
 
@@ -226,7 +221,7 @@ public class UserStory {
 		return "UserStory [userStoryId=" + userStoryId + ", name=" + name + ", description=" + description
 				+ ", customerReference=" + customerReference + ", stage=" + stage + ", epicId=" + epicId
 				+ ", assignedTo=" + assignedTo + ", startDate=" + startDate + ", endDate=" + endDate + ", dueDate="
-				+ dueDate + ", dateCreated=" + dateCreated + ", isActive=" + isActive + ", employees=" + employees
+				+ dueDate + ", dateCreated=" + dateCreated + ", isActive=" + isActive 
 				+ "]";
 	}
 
