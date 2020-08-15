@@ -1,7 +1,7 @@
 # Kanban Board Spring Boot Microservice
 
-## Beta Version 1.0.0B
-This code is ready for trial usage
+## Version 1.0.1
+This code is ready for usage.
 
 ## Aim of this Project
 To deliver a Spring Boot Microservice will provide the user with a comprehensive Kanban Board 
@@ -13,6 +13,11 @@ When this project is ready it will be delivered as a selt starting Java Archive 
 to deploy on a webserver on the cloud. It is hoped to also deliver this as a Docker Project
 
 We are not ready to accept developers to join this team yet, as we are still building the Master Branch.  
+
+## Latest News
+Date : 15th June 2020
+Anouncement: As of today we have promoted our froject to release version : **1.0.1-SNAPSHOT**
+The software is now available as a self-contained JAR file:**spring-boot-kanban-board.jar**
 
 ## Free Open Source FOS
 This project is Free Open Source code FOS
@@ -31,7 +36,7 @@ MySQL ,MariaDB, and PerconaMySql are supported
 
 
 ## Download the project
-Download the project here: [https://github.com/nic0michael/KanbanBoardMicroservice/tree/master/Files](https://github.com/nic0michael/KanbanBoardMicroservice/tree/master/Files)
+Download the latest release of this project here: [https://github.com/nic0michael/KanbanBoardMicroservice/tree/master/Files](https://github.com/nic0michael/KanbanBoardMicroservice/tree/master/Files)
 
 ## Deployment Instructions
 Read the deployment Instructions here: [https://github.com/nic0michael/KanbanBoardMicroservice/blob/master/deployement_instructions.md](https://github.com/nic0michael/KanbanBoardMicroservice/blob/master/deployement_instructions.md)

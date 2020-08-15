@@ -50,6 +50,19 @@ Now evertime you want open the MSQL terminal you you have a quicker way to get i
 just open the bash terminal and run this command :
     **mysql-terminal**
 
+## Launching the Microservice
+### Download the JAR file :  
+here: [https://github.com/nic0michael/KanbanBoardMicroservice/tree/master/Files](https://github.com/nic0michael/KanbanBoardMicroservice/tree/master/Files)
+
+Copy to a folder named : kanban-board
+
+Run the folowing command from a terminal in that folder:
+
+**java -jar spring-boot-kanban-board_V1_0_1.jar**
+
+You can run shellscript start.sh
+or batch file start.BAT
+
 ## Programmers comments: 
 Create file : schema.sql in /resources folder
 Now add this to properties file
