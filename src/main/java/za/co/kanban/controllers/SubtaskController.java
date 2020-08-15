@@ -17,8 +17,10 @@ import za.co.kanban.dtos.EmployeePersistRequest;
 import za.co.kanban.dtos.SubtaskPersistRequest;
 import za.co.kanban.model.Employee;
 import za.co.kanban.model.Subtask;
+import za.co.kanban.model.Task;
 import za.co.kanban.modules.EmployeeModule;
 import za.co.kanban.modules.SubtaskModule;
+import za.co.kanban.modules.TaskModule;
 import za.co.kanban.utils.Utils;
 
 
@@ -33,78 +35,83 @@ public class SubtaskController {
 
 	@Autowired 
 	EmployeeModule emplmod;	
+	
+	@Autowired 
+	TaskModule taskmod;
 
 	@GetMapping
 	public String displaySubtasks(Model model) {
 		List<Subtask> subtasks = subtaskmod.findAll();
-		model.addAttribute("projectsList", subtasks);
 		if(subtasks!=null) {
-			log.info("PROJECT_MAN : ProjectController : displayProjects : displaying :"+subtasks.size()+" projects");
+			log.info("PROJECT_MAN : SubtaskController : displayHome : displaying :"+subtasks.size()+" subtasks");
 		}
-		return "projects/list-projects";
+		model.addAttribute("subtasks", subtasks);
+		return "subtasks/list-subtasks";
 	}
 	@GetMapping("/list")
 	public String displayHome(Model model) {
 		List<Subtask> subtasks = subtaskmod.findAll();
 		if(subtasks!=null) {
-			log.info("PROJECT_MAN : ProjectController : displayHome : displaying :"+subtasks.size()+" projects");
+			log.info("PROJECT_MAN : SubtaskController : displayHome : displaying :"+subtasks.size()+" subtasks");
 		}
-		model.addAttribute("projectsList", subtasks);
-		return "projects/list-projects";
+		model.addAttribute("subtasks", subtasks);
+		return "subtasks/list-subtasks";
 	}
 	
 	@GetMapping("/new")
-	public String displayProjectForm(Model model) {
+	public String displaySubtaskForm(Model model) {
 		SubtaskPersistRequest subtaskPersistRequest=new SubtaskPersistRequest();
-		log.info("PROJECT_MAN : ProjectController : displayProjectForm : creating new projectPersistRequest");
-//		Project project=new Project();
+		log.info("PROJECT_MAN : SubtaskController : displaySubtaskForm : creating new subtaskPersistRequest");
+//		Subtask subtask=new Subtask();
 		model.addAttribute("subtaskPersistRequest",subtaskPersistRequest);
 		List<Employee> employees = emplmod.findAll();
-		List<EmployeePersistRequest> employeePersistRequests=Utils.makeEmployeePersistRequestList(employees);
-		model.addAttribute("allEemployeePersistRequests", employeePersistRequests);
-		log.info("PROJECT_MAN : ProjectController : displayProjectForm : displaying form");
-		return "projects/new-project";
+		List<Task> tasks = taskmod.findAll();
+		model.addAttribute("employees", employees);
+		model.addAttribute("tasks", tasks);
+		log.info("PROJECT_MAN : SubtaskController : displaySubtaskForm : displaying form");
+		return "subtasks/new-subtask";
 	}
 
 
 	@PostMapping("/save")
 	public String createSubtask( SubtaskPersistRequest subtaskPersistRequest,Model model) {
-		log.info("PROJECT_MAN : ProjectController : createProject : saving project from  ProjectPersistRequest: "+subtaskPersistRequest);
+		log.info("PROJECT_MAN : SubtaskController : createSubtask : saving subtask from  SubtaskPersistRequest: ->"+subtaskPersistRequest);
 		
-		if(StringUtils.isNotBlank(subtaskPersistRequest.getSubtaskId())  && StringUtils.isNumeric(subtaskPersistRequest.getSubtaskId()) ) {				
-			log.info("PROJECT_MAN : ProjectController : createProject : updating project");
+		if(StringUtils.isNotBlank(subtaskPersistRequest.getSubtaskId() )  && StringUtils.isNumeric(subtaskPersistRequest.getSubtaskId()) ) {				
+			log.info("PROJECT_MAN : SubtaskController : createSubtask : updating subtask");
 			subtaskmod.update(subtaskPersistRequest);
 		} else {
-			log.info("PROJECT_MAN : ProjectController : createProject : saving new project");
+			log.info("PROJECT_MAN : SubtaskController : createSubtask : saving new subtask");
 			subtaskmod.save(subtaskPersistRequest);
 		}
 		
 		// use a redirect to prevent duplicate submissions
-		return "redirect:/projects";
+		return "redirect:/subtasks";
 	}
 
 
 	@GetMapping("/maakdood")
-	public String removeProject(@RequestParam(value = "id") Long project_id,Model model) {
-		log.info("PROJECT_MAN : ProjectController : removeProject : to update project with project_id : "+project_id);
-		subtaskmod.delete(project_id);
-		return "redirect:/projects";
+	public String removeSubtask(@RequestParam(value = "id") Long subtask_id,Model model) {
+		log.info("PROJECT_MAN : SubtaskController : removeSubtask : to update subtask with subtask_id : "+subtask_id);
+		subtaskmod.delete(subtask_id);
+		return "redirect:/subtasks";
 	}
 	
 	@GetMapping("/verander")
-	public String displayProjectFormToUpdate(@RequestParam(value = "id") Long subtaskId,Model model) {
-		log.info("PROJECT_MAN : ProjectController : displayProjectFormToUpdate : to update project with project_id : "+subtaskId);		
+	public String displaySubtaskFormToUpdate(@RequestParam(value = "id") Long subtaskId,Model model) {
+		log.info("PROJECT_MAN : SubtaskController : displaySubtaskFormToUpdate : to update subtask with subtask_id : "+subtaskId);		
 		if(subtaskId!=null) {
 			Subtask subtask=subtaskmod.findBySubtaskId(subtaskId);
-			SubtaskPersistRequest projectPersistRequest=Utils.convertToSubtaskPersistRequest(subtask);
-			projectPersistRequest.setSubtaskId(""+subtaskId);
-			log.info("PROJECT_MAN : ProjectController : displayProjectFormToUpdate : creating new projectPersistRequest");
-			model.addAttribute("projectPersistRequest",projectPersistRequest);
+			SubtaskPersistRequest subtaskPersistRequest=Utils.convertToSubtaskPersistRequest(subtask);
+			subtaskPersistRequest.setSubtaskId(""+subtaskId);
+			log.info("PROJECT_MAN : SubtaskController : displaySubtaskFormToUpdate : creating new subtaskPersistRequest");
+			model.addAttribute("subtaskPersistRequest",subtaskPersistRequest);
 			List<Employee> employees = emplmod.findAll();
-			List<EmployeePersistRequest> employeePersistRequests=Utils.makeEmployeePersistRequestList(employees);
-			model.addAttribute("allEemployeePersistRequests", employeePersistRequests);
+			List<Task> tasks = taskmod.findAll();
+			model.addAttribute("employees", employees);
+			model.addAttribute("tasks", tasks);
 		}
-		log.info("PROJECT_MAN : ProjectController : displayProjectFormToUpdate : displaying form");
-		return "projects/new-project";		
+		log.info("PROJECT_MAN : SubtaskController : displaySubtaskFormToUpdate : displaying form");
+		return "subtasks/new-subtask";		
 	}
 }

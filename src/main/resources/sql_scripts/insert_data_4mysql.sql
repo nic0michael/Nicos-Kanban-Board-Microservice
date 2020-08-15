@@ -44,6 +44,11 @@ insert into user_story ( name, epic_id, assigned_to, stage, description, date_cr
 insert into user_story ( name, epic_id, assigned_to, stage,  description, date_created) values ( 'Office Reconstruction',3,3, 'INPROGRESS', 'The office building in Monroe has been damaged due to hurricane in the region. This needs to be reconstructed','2020-06-17T16:17:59.304');
 insert into user_story ( name, epic_id, assigned_to, stage,  description, date_created) values ( 'Improve Intranet Security',4,4, 'INPROGRESS', 'With the recent data hack, the office security needs to be improved and proper security team needs to be hired for implementation','2020-06-17T16:17:59.304');
 
+-- INSERT task
+insert into task (name,description) values ('Recreate that Bagdad Battery','This was first made in Mesopotamia' );
+
+-- INSERT subtask
+insert into subtask (name,description,story_points) values ('Design new Bagdad Battery','Design solution',3 );
 
 -- =============================== CREATE ADMINISTRATOR USER SQL SCRIPT ==================================================================
 --

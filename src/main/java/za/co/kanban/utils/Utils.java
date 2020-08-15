@@ -693,16 +693,13 @@ public class Utils {
 	
 	public static SubtaskPersistRequest convertToSubtaskPersistRequest(Subtask subtask) {
 		SubtaskPersistRequest subtaskPersistRequest = new SubtaskPersistRequest();
-		Long subtaskId = subtask.getSubtaskId();
-		String subtaskIdSt = null;
-		if (subtaskId != null) {
-			subtaskIdSt = subtaskId.toString();
-			subtaskPersistRequest.setSubtaskId(subtaskIdSt);
+
+		if (subtask.getSubtaskId() != null) {
+			subtaskPersistRequest.setSubtaskId(subtask.getSubtaskId().toString());
 		}
 
 		subtaskPersistRequest.setName(subtask.getName()); 
 		subtaskPersistRequest.setDescription(subtask.getDescription()); 
-		subtaskPersistRequest.setStatus(subtask.getStatus());  
 		subtaskPersistRequest.setIsActive(subtask.getIsActive()); 
 		
 		if(subtask.getAssignedTo()!=null){

@@ -27,13 +27,10 @@ public class Subtask {
     private String name;
 	
 	private String description;
-	private String status;
 
-	@NotBlank
 	@Column(name="assigned_to")
 	private Long assignedTo;
-	
-	@NotBlank
+
 	@Column(name="tasks_id")
 	private Long tasksId;
 	
@@ -47,8 +44,7 @@ public class Subtask {
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreatedDate
 	private Date dateCreated;
-	
-	@NotBlank
+
 	@Column(name="is_active")
 	private String isActive;
 	
@@ -59,7 +55,6 @@ public class Subtask {
 		super();
 		this.name = name;
 		this.description = description;
-		this.status = status;
 		this.assignedTo = assignedTo;
 		this.tasksId = tasksId;
 		this.storyPoints = storyPoints;
@@ -92,14 +87,6 @@ public class Subtask {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 
 	public Long getAssignedTo() {
@@ -154,8 +141,8 @@ public class Subtask {
 
 	@Override
 	public String toString() {
-		return "Subtask [subtaskId=" + subtaskId + ", name=" + name + ", description=" + description + ", status="
-				+ status + ", assignedTo=" + assignedTo + ", tasksId=" + tasksId + ", storyPoints=" + storyPoints
+		return "Subtask [subtaskId=" + subtaskId + ", name=" + name + ", description=" + description 
+				+ ", assignedTo=" + assignedTo + ", tasksId=" + tasksId + ", storyPoints=" + storyPoints
 				+ ", due_date=" + due_date + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 	}
 

@@ -105,18 +105,17 @@ CREATE TABLE `epic` (
 DROP TABLE IF EXISTS subtask;
 CREATE TABLE `subtask` (
   `subtask_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `assigned_to` bigint(20) DEFAULT NULL,
-  `date_created` datetime DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `due_date` datetime DEFAULT NULL,
-  `is_active` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `story_points` int(11) DEFAULT NULL,
   `tasks_id` bigint(20) DEFAULT NULL,
+  `assigned_to` bigint(20) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `due_date` datetime DEFAULT NULL,
+  `is_active` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`subtask_id`),
   UNIQUE KEY `UK_kfi15xibqo0g7a3rybrbrkr6q` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 
 -- SHOW CREATE TABLE `task`; 

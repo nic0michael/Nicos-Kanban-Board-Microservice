@@ -116,12 +116,16 @@ public class SubtaskPersistRequest {
 
 	@Override
 	public String toString() {
-		return "SubtaskPersistRequest [subtaskId=" + subtaskId + ", taskId=" + taskId + ", name=" + name
-				+ ", description=" + description + ", status=" + status + ", assignedTo=" + assignedTo
+		return "SubtaskPersistRequest [subtaskId=" + subtaskId + "| taskId=" + taskId + "| name=" + name
+				+ "| description=" + description + ", status=" + status + ", assignedTo=" + assignedTo
 				+ ", storyPoints=" + storyPoints + ", due_date=" + due_date + ", dateCreated=" + dateCreated
-				+ ", isActive=" + isActive + "]";
+				+ ", isActive=" + isActive + ", getSubtaskId()=" + getSubtaskId() + ", getTaskId()=" + getTaskId()
+				+ ", getName()=" + getName() + ", getDescription()=" + getDescription() + ", getStatus()=" + getStatus()
+				+ ", getAssignedTo()=" + getAssignedTo() + ", getStoryPoints()=" + getStoryPoints() + ", getDue_date()="
+				+ getDue_date() + ", getDateCreated()=" + getDateCreated() + ", getIsActive()=" + getIsActive()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
 	}
-
 
 
 

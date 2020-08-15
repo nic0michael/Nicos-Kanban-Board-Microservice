@@ -1,5 +1,6 @@
 package za.co.kanban.modules;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -30,6 +31,7 @@ public class SubtaskModule {
 			boolean employeesFound=false;				
 			Subtask subtask =Utils.convertToSubtask(subtaskPersistRequest);
 			if(subtask !=null) {
+				subtask.setDateCreated(new Date());
 				repository.save(subtask);
 			}
 		}
@@ -40,15 +42,25 @@ public class SubtaskModule {
 		log.info("PROJECT_MAN : SubtaskModule : update : subtask : "+ subtaskPersistRequest);	
 		boolean employeesFound=false;
 		List<Employee> employees =new ArrayList<>();
+		Subtask foundSubtask=null;
+		log.info("PROJECT_MAN : SubtaskModule : update : subtaskPersistRequest : "+ subtaskPersistRequest);
 		if(subtaskPersistRequest!=null) {
-			Long subtaskId=Long.parseLong(subtaskPersistRequest.getSubtaskId());
+			
+			Long subtaskId=Long.parseLong(subtaskPersistRequest.getSubtaskId());			
 						
-			if(subtaskId!=null) {
-				Subtask subtask =findBySubtaskId(subtaskId);	
-				if(subtask!=null) {
-					subtask =Utils.convertToSubtask(subtaskPersistRequest,subtask);
+			if(subtaskId!=null) {		
+				foundSubtask=findBySubtaskId(subtaskId);	
+				Subtask subtask =null;
+				if(foundSubtask!=null) {
+					log.info("PROJECT_MAN : SubtaskModule : update : found  Subtask: "+ foundSubtask);
+					subtask =Utils.convertToSubtask(subtaskPersistRequest,foundSubtask);
+					log.info("PROJECT_MAN : SubtaskModule : update : saving  Subtask: "+ subtask);
 					repository.save(subtask);
-				} 
+				} else {
+					subtask =Utils.convertToSubtask(subtaskPersistRequest,new Subtask());
+					log.info("PROJECT_MAN : SubtaskModule : update : saving  new Subtask: "+ subtask);
+					repository.save(subtask);
+				}
 			}
 		}
 	}
@@ -94,7 +106,9 @@ public class SubtaskModule {
 		Subtask subtask =null;
 		if(subtaskId!=null) {
 			List<Subtask> subtasks = findAllById( subtaskId);
-			subtask = subtasks.get(0);
+			if(subtasks!=null && ! subtasks.isEmpty()) {
+				subtask = subtasks.get(0);
+			}
 		}
 		log.info("PROJECT_MAN : SubtaskModule : find : subtask : "+ subtask);
 		return subtask;
