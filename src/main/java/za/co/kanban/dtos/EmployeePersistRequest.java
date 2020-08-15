@@ -16,14 +16,14 @@ public class EmployeePersistRequest {
     private String userId;  
     private String skillsCategory;
     private String dateCreated;
+    private String teamId;
 	private String enabled;
 	
 	public EmployeePersistRequest() {}
 
-
-	public EmployeePersistRequest( String fullName, String idNumber, String details, String telephone,
-			String cellphone, String email, String password, String authority, String teamId, String userId,
-			String skillsCategory, String dateCreated, String enabled) {
+	public EmployeePersistRequest(String fullName, String idNumber, String details, String telephone, String cellphone,
+			String email, String password, String authority, String userId, String skillsCategory, String dateCreated,
+			String teamId, String enabled) {
 		super();
 		this.fullName = fullName;
 		this.idNumber = idNumber;
@@ -36,19 +36,17 @@ public class EmployeePersistRequest {
 		this.userId = userId;
 		this.skillsCategory = skillsCategory;
 		this.dateCreated = dateCreated;
+		this.teamId = teamId;
 		this.enabled = enabled;
 	}
-
 
 	public String getEmployeeId() {
 		return employeeId;
 	}
 
-
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
-
 
 	public String getFullName() {
 		return fullName;
@@ -56,6 +54,14 @@ public class EmployeePersistRequest {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+
+	public String getIdNumber() {
+		return idNumber;
+	}
+
+	public void setIdNumber(String idNumber) {
+		this.idNumber = idNumber;
 	}
 
 	public String getDetails() {
@@ -130,36 +136,29 @@ public class EmployeePersistRequest {
 		this.dateCreated = dateCreated;
 	}
 
-	public String getIdNumber() {
-		return idNumber;
+	public String getTeamId() {
+		return teamId;
 	}
 
-	public void setIdNumber(String idNumber) {
-		this.idNumber = idNumber;
+	public void setTeamId(String teamId) {
+		this.teamId = teamId;
 	}
-
-
 
 	public String getEnabled() {
 		return enabled;
 	}
 
-
-
 	public void setEnabled(String enabled) {
 		this.enabled = enabled;
 	}
-
 
 	@Override
 	public String toString() {
 		return "EmployeePersistRequest [employeeId=" + employeeId + ", fullName=" + fullName + ", idNumber=" + idNumber
 				+ ", details=" + details + ", telephone=" + telephone + ", cellphone=" + cellphone + ", email=" + email
-				+ ", authority=" + authority + ", userId=" + userId
-				+ ", skillsCategory=" + skillsCategory + ", dateCreated=" + dateCreated + ", enabled=" + enabled + "]";
+				+ ", password=" + password + ", authority=" + authority + ", userId=" + userId + ", skillsCategory="
+				+ skillsCategory + ", dateCreated=" + dateCreated + ", teamId=" + teamId + ", enabled=" + enabled + "]";
 	}
-
-
 
 
 

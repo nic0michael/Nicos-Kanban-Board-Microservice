@@ -55,6 +55,9 @@ public class Employee {
 	@CreatedDate
 	private Date dateCreated;
 	
+
+	private Long teamId;
+	
 	@NonNull
 	private Integer enabled;
 
@@ -64,7 +67,7 @@ public class Employee {
 
 	public Employee(@NotBlank String fullName, String details, String telephone, String cellphone, String email,
 			String password, String authority, String idNumber, String userId, String skillsCategory, Date dateCreated,
-			@NotBlank Integer enabled) {
+			Long teamId, Integer enabled) {
 		super();
 		this.fullName = fullName;
 		this.details = details;
@@ -77,7 +80,88 @@ public class Employee {
 		this.userId = userId;
 		this.skillsCategory = skillsCategory;
 		this.dateCreated = dateCreated;
+		this.teamId = teamId;
 		this.enabled = enabled;
+	}
+
+
+	public Long getEmployeeId() {
+		return employeeId;
+	}
+
+
+	public void setEmployeeId(Long employeeId) {
+		this.employeeId = employeeId;
+	}
+
+
+	public String getFullName() {
+		return fullName;
+	}
+
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+
+	public String getDetails() {
+		return details;
+	}
+
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
+
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+
+	public String getCellphone() {
+		return cellphone;
+	}
+
+
+	public void setCellphone(String cellphone) {
+		this.cellphone = cellphone;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getAuthority() {
+		return authority;
+	}
+
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 
 
@@ -85,72 +169,9 @@ public class Employee {
 		return idNumber;
 	}
 
+
 	public void setIdNumber(String idNumber) {
 		this.idNumber = idNumber;
-	}
-
-	public Long getEmployeeId() {
-		return employeeId;
-	}
-
-	public void setEmployeeId(Long employeeId) {
-		this.employeeId = employeeId;
-	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	public String getDetails() {
-		return details;
-	}
-
-	public void setDetails(String details) {
-		this.details = details;
-	}
-
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-
-	public String getCellphone() {
-		return cellphone;
-	}
-
-	public void setCellphone(String cellphone) {
-		this.cellphone = cellphone;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getAuthority() {
-		return authority;
-	}
-
-	public void setAuthority(String authority) {
-		this.authority = authority;
 	}
 
 
@@ -158,26 +179,39 @@ public class Employee {
 		return userId;
 	}
 
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
+
 	public String getSkillsCategory() {
 		return skillsCategory;
 	}
+
 
 	public void setSkillsCategory(String skillsCategory) {
 		this.skillsCategory = skillsCategory;
 	}
 
 
-
 	public Date getDateCreated() {
 		return dateCreated;
 	}
 
+
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
+	}
+
+
+	public Long getTeamId() {
+		return teamId;
+	}
+
+
+	public void setTeamId(Long teamId) {
+		this.teamId = teamId;
 	}
 
 
@@ -185,16 +219,18 @@ public class Employee {
 		return enabled;
 	}
 
+
 	public void setEnabled(Integer enabled) {
 		this.enabled = enabled;
 	}
+
 
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", fullName=" + fullName + ", details=" + details + ", telephone="
 				+ telephone + ", cellphone=" + cellphone + ", email=" + email + ", password=" + password
-				+ ", authority=" + authority + ", idNumber=" + idNumber + ", userId=" + userId
-				+ ", skillsCategory=" + skillsCategory + ", dateCreated=" + dateCreated + ", enabled=" + enabled + "]";
+				+ ", authority=" + authority + ", idNumber=" + idNumber + ", userId=" + userId + ", skillsCategory="
+				+ skillsCategory + ", dateCreated=" + dateCreated + ", teamId=" + teamId + ", enabled=" + enabled + "]";
 	}
 
 

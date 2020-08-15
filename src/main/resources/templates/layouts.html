@@ -28,7 +28,7 @@
 
 <body>
 
-	<nav th:fragment="navbar1"
+	<nav th:fragment="navbarHOME"
 		class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">ZS6BVR PM</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -49,6 +49,8 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/subtasks}">Subtasks</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/employees}">Employees</a>
@@ -69,7 +71,7 @@
 	</nav>
 
 
-	<nav th:fragment="navbar2"
+	<nav th:fragment="navbarUSR"
 		class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">ZS6BVR PM</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -90,6 +92,9 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/subtasks}">Subtasks</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/employees}">Employees</a>
@@ -109,53 +114,16 @@
 		</div>
 	</nav>
 
-	<nav th:fragment="navbar3"
-		class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">ZS6BVR PM</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="/home">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/epics}">Epics</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/userstories}">Userstories</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" th:href="@{/employees}">Employees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/teams}">Teams</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/customers}">Customers</a>
-				</li>
-				<li class="nav-item">
-					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/logout}">Logout</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
 	
-	<nav th:fragment="navbarE"
+	<nav th:fragment="navbarEMP"
 		class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">ZS6BVR PM</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
+			<span class="navbar-toggler-icon"></span><li class="nav-item active">
+					<a class="nav-link" th:href="@{/subtasks}">Subtasks</a>
+				</li>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
@@ -170,6 +138,9 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/subtasks}">Subtasks</a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" th:href="@{/employees}">Employees</a>
@@ -210,6 +181,9 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/subtasks}">Subtasks</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/employees}">Employees</a>
@@ -253,6 +227,9 @@
 					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link" th:href="@{/subtasks}">Subtasks</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" th:href="@{/employees}">Employees</a>
 				</li>
 				<li class="nav-item">
@@ -293,6 +270,9 @@
 					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link" th:href="@{/subtasks}">Subtasks</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" th:href="@{/employees}">Employees</a>
 				</li>
 				<li class="nav-item active">
@@ -331,6 +311,53 @@
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/subtasks}">Subtasks</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/employees}">Employees</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/teams}">Teams</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/customers}">Customers</a>
+				</li>
+				<li class="nav-item">
+					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/logout}">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	
+	<nav th:fragment="navbarSUBTASK"
+		class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">ZS6BVR PM</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/home">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/epics}">Epics</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/userstories}">Userstories</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/tasks}">Tasks</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" th:href="@{/subtasks}">Subtasks</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/employees}">Employees</a>

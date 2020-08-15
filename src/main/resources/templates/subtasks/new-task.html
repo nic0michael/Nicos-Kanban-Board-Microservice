@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+<body>
+	<nav th:replace="layouts :: navbarTASK"></nav>
+	<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
+
+		
+
+		<br>
+		<div class="container">
+
+			<H3>Capture Task</H3>
+		<br><br>
+			<form th:action="@{/tasks/save}" th:object="${taskPersistRequest}" method="POST">
+
+
+				<!--  This will be used to bind to the task that was clicked on (USED FOR UPDATES)-->
+				<input type="hidden" th:field="${taskPersistRequest.dateCreated}" />
+				<input type="hidden" th:field="${taskPersistRequest.taskId}" />
+				<b>Task ID:</b>
+				<div class="form-group row" th:text="${taskPersistRequest.taskId}"> 
+				</div>
+				<b>Date created:</b>
+				<div class="form-group row" th:text="${taskPersistRequest.dateCreated}"> 
+				</div>navbarTASK
+				
+				<div class="form-group row">
+					<input type="text" placeholder="Task Name"
+						th:field="${taskPersistRequest.name}"> <span
+						style="color: red" th:if="${#fields.hasErrors('name')}"
+						th:errors="${taskPersistRequest.name}"> </span>
+				</div>
+
+				<div class="form-group row">
+					<input type="text" placeholder="Description"
+						th:field="${taskPersistRequest.description}"> <span
+						style="color: red" th:if="${#fields.hasErrors('description')}"
+						th:errors="${taskPersistRequest.description}"> </span>
+				</div>
+
+				<b>select the UserStory:</b>
+				<div class="form-group row">
+					<select th:field="${taskPersistRequest.userStoryId}">
+						<option th:each="userStory : ${userStories}" th:value="${userStory.userStoryId}" th:text="${userStory.name}"></option> 
+					</select>
+				</div>
+				
+				
+				<b>Assigned the Task to Employee:</b>
+				<div class="form-group row">
+					<select th:field="${taskPersistRequest.assignedTo}">
+						<option th:each="employee : ${employees}" th:value="${employee.employeeId}" th:text="${employee.fullName}"></option> 
+					</select>
+				</div>
+
+				<b>Is Task Active:</b>
+				<div class="form-group row">
+					<select th:field="${taskPersistRequest.isActive}">
+						<option value="1" selected>Yes</option>
+						<option value="0">No</option>
+					</select>
+				</div>
+
+				<div class="form-group row">
+					<button class="btn btn-info col-2" type="submit">Save Task</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>

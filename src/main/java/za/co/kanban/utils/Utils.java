@@ -19,14 +19,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import za.co.kanban.dtos.ContactPersistRequest;
 import za.co.kanban.dtos.CustomerPersistRequest;
 import za.co.kanban.dtos.EmployeePersistRequest;
+import za.co.kanban.dtos.EmployeeTeamPersistRequest;
 import za.co.kanban.dtos.EpicPersistRequest;
 import za.co.kanban.dtos.SubtaskPersistRequest;
 import za.co.kanban.dtos.TaskPersistRequest;
 import za.co.kanban.dtos.TeamPersistRequest;
 import za.co.kanban.dtos.UserStoryPersistRequest;
-import za.co.kanban.model.Contact;
 import za.co.kanban.model.Customer;
 import za.co.kanban.model.Employee;
+import za.co.kanban.model.EmployeeTeam;
 import za.co.kanban.model.Epic;
 import za.co.kanban.model.Subtask;
 import za.co.kanban.model.Task;
@@ -105,79 +106,7 @@ public class Utils {
 
 
 
-	////////////////////// CONTACT /////////////////////////
-
-	public static List<ContactPersistRequest> makeContactPersistRequestList(List<Contact> contacts) {
-		List<ContactPersistRequest> contactPersistRequests = new ArrayList<>();
-		for (Contact contact : contacts) {
-			ContactPersistRequest contactPersistRequest = convertToContactPersistRequest(contact);
-			contactPersistRequests.add(contactPersistRequest);
-		}
-		return contactPersistRequests;
-	}
-
-	public static List<Contact> makeContactList(List<ContactPersistRequest> contactPersistRequests ) {
-		List<Contact> contacts = new ArrayList<>();
-		for (ContactPersistRequest contactPersistRequest : contactPersistRequests) {
-			Contact contact = convertToContact(contactPersistRequest);
-			contacts.add(contact);
-		}
-		return contacts;
-	}
 	
-
-
-	public static ContactPersistRequest convertToContactPersistRequest(Contact contact) {
-		ContactPersistRequest contactPersistRequest=new ContactPersistRequest();
-
-		if (contact.getContactId() != null) {
-			contactPersistRequest.setContactId(contact.getContactId().toString());
-		}
-	    contactPersistRequest.setFullName(contact.getFullName());	
-	    contactPersistRequest.setTelephone(contact.getTelephone());
-	    contactPersistRequest.setCellphone(contact.getCellphone());
-	    contactPersistRequest.setEmail(contact.getEmail());	    
-		contactPersistRequest.setDetails(contact.getDetails());
-		
-
-		if (contact.getDateCreated() != null) {
-			contactPersistRequest.setDateCreated(Utils.dateToString(contact.getDateCreated()));
-		}
-		
-		contactPersistRequest.setIsActive(contact.getIsActive());
-		return contactPersistRequest;
-	}
-
-	public static Contact convertToContact(ContactPersistRequest contactPersistRequest) {
-		Contact contact =new Contact();
-
-		contact.setFullName(contactPersistRequest.getFullName());	
-		contact.setTelephone(contactPersistRequest.getTelephone());
-		contact.setCellphone(contactPersistRequest.getCellphone());
-		contact.setEmail(contactPersistRequest.getEmail());	    
-		contact.setDetails(contactPersistRequest.getDetails());	
-
-		if (contactPersistRequest.getDateCreated() != null) {
-			contact.setDateCreated(Utils.convertStringToDate(contactPersistRequest.getDateCreated()));
-		}
-		
-		contact.setIsActive(contactPersistRequest.getIsActive());
-		
-		return contact;
-	}
-	
-
-	public static Contact updateContact(Contact contact , Contact theContact) {
-
-		contact.setFullName(theContact.getFullName());	
-		contact.setTelephone(theContact.getTelephone());
-		contact.setCellphone(theContact.getCellphone());
-		contact.setEmail(theContact.getEmail());	    
-		contact.setDetails(theContact.getDetails());	
-		contact.setDateCreated(theContact.getDateCreated());
-		contact.setIsActive(theContact.getIsActive());
-		return contact;
-	}
 
 	////////////////////// CUSTOMER /////////////////////////
 
@@ -285,18 +214,42 @@ public class Utils {
 		if (employee.getEmployeeId() != null) {
 			employeePersistRequest.setEmployeeId(employee.getEmployeeId().toString());
 		}
-
-		employeePersistRequest.setFullName(employee.getFullName().toUpperCase());
-		employeePersistRequest.setIdNumber(employee.getIdNumber());
-		employeePersistRequest.setDetails(employee.getDetails());
-		employeePersistRequest.setTelephone(employee.getTelephone());
-		employeePersistRequest.setCellphone(employee.getCellphone());
-		employeePersistRequest.setEmail(employee.getEmail());
-	    employeePersistRequest.setPassword(employee.getPassword());
-	    employeePersistRequest.setAuthority(employee.getAuthority());
-	    employeePersistRequest.setUserId(employee.getUserId());
-	    employeePersistRequest.setSkillsCategory(employee.getSkillsCategory());
-	    employeePersistRequest.setDateCreated(dateToString(employee.getDateCreated()));
+		if (employee.getTeamId() != null) {
+			employeePersistRequest.setTeamId(employee.getTeamId().toString());
+		}
+		if (employee.getFullName() != null) {
+			employeePersistRequest.setFullName(employee.getFullName().toUpperCase());
+		}
+		if (employee.getIdNumber() != null) {
+			employeePersistRequest.setIdNumber(employee.getIdNumber());
+		}
+		if (employee.getDetails() != null) {
+			employeePersistRequest.setDetails(employee.getDetails());
+		}
+		if (employee.getTelephone() != null) {
+			employeePersistRequest.setTelephone(employee.getTelephone());
+		}
+		if (employee.getCellphone() != null) {
+			employeePersistRequest.setCellphone(employee.getCellphone());
+		}
+		if (employee.getEmail() != null) {
+			employeePersistRequest.setEmail(employee.getEmail());
+		}
+		if (employee.getPassword() != null) {
+		    employeePersistRequest.setPassword(employee.getPassword());
+		}
+		if (employee.getAuthority() != null) {
+		    employeePersistRequest.setAuthority(employee.getAuthority());
+		}
+		if (employee.getUserId() != null) {
+		    employeePersistRequest.setUserId(employee.getUserId());
+		}
+		if (employee.getSkillsCategory() != null) {
+		    employeePersistRequest.setSkillsCategory(employee.getSkillsCategory());
+		}
+		if (employee.getDateCreated() != null) {
+		    employeePersistRequest.setDateCreated(dateToString(employee.getDateCreated()));
+		}
 
 		if (employee.getEnabled() != null && employee.getEnabled()==1) {
 			employeePersistRequest.setEnabled("1");
@@ -334,6 +287,13 @@ public class Utils {
 				&& StringUtils.isNumeric(employeePersistRequest.getEmployeeId())){
 			Long employeeId=Long.parseLong(employeePersistRequest.getEmployeeId());
 	    	employee.setEmployeeId(employeeId);
+	    }
+	    
+
+	    if(StringUtils.isNotEmpty(employeePersistRequest.getTeamId()) 
+				&& StringUtils.isNumeric(employeePersistRequest.getTeamId())){
+	    	Long teamId=Long.parseLong(employeePersistRequest.getTeamId());
+	    	employee.setTeamId(teamId);
 	    }
 		
 
@@ -877,8 +837,43 @@ public class Utils {
 		return team;
 	}
 
+	public static EmployeeTeam convertToEmployee(EmployeeTeamPersistRequest employeeTeamPersistRequest) {
+		EmployeeTeam employeeTeam=new EmployeeTeam();		
+
+	    if(StringUtils.isNotEmpty(employeeTeamPersistRequest.getEmployeeId()) 
+				&& StringUtils.isNumeric(employeeTeamPersistRequest.getEmployeeId())){
+			Long employeeId=Long.parseLong(employeeTeamPersistRequest.getEmployeeId());
+			employeeTeam.setEmployeeId(employeeId);
+	    }
+
+	    if(StringUtils.isNotEmpty(employeeTeamPersistRequest.getTeamId()) 
+				&& StringUtils.isNumeric(employeeTeamPersistRequest.getTeamId())){
+	    	Long teamId=Long.parseLong(employeeTeamPersistRequest.getTeamId());
+			employeeTeam.setTeamId(teamId);
+	    }
+
+		return employeeTeam;
+	}
 
 
+
+	////////////////////// EMPLOYEE TEAM /////////////////////////
+
+	public static EmployeeTeamPersistRequest makeEmployeeTeamPersistRequest(EmployeePersistRequest employeePersistRequest) {
+		EmployeeTeamPersistRequest employeeTeamPersistRequest=new EmployeeTeamPersistRequest();
+
+	    if(StringUtils.isNotEmpty(employeePersistRequest.getEmployeeId()) 
+				&& StringUtils.isNumeric(employeePersistRequest.getEmployeeId())){
+			employeeTeamPersistRequest.setEmployeeId(employeePersistRequest.getEmployeeId());
+	    }	    
+
+	    if(StringUtils.isNotEmpty(employeePersistRequest.getTeamId()) 
+				&& StringUtils.isNumeric(employeePersistRequest.getTeamId())){
+	    	employeeTeamPersistRequest.setTeamId(employeePersistRequest.getTeamId());
+	    }
+		
+		return employeeTeamPersistRequest;
+	}
 
 
 

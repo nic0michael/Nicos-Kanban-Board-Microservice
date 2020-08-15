@@ -68,6 +68,14 @@ CREATE TABLE `employee` (
   UNIQUE KEY `UK_mpps3d3r9pdvyjx3iqixi96fi` (`user_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
+-- SHOW CREATE TABLE `employee_team`;
+CREATE TABLE `employee_team` (
+  `employee_team_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `employee_id` bigint(20) DEFAULT NULL,
+  `team_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`employee_team_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 -- SHOW CREATE TABLE `employee_user_story`;
 DROP TABLE IF EXISTS employee_user_story;
 CREATE TABLE `employee_user_story` (

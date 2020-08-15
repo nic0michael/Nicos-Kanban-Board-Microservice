@@ -4,7 +4,7 @@
 
 <head th:replace="layouts :: header"></head>
 <body>
-	<nav th:replace="layouts :: navbar3"></nav>
+	<nav th:replace="layouts :: navbarEMP"></nav>
 	<div sec:authorize="hasRole('ADMIN')">
 
 		
@@ -70,6 +70,13 @@
 					</select>
 				</div>
 
+				<b>Assigned the Employee to Team:</b>
+				<div class="form-group row">
+					<select th:field="${employeetPersistRequest.teamId}">
+						<option th:each="team : ${teams}" th:value="${team.teamId}" th:text="${team.name}"></option> 
+					</select>
+				</div>
+				
 				<b>Is Employee Enabled:</b>
 				<div class="form-group row">
 					<select th:field="${employeetPersistRequest.enabled}">

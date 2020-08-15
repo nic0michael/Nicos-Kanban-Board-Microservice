@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import za.co.kanban.dtos.EmployeePersistRequest;
+import za.co.kanban.dtos.EmployeeTeamPersistRequest;
 import za.co.kanban.model.Employee;
+import za.co.kanban.model.Team;
 import za.co.kanban.modules.EmployeeModule;
+import za.co.kanban.modules.EmployeeTeamModule;
+import za.co.kanban.modules.TeamModule;
 import za.co.kanban.utils.Utils;
 
 
@@ -27,6 +31,12 @@ public class EmployeeController {
 
 	@Autowired 
 	EmployeeModule emplmod;	
+	
+	@Autowired 
+	TeamModule teammod;
+
+	@Autowired 
+	EmployeeTeamModule emplteammod;	
 	
 	@GetMapping
 	public String displayEmployees(Model model) {
@@ -46,6 +56,8 @@ public class EmployeeController {
 	public String displayEmployeeForm(Model model) {
 		Employee employee=new Employee();
 		EmployeePersistRequest  employeetPersistRequest=Utils.convertToEmployeePersistRequest(employee);
+		List<Team> teams = teammod.findAll();
+		model.addAttribute("teams", teams);
 		model.addAttribute("employeetPersistRequest", employeetPersistRequest);
 		return "employees/new-employee";
 	}
@@ -58,9 +70,18 @@ public class EmployeeController {
 		if(StringUtils.isNotBlank(employeePersistRequest.getEmployeeId() )  && StringUtils.isNumeric(employeePersistRequest.getEmployeeId()) ) {
 			log.info("PROJECT_MAN : EmployeeController : createEmployee : updating employee");
 			emplmod.update(employeePersistRequest);
+			
+			EmployeeTeamPersistRequest employeeTeamPersistRequest=Utils.makeEmployeeTeamPersistRequest(employeePersistRequest);
+			log.info("PROJECT_MAN : EmployeeController : createEmployee : saving new EmployeeTeam");
+			emplteammod.save(employeeTeamPersistRequest);
+			
 		} else {
 			log.info("PROJECT_MAN : EmployeeController : createEmployee : saving new employee");
-			emplmod.save(employeePersistRequest);		
+			emplmod.save(employeePersistRequest);
+			
+			EmployeeTeamPersistRequest employeeTeamPersistRequest=Utils.makeEmployeeTeamPersistRequest(employeePersistRequest);
+			log.info("PROJECT_MAN : EmployeeController : createEmployee : saving new EmployeeTeam");
+			emplteammod.save(employeeTeamPersistRequest);
 		}
 		// use a redirect to prevent duplicate submissions
 		log.info("PROJECT_MAN : EmployeeController : createEmployee : redirecting to employees page");
@@ -96,6 +117,8 @@ public class EmployeeController {
 			Employee employee=emplmod.findByEmployeeId(employeeId);
 			EmployeePersistRequest  employeetPersistRequest=Utils.convertToEmployeePersistRequest(employee);
 			log.info("PROJECT_MAN : EmployeeController : displayEmployeetFormToUpdate : created EmployeePersistRequest : "+employeetPersistRequest);
+			List<Team> teams = teammod.findAll();
+			model.addAttribute("teams", teams);
 			model.addAttribute("employeetPersistRequest", employeetPersistRequest);
 		}
 		log.info("PROJECT_MAN : EmployeeController : displayEmployeetFormToUpdate : displaying form");

@@ -4,7 +4,7 @@
 
 <head th:replace="layouts :: header"></head>
 <body>
-	<nav th:replace="layouts :: navbar2"></nav>
+	<nav th:replace="layouts :: navbarUSR"></nav>
 <!-- 	<divsecauthorize ="isAuthenticated()">  -->
 	<div  sec:authorize=hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')>
 
