@@ -63,7 +63,6 @@ Run the folowing command from a terminal in that folder:
 You can run shellscript start.sh
 or batch file start.BAT
 
-## Programmers comments: 
-Create file : schema.sql in /resources folder
-Now add this to properties file
-spring.jpa.hibernate.ddl-auto=none
+### Open Browser to this URL
+[http://localhost:8080/](http://localhost:8080/)
+
