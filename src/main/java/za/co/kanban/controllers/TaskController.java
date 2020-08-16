@@ -24,7 +24,7 @@ import za.co.kanban.utils.Utils;
 
 
 @Controller
-@RequestMapping("/tasks")
+@RequestMapping("/kanban-board/tasks")
 public class TaskController {
 	private static final Logger log = LoggerFactory.getLogger(TaskController.class);
 	 
@@ -85,7 +85,7 @@ public class TaskController {
 		}
 		
 		// use a redirect to prevent duplicate submissions
-		return "redirect:/tasks";
+		return "redirect:/kanban-board/tasks";
 	}
 
 

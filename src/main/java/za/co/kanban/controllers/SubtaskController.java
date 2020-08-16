@@ -25,7 +25,7 @@ import za.co.kanban.utils.Utils;
 
 
 @Controller
-@RequestMapping("/subtasks")
+@RequestMapping("/kanban-board/subtasks")
 public class SubtaskController {
 	private static final Logger log = LoggerFactory.getLogger(SubtaskController.class);
 	 
@@ -86,7 +86,7 @@ public class SubtaskController {
 		}
 		
 		// use a redirect to prevent duplicate submissions
-		return "redirect:/subtasks";
+		return "redirect:/kanban-board/subtasks";
 	}
 
 

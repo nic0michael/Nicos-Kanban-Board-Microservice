@@ -22,7 +22,7 @@ import za.co.kanban.modules.EpicModule;
 import za.co.kanban.utils.Utils;
 
 @Controller
-@RequestMapping("/epics")
+@RequestMapping("kanban-board/epics")
 public class EpicController {
 	private static final Logger log = LoggerFactory.getLogger(EpicController.class);
 
@@ -73,7 +73,7 @@ public class EpicController {
 		}
 		// use a redirect to prevent duplicate submissions
 		log.info("PROJECT_MAN : EpicController : createEpic : redirecting to epics page");
-		return "redirect:/epics";
+		return "redirect:/kanban-board/epics";
 	}
 
 	

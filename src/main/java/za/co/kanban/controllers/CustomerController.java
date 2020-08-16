@@ -20,7 +20,7 @@ import za.co.kanban.modules.CustomerModule;
 import za.co.kanban.utils.Utils;
 
 @Controller
-@RequestMapping("/customers")
+@RequestMapping("/kanban-board/customers")
 public class CustomerController {
 	private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
 
@@ -68,14 +68,14 @@ public class CustomerController {
 		}
 		// use a redirect to prevent duplicate submissions
 		log.info("PROJECT_MAN : CustomerController : createCustomer : redirecting to customers page");
-		return "redirect:/customers";
+		return "redirect:/kanban-board/customers";
 	}
 
 	
 	@GetMapping("/remove}")
 	public String deleteCustomer(@RequestParam(value = "id") Long customerId) {
 		custmod.delete(customerId);
-		return "redirect:/projects";
+		return "redirect:/kanban-board/customers";
 	}
 	
 
@@ -83,14 +83,14 @@ public class CustomerController {
 	public String updateCustomer(@RequestParam(value = "id") Long customerId,Model model) {
 		Customer customer=custmod.findByCustomerId(customerId);
 		model.addAttribute("customer",customer);
-		return "redirect:/customers/new";
+		return "redirect:/kanban-board/customers/new";
 	}
 
 	@GetMapping("/maakdood")
 	public String removeCustomer(@RequestParam(value = "id") Long customerId,Model model) {
 		log.info("PROJECT_MAN : CustomerController : removeCustomer : to update project with project_id : "+customerId);
 		custmod.delete(customerId);
-		return "redirect:/customers";
+		return "redirect:/kanban-board/customers";
 	}
 	
 	@GetMapping("/verander")
@@ -108,7 +108,7 @@ public class CustomerController {
 				log.info("PROJECT_MAN : CustomerController : displayCustomertFormToUpdate : created CustomerPersistRequest : "+customerPersistRequest);
 				model.addAttribute("customerPersistRequest", customerPersistRequest);
 			} else {
-				return "redirect:/customers";
+				return "redirect:/kanban-board/customers";
 			}
 		}
 		log.info("PROJECT_MAN : CustomerController : displayCustomertFormToUpdate : displaying form");

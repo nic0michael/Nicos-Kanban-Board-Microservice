@@ -25,7 +25,7 @@ import za.co.kanban.utils.Utils;
 
 
 @Controller
-@RequestMapping("/employees")
+@RequestMapping("/kanban-board/employees")
 public class EmployeeController {
 	private static final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
@@ -85,7 +85,7 @@ public class EmployeeController {
 		}
 		// use a redirect to prevent duplicate submissions
 		log.info("PROJECT_MAN : EmployeeController : createEmployee : redirecting to employees page");
-		return "redirect:/employees";
+		return "redirect:/kanban-board/employees";
 	}
 
 	

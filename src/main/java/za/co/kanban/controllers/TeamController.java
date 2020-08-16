@@ -20,7 +20,7 @@ import za.co.kanban.modules.TeamModule;
 import za.co.kanban.utils.Utils;
 
 @Controller
-@RequestMapping("/teams")
+@RequestMapping("/kanban-board/teams")
 public class TeamController {
 	private static final Logger log = LoggerFactory.getLogger(TeamController.class);
 
@@ -66,7 +66,7 @@ public class TeamController {
 		}
 		// use a redirect to prevent duplicate submissions
 		log.info("PROJECT_MAN : TeamController : createTeam : redirecting to teams page");
-		return "redirect:/teams";
+		return "redirect:/kanban-board/teams";
 	}
 
 	

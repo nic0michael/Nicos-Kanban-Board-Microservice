@@ -15,7 +15,7 @@
 	<div class="container">
 		<H3>Capture UserStory</H3>
 		<br><br>
-		<form th:action="@{/userstories/save}" th:object="${userStoryPersistRequest}" method="POST">
+		<form th:action="@{/kanban-board/userstories/save}" th:object="${userStoryPersistRequest}" method="POST">
 			<input type="hidden" th:field="${userStoryPersistRequest.userStoryId}">
 			
 			<b>Userstory Id:</b>

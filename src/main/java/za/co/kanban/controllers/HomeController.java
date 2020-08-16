@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,14 +42,21 @@ public class HomeController {
 	@Value("${project.name}")
 	private String projectName;
 
-	
+	@GetMapping("kanban-board")
+	public String displayHome1(Model model) {
+		return "redirect:/kanban-board/home";
+	}
+	@GetMapping("/home")
+	public String displayHome2(Model model) {
+		return "redirect:/kanban-board/home";
+	}
 	
 	@GetMapping
 	public String displayHome(Model model) {
-		return "redirect:/home";
+		return "redirect:/kanban-board/home";
 	}
 
-	@GetMapping("/home")
+	@GetMapping("/kanban-board/home")
 	public String displayHomePage(Model model) {	
 		String pattern = "yyyy-MM-dd HH:mm:ss";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);

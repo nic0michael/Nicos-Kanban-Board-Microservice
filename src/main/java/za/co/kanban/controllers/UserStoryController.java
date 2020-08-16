@@ -25,7 +25,7 @@ import za.co.kanban.modules.UserStoryModule;
 import za.co.kanban.utils.Utils;
 
 @Controller
-@RequestMapping("/userstories")
+@RequestMapping("/kanban-board/userstories")
 public class UserStoryController {
 	private static final Logger log = LoggerFactory.getLogger(UserStoryController.class);
 
@@ -80,7 +80,7 @@ public class UserStoryController {
 		}
 		// use a redirect to prevent duplicate submissions
 		log.info("USER_STRY : UserStoryController : createUserStory : redirecting to userstories page");
-		return "redirect:/userstories";
+		return "redirect:/kanban-board/userstories";
 	}
 
 	
