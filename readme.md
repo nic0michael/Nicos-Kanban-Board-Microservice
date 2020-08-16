@@ -1,6 +1,6 @@
 # Kanban Board Spring Boot Microservice
 
-## Version 1.0.1
+## Release Version 1.0.1
 This code is ready for usage.
 
 ## Aim of this Project
@@ -16,7 +16,7 @@ We are not ready to accept developers to join this team yet, as we are still bui
 
 ## Latest News
 Date : 15th June 2020
-Anouncement: As of today we have promoted our froject to release version : **1.0.1-SNAPSHOT**
+Anouncement: As of today we have promoted our project to release version : **1.0.1-SNAPSHOT**
 The software is now available as a self-contained JAR file:**spring-boot-kanban-board.jar**
 
 ## Free Open Source FOS

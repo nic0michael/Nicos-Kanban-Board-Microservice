@@ -2,8 +2,8 @@
 
 # Deployment Instructions
 
-## Beta Version 1.0.0B
-This code is ready for trial usage
+## Release Version 1.0.1
+This code is ready for usage
 
 ## Instalation od Java JDK JRE 8
 We intend to migrate our JDK to OpenJDK 11 and rebuild this project
