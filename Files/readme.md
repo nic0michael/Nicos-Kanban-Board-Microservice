@@ -5,7 +5,7 @@
 ## Release Version 1.0.1
 This code is ready for usage
 
-## Instalation od Java JDK JRE 8
+## Instalation of Java JDK JRE 8
 We intend to migrate our JDK to OpenJDK 11 and rebuild this project
 
 ## Database Support
