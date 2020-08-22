@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import za.co.kanban.dtos.EmployeePersistRequest;
 import za.co.kanban.dtos.SubtaskPersistRequest;
 import za.co.kanban.model.Employee;
+import za.co.kanban.model.StatusValue;
 import za.co.kanban.model.Subtask;
 import za.co.kanban.model.Task;
 import za.co.kanban.modules.EmployeeModule;
+import za.co.kanban.modules.StatusValueModule;
 import za.co.kanban.modules.SubtaskModule;
 import za.co.kanban.modules.TaskModule;
 import za.co.kanban.utils.Utils;
@@ -39,6 +41,9 @@ public class SubtaskController {
 	@Autowired 
 	TaskModule taskmod;
 
+	@Autowired 
+	StatusValueModule statusmod;
+
 	@GetMapping
 	public String displaySubtasks(Model model) {
 		List<Subtask> subtasks = subtaskmod.findAll();
@@ -57,6 +62,16 @@ public class SubtaskController {
 		model.addAttribute("subtasks", subtasks);
 		return "subtasks/list-subtasks";
 	}
+
+	@GetMapping("/board")
+	public String displaySubtaskBoard(Model model) {
+		List<Subtask> subtasks = subtaskmod.findAll();
+		if(subtasks!=null) {
+			log.info("PROJECT_MAN : SubtaskController : displayHome : displaying :"+subtasks.size()+" subtasks");
+		}
+		model.addAttribute("subtasks", subtasks);
+		return "subtasks/subtask-board";
+	}
 	
 	@GetMapping("/new")
 	public String displaySubtaskForm(Model model) {
@@ -66,6 +81,8 @@ public class SubtaskController {
 		model.addAttribute("subtaskPersistRequest",subtaskPersistRequest);
 		List<Employee> employees = emplmod.findAll();
 		List<Task> tasks = taskmod.findAll();
+		List<StatusValue>statusValues=statusmod.findAll();
+		model.addAttribute("statusValues", statusValues);
 		model.addAttribute("employees", employees);
 		model.addAttribute("tasks", tasks);
 		log.info("PROJECT_MAN : SubtaskController : displaySubtaskForm : displaying form");
@@ -74,19 +91,6 @@ public class SubtaskController {
 
 
 	
-	@GetMapping("/board")
-	public String displaySubtaskBoard(Model model) {
-		SubtaskPersistRequest subtaskPersistRequest=new SubtaskPersistRequest();
-		log.info("PROJECT_MAN : SubtaskController : displaySubtaskForm : creating new subtaskPersistRequest");
-//		Subtask subtask=new Subtask();
-		model.addAttribute("subtaskPersistRequest",subtaskPersistRequest);
-		List<Employee> employees = emplmod.findAll();
-		List<Task> tasks = taskmod.findAll();
-		model.addAttribute("employees", employees);
-		model.addAttribute("tasks", tasks);
-		log.info("PROJECT_MAN : SubtaskController : displaySubtaskForm : displaying form");
-		return "subtasks/subtask-board";
-	}
 
 	@PostMapping("/save")
 	public String createSubtask( SubtaskPersistRequest subtaskPersistRequest,Model model) {
@@ -123,6 +127,8 @@ public class SubtaskController {
 			model.addAttribute("subtaskPersistRequest",subtaskPersistRequest);
 			List<Employee> employees = emplmod.findAll();
 			List<Task> tasks = taskmod.findAll();
+			List<StatusValue>statusValues=statusmod.findAll();
+			model.addAttribute("statusValues", statusValues);
 			model.addAttribute("employees", employees);
 			model.addAttribute("tasks", tasks);
 		}
@@ -142,6 +148,8 @@ public class SubtaskController {
 			model.addAttribute("subtaskPersistRequest",subtaskPersistRequest);
 			List<Employee> employees = emplmod.findAll();
 			List<Task> tasks = taskmod.findAll();
+			List<StatusValue>statusValues=statusmod.findAll();
+			model.addAttribute("statusValues", statusValues);
 			model.addAttribute("employees", employees);
 			model.addAttribute("tasks", tasks);
 		}

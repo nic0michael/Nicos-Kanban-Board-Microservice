@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header">
+<title>Kanban Board</title>
+</head>
+<body>
+	<nav th:replace="layouts :: navbarUSR"></nav>
+	<!-- 	<divsecauthorize ="isAuthenticated()">  -->
+	
+	<div sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')">
+
+
+
+		<br>
+
+		<div class="container">
+			<H3>UserStory Kanban Board</H3>
+			<br>
+			<br>
+			
+			<form th:action="@{/kanban-board/userstories/save}" th:object="${userStoryPersistRequest}" method="POST">
+				<input type="hidden" th:field="${userStoryPersistRequest.userStoryId}"> 
+				<input type="hidden" th:field="${userStoryPersistRequest.name}"> 
+				<input type="hidden" th:field="${userStoryPersistRequest.description}">
+				<input type="hidden" th:field="${userStoryPersistRequest.stage}">
+				<input type="hidden" th:field="${userStoryPersistRequest.customerReference}"> 
+				<input type="hidden" th:field="${userStoryPersistRequest.customerId}">
+				<input type="hidden" th:field="${userStoryPersistRequest.epicId}">
+				<input type="hidden" th:field="${userStoryPersistRequest.assignedTo}">
+				<input type="hidden" th:field="${userStoryPersistRequest.startDate}">
+				<input type="hidden" th:field="${userStoryPersistRequest.endDate}">
+				<input type="hidden" th:field="${userStoryPersistRequest.dueDate}">
+				<input type="hidden" th:field="${userStoryPersistRequest.dateCreated}"> 
+				<input type="hidden" th:field="${userStoryPersistRequest.isActive}">
+
+				<b>Userstory:</b>				
+				<div class="form-group row" th:text="${userStoryPersistRequest.name}"></div>
+				<div class="form-group row" th:text="${userStoryPersistRequest.description}"></div>
+
+				<b>Set the Status:</b>
+				<div class="form-group row">
+					<select th:field="${userStoryPersistRequest.status}">
+						<option th:each="statusValue : ${statusValues}"
+							th:value="${statusValue.description}"
+							th:text="${statusValue.displayValue}">
+						</option>
+					</select>
+				</div>
+
+
+				<div class="form-group row">
+					<button class="btn btn-info col-2" type="submit">Save
+						UserStory</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>

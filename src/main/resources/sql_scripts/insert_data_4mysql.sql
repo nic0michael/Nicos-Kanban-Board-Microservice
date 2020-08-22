@@ -48,7 +48,31 @@ insert into user_story ( name, epic_id, assigned_to, stage,  description, date_c
 insert into task (name,description) values ('Recreate that Bagdad Battery','This was first made in Mesopotamia' );
 
 -- INSERT subtask
+
 insert into subtask (name,description,story_points) values ('Design new Bagdad Battery','Design solution',3 );
+
+delete from status_value;
+insert into status_value (sort_order,display_value,description) values (0,'UNASSIGNED','UNASSIGNED');
+insert into status_value (sort_order,display_value,description) values (1,'DESIGN','DESIGN');
+insert into status_value (sort_order,display_value,description) values (2,'DESIGN COMPLETED','DESIGN COMPLETED');
+insert into status_value (sort_order,display_value,description) values (3,'DEVELOP','DEVELOP');
+insert into status_value (sort_order,display_value,description) values (4,'DEVELOPMENT COMPLETED','DEVELOPMENT COMPLETED');
+insert into status_value (sort_order,display_value,description) values (5,'DEPLOY TO DEV','DEPLOY TO DEVELOPMENT ENVIRONMENT');
+insert into status_value (sort_order,display_value,description) values (6,'TEST IN DEV','TEST IN DEVELOPMENT ENVIRONMENT');
+insert into status_value (sort_order,display_value,description) values (7,'TEST IN DEV COMPLETED','TEST IN DEVELOPMENT ENVIRONMENT COMPLETED');
+insert into status_value (sort_order,display_value,description) values (8,'DEPLOY TO QA','DEPLOY TO QA ENVIRONMENT');
+insert into status_value (sort_order,display_value,description) values (9,'TEST IN QA','TEST IN QA ENVIRONMENT');
+insert into status_value (sort_order,display_value,description) values (10,'TEST IN QA COMPLETED','TEST IN QA ENVIRONMENT COMPLETED');
+insert into status_value (sort_order,display_value,description) values (11,'DEPLOY TO PREPROD','DEPLOY TO PRE PRODUCTION ENVIRONMENT');
+insert into status_value (sort_order,display_value,description) values (12,'TEST IN PREPROD','TEST IN PRE PRODUCTION ENVIRONMENT');
+insert into status_value (sort_order,display_value,description) values (13,'TEST IN PREPROD COMPLETED','TEST IN PRE PRODUCTION ENVIRONMENT COMPLETED');
+insert into status_value (sort_order,display_value,description) values (14,'UAT TEST','UAT TEST');
+insert into status_value (sort_order,display_value,description) values (15,'UAT TEST COMPLETED','UAT TEST COMPLETED');
+insert into status_value (sort_order,display_value,description) values (16,'READY FOR SIGNOFF','READY FOR BUSINESS SIGNOFF');
+insert into status_value (sort_order,display_value,description) values (17,'BUSINESS SIGNOFF COMPLETED','BUSINESS SIGNOFF COMPLETED');
+insert into status_value (sort_order,display_value,description) values (18,'DEPLOY TO PROD','DEPLOY TO PRODUCTION ENVIRONMENT');
+insert into status_value (sort_order,display_value,description) values (19,'DEPLOYMENT TO PROD COMPLETED','DEPLOYMENT TO PRODUCTION ENVIRONMENT COMPLETED');
+insert into status_value (sort_order,display_value,description) values (20,'COMPLETED','COMPLETED');
 
 -- =============================== CREATE ADMINISTRATOR USER SQL SCRIPT ==================================================================
 --

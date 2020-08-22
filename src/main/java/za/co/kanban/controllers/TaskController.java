@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import za.co.kanban.dtos.TaskPersistRequest;
 import za.co.kanban.model.Employee;
+import za.co.kanban.model.StatusValue;
 import za.co.kanban.model.Task;
 import za.co.kanban.model.UserStory;
 import za.co.kanban.modules.EmployeeModule;
+import za.co.kanban.modules.StatusValueModule;
 import za.co.kanban.modules.TaskModule;
 import za.co.kanban.modules.UserStoryModule;
 import za.co.kanban.utils.Utils;
@@ -38,6 +40,9 @@ public class TaskController {
 	@Autowired 
 	EmployeeModule empmod;
 
+	@Autowired 
+	StatusValueModule statusmod;
+	
 	@GetMapping
 	public String displayTasks(Model model) {
 		List<Task> tasks = taskmod.findAll();
@@ -65,6 +70,8 @@ public class TaskController {
 		model.addAttribute("taskPersistRequest",taskPersistRequest);
 		List<UserStory> userStories = userstmod.findAll();
 		List<Employee> employees = empmod.findAll();
+		List<StatusValue>statusValues=statusmod.findAll();
+		model.addAttribute("statusValues", statusValues);
 		model.addAttribute("employees", employees);
 		model.addAttribute("userStories", userStories);
 		log.info("PROJECT_MAN : TaskController : displayTaskForm : displaying form");
@@ -74,15 +81,11 @@ public class TaskController {
 	
 	@GetMapping("/board")
 	public String displayTaskFBoard(Model model) {
-		TaskPersistRequest taskPersistRequest=new TaskPersistRequest();
-		log.info("PROJECT_MAN : TaskController : displayTaskForm : creating new taskPersistRequest");
-//		Task task=new Task();
-		model.addAttribute("taskPersistRequest",taskPersistRequest);
-		List<UserStory> userStories = userstmod.findAll();
-		List<Employee> employees = empmod.findAll();
-		model.addAttribute("employees", employees);
-		model.addAttribute("userStories", userStories);
-		log.info("PROJECT_MAN : TaskController : displayTaskForm : displaying form");
+		List<Task> tasks = taskmod.findAll();
+		if(tasks!=null) {
+			log.info("PROJECT_MAN : TaskController : displayHome : displaying :"+tasks.size()+" tasks");
+		}
+		model.addAttribute("tasksList", tasks);
 		return "tasks/task-board";
 	}
 
@@ -120,7 +123,9 @@ public class TaskController {
 			log.info("PROJECT_MAN : TaskController : displayTaskFormToUpdate : creating new taskPersistRequest");
 			model.addAttribute("taskPersistRequest",taskPersistRequest);
 			List<UserStory> userStories = userstmod.findAll();
-			 List<Employee> employees = empmod.findAll();
+			List<Employee> employees = empmod.findAll();
+			List<StatusValue>statusValues=statusmod.findAll();
+			model.addAttribute("statusValues", statusValues);
 			model.addAttribute("employees", employees);
 			model.addAttribute("userStories", userStories);
 		}
@@ -139,7 +144,9 @@ public class TaskController {
 			log.info("PROJECT_MAN : TaskController : displayTaskFormToUpdate : creating new taskPersistRequest");
 			model.addAttribute("taskPersistRequest",taskPersistRequest);
 			List<UserStory> userStories = userstmod.findAll();
-			 List<Employee> employees = empmod.findAll();
+			List<Employee> employees = empmod.findAll();
+			List<StatusValue>statusValues=statusmod.findAll();
+			model.addAttribute("statusValues", statusValues);
 			model.addAttribute("employees", employees);
 			model.addAttribute("userStories", userStories);
 		}

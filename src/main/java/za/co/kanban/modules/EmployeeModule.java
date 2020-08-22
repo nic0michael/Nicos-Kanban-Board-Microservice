@@ -32,7 +32,7 @@ public void save(EmployeePersistRequest employeePersistRequest) {
 public List<Employee> findAll(){
 	System.out.println("getting list of employees");
 	List<Employee> employees = (List<Employee>) repository.findAll();
-	System.out.println("got list of cities : " + employees);
+	System.out.println("got list of employees : " + employees);
 	return employees;
 }
 

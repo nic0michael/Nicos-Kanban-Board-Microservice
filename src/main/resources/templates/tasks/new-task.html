@@ -27,7 +27,7 @@
 				</div>
 				<b>Date created:</b>
 				<div class="form-group row" th:text="${taskPersistRequest.dateCreated}"> 
-				</div>navbarTASK
+				</div> 
 				
 				<div class="form-group row">
 					<input type="text" placeholder="Task Name"
@@ -55,6 +55,16 @@
 				<div class="form-group row">
 					<select th:field="${taskPersistRequest.assignedTo}">
 						<option th:each="employee : ${employees}" th:value="${employee.employeeId}" th:text="${employee.fullName}"></option> 
+					</select>
+				</div>
+				
+				<b>Set the Status:</b>
+				<div class="form-group row">
+					<select th:field="${taskPersistRequest.status}">
+						<option
+							th:each="statusValue : ${statusValues}"
+							th:value="${statusValue.description}"
+							th:text="${statusValue.displayValue}"></option>
 					</select>
 				</div>
 

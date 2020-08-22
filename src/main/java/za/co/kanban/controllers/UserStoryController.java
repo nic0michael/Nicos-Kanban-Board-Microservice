@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import za.co.kanban.dtos.UserStoryPersistRequest;
-import za.co.kanban.model.Customer;
 import za.co.kanban.model.Epic;
+import za.co.kanban.model.StatusValue;
 import za.co.kanban.model.Team;
 import za.co.kanban.model.UserStory;
 import za.co.kanban.modules.EpicModule;
+import za.co.kanban.modules.StatusValueModule;
 import za.co.kanban.modules.TeamModule;
 import za.co.kanban.modules.UserStoryModule;
 import za.co.kanban.utils.Utils;
@@ -37,6 +38,10 @@ public class UserStoryController {
 
 	@Autowired
 	private TeamModule teammod;
+
+	@Autowired 
+	StatusValueModule statusmod;
+
 	
 	@GetMapping
 	public String displayUserStorys(Model model) {
@@ -52,19 +57,28 @@ public class UserStoryController {
 		return "userstories/list-userstories";
 	}
 
+
+	@GetMapping("/board")
+	public String displaySubtaskBoard(Model model) {
+		List<UserStory> userStoryList = userStorymod.findAll();
+		model.addAttribute("userStoryList", userStoryList);
+		return "userstories/userstory-board";
+	}
+	
 	@GetMapping("/new")
 	public String displayUserStoryForm(Model model) {
 		UserStory userStory=new UserStory();
 		UserStoryPersistRequest  userStoryPersistRequest=Utils.convertToUserStoryPersistRequest(userStory);
 		List<Epic>epics =epicmod.findAll();
 		List<Team>teams =teammod.findAll();
+		List<StatusValue>statusValues=statusmod.findAll();
+		model.addAttribute("statusValues", statusValues);
 		model.addAttribute("teams", teams);
 		model.addAttribute("epics", epics);
 		model.addAttribute("userStoryPersistRequest", userStoryPersistRequest);
 		return "userstories/new-userstory";
 	}
-
-
+	
 	@PostMapping("/save")
 	public String createUserStory(UserStoryPersistRequest  userStoryPersistRequest,Model model) {
 		log.info("USER_STRY : UserStoryController : createUserStory : saving userStory from  UserStoryPersistRequest: "+userStoryPersistRequest);
@@ -127,6 +141,33 @@ public class UserStoryController {
 		}
 		log.info("USER_STRY : UserStoryController : displayUserStorytFormToUpdate : displaying form");
 		return "userstories/new-userstory";	
+	}
+
+	
+	@GetMapping("/workflow")
+	public String displayUserStorytFormToWorkflow(@RequestParam(value = "id") Long userStoryId,Model model) {
+		log.info("USER_STRY : UserStoryController : displayUserStorytFormToUpdate : to update project with project_id : "+userStoryId);		
+		if(userStoryId!=null) {
+			UserStory userStory=userStorymod.findByUserStoryId(userStoryId);
+			if(userStory.getDateCreated()==null) {
+				userStory.setDateCreated(new Date());
+			}
+			if(userStory!=null) {
+				UserStoryPersistRequest  userStoryPersistRequest=Utils.convertToUserStoryPersistRequest(userStory);
+				List<Epic>epics =epicmod.findAll();
+				List<Team>teams =teammod.findAll();
+				model.addAttribute("teams", teams);
+				model.addAttribute("epics", epics);
+				List<StatusValue>statusValues=statusmod.findAll();
+				model.addAttribute("statusValues", statusValues);
+				log.info("USER_STRY : UserStoryController : displayUserStorytFormToUpdate : created UserStoryPersistRequest : "+userStoryPersistRequest);
+				model.addAttribute("userStoryPersistRequest", userStoryPersistRequest);
+			} else {
+				return "redirect:/userstories";
+			}
+		}
+		log.info("USER_STRY : UserStoryController : displayUserStorytFormToUpdate : displaying form");
+		return "userstories/workflow-userstory";	
 	}
 
 }

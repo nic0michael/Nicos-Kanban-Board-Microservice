@@ -38,6 +38,8 @@ public class UserStory {
 	private String customerReference;	
 
 	private String stage;	
+	
+	private String status;
 
 	@Column(name="epic_id")
 	private Long epicId;
@@ -72,158 +74,188 @@ public class UserStory {
 
 
 
-
-	public UserStory(Long userStoryId, @NotBlank String name, String description, String customerReference,
-			String stage, @NotBlank Long epicId, @NotBlank Long assignedTo, Date startDate, Date endDate, Date dueDate,
-			Date dateCreated, @NotBlank String isActive, List<Employee> employees) {
-		super();
-		this.userStoryId = userStoryId;
-		this.name = name;
-		this.description = description;
-		this.customerReference = customerReference;
-		this.stage = stage;
-		this.epicId = epicId;
-		this.assignedTo = assignedTo;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.dueDate = dueDate;
-		this.dateCreated = dateCreated;
-		this.isActive = isActive;
-	}
+public UserStory(@NotBlank String name, String description, String customerReference, String stage, String status,
+		Long epicId, Long assignedTo, Date startDate, Date endDate, Date dueDate, Date dateCreated, String isActive) {
+	super();
+	this.name = name;
+	this.description = description;
+	this.customerReference = customerReference;
+	this.stage = stage;
+	this.status = status;
+	this.epicId = epicId;
+	this.assignedTo = assignedTo;
+	this.startDate = startDate;
+	this.endDate = endDate;
+	this.dueDate = dueDate;
+	this.dateCreated = dateCreated;
+	this.isActive = isActive;
+}
 
 
 
-
-	public Long getUserStoryId() {
-		return userStoryId;
-	}
-
-
-	public void setUserStoryId(Long userStoryId) {
-		this.userStoryId = userStoryId;
-	}
-
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-	public String getDescription() {
-		return description;
-	}
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
-	public String getCustomerReference() {
-		return customerReference;
-	}
-
-
-	public void setCustomerReference(String customerReference) {
-		this.customerReference = customerReference;
-	}
-
-
-	public String getStage() {
-		return stage;
-	}
-
-
-	public void setStage(String stage) {
-		this.stage = stage;
-	}
-
-
-	public Long getEpicId() {
-		return epicId;
-	}
-
-
-	public void setEpicId(Long epicId) {
-		this.epicId = epicId;
-	}
-
-
-	public Long getAssignedTo() {
-		return assignedTo;
-	}
-
-
-	public void setAssignedTo(Long assignedTo) {
-		this.assignedTo = assignedTo;
-	}
-
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
-
-	public Date getDueDate() {
-		return dueDate;
-	}
-
-
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
-	}
-
-
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-
-
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-
-	public String getIsActive() {
-		return isActive;
-	}
-
-
-	public void setIsActive(String isActive) {
-		this.isActive = isActive;
-	}
+public Long getUserStoryId() {
+	return userStoryId;
+}
 
 
 
+public void setUserStoryId(Long userStoryId) {
+	this.userStoryId = userStoryId;
+}
 
-	@Override
-	public String toString() {
-		return "UserStory [userStoryId=" + userStoryId + ", name=" + name + ", description=" + description
-				+ ", customerReference=" + customerReference + ", stage=" + stage + ", epicId=" + epicId
-				+ ", assignedTo=" + assignedTo + ", startDate=" + startDate + ", endDate=" + endDate + ", dueDate="
-				+ dueDate + ", dateCreated=" + dateCreated + ", isActive=" + isActive 
-				+ "]";
-	}
+
+
+public String getName() {
+	return name;
+}
+
+
+
+public void setName(String name) {
+	this.name = name;
+}
+
+
+
+public String getDescription() {
+	return description;
+}
+
+
+
+public void setDescription(String description) {
+	this.description = description;
+}
+
+
+
+public String getCustomerReference() {
+	return customerReference;
+}
+
+
+
+public void setCustomerReference(String customerReference) {
+	this.customerReference = customerReference;
+}
+
+
+
+public String getStage() {
+	return stage;
+}
+
+
+
+public void setStage(String stage) {
+	this.stage = stage;
+}
+
+
+
+public String getStatus() {
+	return status;
+}
+
+
+
+public void setStatus(String status) {
+	this.status = status;
+}
+
+
+
+public Long getEpicId() {
+	return epicId;
+}
+
+
+
+public void setEpicId(Long epicId) {
+	this.epicId = epicId;
+}
+
+
+
+public Long getAssignedTo() {
+	return assignedTo;
+}
+
+
+
+public void setAssignedTo(Long assignedTo) {
+	this.assignedTo = assignedTo;
+}
+
+
+
+public Date getStartDate() {
+	return startDate;
+}
+
+
+
+public void setStartDate(Date startDate) {
+	this.startDate = startDate;
+}
+
+
+
+public Date getEndDate() {
+	return endDate;
+}
+
+
+
+public void setEndDate(Date endDate) {
+	this.endDate = endDate;
+}
+
+
+
+public Date getDueDate() {
+	return dueDate;
+}
+
+
+
+public void setDueDate(Date dueDate) {
+	this.dueDate = dueDate;
+}
+
+
+
+public Date getDateCreated() {
+	return dateCreated;
+}
+
+
+
+public void setDateCreated(Date dateCreated) {
+	this.dateCreated = dateCreated;
+}
+
+
+
+public String getIsActive() {
+	return isActive;
+}
+
+
+
+public void setIsActive(String isActive) {
+	this.isActive = isActive;
+}
+
+
+
+@Override
+public String toString() {
+	return "UserStory [userStoryId=" + userStoryId + ", name=" + name + ", description=" + description
+			+ ", customerReference=" + customerReference + ", stage=" + stage + ", status=" + status + ", epicId="
+			+ epicId + ", assignedTo=" + assignedTo + ", startDate=" + startDate + ", endDate=" + endDate + ", dueDate="
+			+ dueDate + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
+}
 
 
 

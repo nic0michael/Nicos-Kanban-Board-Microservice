@@ -429,11 +429,12 @@ public class Utils {
 		if (userStory.getUserStoryId() != null) {
 			persistRequest.setUserStoryId(userStory.getUserStoryId().toString());
 		}			
-	    persistRequest.setName	     (userStory.getName	     ());
+	    persistRequest.setName	     (userStory.getName());
 		persistRequest.setDescription(userStory.getDescription());
 		persistRequest.setCustomerReference(userStory.getCustomerReference());
-		persistRequest.setStage	 (userStory.getStage	 ());
-		persistRequest.setIsActive   (userStory.getIsActive   ());	
+		persistRequest.setStage	 (userStory.getStage());
+		persistRequest.setStatus (userStory.getStatus());
+		persistRequest.setIsActive   (userStory.getIsActive());	
 		
 		if(userStory.getAssignedTo()!=null) {
 			persistRequest.setAssignedTo (userStory.getAssignedTo().toString());
@@ -470,6 +471,7 @@ public class Utils {
 			userStory.setDescription(userStoryPersistRequest.getDescription());
 			userStory.setCustomerReference(userStoryPersistRequest.getCustomerReference());
 			userStory.setStage	 (userStoryPersistRequest.getStage	 ());
+			userStory.setStatus (userStoryPersistRequest.getStatus());
 			userStory.setIsActive   (userStoryPersistRequest.getIsActive   ());	
 
 			
@@ -514,6 +516,7 @@ public class Utils {
 		userStory.setDescription(theUserStory.getDescription());
 		userStory.setCustomerReference(theUserStory.getCustomerReference());
 		userStory.setStage	 (theUserStory.getStage	 ());
+		userStory.setStatus (theUserStory.getStatus());
 		userStory.setIsActive   (theUserStory.getIsActive   ());	
 		userStory.setUserStoryId(theUserStory.getUserStoryId());
 		userStory.setAssignedTo (theUserStory.getAssignedTo());	
@@ -557,6 +560,7 @@ public class Utils {
 		persistRequest.setStatus	 (task.getStatus	 ());
 		persistRequest.setIsActive   (task.getIsActive   ());	
 		persistRequest.setStage      (task.getStage      ());
+		persistRequest.setStatus (task.getStatus());
 		
 		if(task.getAssignedTo()!=null) {
 			persistRequest.setAssignedTo (task.getAssignedTo().toString());
@@ -596,7 +600,8 @@ public class Utils {
 			task.setDescription(taskPersistRequest.getDescription());
 			task.setStatus(taskPersistRequest.getStatus());
 			task.setIsActive(taskPersistRequest.getIsActive());	
-			task.setStage(taskPersistRequest.getStage());			
+			task.setStage(taskPersistRequest.getStage());	
+			task.setStatus (taskPersistRequest.getStatus());		
 
 			if(StringUtils.isNotEmpty(taskPersistRequest.getUserStoryId ()) 
 					&& StringUtils.isNumeric(taskPersistRequest.getUserStoryId ())){
@@ -656,6 +661,7 @@ public class Utils {
 		task.setStatus(theTask.getStatus());
 		task.setIsActive(theTask.getIsActive());	
 		task.setStage(theTask.getStage());	
+		task.setStatus (theTask.getStatus());
 		task.setUserStoryId(theTask.getUserStoryId());
 		task.setStoryPoints(theTask.getStoryPoints());
 		task.setStartDate(theTask.getStartDate());
@@ -700,7 +706,8 @@ public class Utils {
 
 		subtaskPersistRequest.setName(subtask.getName()); 
 		subtaskPersistRequest.setDescription(subtask.getDescription()); 
-		subtaskPersistRequest.setIsActive(subtask.getIsActive()); 
+		subtaskPersistRequest.setIsActive(subtask.getIsActive()); 	
+		subtaskPersistRequest.setStatus (subtask.getStatus());
 		
 		if(subtask.getAssignedTo()!=null){
 			subtaskPersistRequest.setAssignedTo(subtask.getAssignedTo().toString()); 
@@ -729,7 +736,8 @@ public class Utils {
 
 	    subtask.setName(subtaskPersistRequest.getName()); 
 		subtask.setDescription(subtaskPersistRequest.getDescription()); 
-		subtask.setIsActive(subtaskPersistRequest.getIsActive()); 
+		subtask.setIsActive(subtaskPersistRequest.getIsActive()); 	
+		subtask.setStatus (subtaskPersistRequest.getStatus());
 
 		if(StringUtils.isNotEmpty(subtaskPersistRequest.getSubtaskId())
 			&& StringUtils.isNumeric(subtaskPersistRequest.getSubtaskId())){			
@@ -762,7 +770,8 @@ public class Utils {
 
 	    subtask.setName(theSubtask.getName()); 
 		subtask.setDescription(theSubtask.getDescription()); 
-		subtask.setIsActive(theSubtask.getIsActive());
+		subtask.setIsActive(theSubtask.getIsActive());	
+		subtask.setStatus (theSubtask.getStatus());
 		subtask.setAssignedTo(theSubtask.getAssignedTo()); 
 		subtask.setStoryPoints(theSubtask.getStoryPoints()); 
 		subtask.setDue_date(theSubtask.getDue_date());

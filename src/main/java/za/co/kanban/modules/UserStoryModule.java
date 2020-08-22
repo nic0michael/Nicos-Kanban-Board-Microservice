@@ -57,7 +57,7 @@ public class UserStoryModule {
 	public List<UserStory> findAll(){
 		System.out.println("getting list of userStorys");
 		List<UserStory> userStorys = (List<UserStory>) repository.findAll();
-		System.out.println("got list of cities : " + userStorys);
+		System.out.println("got list of userstories : " + userStorys);
 		return userStorys;
 	}
 	

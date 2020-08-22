@@ -9,7 +9,8 @@ public class UserStoryPersistRequest {
     private String name;	
 	private String description;
 	private String customerReference;	
-	private String stage;	
+	private String stage;		
+	private String status;
 	private String customerId;
 	private String epicId;
 	private String assignedTo;
@@ -21,14 +22,15 @@ public class UserStoryPersistRequest {
 	
 	public UserStoryPersistRequest() {}
 
-	public UserStoryPersistRequest( String name, String description, String customerReference,
-			String stage, String customerId, String epicId, String assignedTo, String startDate, String endDate,
+	public UserStoryPersistRequest(String name, String description, String customerReference, String stage,
+			String status, String customerId, String epicId, String assignedTo, String startDate, String endDate,
 			String dueDate, String dateCreated, String isActive) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.customerReference = customerReference;
 		this.stage = stage;
+		this.status = status;
 		this.customerId = customerId;
 		this.epicId = epicId;
 		this.assignedTo = assignedTo;
@@ -77,6 +79,14 @@ public class UserStoryPersistRequest {
 
 	public void setStage(String stage) {
 		this.stage = stage;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getCustomerId() {
@@ -146,9 +156,10 @@ public class UserStoryPersistRequest {
 	@Override
 	public String toString() {
 		return "UserStoryPersistRequest [userStoryId=" + userStoryId + ", name=" + name + ", description=" + description
-				+ ", customerReference=" + customerReference + ", stage=" + stage + ", customerId=" + customerId
-				+ ", epicId=" + epicId + ", assignedTo=" + assignedTo + ", startDate=" + startDate + ", endDate="
-				+ endDate + ", dueDate=" + dueDate + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
+				+ ", customerReference=" + customerReference + ", stage=" + stage + ", status=" + status
+				+ ", customerId=" + customerId + ", epicId=" + epicId + ", assignedTo=" + assignedTo + ", startDate="
+				+ startDate + ", endDate=" + endDate + ", dueDate=" + dueDate + ", dateCreated=" + dateCreated
+				+ ", isActive=" + isActive + "]";
 	}
 
 

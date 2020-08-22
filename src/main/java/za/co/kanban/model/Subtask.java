@@ -1,5 +1,4 @@
 package za.co.kanban.model;
-import java.util.Objects;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -39,6 +38,8 @@ public class Subtask {
 
 	@Column(name="due_date")
 	private Date due_date;
+	
+	private String status;
 
 	@Column(name="date_created", nullable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -50,8 +51,8 @@ public class Subtask {
 	
 	public Subtask() {}
 
-	public Subtask(@NotBlank String name, String description, String status, @NotBlank Long assignedTo,
-			@NotBlank Long tasksId, Integer storyPoints, Date due_date, Date dateCreated, @NotBlank String isActive) {
+	public Subtask(@NotBlank String name, String description, Long assignedTo, Long tasksId, Integer storyPoints,
+			Date due_date, String status, Date dateCreated, String isActive) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -59,11 +60,10 @@ public class Subtask {
 		this.tasksId = tasksId;
 		this.storyPoints = storyPoints;
 		this.due_date = due_date;
+		this.status = status;
 		this.dateCreated = dateCreated;
 		this.isActive = isActive;
 	}
-
-
 
 	public Long getSubtaskId() {
 		return subtaskId;
@@ -121,7 +121,13 @@ public class Subtask {
 		this.due_date = due_date;
 	}
 
+	public String getStatus() {
+		return status;
+	}
 
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public Date getDateCreated() {
 		return dateCreated;
@@ -141,11 +147,17 @@ public class Subtask {
 
 	@Override
 	public String toString() {
-		return "Subtask [subtaskId=" + subtaskId + ", name=" + name + ", description=" + description 
-				+ ", assignedTo=" + assignedTo + ", tasksId=" + tasksId + ", storyPoints=" + storyPoints
-				+ ", due_date=" + due_date + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
+		return "Subtask [subtaskId=" + subtaskId + ", name=" + name + ", description=" + description + ", assignedTo="
+				+ assignedTo + ", tasksId=" + tasksId + ", storyPoints=" + storyPoints + ", due_date=" + due_date
+				+ ", status=" + status + ", dateCreated=" + dateCreated + ", isActive=" + isActive + ", getSubtaskId()="
+				+ getSubtaskId() + ", getName()=" + getName() + ", getDescription()=" + getDescription()
+				+ ", getAssignedTo()=" + getAssignedTo() + ", getTasksId()=" + getTasksId() + ", getStoryPoints()="
+				+ getStoryPoints() + ", getDue_date()=" + getDue_date() + ", getStatus()=" + getStatus()
+				+ ", getDateCreated()=" + getDateCreated() + ", getIsActive()=" + getIsActive() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
-	
+
+
 	
 }

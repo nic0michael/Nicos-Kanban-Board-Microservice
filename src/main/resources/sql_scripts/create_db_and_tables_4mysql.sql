@@ -101,6 +101,18 @@ CREATE TABLE `epic` (
   UNIQUE KEY `UK_5o8yf45ofj85s5alalaeuvi1j` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;   
 
+-- SHOW CREATE TABLE `status_value`;   
+DROP TABLE IF EXISTS `status_value`;   
+CREATE TABLE `status_value` (
+  `status_value_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `display_value` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `sort_order` int(11) DEFAULT NULL,
+  PRIMARY KEY (`status_value_id`),
+  UNIQUE KEY `UK_8ea8j0j4d04asye727ncmcngm` (`display_value`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;  
+
+
 -- SHOW CREATE TABLE `subtask`; 
 DROP TABLE IF EXISTS subtask;
 CREATE TABLE `subtask` (

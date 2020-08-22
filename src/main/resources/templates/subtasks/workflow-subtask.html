@@ -45,6 +45,16 @@
 					</select>
 				</div>
 
+				
+				<b>Set the Status:</b>
+				<div class="form-group row">
+					<select th:field="${subtaskPersistRequest.status}">
+						<option
+							th:each="statusValue : ${statusValues}"
+							th:value="${statusValue.description}"
+							th:text="${statusValue.displayValue}"></option>
+					</select>
+				</div>
 
 				<div class="form-group row">
 					<button class="btn btn-info col-2" type="submit">Save Task</button>

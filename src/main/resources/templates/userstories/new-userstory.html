@@ -26,6 +26,16 @@
 			<div class="form-group row">
 				<input type="text" placeholder="UserStory Name" th:field="*{name}">
 			</div>
+			
+			<b>Set the Status:</b>
+			<div class="form-group row">
+				<select th:field="${userStoryPersistRequest.status}">
+					<option
+						th:each="statusValue : ${statusValues}"
+						th:value="${statusValue.description}"
+						th:text="${statusValue.name}"></option>
+				</select>
+			</div>
 
 			<div class="form-group row">
 				<select th:field="${userStoryPersistRequest.stage}">

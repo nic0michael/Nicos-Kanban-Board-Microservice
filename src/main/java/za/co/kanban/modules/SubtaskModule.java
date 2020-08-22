@@ -68,7 +68,7 @@ public class SubtaskModule {
 	public List<Subtask> findAll(){
 		System.out.println("getting list of subtasks");
 		List<Subtask> subtasks = (List<Subtask>) repository.findAll();
-		System.out.println("got list of cities : " + subtasks);
+		System.out.println("got list of subtasks : " + subtasks);
 		return subtasks;
 	}
 		

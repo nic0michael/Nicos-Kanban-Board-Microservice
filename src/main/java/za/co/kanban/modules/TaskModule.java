@@ -57,7 +57,7 @@ public class TaskModule {
 	public List<Task> findAll(){
 		System.out.println("getting list of tasks");
 		List<Task> tasks = (List<Task>) repository.findAll();
-		System.out.println("got list of cities : " + tasks);
+		System.out.println("got list of tasks : " + tasks);
 		return tasks;
 	}
 	
