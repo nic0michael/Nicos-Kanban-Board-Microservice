@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head th:replace="layouts :: header"></head>
+<head th:replace="layouts :: header">
+  <title>Kanban Board</title>
+</head>
 <body>
 	<nav th:replace="layouts :: navbarEMP"></nav>
 	<div sec:authorize="isAuthenticated()">
@@ -31,7 +33,8 @@
 					
 					<td>
 					 <div sec:authorize="hasRole('ADMIN')">
-					 	<a th:href="@{/kanban-board/employees/verander/(id=${aEmployee.employeeId})}" class="btn-info btn-sm" >Update</a>&nbsp;&nbsp;&nbsp;
+					 	<a th:href="@{/kanban-board/employees/workflow/(id=${aEmployee.employeeId})}" class="btn-info btn-sm" >Assign to Team</a>&nbsp;&nbsp;&nbsp;
+					 	<a th:href="@{/kanban-board/employees/verander/(id=${aEmployee.employeeId})}" class="btn-info btn-sm" >Edit</a>&nbsp;&nbsp;&nbsp;
 					 	<a th:href="@{/kanban-board/employees/maakdood/(id=${aEmployee.employeeId})}" class="btn-danger btn-sm"  
 				  	 	onClick="if (!(confirm('Are you sure you want to delete this employee?'))) return false" >Delete</a>	
 				  	 </div>		

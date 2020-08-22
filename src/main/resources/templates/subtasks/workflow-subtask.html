@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header">
+  <title>Kanban Board</title>
+</head>
+<body>
+	<nav th:replace="layouts :: navbarSUBTASK"></nav>
+	<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
+
+
+
+		<br>
+		<div class="container">
+
+			<H3>Assign Subtask to</H3>
+			<br>
+			<br>
+			<form th:action="@{/kanban-board/subtasks/save}" th:object="${subtaskPersistRequest}"
+				method="POST">
+
+
+				<!--  This will be used to bind to the task that was clicked on (USED FOR UPDATES)-->
+				<input type="hidden" th:field="${subtaskPersistRequest.dateCreated}" />
+				<input type="hidden" th:field="${subtaskPersistRequest.subtaskId}" />
+				<input type="hidden" th:field="${subtaskPersistRequest.name}" />
+				<input type="hidden" th:field="${subtaskPersistRequest.description}" />			
+				<input type="hidden" th:field="${subtaskPersistRequest.storyPoints}" />				
+				<input type="hidden" th:field="${subtaskPersistRequest.taskId}" />				
+				<input type="hidden" th:field="${subtaskPersistRequest.due_date}" />				
+				<input type="hidden" th:field="${subtaskPersistRequest.isActive}" />	
+				
+				<b>Task:</b>
+				<div class="form-group row" th:text="${subtaskPersistRequest.name}"> </div>
+				
+				<b>Description:</b>
+				<div class="form-group row" th:text="${subtaskPersistRequest.description}"> </div>
+
+
+				<b>Assigned the Task to Employee:</b>
+				<div class="form-group row">
+					<select th:field="${subtaskPersistRequest.assignedTo}">
+						<option th:each="employee : ${employees}" th:value="${employee.employeeId}" th:text="${employee.fullName}"></option>
+					</select>
+				</div>
+
+
+				<div class="form-group row">
+					<button class="btn btn-info col-2" type="submit">Save Task</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>

@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="layouts :: header"></head>
+<head th:replace="layouts :: header">
+  <title>Kanban Board</title>
+</head>
 <body>
 	<nav th:replace="layouts :: navbarSUBTASK"></nav>
 	<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header">
+  <title>Kanban Board</title>
+</head>
+<body>
+	<nav th:replace="layouts :: navbarEMP"></nav>
+	<div sec:authorize="hasRole('ADMIN')">
+
+		
+
+		<br>
+		<div class="container">
+
+			<H3>Capture Employee</H3>
+		<br><br>
+			<form th:action="@{/kanban-board/employees/save}"
+				th:object="${employeetPersistRequest}" method="POST">
+
+
+				<!--  This will be used to bind to the employee that was clicked on (USED FOR UPDATES)-->
+				<input type="hidden" th:field="${employeetPersistRequest.employeeId}" />
+				<input type="hidden" th:field="${employeetPersistRequest.fullName}" />
+				<input type="hidden" th:field="${employeetPersistRequest.email}" />
+				<input type="hidden" th:field="${employeetPersistRequest.idNumber}" />
+				<input type="hidden" th:field="${employeetPersistRequest.userId}" />
+				<input type="hidden" th:field="${employeetPersistRequest.enabled}" />
+				<input type="hidden" th:field="${employeetPersistRequest.authority}" />
+
+				<b>Assigned the Employee to Team:</b>
+				<div class="form-group row">
+					<select th:field="${employeetPersistRequest.teamId}">
+						<option th:each="team : ${teams}" th:value="${team.teamId}" th:text="${team.name}"></option> 
+					</select>
+				</div>
+
+				<div class="form-group row">
+					<button class="btn btn-info col-2" type="submit">Save
+						Employee</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>

@@ -124,5 +124,20 @@ public class EmployeeController {
 		log.info("PROJECT_MAN : EmployeeController : displayEmployeetFormToUpdate : displaying form");
 		return "employees/new-employee";	
 	}
+	
+	@GetMapping("/workflow")
+	public String displayEmployeetFormToWorkflow(@RequestParam(value = "id") Long employeeId,Model model) {
+		log.info("PROJECT_MAN : EmployeeController : displayEmployeetFormToUpdate : to update project with project_id : "+employeeId);		
+		if(employeeId!=null) {
+			Employee employee=emplmod.findByEmployeeId(employeeId);
+			EmployeePersistRequest  employeetPersistRequest=Utils.convertToEmployeePersistRequest(employee);
+			log.info("PROJECT_MAN : EmployeeController : displayEmployeetFormToUpdate : created EmployeePersistRequest : "+employeetPersistRequest);
+			List<Team> teams = teammod.findAll();
+			model.addAttribute("teams", teams);
+			model.addAttribute("employeetPersistRequest", employeetPersistRequest);
+		}
+		log.info("PROJECT_MAN : EmployeeController : displayEmployeetFormToUpdate : displaying form");
+		return "employees/workflow-employee";	
+	}
 
 }

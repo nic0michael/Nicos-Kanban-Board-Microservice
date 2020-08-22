@@ -71,6 +71,20 @@ public class TaskController {
 		return "tasks/new-task";
 	}
 
+	
+	@GetMapping("/board")
+	public String displayTaskFBoard(Model model) {
+		TaskPersistRequest taskPersistRequest=new TaskPersistRequest();
+		log.info("PROJECT_MAN : TaskController : displayTaskForm : creating new taskPersistRequest");
+//		Task task=new Task();
+		model.addAttribute("taskPersistRequest",taskPersistRequest);
+		List<UserStory> userStories = userstmod.findAll();
+		List<Employee> employees = empmod.findAll();
+		model.addAttribute("employees", employees);
+		model.addAttribute("userStories", userStories);
+		log.info("PROJECT_MAN : TaskController : displayTaskForm : displaying form");
+		return "tasks/task-board";
+	}
 
 	@PostMapping("/save")
 	public String createTask( TaskPersistRequest taskPersistRequest,Model model) {
@@ -112,5 +126,24 @@ public class TaskController {
 		}
 		log.info("PROJECT_MAN : TaskController : displayTaskFormToUpdate : displaying form");
 		return "tasks/new-task";		
+	}
+
+	
+	@GetMapping("/workflow")
+	public String displayTaskFormToWorkflow(@RequestParam(value = "id") Long taskId,Model model) {
+		log.info("PROJECT_MAN : TaskController : displayTaskFormToUpdate : to update task with task_id : "+taskId);		
+		if(taskId!=null) {
+			Task task=taskmod.findByTaskId(taskId);
+			TaskPersistRequest taskPersistRequest=Utils.convertToTaskPersistRequest(task);
+			taskPersistRequest.setTaskId(""+taskId);
+			log.info("PROJECT_MAN : TaskController : displayTaskFormToUpdate : creating new taskPersistRequest");
+			model.addAttribute("taskPersistRequest",taskPersistRequest);
+			List<UserStory> userStories = userstmod.findAll();
+			 List<Employee> employees = empmod.findAll();
+			model.addAttribute("employees", employees);
+			model.addAttribute("userStories", userStories);
+		}
+		log.info("PROJECT_MAN : TaskController : displayTaskFormToUpdate : displaying form");
+		return "tasks/workflow-task";		
 	}
 }

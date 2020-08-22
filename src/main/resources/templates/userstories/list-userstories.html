@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 
-<head th:replace="layouts :: header"></head>
+<head th:replace="layouts :: header">
+  <title>Kanban Board</title>
+</head>
 <body>
 <nav th:replace="layouts :: navbarUSR"></nav>
 	<div sec:authorize="isAuthenticated()">
@@ -33,7 +35,7 @@
 					<td th:text="${aUserStory.endDate}" ></td>
 					<td>
 					<div  sec:authorize=hasAnyRole('ADMIN','MANAGER')>
-					 	<a th:href="@{/kanban-board/userstories/verander/(id=${aUserStory.userStoryId})}" class="btn-info btn-sm" >Update</a>&nbsp;&nbsp;&nbsp;
+					 	<a th:href="@{/kanban-board/userstories/verander/(id=${aUserStory.userStoryId})}" class="btn-info btn-sm" >Edit</a>&nbsp;&nbsp;&nbsp;
 					 	<a th:href="@{/kanban-board/userstories/maakdood/(id=${aUserStory.userStoryId})}" class="btn-danger btn-sm" 
 			  		 	onClick="if (!(confirm('Are you sure you want to delete this project?'))) return false" >Delete</a> 
 			  		 </div>  	

@@ -73,6 +73,21 @@ public class SubtaskController {
 	}
 
 
+	
+	@GetMapping("/board")
+	public String displaySubtaskBoard(Model model) {
+		SubtaskPersistRequest subtaskPersistRequest=new SubtaskPersistRequest();
+		log.info("PROJECT_MAN : SubtaskController : displaySubtaskForm : creating new subtaskPersistRequest");
+//		Subtask subtask=new Subtask();
+		model.addAttribute("subtaskPersistRequest",subtaskPersistRequest);
+		List<Employee> employees = emplmod.findAll();
+		List<Task> tasks = taskmod.findAll();
+		model.addAttribute("employees", employees);
+		model.addAttribute("tasks", tasks);
+		log.info("PROJECT_MAN : SubtaskController : displaySubtaskForm : displaying form");
+		return "subtasks/subtask-board";
+	}
+
 	@PostMapping("/save")
 	public String createSubtask( SubtaskPersistRequest subtaskPersistRequest,Model model) {
 		log.info("PROJECT_MAN : SubtaskController : createSubtask : saving subtask from  SubtaskPersistRequest: ->"+subtaskPersistRequest);
@@ -113,5 +128,24 @@ public class SubtaskController {
 		}
 		log.info("PROJECT_MAN : SubtaskController : displaySubtaskFormToUpdate : displaying form");
 		return "subtasks/new-subtask";		
+	}
+
+	
+	@GetMapping("/workflow")
+	public String displaySubtaskFormToUWorkflow(@RequestParam(value = "id") Long subtaskId,Model model) {
+		log.info("PROJECT_MAN : SubtaskController : displaySubtaskFormToUpdate : to update subtask with subtask_id : "+subtaskId);		
+		if(subtaskId!=null) {
+			Subtask subtask=subtaskmod.findBySubtaskId(subtaskId);
+			SubtaskPersistRequest subtaskPersistRequest=Utils.convertToSubtaskPersistRequest(subtask);
+			subtaskPersistRequest.setSubtaskId(""+subtaskId);
+			log.info("PROJECT_MAN : SubtaskController : displaySubtaskFormToUpdate : creating new subtaskPersistRequest");
+			model.addAttribute("subtaskPersistRequest",subtaskPersistRequest);
+			List<Employee> employees = emplmod.findAll();
+			List<Task> tasks = taskmod.findAll();
+			model.addAttribute("employees", employees);
+			model.addAttribute("tasks", tasks);
+		}
+		log.info("PROJECT_MAN : SubtaskController : displaySubtaskFormToUpdate : displaying form");
+		return "subtasks/workflow-subtask";		
 	}
 }
