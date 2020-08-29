@@ -14,7 +14,7 @@
 			<a th:href="@{/kanban-board/userstories/board}" class="btn-primary btn-sm mb-3" >Userstory Kanban Board</a>
 		</div>
 		<div>&nbsp;</div>
-		<div sec:authorize="hasRole('MANAGER')">
+		<div sec:authorize="hasAnyRole('ADMIN','MANAGER')">
 			<a th:href="@{/kanban-board/userstories/new}" class="btn-primary btn-sm mb-3">Add new UserStory</a>
 		</div>
 		<br><br>

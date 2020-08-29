@@ -45,9 +45,10 @@
 				<b>Set the Status:</b>
 				<div class="form-group row">
 					<select th:field="${taskPersistRequest.status}">
-						<option th:each="statusValue : ${statusValues}"
-							th:value="${statusValue.description}"
-							th:text="${statusValue.displayValue}">
+						<option
+							th:each="statusValue : ${statusValues}"
+							th:value="${statusValue.displayValue}"
+							th:text="${statusValue.description}">
 						</option>
 					</select>
 				</div>

@@ -26,7 +26,7 @@
 				<tr>
 					<th>Subtask Name</th>
 					<th>Description</th>
-					<th>Subtask Id</th>
+					<th>Status</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -34,9 +34,7 @@
 				<tr th:each="aSubtask : ${subtasks}">
 					<td th:text="${aSubtask.name}"></td>
 					<td th:text="${aSubtask.description}"></td>
-					<td th:text="${aSubtask.subtaskId}" sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')"></td>
-					<td sec:authorize=hasAnyRole('MANAGER','TEAMMEMBER','USER')>hidden</td>
-					
+					<td th:text="${aSubtask.status}"></td>					
 					<td>
 					 <div sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')">
 				  	 	<a th:href="@{/kanban-board/subtasks/workflow/(id=${aSubtask.subtaskId})}" class="btn-info btn-sm" >Assign subtask to</a>

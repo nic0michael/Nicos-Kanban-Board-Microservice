@@ -26,7 +26,7 @@
 				<tr>
 					<th>Task Name</th>
 					<th>Description</th>
-					<th>Task Id</th>
+					<th>Status</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -34,8 +34,7 @@
 				<tr th:each="aTask : ${tasksList}">
 					<td th:text="${aTask.name}"></td>
 					<td th:text="${aTask.description}"></td>
-					<td th:text="${aTask.taskId}" sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')"></td>
-					<td sec:authorize=hasAnyRole('MANAGER','TEAMMEMBER','USER')>hidden</td>
+					<td th:text="${aTask.status}"></td>
 					
 					<td>
 					 <div sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')">

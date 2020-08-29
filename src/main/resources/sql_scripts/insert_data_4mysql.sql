@@ -51,6 +51,7 @@ insert into task (name,description) values ('Recreate that Bagdad Battery','This
 
 insert into subtask (name,description,story_points) values ('Design new Bagdad Battery','Design solution',3 );
 
+-- TERSE VERSION OF THE STATUS VALUES
 delete from status_value;
 insert into status_value (sort_order,display_value,description) values (0,'UNASSIGNED','UNASSIGNED');
 insert into status_value (sort_order,display_value,description) values (1,'DESIGN','DESIGN');
@@ -73,6 +74,18 @@ insert into status_value (sort_order,display_value,description) values (17,'BUSI
 insert into status_value (sort_order,display_value,description) values (18,'DEPLOY TO PROD','DEPLOY TO PRODUCTION ENVIRONMENT');
 insert into status_value (sort_order,display_value,description) values (19,'DEPLOYMENT TO PROD COMPLETED','DEPLOYMENT TO PRODUCTION ENVIRONMENT COMPLETED');
 insert into status_value (sort_order,display_value,description) values (20,'COMPLETED','COMPLETED');
+
+-- SHORTER VERSION OF THE STATUS VALUES
+
+delete from status_value;
+insert into status_value (sort_order,display_value,description) values (0,'UNPRIORITIZED','UNPRIORITIZED');
+insert into status_value (sort_order,display_value,description) values (1,'PRIORITIZED','PRIORITIZED');
+insert into status_value (sort_order,display_value,description) values (2,'DESIGNING','DESIGNING');
+insert into status_value (sort_order,display_value,description) values (3,'DEVELOPING','DEVELOPING');
+insert into status_value (sort_order,display_value,description) values (4,'TESTING','TESTING IN QA ENVIRONMENT');
+insert into status_value (sort_order,display_value,description) values (5,'UAT TESTING','UAT TESTING');
+insert into status_value (sort_order,display_value,description) values (6,'READY','READY TO DEPLOY TO PRODUCTION ENVIRONMENT');
+insert into status_value (sort_order,display_value,description) values (7,'COMPLETED','COMPLETED');
 
 -- =============================== CREATE ADMINISTRATOR USER SQL SCRIPT ==================================================================
 --

@@ -17,7 +17,7 @@
 			<a th:href="@{/kanban-board/subtasks/board}" class="btn-primary btn-sm mb-3" >Subtask Kanban Board</a>
 		</div>
 		<div>&nbsp;</div>
-		<div sec:authorize="hasRole('MANAGER')">
+		<div sec:authorize="hasAnyRole('ADMIN','MANAGER')">
 			<a th:href="@{/kanban-board/userstories/new}" class="btn-primary btn-sm mb-3">Add new UserStory</a>
 		</div>
 		<br><br>
@@ -26,13 +26,15 @@
 			<thead class="thead-dark">
 				<tr>
 					<th>UserStory Name</th>
-					<th>UserStory Status</th>
+					<th>Description</th>
+					<th>Status</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="aUserStory : ${userStoryList}" >	
-					<td th:text="${aUserStory.name}" ></td>
+					<td th:text="${aUserStory.name}" ></td>	
+					<td th:text="${aUserStory.description}" ></td>
 					<td th:text="${aUserStory.status}" ></td>
 					<td>
 					<div sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')">

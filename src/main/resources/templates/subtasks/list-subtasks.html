@@ -22,6 +22,7 @@
 				<tr>
 					<th>Subtask Name</th>
 					<th>Description</th>
+					<th>Status</th>
 					<th>Subtask Id</th>
 					<th>Action</th>
 				</tr>
@@ -30,6 +31,7 @@
 				<tr th:each="aSubtask : ${subtasks}">
 					<td th:text="${aSubtask.name}"></td>
 					<td th:text="${aSubtask.description}"></td>
+					<td th:text="${aSubtask.status}"></td>
 					<td th:text="${aSubtask.subtaskId}" sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')"></td>
 					<td sec:authorize=hasAnyRole('MANAGER','TEAMMEMBER','USER')>hidden</td>
 					

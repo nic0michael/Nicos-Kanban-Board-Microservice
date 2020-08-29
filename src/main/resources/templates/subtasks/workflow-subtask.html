@@ -51,8 +51,9 @@
 					<select th:field="${subtaskPersistRequest.status}">
 						<option
 							th:each="statusValue : ${statusValues}"
-							th:value="${statusValue.description}"
-							th:text="${statusValue.displayValue}"></option>
+							th:value="${statusValue.displayValue}"
+							th:text="${statusValue.description}">
+						</option>
 					</select>
 				</div>
 
