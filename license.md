@@ -67,5 +67,5 @@ This  licensing conditions of this software shall be changed to read as follows:
 No Liability is accepted or implied for any losses in profit or any losses in anticipated profits 
 That the user shall agree to comply with these terms when using this software.
 
-##Priorities for development
+## Priorities for development
 The chief Architect of this software reserves the right to determine the priorities of any features proposed in a whish list to be placed in the Priority list
