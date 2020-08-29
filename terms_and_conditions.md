@@ -13,6 +13,7 @@ This software is also subject to the Exceptions as laid out in the License of th
 
 ## This Software is provided to the user Free of charge
 This software is provided in terms of South African law as : " VOETS TOETS" "AS IS" (in English) with no warranty and no Guarantee provided or implied
+
 However the developers of this software product may offer aditional diagnostic reports and charge a fee to recover the labour costs involved in making these changes this will be subject to prior quotation.
 
 ## No Warranty is provided or implied
