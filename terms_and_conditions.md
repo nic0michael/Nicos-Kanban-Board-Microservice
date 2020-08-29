@@ -1,22 +1,30 @@
 # Kanban Board Spring Boot Microservice
 
-# Legal Terms and conditions
+# Legal Terms and conditions for the usage of this software product
 
 ## Free Open Source FOS
 This project is Free Open Source code FOS
 It is provided free of chanrge and subjects to the terms of this project
 
-## No Warranty
-No Warrantee is provided or implied 
+# License
+## This software is licensed under the "GNU GENERAL PUBLIC LICENSE: Version 3, 29 June 2007"
+[For more information about the licensing conditions of this software please click here](https://github.com/nic0michael/Nicos-Kanban-Board-Microservice/blob/master/license.md)
 
-## No Liability
-No liability is implied by the developers
-The developers of this project will not be liable for loss in profit or loss in anticipated profits.
+## No Warranty is provided or implied
+This software is provided in terms of South African law as : " VOETS TOETS" "AS IS" (in English) with no warranty and no Guarantee provided or implied
+That the user shall agree to comply with these terms when using this software.
+
+## The developers of this sofware product accept No Liability when using this software
+No liability is implied or accepted by the developers
+By using this software you accept that the developers of this project will not be liable for loss in profit or loss in anticipated profits of for any other liability.
+
 
 ##User Agreememt 
-By using this project you agree with the terms and conditions of this project   
-that No warrantee is provided or implied and that you will not expect any Warrantee and will use this 
-prodduct without warantee.
+**By using this project you agree with the terms and conditions** of this project **as well as accepting the conditions laid out by the license** of this software **including the Exceptions** laid out in the License.
+
+**That No warrantee is provided or implied** and that you will not expect any Warrantee and will use this software prodduct without warantee.
+
+By using this software you agree that the Developers of this software product 
 
 By using this project you agree that the developers of this project will not accept any liability for any problems,issues, or damages caused by using this project and as such will not be held liable for what ever may arise from using this software and that you will not hold them liable for any reasons not described here whatsoever.
 
