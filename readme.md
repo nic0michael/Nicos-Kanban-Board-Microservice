@@ -55,35 +55,11 @@ Read the deployment Instructions here: [https://github.com/nic0michael/KanbanBoa
 [For more information about the licensing conditions of this software please click here](https://github.com/nic0michael/Nicos-Kanban-Board-Microservice/blob/master/license.md)
 
 This provides significant Freedoms for the users as well as the developers of this project. 
+Exceptions to the Licensing conditions of this software:
+By using this software you agree to the Terms and conditions as well as the License and the Exceptions of the License of this software
 
-# Exceptions to the Licensing conditions of this software:
-
-**In the GPLVersion 3 License section 5.Conveying Modified Source Versions.
-This  licensing conditions of this software shall also include the following condition:**
-
-Should you make a copy of this software with the intention to change then the source code of your changes must be published in one of the industry standard repositories (like github,sourceforge or any of the popular repositories for opensource software)  on the internet with free public access to that code.  
-Credit must also be given to this project in your readme.md or equivalent file in the repository hosting your open source code.
-
-The Owner of this code reserves the right to create a seperate closed source comercial features for this project should it be so deemed.
-
-
-**In the GPLVersion 3 License section 15. Disclaimer of Warranty :
-This  licensing conditions of this software shall be changed to read as follows:**
-
-**No Warranty is provided or implied**
-This software is provided in terms of South African law as : " VOETS TOETS" "AS IS" (in English) with no warranty and no Guarantee provided or implied
-That the user shall agree to comply with these terms when using this software.
-
-
-**In the GPLVersion 3 License section 16. Limitation of Liability.
-This  licensing conditions of this software shall be changed to read as follows:**
-
-**The developers of this software provide it as Free Open Source software.**
-**The developers accept No Liability when using this software**
-No Liability is accepted or implied for any losses in profit or any losses in anticipated profits 
-That the user shall agree to comply with these terms when using this software.
-
-
+##Priorities for development
+The chief Architect of this software reserves the right to determine the priorities of any features proposed in a whish list to be placed in the Priority list
 
 
 # References
