@@ -54,12 +54,17 @@ Read the deployment Instructions here: [https://github.com/nic0michael/KanbanBoa
 ## This software is licensed under the "GNU GENERAL PUBLIC LICENSE: Version 3, 29 June 2007"
 [For more information about the licensing conditions of this software please click here](https://github.com/nic0michael/Nicos-Kanban-Board-Microservice/blob/master/license.md)
 
+This provides significant Freedoms for the users as well as the developers of this project. 
+
 # Exceptions to the Licensing conditions of this software:
 
 **In the GPLVersion 3 License section 5.Conveying Modified Source Versions.
 Shall also include the following condition:**
 
-Should you make a copy of this software with the intention to change then the source code of your changes must be published in one of the industry standard repositories (like github,sourceforge or any of the popular repositories for opensource software)  on the internet with free public access to that code.
+Should you make a copy of this software with the intention to change then the source code of your changes must be published in one of the industry standard repositories (like github,sourceforge or any of the popular repositories for opensource software)  on the internet with free public access to that code.  
+Credit must also be given to this project in your readme.md or equivalent file in the repository hosting your open source code.
+
+The Owner of this code reserves the right to create a seperate closed source comercial features for this project should it be so deemed.
 
 
 **In the GPLVersion 3 License section 15. Disclaimer of Warranty :
