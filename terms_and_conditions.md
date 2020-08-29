@@ -29,7 +29,8 @@ By using this software you accept that the developers of this project will not b
 
 **That No warrantee is provided or implied** and that you will not expect any Warrantee and will use this software prodduct without warantee.
 
-By using this software you agree that the Developers of this software product 
+## Acceptance of these terms and conditions
+By using this software you agree that no warrantee is provided or implied.
 
 By using this project you agree that the developers of this project will not accept any liability for any problems,issues, or damages caused by using this project and as such will not be held liable for what ever may arise from using this software and that you will not hold them liable for any reasons not described here whatsoever.
 
