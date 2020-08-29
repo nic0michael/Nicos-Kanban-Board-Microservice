@@ -59,7 +59,7 @@ Exceptions to the Licensing conditions of this software:
 By using this software you agree to the Terms and conditions as well as the License and the Exceptions of the License of this software
 
 ## Priorities for development
-The chief Architect of this software reserves the right to determine the priorities of any features proposed in a whish list to be placed in the Priority list
+The Chief Architect of this software reserves the right to determine the priorities of any features proposed in a whish list to be placed in the Priority list
 
 
 # References
