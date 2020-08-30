@@ -111,5 +111,41 @@ VALUES      ( 'Youe_administrators_fullname',
               '$2a$10$r4325krPku2wNegHS5zLY.4PWtbc4Xz7Zu4NfS2AWaiNVNONtrt.2'); -- password = P@55w0rd
 --              
 -- =============================== END OF CREATE ADMINISTRATOR USER SQL SCRIPT ===========================================================
-              
 
+-- TASK-EMPLOYEE query -- TASK KANBAN BOARD
+SELECT t.status as status,t.task_id as task_id, t.name as name,  e.fullname as assigned_to, t.due_date as due_date
+ FROM task t
+ LEFT JOIN employee e 
+ ON t.assigned_to = e.employee_id
+ LEFT JOIN status_value s 
+ ON t.status = s.display_value
+ ORDER BY s.sort_order, t.name,t.due_date;
+
+-- SUBTASK-EMPLOYEE -- SUBTASK KANBAN BOARD
+SELECT t.status as status,t.subtask_id as subtask_id, t.name as name,  e.fullname as assigned_to, t.due_date as due_date
+ FROM subtask t
+ LEFT JOIN employee e 
+ ON t.assigned_to = e.employee_id
+ LEFT JOIN status_value s 
+ ON t.status = s.display_value
+ ORDER BY s.sort_order, t.name,t.due_date;
+              
+-- USERSTORY-TEAM -- USERSTORY KANBAN BOARD 
+SELECT t.status as status,t.user_story_id as user_story_id, t.name as name,  e.name as assigned_to, t.due_date as due_date
+ FROM user_story t
+ LEFT JOIN team e 
+ ON t.assigned_to = e.team_id
+ LEFT JOIN status_value s 
+ ON t.status = s.display_value
+ ORDER BY s.sort_order, t.name,t.due_date;
+
+
+-- EMPLOYEE-TASK-COUNT
+SELECT e.fullname as fullname,count(*) as task_count
+ FROM employee e 
+ LEFT JOIN task t
+ ON t.assigned_to = e.employee_id
+ WHERE t.task_id IS NOT NULL
+ GROUP BY e.fullname
+ ORDER BY e.fullname;
+ 

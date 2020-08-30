@@ -37,8 +37,7 @@ public class UserStory {
 	@Column(name="customer_reference")
 	private String customerReference;	
 
-	private String stage;	
-	
+	private String stage;		
 	private String status;
 
 	@Column(name="epic_id")
