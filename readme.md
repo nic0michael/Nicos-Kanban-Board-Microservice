@@ -35,7 +35,7 @@ It is provided free of chanrge and subjects to the terms of this project
 ## Legal Terms and conditions for use of this project
 See seperate document terms_and_conditions.md
 
-##User Agreememt 
+## User Agreememt 
 By using this project you agree to the acceptance of the legal terms and conditions of this project.
 
 
