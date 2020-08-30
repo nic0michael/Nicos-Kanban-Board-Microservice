@@ -119,15 +119,17 @@ SELECT t.status as status,t.task_id as task_id, t.name as name,  e.fullname as a
  ON t.assigned_to = e.employee_id
  LEFT JOIN status_value s 
  ON t.status = s.display_value
+ WHERE s.sort_order > 0
  ORDER BY s.sort_order, t.name,t.due_date;
 
 -- SUBTASK-EMPLOYEE -- SUBTASK KANBAN BOARD
-SELECT t.status as status,t.subtask_id as subtask_id, t.name as name,  e.fullname as assigned_to, t.due_date as due_date
+SELECT t.status as status,t.subtask_id as subtask_id, t.name as name,  e.fullname as assigned_to, t.due_date as due_date,s.sort_order
  FROM subtask t
  LEFT JOIN employee e 
  ON t.assigned_to = e.employee_id
  LEFT JOIN status_value s 
  ON t.status = s.display_value
+ WHERE s.sort_order > 0
  ORDER BY s.sort_order, t.name,t.due_date;
               
 -- USERSTORY-TEAM -- USERSTORY KANBAN BOARD 
@@ -137,6 +139,7 @@ SELECT t.status as status,t.user_story_id as user_story_id, t.name as name,  e.n
  ON t.assigned_to = e.team_id
  LEFT JOIN status_value s 
  ON t.status = s.display_value
+ WHERE s.sort_order > 0
  ORDER BY s.sort_order, t.name,t.due_date;
 
 
