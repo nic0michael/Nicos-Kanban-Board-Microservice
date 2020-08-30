@@ -27,6 +27,13 @@ public class Task {
     private String name;
 	
 	private String description;
+	
+	@Column(name="customer_reference")
+	private String customerReference;	
+
+	@Column(name="customer_id")
+	private Long customerId;
+	
 	private String status;	
 
 	@Column(name="assigned_to")
