@@ -69,7 +69,7 @@ By using this software you agree to the Terms and conditions as well as the Lice
 
 
 ## Priorities for development
-The Chief Architect of this software reserves the right to determine the priorities of any features proposed in a whish list to be placed in the Priority list
+The Chief Architect of this software reserves the right to determine the priorities of any features proposed in a wish list to be placed in the Priority list
 
 
 # References
