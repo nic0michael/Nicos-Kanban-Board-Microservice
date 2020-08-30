@@ -39,5 +39,5 @@ By using this software you agree that the developers of this project will not ac
 
 This is Liability for any problems,issues, or damages caused by using this project and as such will not be held liable for what ever may arise from using this software and that you will not hold them liable for any reasons not described here whatsoever.
 
-##(E&OE)
+## (E&OE)
 Errors and omissions excepted by the user of this project
