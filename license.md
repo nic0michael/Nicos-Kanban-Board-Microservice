@@ -38,20 +38,20 @@ A compilation of a covered work with other separate and independent works, which
 
 ## Exceptions to the Licensing conditions of this software:
 
-**In the GPLVersion 3 License section 5.Conveying Modified Source Versions.
+**In the GPL Version 3 License section 5.Conveying Modified Source Versions.
 This  licensing conditions of this software shall also include the following condition:**
 
-Should you make a copy of this software with the intention to make changes then the source code of your changes must be published in one of the industry standard repositories (like github,sourceforge or any of the popular repositories for opensource software)  on the internet with free public access to that code.  
+Should you make a copy of this software with the intention to make changes then the source code of your changes must be published in one of the industry standard repositories (like github,sourceforge or any of the popular repositories for open source software)  on the internet with free public access to that code.  
 Credit must also be given to this project in your readme.md or equivalent file in the repository hosting your open source code.
 
-Should you make a copy of this software with the intention to make changes the you do this accepting the license as well as the terms and conditions of this project with regards to liability ,warantee and trademarks.
+Should you make a copy of this software with the intention to make changes the you do this accepting the license as well as the terms and conditions of this project with regards to liability ,waranty and trademarks.
 
 
-The Owner of this code reserves the right to create a seperate closed source comercial features for this project should it be so deemed.
+The Owner of this code reserves the right to create a separate closed source commercial features for this project should it be so deemed.
 
 
 
-**In the GPLVersion 3 License section 15. Disclaimer of Warranty :
+**In the GPL Version 3 License section 15. Disclaimer of Warranty :
 This  licensing conditions of this software shall be changed to read as follows:**
 
 **No Warranty is provided or implied**
@@ -59,7 +59,7 @@ This software is provided in terms of South African law as : " VOETS TOETS" "AS 
 That the user shall agree to comply with these terms when using this software.
 
 
-**In the GPLVersion 3 License section 16. Limitation of Liability.
+**In the GPL Version 3 License section 16. Limitation of Liability.
 This  licensing conditions of this software shall be changed to read as follows:**
 
 **The developers of this software provide it as Free Open Source software.**

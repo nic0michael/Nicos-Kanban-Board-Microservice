@@ -5,15 +5,15 @@
 ## Release Version 1.0.1
 This code is ready for usage
 
-## Instalation of Java JDK JRE 8
+## Installation of Java JDK JRE 8
 We intend to migrate our JDK to OpenJDK 11 and rebuild this project
 
 ## Database Support
 MySQL ,MariaDB, and PerconaMySql are supported
 
-## Instalation of MySQL (Maria DB)  
-Although the code was origianally written for MYSQL it was decided to use MariaDB
-There will be backward compatability
+## Installation of MySQL (Maria DB)  
+Although the code was originally written for MYSQL it was decided to use MariaDB
+There will be backward compatibility
 
 
 ### SQL Scripts provided
@@ -31,22 +31,22 @@ to give your administrator user the needed logon credentials .
 
 
 
-once you have lokked in with that employees user Id and password create another Employee with a diferent userId and password and assign the Admin role then delete the previous userID
+once you have locked in with that employees user Id and password create another Employee with a diferent userId and password and assign the Admin role then delete the previous userID
 
 ### To use the SQL scripts provided to generate the tables
 
-| We recomend that you create a Shell script : **mysql-terminal**|
+| We recommend that you create a Shell script : **mysql-terminal**|
 |----------------------------------------------------------------|
-| run the folowing command in the terminal:                      |
+| run the following command in the terminal:                      |
 | sudo nano /usr/bin/mysql-terminal                              |
 |                                                                |
-| place the folowing code into this shell script:                |
+| place the following code into this shell script:                |
 | #!/bin/bash                                                    |
 | sudo mysql -u root -pPasswordForRootUserOfMySqlServer          |
 
 
  
-Now evertime you want open the MSQL terminal you you have a quicker way to get in
+Now every time you want open the MSQL terminal you you have a quicker way to get in
 just open the bash terminal and run this command :
     **mysql-terminal**
 
@@ -56,11 +56,11 @@ here: [https://github.com/nic0michael/KanbanBoardMicroservice/tree/master/Files]
 
 Copy to a folder named : kanban-board
 
-Run the folowing command from a terminal in that folder:
+Run the following command from a terminal in that folder:
 
 **java -jar spring-boot-kanban-board_V1_0_1.jar**
 
-You can run shellscript start.sh
+You can run shell script start.sh
 or batch file start.BAT
 
 ### Open Browser to this URL
