@@ -70,14 +70,3 @@ By using this software you agree to the Terms and conditions as well as the Lice
 
 ## Priorities for development
 The Chief Architect of this software reserves the right to determine the priorities of any features proposed in a wish list to be placed in the Priority list
-
-
-# References
-Charts : [https://www.chartjs.org/](https://www.chartjs.org/)
-
-Security: [https://www.baeldung.com/spring-security-thymeleaf](https://www.baeldung.com/spring-security-thymeleaf)
-
-Thymeleaf forms : [https://www.baeldung.com/thymeleaf-select-option](https://www.baeldung.com/thymeleaf-select-option)
-
-SQL formatting : [http://www.dpriver.com/pp/sqlformat.htm](http://www.dpriver.com/pp/sqlformat.htm)
-
