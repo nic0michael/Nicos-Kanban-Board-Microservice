@@ -32,7 +32,9 @@ public class UserStory {
 	@NotBlank
     @Column(name="name", unique=true)
     private String name;
-	
+
+	@NotBlank
+	private String guid;
 	private String description;
 	@Column(name="customer_reference")
 	private String customerReference;	
@@ -73,10 +75,15 @@ public class UserStory {
 
 
 
-public UserStory(@NotBlank String name, String description, String customerReference, String stage, String status,
-		Long epicId, Long assignedTo, Date startDate, Date endDate, Date dueDate, Date dateCreated, String isActive) {
+
+
+
+public UserStory(@NotBlank String name, @NotBlank String guid, String description, String customerReference,
+		String stage, String status, Long epicId, Long assignedTo, Date startDate, Date endDate, Date dueDate,
+		Date dateCreated, String isActive) {
 	super();
 	this.name = name;
+	this.guid = guid;
 	this.description = description;
 	this.customerReference = customerReference;
 	this.stage = stage;
@@ -89,6 +96,27 @@ public UserStory(@NotBlank String name, String description, String customerRefer
 	this.dateCreated = dateCreated;
 	this.isActive = isActive;
 }
+
+
+
+
+
+
+public String getGuid() {
+	return guid;
+}
+
+
+
+
+
+
+public void setGuid(String guid) {
+	this.guid = guid;
+}
+
+
+
 
 
 
@@ -248,13 +276,17 @@ public void setIsActive(String isActive) {
 
 
 
+
+
+
 @Override
 public String toString() {
-	return "UserStory [userStoryId=" + userStoryId + ", name=" + name + ", description=" + description
-			+ ", customerReference=" + customerReference + ", stage=" + stage + ", status=" + status + ", epicId="
-			+ epicId + ", assignedTo=" + assignedTo + ", startDate=" + startDate + ", endDate=" + endDate + ", dueDate="
-			+ dueDate + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
+	return "UserStory [userStoryId=" + userStoryId + ", name=" + name + ", guid=" + guid + ", description="
+			+ description + ", customerReference=" + customerReference + ", stage=" + stage + ", status=" + status
+			+ ", epicId=" + epicId + ", assignedTo=" + assignedTo + ", startDate=" + startDate + ", endDate=" + endDate
+			+ ", dueDate=" + dueDate + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 }
+
 
 
 

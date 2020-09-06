@@ -23,6 +23,9 @@ public class Audit {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long auditId;
 
+	@NotBlank
+	private String guid;
+
 	@Column(name="date_created", nullable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreatedDate
@@ -37,19 +40,24 @@ public class Audit {
 	private String request;
 	
 	@NotBlank
-	@Column(name="employee_id")
-	private Long employeeId;
+	@Column(name="user_id")
+	private String userId;
 
 	public Audit() {}
 
-	public Audit(Date dateCreated, @NotBlank String operationType, @NotBlank String request,
-			@NotBlank Long employeeId) {
+
+
+
+	public Audit(@NotBlank String guid, Date dateCreated, @NotBlank String operationType, @NotBlank String request,
+			@NotBlank String userId) {
 		super();
+		this.guid = guid;
 		this.dateCreated = dateCreated;
 		this.operationType = operationType;
 		this.request = request;
-		this.employeeId = employeeId;
+		this.userId = userId;
 	}
+
 
 
 
@@ -84,20 +92,30 @@ public class Audit {
 	public void setRequest(String request) {
 		this.request = request;
 	}
+	
 
-	public Long getEmployeeId() {
-		return employeeId;
+	public String getGuid() {
+		return guid;
 	}
 
-	public void setEmployeeId(Long employeeId) {
-		this.employeeId = employeeId;
+	public void setGuid(String guid) {
+		this.guid = guid;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	@Override
 	public String toString() {
-		return "Audit [auditId=" + auditId + ", dateCreated=" + dateCreated + ", operationType=" + operationType
-				+ ", request=" + request + ", employeeId=" + employeeId + "]";
+		return "Audit [auditId=" + auditId + ", guid=" + guid + ", dateCreated=" + dateCreated + ", operationType="
+				+ operationType + ", request=" + request + ", userId=" + userId + "]";
 	}
+
 
 	
 	

@@ -21,6 +21,9 @@ public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long taskId;
+
+	@NotBlank
+	private String guid;
 	
 	@NotBlank
     @Column(name="name", unique=true)
@@ -67,12 +70,17 @@ public class Task {
 	public Task() {}
 
 
-	public Task(@NotBlank String name, String description, String status, @NotBlank Long assignedTo,
-			@NotBlank Long userStoryId, Integer storyPoints, Date due_date, String stage, Date startDate, Date endDate,
-			Date dateCreated, @NotBlank String isActive) {
+
+
+	public Task(@NotBlank String guid, @NotBlank String name, String description, String customerReference,
+			Long customerId, String status, Long assignedTo, Long userStoryId, Integer storyPoints, Date due_date,
+			String stage, Date startDate, Date endDate, Date dateCreated, String isActive) {
 		super();
+		this.guid = guid;
 		this.name = name;
 		this.description = description;
+		this.customerReference = customerReference;
+		this.customerId = customerId;
 		this.status = status;
 		this.assignedTo = assignedTo;
 		this.userStoryId = userStoryId;
@@ -84,6 +92,50 @@ public class Task {
 		this.dateCreated = dateCreated;
 		this.isActive = isActive;
 	}
+
+
+
+
+	public String getGuid() {
+		return guid;
+	}
+
+
+
+
+	public void setGuid(String guid) {
+		this.guid = guid;
+	}
+
+
+
+
+	public String getCustomerReference() {
+		return customerReference;
+	}
+
+
+
+
+	public void setCustomerReference(String customerReference) {
+		this.customerReference = customerReference;
+	}
+
+
+
+
+	public Long getCustomerId() {
+		return customerId;
+	}
+
+
+
+
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
+
+
 
 
 	public String getStage() {
@@ -198,9 +250,12 @@ public class Task {
 	}
 
 
+
+
 	@Override
 	public String toString() {
-		return "Task [taskId=" + taskId + ", name=" + name + ", description=" + description + ", status=" + status
+		return "Task [taskId=" + taskId + ", guid=" + guid + ", name=" + name + ", description=" + description
+				+ ", customerReference=" + customerReference + ", customerId=" + customerId + ", status=" + status
 				+ ", assignedTo=" + assignedTo + ", userStoryId=" + userStoryId + ", storyPoints=" + storyPoints
 				+ ", due_date=" + due_date + ", stage=" + stage + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";

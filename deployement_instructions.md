@@ -2,6 +2,18 @@
 
 # Deployment Instructions
 
+## Technologies supported
+
+  * Java : OpenJDK version "1.8.0_265 (and Oracle Java 1.8.0_211 by request)
+  * Spring Boot Microservices 
+  * Apache Tomcat 9.0.37
+  * Database technologies:
+  * 1. Maria DB Ver 15.1 Distrib 10.5.5-MariaDB
+    2. MySQL
+    3. Percona MySQL
+
+The WAR file delivered can be run as a stand-alone application with built-in Tomcat or it can be deployed in a Tomcat Server
+
 ## Release Version 1.0.1
 This code is ready for usage
 

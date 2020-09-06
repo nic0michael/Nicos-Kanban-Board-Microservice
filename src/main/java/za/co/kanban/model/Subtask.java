@@ -20,6 +20,9 @@ public class Subtask {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long subtaskId;
+
+	@NotBlank
+	private String guid;
 	
 	@NotBlank
     @Column(name="name", unique=true)
@@ -51,9 +54,15 @@ public class Subtask {
 	
 	public Subtask() {}
 
-	public Subtask(@NotBlank String name, String description, Long assignedTo, Long tasksId, Integer storyPoints,
-			Date due_date, String status, Date dateCreated, String isActive) {
+	
+	
+
+
+
+	public Subtask(@NotBlank String guid, @NotBlank String name, String description, Long assignedTo, Long tasksId,
+			Integer storyPoints, Date due_date, String status, Date dateCreated, String isActive) {
 		super();
+		this.guid = guid;
 		this.name = name;
 		this.description = description;
 		this.assignedTo = assignedTo;
@@ -63,6 +72,19 @@ public class Subtask {
 		this.status = status;
 		this.dateCreated = dateCreated;
 		this.isActive = isActive;
+	}
+
+
+
+
+
+
+	public String getGuid() {
+		return guid;
+	}
+
+	public void setGuid(String guid) {
+		this.guid = guid;
 	}
 
 	public Long getSubtaskId() {
@@ -145,17 +167,18 @@ public class Subtask {
 		this.isActive = isActive;
 	}
 
+
+
+
+
+
 	@Override
 	public String toString() {
-		return "Subtask [subtaskId=" + subtaskId + ", name=" + name + ", description=" + description + ", assignedTo="
-				+ assignedTo + ", tasksId=" + tasksId + ", storyPoints=" + storyPoints + ", due_date=" + due_date
-				+ ", status=" + status + ", dateCreated=" + dateCreated + ", isActive=" + isActive + ", getSubtaskId()="
-				+ getSubtaskId() + ", getName()=" + getName() + ", getDescription()=" + getDescription()
-				+ ", getAssignedTo()=" + getAssignedTo() + ", getTasksId()=" + getTasksId() + ", getStoryPoints()="
-				+ getStoryPoints() + ", getDue_date()=" + getDue_date() + ", getStatus()=" + getStatus()
-				+ ", getDateCreated()=" + getDateCreated() + ", getIsActive()=" + getIsActive() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+		return "Subtask [subtaskId=" + subtaskId + ", guid=" + guid + ", name=" + name + ", description=" + description
+				+ ", assignedTo=" + assignedTo + ", tasksId=" + tasksId + ", storyPoints=" + storyPoints + ", due_date="
+				+ due_date + ", status=" + status + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 	}
+
 
 
 

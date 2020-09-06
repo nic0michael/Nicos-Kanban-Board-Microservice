@@ -16,8 +16,19 @@ It is a new project and its being built one week at a time
 When this project is ready it will be delivered as a self starting Java Archive (JAR) file 
 to deploy on a webserver on the cloud. It is hoped to also deliver this as a Docker Project
 
-We are not ready to accept developers to join this team yet, as we are still building the Master Branch.  
+We are not ready to accept developers to join this team yet, as we are still building the Master Branch.
 
+## Technologies supported
+
+  * Java : OpenJDK version "1.8.0_265 (and Oracle Java 1.8.0_211 by request)
+  * Spring Boot Microservices 
+  * Apache Tomcat 9.0.37
+  * Database technologies:
+  * 1. Maria DB Ver 15.1 Distrib 10.5.5-MariaDB
+    2. MySQL
+    3. Percona MySQL
+
+The WAR file delivered can be run as a stand-alone application with built-in Tomcat or it can be deployed in a Tomcat Server
 
 ## Free Open Source FOS with the License based on GPL Version 3
 This project is Free Open Source code FOS  
