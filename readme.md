@@ -7,7 +7,7 @@ This code is ready for usage.
 To deliver a **Spring Boot Microservice** which will provide the user with a comprehensive Kanban Board to run in the cloud or in a WebServer.
 
 
-** This delivers a True "Scrum Kanban Board" for the agile team with the following features: **
+**This delivers a True "Scrum Kanban Board" for the agile team with the following features:**
 
   * A unique feature is the ability to Create Epics. (which many of the so called Kanban boards don't offer)
   * Another feature is the ability to Split Tasks into Subtasts. 
