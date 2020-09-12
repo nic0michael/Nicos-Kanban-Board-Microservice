@@ -24,8 +24,6 @@ To deliver a **Spring Boot Microservice** which will provide the user with a com
  5. Create and assign Subtasts to the Tasks.
 
 
-We are almost ready to accept developers to join this team , as soon we are stop building from the Master Branch.
-
 ## Free Open Source FOS with the License based on GPL Version 3
 This project is Free Open Source code FOS  
 It is provided free of charge and subjects to the terms and license of this project
@@ -96,4 +94,8 @@ By using this software you agree to the acceptance of the legal terms and condit
 ## Legal Terms and conditions for use of this project
 This has been added to protect the Developers of this application from any legal actions.
 [To read the terms and conditions click here](https://github.com/nic0michael/Nicos-Kanban-Board-Microservice/blob/master/terms_and_conditions.md)
+
+## Joining the Team
+Send an email to nicomichael2018 AT yahoo DOT COM with subject : Joining Kanban Board Team
+When you have been added to the team read the [Developer Notes](https://github.com/nic0michael/Nicos-Kanban-Board-Microservice/blob/develop/developer_notes.md).
 
