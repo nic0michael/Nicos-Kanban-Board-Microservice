@@ -50,8 +50,11 @@ The WAR file delivered can be run as a stand-alone application with built-in Tom
 ## Latest News
 Date : 12th September
 Announcement: This software is ready for use as a Kanban Board  
+
 As of today we shipping the project as a WAR file :**kanban-board.war**  
+
 Which can run as an embedded Spring boot application or can be deployed in a Tomcat server.
+
 Our project is promoted to release version : **1.1.0-SNAPSHOT**
 
 Date : 29th August 2020
