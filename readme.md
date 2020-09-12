@@ -15,13 +15,13 @@ To deliver a **Spring Boot Microservice** which will provide the user with a com
   * This features the Spring Security Framework with A database for Authentication and Authorization.
   
 
-  Your Work flow is as follows:  
-  
-  * You Create Customers. 
-  * Then create Epics each with its customer assigned to it.
-  * Create and assign Userstories to the Epics.
-  * Create and assign Tasks to the Userstories.
-  * Create and assign Subtasts to the Tasks.
+**Your Work flow is as follows:**  
+
+ 1. You Create Customers.
+ 2. Then create Epics each with its customer assigned to it.
+ 3. Create and assign Userstories to the Epics.
+ 4. Create and assign Tasks to the Userstories.
+ 5. Create and assign Subtasts to the Tasks.
 
 
 We are almost ready to accept developers to join this team , as soon we are stop building from the Master Branch.
