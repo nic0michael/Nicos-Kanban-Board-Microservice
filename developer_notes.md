@@ -4,7 +4,10 @@
 
 ## Github Commits
 Only commits with detailed descriptions will be approved when you do a pull request
-use the command git commit -m "Now put your detailed description here"
+
+use the command :
+
+**git commit -m "Now put your detailed description here"**
 
 
 ## Github Pushes
