@@ -11,9 +11,12 @@ use the command :
 
 
 ## Github Pushes
-In order to make a change you need to create a feature branch from the develop Branch
-make your changes in the feature Branch
-And the make a pull request 
+In order to make a change you need to **create a feature branch from the develop Branch**
+
+Make your changes in the feature Branch
+
+And then **make a pull request **
+
 Subject to Our Architects approval after a review of your pull request it will be allowed
 
 [Deployment Instructions](https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages)
