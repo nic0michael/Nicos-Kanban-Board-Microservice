@@ -9,6 +9,7 @@ public class SubtaskPersistRequest {
 
 	private String subtaskId;
 	private String taskId;
+	private String guid;
     private String name;	
 	private String description;
 	private String status;
@@ -20,10 +21,12 @@ public class SubtaskPersistRequest {
 	
 	public SubtaskPersistRequest() {}
 
-	public SubtaskPersistRequest(String taskId, String name, String description, String status, String assignedTo,
-			String storyPoints, String due_date, String dateCreated, String isActive) {
+
+	public SubtaskPersistRequest(String taskId, String guid, String name, String description, String status,
+			String assignedTo, String storyPoints, String due_date, String dateCreated, String isActive) {
 		super();
 		this.taskId = taskId;
+		this.guid = guid;
 		this.name = name;
 		this.description = description;
 		this.status = status;
@@ -33,6 +36,17 @@ public class SubtaskPersistRequest {
 		this.dateCreated = dateCreated;
 		this.isActive = isActive;
 	}
+
+
+	public String getGuid() {
+		return guid;
+	}
+
+
+	public void setGuid(String guid) {
+		this.guid = guid;
+	}
+
 
 	public String getSubtaskId() {
 		return subtaskId;
@@ -114,18 +128,15 @@ public class SubtaskPersistRequest {
 		this.isActive = isActive;
 	}
 
+
 	@Override
 	public String toString() {
-		return "SubtaskPersistRequest [subtaskId=" + subtaskId + "| taskId=" + taskId + "| name=" + name
-				+ "| description=" + description + ", status=" + status + ", assignedTo=" + assignedTo
+		return "SubtaskPersistRequest [subtaskId=" + subtaskId + ", taskId=" + taskId + ", guid=" + guid + ", name="
+				+ name + ", description=" + description + ", status=" + status + ", assignedTo=" + assignedTo
 				+ ", storyPoints=" + storyPoints + ", due_date=" + due_date + ", dateCreated=" + dateCreated
-				+ ", isActive=" + isActive + ", getSubtaskId()=" + getSubtaskId() + ", getTaskId()=" + getTaskId()
-				+ ", getName()=" + getName() + ", getDescription()=" + getDescription() + ", getStatus()=" + getStatus()
-				+ ", getAssignedTo()=" + getAssignedTo() + ", getStoryPoints()=" + getStoryPoints() + ", getDue_date()="
-				+ getDue_date() + ", getDateCreated()=" + getDateCreated() + ", getIsActive()=" + getIsActive()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ ", isActive=" + isActive + "]";
 	}
+
 
 
 

@@ -18,6 +18,7 @@ import za.co.kanban.dtos.SubtaskPersistRequest;
 import za.co.kanban.model.Employee;
 import za.co.kanban.model.StatusValue;
 import za.co.kanban.model.Subtask;
+import za.co.kanban.model.SubtaskKanbanItem;
 import za.co.kanban.model.Task;
 import za.co.kanban.modules.EmployeeModule;
 import za.co.kanban.modules.StatusValueModule;
@@ -65,11 +66,11 @@ public class SubtaskController {
 
 	@GetMapping("/board")
 	public String displaySubtaskBoard(Model model) {
-		List<Subtask> subtasks = subtaskmod.findAll();
-		if(subtasks!=null) {
-			log.info("PROJECT_MAN : SubtaskController : displayHome : displaying :"+subtasks.size()+" subtasks");
+		List<SubtaskKanbanItem> subtaskKanbanItems=  subtaskmod.getSubtaskKanbanItems();
+		if(subtaskKanbanItems!=null) {
+			log.info("PROJECT_MAN : SubtaskController : displayHome : displaying subtaskKanbanItems:"+subtaskKanbanItems.size()+" subtasks");
 		}
-		model.addAttribute("subtasks", subtasks);
+		model.addAttribute("subtaskKanbanItems", subtaskKanbanItems);
 		return "subtasks/subtask-board";
 	}
 	

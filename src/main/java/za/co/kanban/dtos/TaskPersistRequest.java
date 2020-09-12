@@ -10,6 +10,7 @@ public class TaskPersistRequest {
 	private String taskId;
     private String name;	
 	private String description;
+	private String guid;
 	private String status;	
 	private String assignedTo;
 	private String userStoryId;
@@ -24,13 +25,13 @@ public class TaskPersistRequest {
 	public TaskPersistRequest() {}
 
 
-
-	public TaskPersistRequest(String name, String description, String status, String assignedTo,
+	public TaskPersistRequest(String name, String description, String guid, String status, String assignedTo,
 			String userStoryId, String storyPoints, String stage, String startDate, String endDate, String due_date,
 			String dateCreated, String isActive) {
 		super();
 		this.name = name;
 		this.description = description;
+		this.guid = guid;
 		this.status = status;
 		this.assignedTo = assignedTo;
 		this.userStoryId = userStoryId;
@@ -45,7 +46,14 @@ public class TaskPersistRequest {
 
 
 
+	public String getGuid() {
+		return guid;
+	}
 
+
+	public void setGuid(String guid) {
+		this.guid = guid;
+	}
 
 
 	public String getTaskId() {
@@ -169,14 +177,14 @@ public class TaskPersistRequest {
 	}
 
 
-
 	@Override
 	public String toString() {
-		return "TaskPersistRequest [taskId=" + taskId + ", name=" + name + ", description=" + description + ", status="
-				+ status + ", assignedTo=" + assignedTo + ", userStoryId=" + userStoryId + ", storyPoints="
-				+ storyPoints + ", stage=" + stage + ", startDate=" + startDate + ", endDate=" + endDate + ", due_date="
-				+ due_date + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
+		return "TaskPersistRequest [taskId=" + taskId + ", name=" + name + ", description=" + description + ", guid="
+				+ guid + ", status=" + status + ", assignedTo=" + assignedTo + ", userStoryId=" + userStoryId
+				+ ", storyPoints=" + storyPoints + ", stage=" + stage + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", due_date=" + due_date + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 	}
+
 
 
 

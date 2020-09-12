@@ -21,7 +21,6 @@ public class Subtask {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long subtaskId;
 
-	@NotBlank
 	private String guid;
 	
 	@NotBlank
@@ -33,8 +32,8 @@ public class Subtask {
 	@Column(name="assigned_to")
 	private Long assignedTo;
 
-	@Column(name="tasks_id")
-	private Long tasksId;
+	@Column(name="task_id")
+	private Long taskId;
 	
 	@Column(name="story_points")
 	private Integer storyPoints;
@@ -59,14 +58,14 @@ public class Subtask {
 
 
 
-	public Subtask(@NotBlank String guid, @NotBlank String name, String description, Long assignedTo, Long tasksId,
+	public Subtask(@NotBlank String guid, @NotBlank String name, String description, Long assignedTo, Long taskId,
 			Integer storyPoints, Date due_date, String status, Date dateCreated, String isActive) {
 		super();
 		this.guid = guid;
 		this.name = name;
 		this.description = description;
 		this.assignedTo = assignedTo;
-		this.tasksId = tasksId;
+		this.taskId = taskId;
 		this.storyPoints = storyPoints;
 		this.due_date = due_date;
 		this.status = status;
@@ -119,12 +118,12 @@ public class Subtask {
 		this.assignedTo = assignedTo;
 	}
 
-	public Long getTasksId() {
-		return tasksId;
+	public Long getTaskId() {
+		return taskId;
 	}
 
-	public void setTasksId(Long tasksId) {
-		this.tasksId = tasksId;
+	public void setTaskId(Long tasksId) {
+		this.taskId = tasksId;
 	}
 
 	public Integer getStoryPoints() {
@@ -175,7 +174,7 @@ public class Subtask {
 	@Override
 	public String toString() {
 		return "Subtask [subtaskId=" + subtaskId + ", guid=" + guid + ", name=" + name + ", description=" + description
-				+ ", assignedTo=" + assignedTo + ", tasksId=" + tasksId + ", storyPoints=" + storyPoints + ", due_date="
+				+ ", assignedTo=" + assignedTo + ", taskId=" + taskId + ", storyPoints=" + storyPoints + ", due_date="
 				+ due_date + ", status=" + status + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
 	}
 

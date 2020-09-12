@@ -113,12 +113,11 @@ VALUES      ( 'Youe_administrators_fullname',
 -- =============================== END OF CREATE ADMINISTRATOR USER SQL SCRIPT ===========================================================
 
 -- TASK-EMPLOYEE query -- TASK KANBAN BOARD
-SELECT t.status as status,t.task_id as task_id, t.name as name,  e.fullname as assigned_to, t.due_date as due_date
+SELECT t.status as status,t.task_id as taskId, t.name as taskName,u.name as userStoryName,  e.fullname as assignedTo, t.due_date as dueDate
  FROM task t
- LEFT JOIN employee e 
- ON t.assigned_to = e.employee_id
- LEFT JOIN status_value s 
- ON t.status = s.display_value
+ LEFT JOIN employee e ON t.assigned_to = e.employee_id 
+ LEFT JOIN status_value s ON t.status = s.display_value
+ LEFT JOIN user_story u ON u.user_story_id = t.user_story_id
  WHERE s.sort_order > 0
  ORDER BY s.sort_order, t.name,t.due_date;
 
@@ -143,12 +142,12 @@ SELECT t.status as status,t.user_story_id as user_story_id, t.name as name,  e.n
  ORDER BY s.sort_order, t.name,t.due_date;
 
 
--- EMPLOYEE-TASK-COUNT
-SELECT e.fullname as fullname,count(*) as task_count
+-- EMPLOYEE-USERSTORY-COUNT
+SELECT count(*) as userstoryCount, e.fullname as fullName
  FROM employee e 
- LEFT JOIN task t
- ON t.assigned_to = e.employee_id
+ LEFT JOIN task t ON t.assigned_to = e.employee_id
+ LEFT JOIN user_story u ON u.user_story_id = t.user_story_id
  WHERE t.task_id IS NOT NULL
  GROUP BY e.fullname
- ORDER BY e.fullname;
+ ORDER BY userstoryCount desc;
  

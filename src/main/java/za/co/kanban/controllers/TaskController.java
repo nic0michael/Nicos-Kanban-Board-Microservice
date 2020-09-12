@@ -17,6 +17,7 @@ import za.co.kanban.dtos.TaskPersistRequest;
 import za.co.kanban.model.Employee;
 import za.co.kanban.model.StatusValue;
 import za.co.kanban.model.Task;
+import za.co.kanban.model.TaskKanbanItem;
 import za.co.kanban.model.UserStory;
 import za.co.kanban.modules.EmployeeModule;
 import za.co.kanban.modules.StatusValueModule;
@@ -81,11 +82,11 @@ public class TaskController {
 	
 	@GetMapping("/board")
 	public String displayTaskFBoard(Model model) {
-		List<Task> tasks = taskmod.findAll();
-		if(tasks!=null) {
-			log.info("PROJECT_MAN : TaskController : displayHome : displaying :"+tasks.size()+" tasks");
+		List<TaskKanbanItem> taskBanbanitems=taskmod.getTaskBanbanitems();
+		if(taskBanbanitems!=null) {
+			log.info("PROJECT_MAN : TaskController : displayHome : displaying :"+taskBanbanitems.size()+" task Banban items");
 		}
-		model.addAttribute("tasksList", tasks);
+		model.addAttribute("taskBanbanitems", taskBanbanitems);
 		return "tasks/task-board";
 	}
 

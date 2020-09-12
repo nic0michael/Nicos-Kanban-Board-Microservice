@@ -22,7 +22,6 @@ public class Task {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long taskId;
 
-	@NotBlank
 	private String guid;
 	
 	@NotBlank

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import za.co.kanban.model.TaskKanbanItem;
 import za.co.kanban.model.Team;
 import za.co.kanban.repositories.TeamRepository;
 import za.co.kanban.utils.Utils;

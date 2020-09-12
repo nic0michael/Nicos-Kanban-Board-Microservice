@@ -557,10 +557,11 @@ public class Utils {
 		}			
 	    persistRequest.setName	     (task.getName	     ());
 		persistRequest.setDescription(task.getDescription());
+		persistRequest.setGuid       (task.getGuid());
 		persistRequest.setStatus	 (task.getStatus	 ());
 		persistRequest.setIsActive   (task.getIsActive   ());	
 		persistRequest.setStage      (task.getStage      ());
-		persistRequest.setStatus (task.getStatus());
+		persistRequest.setStatus     (task.getStatus());
 		
 		if(task.getAssignedTo()!=null) {
 			persistRequest.setAssignedTo (task.getAssignedTo().toString());
@@ -598,6 +599,7 @@ public class Utils {
 
 		    task.setName(taskPersistRequest.getName());
 			task.setDescription(taskPersistRequest.getDescription());
+			task.setGuid(taskPersistRequest.getGuid());
 			task.setStatus(taskPersistRequest.getStatus());
 			task.setIsActive(taskPersistRequest.getIsActive());	
 			task.setStage(taskPersistRequest.getStage());	
@@ -633,12 +635,12 @@ public class Utils {
 
 			if(StringUtils.isNotEmpty(taskPersistRequest.getAssignedTo ()) 
 					&& StringUtils.isNumeric(taskPersistRequest.getAssignedTo ())){
-				Long subtaskId=Long.parseLong(taskPersistRequest.getAssignedTo ());
-				task.setAssignedTo(subtaskId);
+				Long employeeId=Long.parseLong(taskPersistRequest.getAssignedTo ());
+				task.setAssignedTo(employeeId);
 			}
 			if(StringUtils.isNotEmpty(taskPersistRequest.getTaskId()) && StringUtils.isNumeric(taskPersistRequest.getTaskId())){
-				Long subtaskId=Long.parseLong(taskPersistRequest.getTaskId());
-				task.setTaskId(subtaskId);
+				Long taskId=Long.parseLong(taskPersistRequest.getTaskId());
+				task.setTaskId(taskId);
 			}
 			
 			if (taskPersistRequest.getStartDate() != null) {
@@ -658,6 +660,7 @@ public class Utils {
 
 	    task.setName(theTask.getName());
 		task.setDescription(theTask.getDescription());
+		task.setGuid(theTask.getGuid());
 		task.setStatus(theTask.getStatus());
 		task.setIsActive(theTask.getIsActive());	
 		task.setStage(theTask.getStage());	
@@ -708,6 +711,11 @@ public class Utils {
 		subtaskPersistRequest.setDescription(subtask.getDescription()); 
 		subtaskPersistRequest.setIsActive(subtask.getIsActive()); 	
 		subtaskPersistRequest.setStatus (subtask.getStatus());
+		subtaskPersistRequest.setGuid(subtask.getGuid());
+		
+		if(subtask.getTaskId()!=null) {
+			subtaskPersistRequest.setTaskId(subtask.getTaskId().toString());
+		}
 		
 		if(subtask.getAssignedTo()!=null){
 			subtaskPersistRequest.setAssignedTo(subtask.getAssignedTo().toString()); 
@@ -738,12 +746,19 @@ public class Utils {
 		subtask.setDescription(subtaskPersistRequest.getDescription()); 
 		subtask.setIsActive(subtaskPersistRequest.getIsActive()); 	
 		subtask.setStatus (subtaskPersistRequest.getStatus());
+		subtask.setGuid(subtaskPersistRequest.getGuid());
 
 		if(StringUtils.isNotEmpty(subtaskPersistRequest.getSubtaskId())
 			&& StringUtils.isNumeric(subtaskPersistRequest.getSubtaskId())){			
 			Long subtaskId=Long.parseLong(subtaskPersistRequest.getSubtaskId());
 			subtask.setSubtaskId(subtaskId); 
 		}
+		
+		if(StringUtils.isNotEmpty(subtaskPersistRequest.getTaskId())
+				&& StringUtils.isNumeric(subtaskPersistRequest.getTaskId())){			
+				Long taskId=Long.parseLong(subtaskPersistRequest.getTaskId());
+				subtask.setTaskId(taskId); 
+			}
 		
 		if(StringUtils.isNotEmpty(subtaskPersistRequest.getAssignedTo())
 			&& StringUtils.isNumeric(subtaskPersistRequest.getAssignedTo())){			
@@ -769,7 +784,9 @@ public class Utils {
 	public static Subtask updateSubtask(Subtask subtask, Subtask theSubtask) {
 
 	    subtask.setName(theSubtask.getName()); 
-		subtask.setDescription(theSubtask.getDescription()); 
+		subtask.setDescription(theSubtask.getDescription());
+		subtask.setGuid(theSubtask.getGuid()); 
+		subtask.setTaskId(theSubtask.getTaskId()); 
 		subtask.setIsActive(theSubtask.getIsActive());	
 		subtask.setStatus (theSubtask.getStatus());
 		subtask.setAssignedTo(theSubtask.getAssignedTo()); 

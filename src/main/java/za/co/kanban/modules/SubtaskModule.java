@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import za.co.kanban.dtos.SubtaskPersistRequest;
 import za.co.kanban.model.Employee;
 import za.co.kanban.model.Subtask;
+import za.co.kanban.model.SubtaskKanbanItem;
 import za.co.kanban.repositories.SubtaskRepository;
 import za.co.kanban.utils.Utils;
 
@@ -26,6 +27,10 @@ public class SubtaskModule {
 	@Autowired 
 	EmployeeModule employeeModule;
 
+	public List<SubtaskKanbanItem>  getSubtaskKanbanItems(){
+		return repository.getSubtaskKanbanItems();
+	}
+	
 	public void save(SubtaskPersistRequest subtaskPersistRequest) {
 		if(subtaskPersistRequest!=null) {
 			boolean employeesFound=false;				

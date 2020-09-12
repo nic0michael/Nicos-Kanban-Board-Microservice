@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import za.co.kanban.dtos.TaskPersistRequest;
 import za.co.kanban.model.Employee;
 import za.co.kanban.model.Task;
+import za.co.kanban.model.TaskKanbanItem;
 import za.co.kanban.repositories.TaskRepository;
 import za.co.kanban.utils.Utils;
 
@@ -25,6 +26,23 @@ public class TaskModule {
 
 	@Autowired 
 	EmployeeModule employeeModule;
+
+	
+	public List<TaskKanbanItem> getTaskBanbanitems(){
+		List<TaskKanbanItem> taskKanbanItems = repository.getTaskBanbanitems();
+		TaskKanbanItem taskKanbanItem=taskKanbanItems.get(0);
+		log.info("PROJECT_MAN : TaskModule : getTaskBanbanitems : taskKanbanItem : "+ toString(taskKanbanItem));	
+		return taskKanbanItems;
+	}
+	
+	private String toString(TaskKanbanItem taskKanbanItem) {
+		return "[Status :"+taskKanbanItem.getStatus()
+		+" taskId: "+taskKanbanItem.getTaskId()
+		+" taskName: "+taskKanbanItem.getTaskName()
+		+" userStoryName : "+taskKanbanItem.getUserStoryName()
+		+" assignedTo : "+taskKanbanItem.getAssignedTo()
+		+" dueDate : "+taskKanbanItem.getDueDate();			
+	}
 
 	public void save(TaskPersistRequest taskPersistRequest) {
 		if(taskPersistRequest!=null) {
