@@ -75,6 +75,7 @@ Read the deployment Instructions here: [https://github.com/nic0michael/KanbanBoa
 
 ## Wish List Priorities for development
 The Chief Architect of this software reserves the right to determine the priorities of any features proposed in a wish list to be placed in the Priority list
+
 [Look at the wish list](https://github.com/nic0michael/KanbanBoardMicroservice/blob/develop/wish_list.md)
 
 
