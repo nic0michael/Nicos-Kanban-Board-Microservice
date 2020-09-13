@@ -67,19 +67,20 @@ MySQL ,MariaDB, and PerconaMySql are supported
 
 
 ## Download the project
-Download the latest release of this project here: [https://github.com/nic0michael/KanbanBoardMicroservice/tree/master/Files](https://github.com/nic0michael/KanbanBoardMicroservice/tree/master/Files)
+Download the latest release of this project here: [https://github.com/nic0michael/KanbanBoardMicroservice/tree/develop/Files](https://github.com/nic0michael/KanbanBoardMicroservice/tree/develop/Files)
 
 ## Deployment Instructions
-Read the deployment Instructions here: [https://github.com/nic0michael/KanbanBoardMicroservice/blob/master/deployement_instructions.md](https://github.com/nic0michael/KanbanBoardMicroservice/blob/master/deployement_instructions.md)
+Read the deployment Instructions here: [https://github.com/nic0michael/KanbanBoardMicroservice/blob/develop/deployement_instructions.md](https://github.com/nic0michael/KanbanBoardMicroservice/blob/develop/deployement_instructions.md)
 
 
-## Priorities for development
+## Wish List Priorities for development
 The Chief Architect of this software reserves the right to determine the priorities of any features proposed in a wish list to be placed in the Priority list
+[Look at the wish list](https://github.com/nic0michael/KanbanBoardMicroservice/blob/develop/wish_list.md)
 
 
 # License
 ## This software is licensed under the "GNU GENERAL PUBLIC LICENSE: Version 3, 29 June 2007"
-[For more information about the licensing conditions of this software please click here](https://github.com/nic0michael/Nicos-Kanban-Board-Microservice/blob/master/license.md)
+[For more information about the licensing conditions of this software please click here](https://github.com/nic0michael/Nicos-Kanban-Board-Microservice/blob/develop/license.md)
 
 This provides significant Freedoms for the users as well as the developers of this project. 
 Exceptions to the Licensing conditions of this software to protect the developers on this project:
@@ -93,7 +94,7 @@ By using this software you agree to the acceptance of the legal terms and condit
 
 ## Legal Terms and conditions for use of this project
 This has been added to protect the Developers of this application from any legal actions.
-[To read the terms and conditions click here](https://github.com/nic0michael/Nicos-Kanban-Board-Microservice/blob/master/terms_and_conditions.md)
+[To read the terms and conditions click here](https://github.com/nic0michael/Nicos-Kanban-Board-Microservice/blob/develop/terms_and_conditions.md)
 
 ## Joining the Team
 Send an email to nicomichael2018 AT yahoo DOT COM with subject : Joining Kanban Board Team
