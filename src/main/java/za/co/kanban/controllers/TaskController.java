@@ -23,6 +23,7 @@ import za.co.kanban.modules.EmployeeModule;
 import za.co.kanban.modules.StatusValueModule;
 import za.co.kanban.modules.TaskModule;
 import za.co.kanban.modules.UserStoryModule;
+import za.co.kanban.repositories.StatusValueRepository;
 import za.co.kanban.utils.Utils;
 
 
@@ -43,6 +44,8 @@ public class TaskController {
 
 	@Autowired 
 	StatusValueModule statusmod;
+	
+	
 	
 	@GetMapping
 	public String displayTasks(Model model) {
@@ -82,11 +85,30 @@ public class TaskController {
 	
 	@GetMapping("/board")
 	public String displayTaskFBoard(Model model) {
+		String column1Name=getColumnDisplayValue(1);
+		String column2Name=getColumnDisplayValue(2);
+		String column3Name=getColumnDisplayValue(3);
+		String column4Name=getColumnDisplayValue(4);
+		String column5Name=getColumnDisplayValue(5);
+		String column6Name=getColumnDisplayValue(6);
+		
 		List<TaskKanbanItem> taskBanbanitems=taskmod.getTaskBanbanitems();
+		List<TaskKanbanItem> column1=taskmod.getTaskColumn1Items();
+		List<TaskKanbanItem> column2=taskmod.getTaskColumn2Items();
+		List<TaskKanbanItem> column3=taskmod.getTaskColumn3Items();
+		List<TaskKanbanItem> column4=taskmod.getTaskColumn4Items();
+		List<TaskKanbanItem> column5=taskmod.getTaskColumn5Items();
+		List<TaskKanbanItem> column6=taskmod.getTaskColumn6Items();
 		if(taskBanbanitems!=null) {
 			log.info("PROJECT_MAN : TaskController : displayHome : displaying :"+taskBanbanitems.size()+" task Banban items");
 		}
 		model.addAttribute("taskBanbanitems", taskBanbanitems);
+		model.addAttribute("column1Name", column1Name);
+		model.addAttribute("column2Name", column2Name);
+		model.addAttribute("column3Name", column3Name);
+		model.addAttribute("column4Name", column4Name);
+		model.addAttribute("column5Name", column5Name);
+		model.addAttribute("column6Name", column6Name);
 		return "tasks/task-board";
 	}
 
@@ -153,5 +175,9 @@ public class TaskController {
 		}
 		log.info("PROJECT_MAN : TaskController : displayTaskFormToUpdate : displaying form");
 		return "tasks/workflow-task";		
+	}
+	
+	private  String getColumnDisplayValue(int sortOrder) {
+		return statusmod.getColumnDisplayValue(sortOrder);
 	}
 }

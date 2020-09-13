@@ -66,11 +66,37 @@ public class SubtaskController {
 
 	@GetMapping("/board")
 	public String displaySubtaskBoard(Model model) {
+		
+		String column1Name=getColumnDisplayValue(1);
+		String column2Name=getColumnDisplayValue(2);
+		String column3Name=getColumnDisplayValue(3);
+		String column4Name=getColumnDisplayValue(4);
+		String column5Name=getColumnDisplayValue(5);
+		String column6Name=getColumnDisplayValue(6);
+			
 		List<SubtaskKanbanItem> subtaskKanbanItems=  subtaskmod.getSubtaskKanbanItems();
+		List<SubtaskKanbanItem> column1=subtaskmod.getSubtaskColumn1Items();
+		List<SubtaskKanbanItem> column2=subtaskmod.getSubtaskColumn2Items();
+		List<SubtaskKanbanItem> column3=subtaskmod.getSubtaskColumn3Items();
+		List<SubtaskKanbanItem> column4=subtaskmod.getSubtaskColumn4Items();
+		List<SubtaskKanbanItem> column5=subtaskmod.getSubtaskColumn5Items();
+		List<SubtaskKanbanItem> column6=subtaskmod.getSubtaskColumn6Items();
 		if(subtaskKanbanItems!=null) {
 			log.info("PROJECT_MAN : SubtaskController : displayHome : displaying subtaskKanbanItems:"+subtaskKanbanItems.size()+" subtasks");
 		}
 		model.addAttribute("subtaskKanbanItems", subtaskKanbanItems);
+		model.addAttribute("column1", column1);
+		model.addAttribute("column2", column2);
+		model.addAttribute("column3", column3);
+		model.addAttribute("column4", column4);
+		model.addAttribute("column5", column5);
+		model.addAttribute("column6", column6);
+		model.addAttribute("column1Name", column1Name);
+		model.addAttribute("column2Name", column2Name);
+		model.addAttribute("column3Name", column3Name);
+		model.addAttribute("column4Name", column4Name);
+		model.addAttribute("column5Name", column5Name);
+		model.addAttribute("column6Name", column6Name);
 		return "subtasks/subtask-board";
 	}
 	
@@ -156,5 +182,10 @@ public class SubtaskController {
 		}
 		log.info("PROJECT_MAN : SubtaskController : displaySubtaskFormToUpdate : displaying form");
 		return "subtasks/workflow-subtask";		
+	}
+
+	
+	private  String getColumnDisplayValue(int sortOrder) {
+		return statusmod.getColumnDisplayValue(sortOrder);
 	}
 }

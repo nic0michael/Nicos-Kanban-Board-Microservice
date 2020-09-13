@@ -12,11 +12,12 @@
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th>Status</th>
-					<th>Task Name</th>
-					<th>User Story</th>
-					<th>Assigned to</th>
-					<th>Due Date</th>
+					<th th:text="${column1Name}"></th>
+					<th th:text="${column2Name}"></th>
+					<th th:text="${column3Name}"></th>
+					<th th:text="${column4Name}"></th>
+					<th th:text="${column5Name}"></th>
+					<th th:text="${column6Name}"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,9 +27,7 @@
 					<td th:text="${aTaskBanbanitem.userStoryName}"></td>
 					<td th:text="${aTaskBanbanitem.assignedTo}"></td>
 					<td th:text="${aTaskBanbanitem.dueDate}"></td>
-					
-					<td>
-					</td>
+					<td>...</td>
 				</tr>
 			</tbody>
 		</table>

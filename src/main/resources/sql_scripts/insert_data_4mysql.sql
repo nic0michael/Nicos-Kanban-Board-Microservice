@@ -113,16 +113,27 @@ VALUES      ( 'Youe_administrators_fullname',
 -- =============================== END OF CREATE ADMINISTRATOR USER SQL SCRIPT ===========================================================
 
 -- TASK-EMPLOYEE query -- TASK KANBAN BOARD
-SELECT t.status as status,t.task_id as taskId, t.name as taskName,u.name as userStoryName,  e.fullname as assignedTo, t.due_date as dueDate
+SELECT t.status as status,t.task_id as taskId, t.name as taskName,t.description as description,u.name as userStoryName,  e.fullname as assignedTo, t.due_date as dueDate
  FROM task t
  LEFT JOIN employee e ON t.assigned_to = e.employee_id 
  LEFT JOIN status_value s ON t.status = s.display_value
  LEFT JOIN user_story u ON u.user_story_id = t.user_story_id
  WHERE s.sort_order > 0
  ORDER BY s.sort_order, t.name,t.due_date;
+ 
+ -- TASK-EMPLOYEE query -- TASK KANBAN BOARD COLUMN 1
+SELECT t.status as status,t.task_id as taskId, t.name as taskName,t.description as description,u.name as userStoryName,  e.fullname as assignedTo, t.due_date as dueDate
+ FROM task t
+ LEFT JOIN employee e ON t.assigned_to = e.employee_id 
+ LEFT JOIN status_value s ON t.status = s.display_value
+ LEFT JOIN user_story u ON u.user_story_id = t.user_story_id
+ WHERE s.sort_order = 1
+ ORDER BY s.sort_order, t.name,t.due_date;
+ 
+ -- TASK-EMPLOYEE query -- TASK KANBAN BOARD COLUMN 2 to 6 same as above
 
 -- SUBTASK-EMPLOYEE -- SUBTASK KANBAN BOARD
-SELECT t.status as status,t.subtask_id as subtask_id, t.name as name,  e.fullname as assigned_to, t.due_date as due_date,s.sort_order
+SELECT t.status as status,t.subtask_id as subtask_id, t.name as name,t.description as description,  e.fullname as assigned_to, t.due_date as due_date,s.sort_order
  FROM subtask t
  LEFT JOIN employee e 
  ON t.assigned_to = e.employee_id
@@ -130,6 +141,18 @@ SELECT t.status as status,t.subtask_id as subtask_id, t.name as name,  e.fullnam
  ON t.status = s.display_value
  WHERE s.sort_order > 0
  ORDER BY s.sort_order, t.name,t.due_date;
+
+-- SUBTASK-EMPLOYEE -- SUBTASK KANBAN BOARD COLUMN1
+SELECT t.status as status,t.subtask_id as subtask_id, t.name as name,t.description as description, 
+a.name as taskName, e.fullname as assigned_to, t.due_date as due_date,s.sort_order
+ FROM subtask t
+ LEFT JOIN employee e ON t.assigned_to = e.employee_id
+ LEFT JOIN status_value s ON t.status = s.display_value
+ LEFT JOIN task a ON t.task_id=a.task_id
+ WHERE s.sort_order =1
+ ORDER BY s.sort_order, t.name,t.due_date;
+
+-- SUBTASK-EMPLOYEE -- SUBTASK KANBAN BOARD COLUMN 2 to 6 same as above
               
 -- USERSTORY-TEAM -- USERSTORY KANBAN BOARD 
 SELECT t.status as status,t.user_story_id as user_story_id, t.name as name,  e.name as assigned_to, t.due_date as due_date

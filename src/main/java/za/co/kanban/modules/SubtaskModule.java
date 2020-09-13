@@ -30,6 +30,30 @@ public class SubtaskModule {
 	public List<SubtaskKanbanItem>  getSubtaskKanbanItems(){
 		return repository.getSubtaskKanbanItems();
 	}
+
+	public List<SubtaskKanbanItem> getSubtaskColumn2Items() {
+		return repository.getSubtaskColumn2Items();
+	}
+
+	public List<SubtaskKanbanItem> getSubtaskColumn3Items() {
+		return repository.getSubtaskColumn3Items();
+	}
+
+	public List<SubtaskKanbanItem> getSubtaskColumn4Items() {
+		return repository.getSubtaskColumn4Items();
+	}
+
+	public List<SubtaskKanbanItem> getSubtaskColumn5Items() {
+		return repository.getSubtaskColumn5Items();
+	}
+
+	public List<SubtaskKanbanItem> getSubtaskColumn6Items() {
+		return repository.getSubtaskColumn6Items();
+	}
+
+	public List<SubtaskKanbanItem> getSubtaskColumn1Items() {
+		return repository.getSubtaskColumn1Items();
+	}
 	
 	public void save(SubtaskPersistRequest subtaskPersistRequest) {
 		if(subtaskPersistRequest!=null) {

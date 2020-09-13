@@ -2,6 +2,7 @@ package za.co.kanban.modules;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,28 @@ public class StatusValueModule {
 		List<StatusValue> statusValues = (List<StatusValue>) repository.findAll();
 		System.out.println("got list of status values : " + statusValues);
 		return statusValues;
+	}
+	
+	public String getColumnDisplayValue(int sortOrder) {
+		String displayValue=null;
+		List<StatusValue> StatusValues=findAll();
+		for (StatusValue value : StatusValues) {
+			if(value!=null && value.getSortOrder()==sortOrder) {
+				displayValue=value.getDisplayValue();
+			}
+		}
+		return displayValue;
+	}
+	
+	public String getColumnDescription(int sortOrder) {
+		String displayValue=null;
+		List<StatusValue> StatusValues=findAll();
+		for (StatusValue value : StatusValues) {
+			if(value!=null && value.getSortOrder()==sortOrder) {
+				displayValue=value.getDescription();
+			}
+		}
+		return displayValue;
 	}
 
 }

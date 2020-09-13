@@ -30,9 +30,35 @@ public class TaskModule {
 	
 	public List<TaskKanbanItem> getTaskBanbanitems(){
 		List<TaskKanbanItem> taskKanbanItems = repository.getTaskBanbanitems();
-		TaskKanbanItem taskKanbanItem=taskKanbanItems.get(0);
-		log.info("PROJECT_MAN : TaskModule : getTaskBanbanitems : taskKanbanItem : "+ toString(taskKanbanItem));	
+		if(taskKanbanItems!=null) {
+			TaskKanbanItem taskKanbanItem=taskKanbanItems.get(0);
+			log.info("PROJECT_MAN : TaskModule : getTaskBanbanitems : taskKanbanItem : "+ toString(taskKanbanItem));
+		}
 		return taskKanbanItems;
+	}
+	
+	public List<TaskKanbanItem> getTaskColumn1Items() {
+		return repository.getTaskColumn1Items();
+	}
+	
+	public List<TaskKanbanItem> getTaskColumn2Items() {
+		return repository.getTaskColumn2Items();
+	}
+	
+	public List<TaskKanbanItem> getTaskColumn3Items() {
+		return repository.getTaskColumn3Items();
+	}
+	
+	public List<TaskKanbanItem> getTaskColumn4Items() {
+		return repository.getTaskColumn4Items();
+	}
+	
+	public List<TaskKanbanItem> getTaskColumn5Items() {
+		return repository.getTaskColumn5Items();
+	}
+	
+	public List<TaskKanbanItem> getTaskColumn6Items() {
+		return repository.getTaskColumn6Items();
 	}
 	
 	private String toString(TaskKanbanItem taskKanbanItem) {
