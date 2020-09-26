@@ -8,11 +8,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import za.co.kanban.dtos.KanbanRow;
 import za.co.kanban.dtos.TaskPersistRequest;
 import za.co.kanban.model.Employee;
+import za.co.kanban.model.SubtaskKanbanItem;
 import za.co.kanban.model.Task;
 import za.co.kanban.model.TaskKanbanItem;
 import za.co.kanban.repositories.TaskRepository;
+import za.co.kanban.utils.KanbanRowsMaker;
 import za.co.kanban.utils.Utils;
 
 
@@ -27,6 +30,20 @@ public class TaskModule {
 	@Autowired 
 	EmployeeModule employeeModule;
 
+
+	public List<KanbanRow> getKanbanRows(){
+		List<TaskKanbanItem> taskColumn1Items=getTaskColumn1Items();
+		List<TaskKanbanItem> taskColumn2Items=getTaskColumn2Items();
+		List<TaskKanbanItem> taskColumn3Items=getTaskColumn3Items();
+		List<TaskKanbanItem> taskColumn4Items=getTaskColumn4Items();
+		List<TaskKanbanItem> taskColumn5Items=getTaskColumn5Items();
+		List<TaskKanbanItem> taskColumn6Items=getTaskColumn6Items();
+		List<KanbanRow> kanbanRows=KanbanRowsMaker.makeKanbanTaskRows(taskColumn1Items,taskColumn2Items,
+				taskColumn3Items,taskColumn4Items,taskColumn5Items,taskColumn6Items);		
+		
+		return kanbanRows;
+	}
+	
 	
 	public List<TaskKanbanItem> getTaskBanbanitems(){
 		List<TaskKanbanItem> taskKanbanItems = repository.getTaskBanbanitems();

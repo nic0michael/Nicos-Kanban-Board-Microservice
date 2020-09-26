@@ -2,7 +2,7 @@ package za.co.kanban.dtos;
 
 public class SubtaskKanbanItemDto {
 	private String status;
-	private String sSubtaskId;
+	private String subtaskId;
 	private String subtaskName;
 	private String description;
 	private String taskName;
@@ -11,11 +11,11 @@ public class SubtaskKanbanItemDto {
 	
 	public SubtaskKanbanItemDto() {}
 
-	public SubtaskKanbanItemDto(String status, String sSubtaskId, String subtaskName, String description,
+	public SubtaskKanbanItemDto(String status, String subtaskId, String subtaskName, String description,
 			String taskName, String assignedTo, String dueDate) {
 		super();
 		this.status = status;
-		this.sSubtaskId = sSubtaskId;
+		this.subtaskId = subtaskId;
 		this.subtaskName = subtaskName;
 		this.description = description;
 		this.taskName = taskName;
@@ -31,12 +31,12 @@ public class SubtaskKanbanItemDto {
 		this.status = status;
 	}
 
-	public String getsSubtaskId() {
-		return sSubtaskId;
+	public String getSubtaskId() {
+		return subtaskId;
 	}
 
-	public void setsSubtaskId(String sSubtaskId) {
-		this.sSubtaskId = sSubtaskId;
+	public void setSubtaskId(String sSubtaskId) {
+		this.subtaskId = sSubtaskId;
 	}
 
 	public String getSubtaskName() {
@@ -81,7 +81,7 @@ public class SubtaskKanbanItemDto {
 
 	@Override
 	public String toString() {
-		return "SubtaskKanbanItemDto [status=" + status + ", sSubtaskId=" + sSubtaskId + ", subtaskName=" + subtaskName
+		return "SubtaskKanbanItemDto [status=" + status + ", subtaskId=" + subtaskId + ", subtaskName=" + subtaskName
 				+ ", description=" + description + ", taskName=" + taskName + ", assignedTo=" + assignedTo
 				+ ", dueDate=" + dueDate + "]";
 	}

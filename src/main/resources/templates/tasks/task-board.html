@@ -21,14 +21,14 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="aTaskBanbanitem : ${taskBanbanitems}">
-					<td th:text="${aTaskBanbanitem.status}"></td>
-					<td th:text="${aTaskBanbanitem.taskName}"></td>
-					<td th:text="${aTaskBanbanitem.userStoryName}"></td>
-					<td th:text="${aTaskBanbanitem.assignedTo}"></td>
-					<td th:text="${aTaskBanbanitem.dueDate}"></td>
-					<td>...</td>
-				</tr>
+					<tr th:each="row : ${columns}">
+						<td th:text="${row.column1}"></td>
+						<td th:text="${row.column2}"></td>
+						<td th:text="${row.column3}"></td>
+						<td th:text="${row.column4}"></td>
+						<td th:text="${row.column5}"></td>
+						<td th:text="${row.column6}"></td>
+					</tr>
 			</tbody>
 		</table>
 	</div>

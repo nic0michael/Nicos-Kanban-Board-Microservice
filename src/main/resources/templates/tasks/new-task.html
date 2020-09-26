@@ -67,6 +67,19 @@
 							th:text="${statusValue.displayValue}"></option>
 					</select>
 				</div>
+				
+
+				<b>Subtask Due Date:</b>
+				<div class="form-group row">
+					<input id="dp3" type="text" class="mb-4 col-2 col-xs-4"
+						value="Due Date" th:field="${taskPersistRequest.due_date}">
+				</div>
+
+				<div class="mb-4 col-2 col-xs-4">
+					<script type="text/javascript">
+						$('#dp3').datepicker();
+					</script>
+				</div>
 
 				<b>Is Task Active:</b>
 				<div class="form-group row">

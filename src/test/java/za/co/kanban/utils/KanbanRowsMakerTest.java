@@ -44,7 +44,7 @@ public class KanbanRowsMakerTest {
 			
 			dto.setAssignedTo("Mr Tee "+i);
 			dto.setDueDate("12 March 2020");
-			dto.setsSubtaskId("00"+columnNr+"00"+i);
+			dto.setSubtaskId("00"+columnNr+"00"+i);
 			dto.setSubtaskName("A small thing "+columnNr+"_"+i);
 			dto.setTaskName("A big thing"+columnNr+"_"+i);
 			dto.setStatus(""+columnNr+"_"+i+" status");

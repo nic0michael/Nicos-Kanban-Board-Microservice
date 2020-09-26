@@ -11,10 +11,31 @@ import org.slf4j.LoggerFactory;
 import za.co.kanban.dtos.KanbanRow;
 import za.co.kanban.dtos.SubtaskKanbanItemDto;
 import za.co.kanban.model.SubtaskKanbanItem;
+import za.co.kanban.model.TaskKanbanItem;
 import za.co.kanban.modules.SubtaskModule;
 
 public class KanbanRowsMaker {
 	private static final Logger log = LoggerFactory.getLogger(KanbanRowsMaker.class);
+	
+
+
+	public static List<KanbanRow> makeKanbanTaskRows(List<TaskKanbanItem> taskColumn1Items,
+			List<TaskKanbanItem> taskColumn2Items, List<TaskKanbanItem> taskColumn3Items,
+			List<TaskKanbanItem> taskColumn4Items, List<TaskKanbanItem> taskColumn5Items,
+			List<TaskKanbanItem> taskColumn6Items) {
+		
+
+		List<SubtaskKanbanItemDto> column1Items=makeTaskKanbanItemDto(taskColumn1Items);
+		List<SubtaskKanbanItemDto> column2Items=makeTaskKanbanItemDto(taskColumn2Items); 
+		List<SubtaskKanbanItemDto> column3Items=makeTaskKanbanItemDto(taskColumn3Items);
+		List<SubtaskKanbanItemDto> column4Items=makeTaskKanbanItemDto(taskColumn4Items); 
+		List<SubtaskKanbanItemDto> column5Items=makeTaskKanbanItemDto(taskColumn5Items);
+		List<SubtaskKanbanItemDto> column6Items=makeTaskKanbanItemDto(taskColumn6Items); 
+
+
+		return makeKanbanRowsFromDTOs(column1Items,column2Items,column3Items,
+				column4Items,column5Items,column6Items);
+	}
 	
 
 	public static List<KanbanRow> makeKanbanRows(
@@ -123,17 +144,34 @@ public class KanbanRowsMaker {
 	}
 	
 	private static String makeColumn(SubtaskKanbanItemDto rowItem) {
-		String column=null;
-		if(StringUtils.isNotEmpty(rowItem.getAssignedTo())){
-			column=rowItem.getAssignedTo().toUpperCase()
-			+" : "+rowItem.getDescription();
+		StringBuilder column=new StringBuilder();
+
+		String status;
+		String subtaskId=rowItem.getSubtaskId();
+		String subtaskName=rowItem.getSubtaskName();
+		String description=rowItem.getDescription();
+		String taskName=rowItem.getTaskName();
+		String assignedTo=rowItem.getAssignedTo();
+		String dueDate=rowItem.getDueDate();	
+		
+		if(StringUtils.isNotEmpty(assignedTo)){
+			column.append(assignedTo.toUpperCase());			
 		} else {
-			column="Not assigned : "+rowItem.getDescription();
-			
+			column.append("Not assigned");			
 		}
+
+		column.append(" : ");
+		column.append(subtaskName);
+		column.append(" , Description: ");
+		column.append(description);
+		column.append(" , Parent: ");
+		column.append(taskName);
+		column.append(" , DueDate: ");
+		column.append(dueDate);
+		
 //		+"<br/> Task: "+rowItem.getTaskName()+"<br/> Due Date: "+rowItem.getDueDate()+"<hr>";
 	
-		return column;
+		return column.toString();
 	}
 
 	static int getMaximumArrayLength(List<SubtaskKanbanItemDto> subtaskColumn1Items,
@@ -177,7 +215,7 @@ public class KanbanRowsMaker {
 					String dueDate=Utils.dateToString(subtaskKanbanItem.getDate());
 					dto.setDueDate(dueDate);
 					String subtaksId = ""+subtaskKanbanItem.getId();
-					dto.setsSubtaskId(subtaksId);
+					dto.setSubtaskId(subtaksId);
 					dto.setStatus(subtaskKanbanItem.getStatus());
 					dto.setSubtaskName(subtaskKanbanItem.getName());
 					dto.setTaskName(subtaskKanbanItem.getTaskName());
@@ -188,7 +226,28 @@ public class KanbanRowsMaker {
 		return subtaskKanbanItemDtos;
 	}
 
-	
+
+	private static List<SubtaskKanbanItemDto> makeTaskKanbanItemDto(List<TaskKanbanItem> taskColumn1Items) {
+		List<SubtaskKanbanItemDto> subtaskKanbanItemDtos=new ArrayList<>();
+		if(taskColumn1Items!=null && ! taskColumn1Items.isEmpty()) {
+			for (TaskKanbanItem taskKanbanItem : taskColumn1Items) {
+				if(taskKanbanItem!=null) {
+					SubtaskKanbanItemDto dto=new SubtaskKanbanItemDto();
+					dto.setAssignedTo(taskKanbanItem.getAssignedTo());
+					dto.setDescription(taskKanbanItem.getDescription());
+					String dueDate=taskKanbanItem.getDueDate();
+					dto.setDueDate(dueDate);
+					String taskId = ""+taskKanbanItem.getTaskId();
+					dto.setSubtaskId(taskId);
+					dto.setStatus(taskKanbanItem.getStatus());
+					dto.setSubtaskName(taskKanbanItem.getTaskName());
+					dto.setTaskName(taskKanbanItem.getUserStoryName());
+					subtaskKanbanItemDtos.add(dto);
+				}
+			}
+		}
+		return subtaskKanbanItemDtos;
+	}
 
 	private static void displayInLog(SubtaskKanbanItem subtaskKanbanItem) {
 		if(subtaskKanbanItem!=null) {

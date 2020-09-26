@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import za.co.kanban.dtos.KanbanRow;
 import za.co.kanban.dtos.TaskPersistRequest;
 import za.co.kanban.model.Employee;
 import za.co.kanban.model.StatusValue;
@@ -99,6 +100,7 @@ public class TaskController {
 		List<TaskKanbanItem> column4=taskmod.getTaskColumn4Items();
 		List<TaskKanbanItem> column5=taskmod.getTaskColumn5Items();
 		List<TaskKanbanItem> column6=taskmod.getTaskColumn6Items();
+		List<KanbanRow> columns = taskmod.getKanbanRows();
 		if(taskBanbanitems!=null) {
 			log.info("PROJECT_MAN : TaskController : displayHome : displaying :"+taskBanbanitems.size()+" task Banban items");
 		}
@@ -115,6 +117,7 @@ public class TaskController {
 		model.addAttribute("column4", column4);
 		model.addAttribute("column5", column5);
 		model.addAttribute("column6", column6);
+		model.addAttribute("columns", columns);
 		return "tasks/task-board";
 	}
 
