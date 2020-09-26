@@ -109,6 +109,12 @@ public class TaskController {
 		model.addAttribute("column4Name", column4Name);
 		model.addAttribute("column5Name", column5Name);
 		model.addAttribute("column6Name", column6Name);
+		model.addAttribute("column1", column1);
+		model.addAttribute("column2", column2);
+		model.addAttribute("column3", column3);
+		model.addAttribute("column4", column4);
+		model.addAttribute("column5", column5);
+		model.addAttribute("column6", column6);
 		return "tasks/task-board";
 	}
 

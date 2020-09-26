@@ -1,12 +1,14 @@
 package za.co.kanban.model;
 
+import java.util.Date;
+
 public interface SubtaskKanbanItem {
 
-	public String getStatus();
-	public String getSubtaskId();
-	public String getSubtaskName();
+	public String getStatus();	
+	public Long getId();
+	public String getName();
 	public String getDescription();
 	public String getTaskName();
-	public String getAssignedTo();
-	public String getDueDate();	
+	public String getAssignee();
+	public Date getDate();	
 }

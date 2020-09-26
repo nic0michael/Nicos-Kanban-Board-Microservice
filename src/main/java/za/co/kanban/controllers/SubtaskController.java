@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import za.co.kanban.dtos.EmployeePersistRequest;
+import za.co.kanban.dtos.KanbanRow;
 import za.co.kanban.dtos.SubtaskPersistRequest;
 import za.co.kanban.model.Employee;
 import za.co.kanban.model.StatusValue;
@@ -73,24 +74,10 @@ public class SubtaskController {
 		String column4Name=getColumnDisplayValue(4);
 		String column5Name=getColumnDisplayValue(5);
 		String column6Name=getColumnDisplayValue(6);
-			
-		List<SubtaskKanbanItem> subtaskKanbanItems=  subtaskmod.getSubtaskKanbanItems();
-		List<SubtaskKanbanItem> column1=subtaskmod.getSubtaskColumn1Items();
-		List<SubtaskKanbanItem> column2=subtaskmod.getSubtaskColumn2Items();
-		List<SubtaskKanbanItem> column3=subtaskmod.getSubtaskColumn3Items();
-		List<SubtaskKanbanItem> column4=subtaskmod.getSubtaskColumn4Items();
-		List<SubtaskKanbanItem> column5=subtaskmod.getSubtaskColumn5Items();
-		List<SubtaskKanbanItem> column6=subtaskmod.getSubtaskColumn6Items();
-		if(subtaskKanbanItems!=null) {
-			log.info("PROJECT_MAN : SubtaskController : displayHome : displaying subtaskKanbanItems:"+subtaskKanbanItems.size()+" subtasks");
-		}
-		model.addAttribute("subtaskKanbanItems", subtaskKanbanItems);
-		model.addAttribute("column1", column1);
-		model.addAttribute("column2", column2);
-		model.addAttribute("column3", column3);
-		model.addAttribute("column4", column4);
-		model.addAttribute("column5", column5);
-		model.addAttribute("column6", column6);
+		
+		List<KanbanRow> columns = subtaskmod.getKanbanRows();
+
+		model.addAttribute("columns", columns);
 		model.addAttribute("column1Name", column1Name);
 		model.addAttribute("column2Name", column2Name);
 		model.addAttribute("column3Name", column3Name);
