@@ -13,4 +13,4 @@
 |     7     | Publish this project in the cloud                                   | To do     |
 |     8     | Create a Docker Image                                               | To do     |
 |     9     | Publish the Docker Image in Docker Repository                       | To do     |
-|    10     | Add employees to Teams                                              | To do     |                      |           |
+|    10     | Add employees to Teams                                              | To do     |                      |    11     | Add REST services for Android and IOS development                   | To do     |              
