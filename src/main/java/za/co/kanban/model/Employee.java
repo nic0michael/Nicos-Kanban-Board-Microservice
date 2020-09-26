@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.lang.NonNull;
 
@@ -96,12 +97,14 @@ public class Employee {
 
 
 	public String getFullName() {
-		return fullName;
+		return fullName.toUpperCase();
 	}
 
 
 	public void setFullName(String fullName) {
-		this.fullName = fullName;
+		if(StringUtils.isNotEmpty(fullName)) {
+			this.fullName = fullName.toUpperCase();
+		}
 	}
 
 

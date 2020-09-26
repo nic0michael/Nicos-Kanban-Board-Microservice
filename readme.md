@@ -1,6 +1,6 @@
 # Kanban Board Spring Boot Microservice
 
-## Release Version 1.1.0
+## Release Version 1.2.0
 This code is ready for usage.
 
 ## Aim of this Project
@@ -46,6 +46,10 @@ The WAR file delivered can be run as a stand-alone application with built-in Tom
 
 
 ## Latest News
+Date: 26th September
+Announcement:The Task and Subtask Kanban boards are now completed
+Our project is promoted to release version : **1.2.0-SNAPSHOT**
+
 Date : 12th September
 Announcement: This software is ready for use as a Kanban Board 
 As of today we shipping the project as a WAR file :**kanban-board.war** 
