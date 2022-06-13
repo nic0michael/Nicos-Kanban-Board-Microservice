@@ -76,14 +76,14 @@ public class EpicController {
     }
 
 
-    @GetMapping("/remove}")
+    @GetMapping("/remove")
     public String deleteEpic(@RequestParam(value = "id") Long epicId) {
         epicmod.delete(epicId);
         return "redirect:/projects";
     }
 
 
-    @GetMapping("/change}")
+    @GetMapping("/change")
     public String updateEpic(@RequestParam(value = "id") Long epicId, Model model) {
         Epic epic = epicmod.findByEpicId(epicId);
         model.addAttribute("epic", epic);

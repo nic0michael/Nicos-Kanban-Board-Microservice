@@ -87,14 +87,14 @@ public class EmployeeController {
     }
 
 
-    @GetMapping("/remove}")
+    @GetMapping("/remove")
     public String deleteEmployee(@RequestParam(value = "id") Long employeeId) {
         emplmod.delete(employeeId);
         return "redirect:/projects";
     }
 
 
-    @GetMapping("/change}")
+    @GetMapping("/change")
     public String updateEmployee(@RequestParam(value = "id") Long employeeId, Model model) {
         Employee employee = emplmod.findByEmployeeId(employeeId);
         model.addAttribute("employee", employee);

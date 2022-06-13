@@ -68,14 +68,14 @@ public class TeamController {
     }
 
 
-    @GetMapping("/remove}")
+    @GetMapping("/remove")
     public String deleteTeam(@RequestParam(value = "id") Long teamId) {
         custmod.delete(teamId);
         return "redirect:/projects";
     }
 
 
-    @GetMapping("/change}")
+    @GetMapping("/change")
     public String updateTeam(@RequestParam(value = "id") Long teamId, Model model) {
         Team team = custmod.findByTeamId(teamId);
         model.addAttribute("team", team);

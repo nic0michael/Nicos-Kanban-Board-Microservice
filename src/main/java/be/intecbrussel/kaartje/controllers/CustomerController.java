@@ -71,14 +71,14 @@ public class CustomerController {
     }
 
 
-    @GetMapping("/remove}")
+    @GetMapping("/remove")
     public String deleteCustomer(@RequestParam(value = "id") Long customerId) {
         custmod.delete(customerId);
         return "redirect:/kanban-board/customers";
     }
 
 
-    @GetMapping("/change}")
+    @GetMapping("/change")
     public String updateCustomer(@RequestParam(value = "id") Long customerId, Model model) {
         Customer customer = custmod.findByCustomerId(customerId);
         model.addAttribute("customer", customer);

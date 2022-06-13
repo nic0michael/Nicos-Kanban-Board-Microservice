@@ -51,7 +51,6 @@ public class UserStoryController {
         return "userstories/list-userstories";
     }
 
-
     @GetMapping("/board")
     public String displaySubtaskBoard(Model model) {
         List<UserStory> userStoryList = userStorymod.findAll();
@@ -75,9 +74,11 @@ public class UserStoryController {
 
     @PostMapping("/save")
     public String createUserStory(UserStoryPersistRequest userStoryPersistRequest, Model model) {
-        log.info("USER_STRY : UserStoryController : createUserStory : saving userStory from  UserStoryPersistRequest: " + userStoryPersistRequest);
+        log.info("USER_STRY : UserStoryController : createUserStory : saving userStory from  UserStoryPersistRequest: "
+                + userStoryPersistRequest);
 
-        if (StringUtils.isNotBlank(userStoryPersistRequest.getUserStoryId()) && StringUtils.isNumeric(userStoryPersistRequest.getUserStoryId())) {
+        if (StringUtils.isNotBlank(userStoryPersistRequest.getUserStoryId())
+                && StringUtils.isNumeric(userStoryPersistRequest.getUserStoryId())) {
             log.info("USER_STRY : UserStoryController : createUserStory : updating userStory");
             UserStory theUserStory = Utils.convertToUserStory(userStoryPersistRequest);
             Long userStoryId = Long.parseLong(userStoryPersistRequest.getUserStoryId());
@@ -91,15 +92,13 @@ public class UserStoryController {
         return "redirect:/kanban-board/userstories";
     }
 
-
-    @GetMapping("/remove}")
+    @GetMapping("/remove")
     public String deleteUserStory(@RequestParam(value = "id") Long userStoryId) {
         userStorymod.delete(userStoryId);
         return "redirect:/projects";
     }
 
-
-    @GetMapping("/change}")
+    @GetMapping("/change")
     public String updateUserStory(@RequestParam(value = "id") Long userStoryId, Model model) {
         UserStory userStory = userStorymod.findByUserStoryId(userStoryId);
         model.addAttribute("userStory", userStory);
@@ -108,14 +107,17 @@ public class UserStoryController {
 
     @GetMapping("/maakdood")
     public String removeUserStory(@RequestParam(value = "id") Long userStoryId, Model model) {
-        log.info("USER_STRY : UserStoryController : removeUserStory : to update project with project_id : " + userStoryId);
+        log.info("USER_STRY : UserStoryController : removeUserStory : to update project with project_id : "
+                + userStoryId);
         userStorymod.delete(userStoryId);
         return "redirect:/userstories";
     }
 
     @GetMapping("/verander")
     public String displayUserStorytFormToUpdate(@RequestParam(value = "id") Long userStoryId, Model model) {
-        log.info("USER_STRY : UserStoryController : displayUserStorytFormToUpdate : to update project with project_id : " + userStoryId);
+        log.info(
+                "USER_STRY : UserStoryController : displayUserStorytFormToUpdate : to update project with project_id : "
+                        + userStoryId);
         if (userStoryId != null) {
             UserStory userStory = userStorymod.findByUserStoryId(userStoryId);
             if (userStory.getDateCreated() == null) {
@@ -127,7 +129,9 @@ public class UserStoryController {
                 List<Team> teams = teammod.findAll();
                 model.addAttribute("teams", teams);
                 model.addAttribute("epics", epics);
-                log.info("USER_STRY : UserStoryController : displayUserStorytFormToUpdate : created UserStoryPersistRequest : " + userStoryPersistRequest);
+                log.info(
+                        "USER_STRY : UserStoryController : displayUserStorytFormToUpdate : created UserStoryPersistRequest : "
+                                + userStoryPersistRequest);
                 model.addAttribute("userStoryPersistRequest", userStoryPersistRequest);
             } else {
                 return "redirect:/userstories";
@@ -137,10 +141,11 @@ public class UserStoryController {
         return "userstories/new-userstory";
     }
 
-
     @GetMapping("/workflow")
     public String displayUserStorytFormToWorkflow(@RequestParam(value = "id") Long userStoryId, Model model) {
-        log.info("USER_STRY : UserStoryController : displayUserStorytFormToUpdate : to update project with project_id : " + userStoryId);
+        log.info(
+                "USER_STRY : UserStoryController : displayUserStorytFormToUpdate : to update project with project_id : "
+                        + userStoryId);
         if (userStoryId != null) {
             UserStory userStory = userStorymod.findByUserStoryId(userStoryId);
             if (userStory.getDateCreated() == null) {
@@ -154,7 +159,9 @@ public class UserStoryController {
                 model.addAttribute("epics", epics);
                 List<StatusValue> statusValues = statusmod.findAll();
                 model.addAttribute("statusValues", statusValues);
-                log.info("USER_STRY : UserStoryController : displayUserStorytFormToUpdate : created UserStoryPersistRequest : " + userStoryPersistRequest);
+                log.info(
+                        "USER_STRY : UserStoryController : displayUserStorytFormToUpdate : created UserStoryPersistRequest : "
+                                + userStoryPersistRequest);
                 model.addAttribute("userStoryPersistRequest", userStoryPersistRequest);
             } else {
                 return "redirect:/userstories";
