@@ -5,7 +5,7 @@
     <groupId>be.intecbrussel</groupId>
     <artifactId>kaartje</artifactId>
     <name>kaartje</name>
-    <description>Kanban Board with MySQL in Spring Boot</description>
+    <description>Intec Brussel Kanban Board</description>
     <version>v1</version>
     <packaging>jar</packaging>
 
