@@ -1,94 +1,94 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layouts :: header">
-  <title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarHOME"></nav>
+<nav th:replace="layouts :: navbarHOME"></nav>
 
-	<div sec:authorize="!isAuthenticated()">You are not authenticated</div>
+<div sec:authorize="!isAuthenticated()">You are not authenticated</div>
 
 
-	<div sec:authorize="isAuthenticated()">
+<div sec:authorize="isAuthenticated()">
 
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4" th:text="${simpleDate}"></div>
-				<div class="col-md-3" th:text="${projectName}"></div>
-				<div class="col-md-1" th:text="${projectVersion}"></div>
-				<div class="col-md-3" sec:authentication="name"></div>
-				<!-- 	<p th:text="${#temporals.formatISO(timestamp)}"></p>  -->
-				<div sec:authorize="hasRole('USER')">Role is of a user.</div>
-				<div sec:authorize="hasRole('TEAMMEMBER')">role is of team member</div>
-				<div sec:authorize="hasRole('MANAGER')">role is of manager.</div>
-				<div sec:authorize="hasRole('ADMIN')">role is of administrator.</div>
-			</div>
-		</div>
-		<div sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" th:text="${simpleDate}"></div>
+            <div class="col-md-3" th:text="${projectName}"></div>
+            <div class="col-md-1" th:text="${projectVersion}"></div>
+            <div class="col-md-3" sec:authentication="name"></div>
+            <!-- 	<p th:text="${#temporals.formatISO(timestamp)}"></p>  -->
+            <div sec:authorize="hasRole('USER')">Role is of a user.</div>
+            <div sec:authorize="hasRole('TEAMMEMBER')">role is of team member</div>
+            <div sec:authorize="hasRole('MANAGER')">role is of manager.</div>
+            <div sec:authorize="hasRole('ADMIN')">role is of administrator.</div>
+        </div>
+    </div>
+    <div sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')">
 
-			<br>
-			<h3>Project Dash Board</h3>
-			<hr>
+        <br>
+        <h3>Project Dash Board</h3>
+        <hr>
 
-			<h4>Current User Stories</h4>
-			<div class="row">
-				<div class="col-md-6">
-					<table class="table table-bordered table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th>User Story Name</th>
-								<th>User Story Stage</th>
-							</tr>
-						</thead>
-						<tbody>
-							<!-- 
-								<tr th:each="aUserStory : ${userStoryList}">
-									<td th:text="${aUserStory.name}"></td>
-									<td th:text="${aUserStory.stage}"></td>
-								</tr>
-							-->
-						</tbody>
-					</table>
-				</div>
+        <h4>Current User Stories</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>User Story Name</th>
+                        <th>User Story Stage</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--
+                        <tr th:each="aUserStory : ${userStoryList}">
+                            <td th:text="${aUserStory.name}"></td>
+                            <td th:text="${aUserStory.stage}"></td>
+                        </tr>
+                    -->
+                    </tbody>
+                </table>
+            </div>
 
-				<div class="col-md-4">
-					<canvas id="myPieChart" height="50" width="50"></canvas>
-					<script>
-						var chartData = "[[${userStoryStatusCnt}]]"
-					</script>
-				</div>
-			</div>
-			<div class="container">
-				<h4>Current Employees</h4>
-				<div class="row">
-					<div class="col-md-6">
-						<table class="table table-bordered table-striped">
-							<thead class="thead-dark">
-								<tr>
-									<th>Full Name</th>
-									<th>Number of UserStories</th>
-								</tr>
-							</thead>
-							<tbody>
+            <div class="col-md-4">
+                <canvas height="50" id="myPieChart" width="50"></canvas>
+                <script>
+                    var chartData = "[[${userStoryStatusCnt}]]"
+                </script>
+            </div>
+        </div>
+        <div class="container">
+            <h4>Current Employees</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Number of UserStories</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-								<tr
-									th:each="aEmployeeUserStoryCnt : ${employeesListUserStoryCnt}">
-									<td th:text="${aEmployeeUserStoryCnt.fullName}"></td>
-									<td th:text="${aEmployeeUserStoryCnt.userstoryCount}"></td>
+                        <tr
+                                th:each="aEmployeeUserStoryCnt : ${employeesListUserStoryCnt}">
+                            <td th:text="${aEmployeeUserStoryCnt.fullName}"></td>
+                            <td th:text="${aEmployeeUserStoryCnt.userstoryCount}"></td>
 
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-			<div class="container"></div>
-			<div th:replace="layouts :: piechartscript"></div>
-		</div>
+        <div class="container"></div>
+        <div th:replace="layouts :: piechartscript"></div>
+    </div>
 
-	</div>
-	</div>
+</div>
+</div>
 </body>
 </html>

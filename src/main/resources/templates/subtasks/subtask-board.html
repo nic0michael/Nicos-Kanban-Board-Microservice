@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head th:replace="layouts :: headerSUBTASK">
-  <title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarSUBTASK"></nav>
-	<div sec:authorize="isAuthenticated()">
-	<div>
-		<h4>Subtasks Kanban Board</h4>
-		<br>
-		<table class="table table-bordered table-striped">
-			<thead class="thead-dark">
-				<tr>
-					<th>Status</th>
-					<th>Subtask Name</th>
-					<th>Task</th>
-					<th>Assigned to</th>
-					<th>Due Date</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="aSubtaskKanbanItem : ${subtaskKanbanItems}">
-					<td th:text="${aSubtaskKanbanItem.status}"></td>
-					<td th:text="${aSubtaskKanbanItem.subtaskName}"></td>
-					<td th:text="${aSubtaskKanbanItem.taskName}"></td>	
-					<td th:text="${aSubtaskKanbanItem.assignedTo}"></td>		
-					<td th:text="${aSubtaskKanbanItem.dueDate}"></td>						
-					<td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	</div>
+<nav th:replace="layouts :: navbarSUBTASK"></nav>
+<div sec:authorize="isAuthenticated()">
+    <div>
+        <h4>Subtasks Kanban Board</h4>
+        <br>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>Status</th>
+                <th>Subtask Name</th>
+                <th>Task</th>
+                <th>Assigned to</th>
+                <th>Due Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="aSubtaskKanbanItem : ${subtaskKanbanItems}">
+                <td th:text="${aSubtaskKanbanItem.status}"></td>
+                <td th:text="${aSubtaskKanbanItem.subtaskName}"></td>
+                <td th:text="${aSubtaskKanbanItem.taskName}"></td>
+                <td th:text="${aSubtaskKanbanItem.assignedTo}"></td>
+                <td th:text="${aSubtaskKanbanItem.dueDate}"></td>
+                <td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 </body>

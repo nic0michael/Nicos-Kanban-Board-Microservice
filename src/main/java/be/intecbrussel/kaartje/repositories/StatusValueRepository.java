@@ -1,11 +1,10 @@
-package za.co.kanban.repositories;
+package be.intecbrussel.kaartje.repositories;
 
+import be.intecbrussel.kaartje.model.StatusValue;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import za.co.kanban.model.StatusValue;
 
 public interface StatusValueRepository extends JpaRepository<StatusValue, Long> {
 
-	public StatusValue findByStatusValueId(Long subtaskId);
+    StatusValue findByStatusValueId(Long subtaskId);
 
 }

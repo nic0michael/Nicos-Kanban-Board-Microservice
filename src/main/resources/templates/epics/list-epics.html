@@ -1,49 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head th:replace="layouts :: header">
-  <title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarEPIC"></nav>
-	<div sec:authorize="isAuthenticated()">
-	<div>
-		<h4>Current Epics</h4>
-		<br>
-		<div sec:authorize="hasRole('ADMIN')">
-			<a th:href="@{/kanban-board/epics/new}" class="btn-primary btn-sm mb-3" >Add new Epic</a>
-		</div>
-		<br>
-		<table class="table table-bordered table-striped">
-			<thead class="thead-dark">
-				<tr>
-					<th>Epic Name</th>
-					<th>Description</th>
-					<th>Duedate</th>
-					<th>Epic Id</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="aEpic : ${epicsList}">
-					<td th:text="${aEpic.name}"></td>
-					<td th:text="${aEpic.description}"></td>
-					<td th:text="${aEpic.due_date}"></td>
-					<td th:text="${aEpic.epicId}" sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')"></td>
-					<td sec:authorize=hasAnyRole('MANAGER','TEAMMEMBER','USER')>hidden</td>
-					
-					<td>
-					 <div sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')">
-					 	<a th:href="@{/kanban-board/epics/verander/(id=${aEpic.epicId})}" class="btn-info btn-sm" >Edit</a>&nbsp;&nbsp;&nbsp;
-					 	<a th:href="@{/kanban-board/epics/maakdood/(id=${aEpic.epicId})}" class="btn-danger btn-sm"  
-				  	 	onClick="if (!(confirm('Are you sure you want to delete this epic?'))) return false" >Delete</a>	
-				  	 </div>		
-				  	 <div sec:authorize=hasAnyRole('MANAGER','TEAMMEMBER','USER')>No Action</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	</div>
+<nav th:replace="layouts :: navbarEPIC"></nav>
+<div sec:authorize="isAuthenticated()">
+    <div>
+        <h4>Current Epics</h4>
+        <br>
+        <div sec:authorize="hasRole('ADMIN')">
+            <a class="btn-primary btn-sm mb-3" th:href="@{/kanban-board/epics/new}">Add new Epic</a>
+        </div>
+        <br>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>Epic Name</th>
+                <th>Description</th>
+                <th>Duedate</th>
+                <th>Epic Id</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="aEpic : ${epicsList}">
+                <td th:text="${aEpic.name}"></td>
+                <td th:text="${aEpic.description}"></td>
+                <td th:text="${aEpic.due_date}"></td>
+                <td sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')" th:text="${aEpic.epicId}"></td>
+                <td sec:authorize=hasAnyRole('MANAGER','TEAMMEMBER','USER')>hidden</td>
+
+                <td>
+                    <div sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')">
+                        <a class="btn-info btn-sm"
+                           th:href="@{/kanban-board/epics/verander/(id=${aEpic.epicId})}">Edit</a>&nbsp;&nbsp;&nbsp;
+                        <a class="btn-danger btn-sm" onClick="if (!(confirm('Are you sure you want to delete this epic?'))) return false"
+                           th:href="@{/kanban-board/epics/maakdood/(id=${aEpic.epicId})}">Delete</a>
+                    </div>
+                    <div sec:authorize=hasAnyRole('MANAGER','TEAMMEMBER','USER')>No Action</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 </body>

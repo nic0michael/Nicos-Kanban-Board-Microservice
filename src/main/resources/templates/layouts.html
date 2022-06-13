@@ -3,527 +3,529 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:fragment="header">
-<title>Kanban Board</title>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kanban Board</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          name="viewport">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          rel="stylesheet">
 
-<link rel="stylesheet" th:href="@{/css/formatting.css}">
+    <link rel="stylesheet" th:href="@{/css/formatting.css}">
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+          rel="stylesheet">
+    <link href="/resources/demos/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </head>
 
 <head th:fragment="headerTASK">
-<title>Kanban Board</title>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kanban Board</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          name="viewport">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          rel="stylesheet">
 
-<link rel="stylesheet" th:href="@{/css/formatting.css}">
+    <link rel="stylesheet" th:href="@{/css/formatting.css}">
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <meta http-equiv="refresh" content="60;url=/kanban-board/tasks/board" />
+    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+          rel="stylesheet">
+    <link href="/resources/demos/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <meta content="60;url=/kanban-board/tasks/board" http-equiv="refresh"/>
 </head>
 
 
 <head th:fragment="headerSUBTASK">
-<title>Kanban Board</title>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kanban Board</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          name="viewport">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          rel="stylesheet">
 
-<link rel="stylesheet" th:href="@{/css/formatting.css}">
+    <link rel="stylesheet" th:href="@{/css/formatting.css}">
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <meta http-equiv="refresh" content="60;url=/kanban-board/tasks/board" />
+    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+          rel="stylesheet">
+    <link href="/resources/demos/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <meta content="60;url=/kanban-board/tasks/board" http-equiv="refresh"/>
 </head>
 
 <body>
 
-	<nav th:fragment="navbarHOME"
-		class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">ZS6BVR PM</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="/kanban-board/home">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
-				</li>
-				<li class="nav-item">
-					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/logout}">Logout</a>   <div sec:authorize="hasRole('ADMIN')">
-				</li>
-			</ul>
-		</div>
-	</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+     th:fragment="navbarHOME">
+    <a class="navbar-brand" href="#">ZS6BVR PM</a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler" data-target="#navbarNav"
+            data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/kanban-board/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/h2-console" sec:authorize="hasRole('ADMIN')" target="_blank">H2 DB</a></li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+                <div sec:authorize="hasRole('ADMIN')">
+            </li>
+        </ul>
+    </div>
+</nav>
 
 
-	<nav th:fragment="navbarUSR"
-		class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">ZS6BVR PM</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="/kanban-board/home">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
-				</li>
-				<li class="nav-item">
-					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/logout}">Logout</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+     th:fragment="navbarUSR">
+    <a class="navbar-brand" href="#">ZS6BVR PM</a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler" data-target="#navbarNav"
+            data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/kanban-board/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/h2-console" sec:authorize="hasRole('ADMIN')" target="_blank">H2 DB</a></li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-	
-	<nav th:fragment="navbarEMP"
-		class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">ZS6BVR PM</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span><li class="nav-item active">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
-				</li>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="/kanban-board/home">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
-				</li>
-				<li class="nav-item">
-					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/logout}">Logout</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
 
-	<nav th:fragment="navbarCUS"
-		class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">ZS6BVR PM</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="/kanban-board/home">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
-				</li>
-				<li class="nav-item">
-					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/logout}">Logout</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-	
-	
-	<nav th:fragment="navbarEPIC"
-		class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">ZS6BVR PM</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="/kanban-board/home">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
-				</li>
-				<li class="nav-item">
-					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/logout}">Logout</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+     th:fragment="navbarEMP">
+    <a class="navbar-brand" href="#">ZS6BVR PM</a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler" data-target="#navbarNav"
+            data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+        <li class="nav-item active">
+            <a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
+        </li>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/kanban-board/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/h2-console" sec:authorize="hasRole('ADMIN')" target="_blank">H2 DB</a></li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-	<nav th:fragment="navbarTEAM"
-		class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">ZS6BVR PM</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="/kanban-board/home">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
-				</li>
-				<li class="nav-item">
-					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/logout}">Logout</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-	
-	<nav th:fragment="navbarTASK"
-		class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">ZS6BVR PM</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="/kanban-board/home">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
-				</li>
-				<li class="nav-item">
-					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/logout}">Logout</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-	
-	
-	<nav th:fragment="navbarSUBTASK"
-		class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">ZS6BVR PM</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="/kanban-board/home">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/kanban-board/userstories}">Userstories</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
-				</li>
-				<li class="nav-item">
-					<a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/h2-console" target="_blank">H2 DB</a></li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/logout}">Logout</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-	
-	<div th:fragment="piechartscript">
-		<script type="text/javascript">
-			var chartDataStr = decodeHtml(chartData);
-			var chartJsonArray = JSON.parse(chartDataStr);
-			var arrayLength = chartJsonArray.length;
-			var numericData = [];
-			var labelData = [];
-			var numericData = [];
-			var labelData = [];
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+     th:fragment="navbarCUS">
+    <a class="navbar-brand" href="#">ZS6BVR PM</a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler" data-target="#navbarNav"
+            data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/kanban-board/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/h2-console" sec:authorize="hasRole('ADMIN')" target="_blank">H2 DB</a></li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-			for (var i = 0; i < arrayLength; i++) {
-				numericData[i] = chartJsonArray[i].value;
-				labelData[i] = chartJsonArray[i].label;
-			}
 
-			//For a pie chart
-			new Chart(document.getElementById("myPieChart"), {
-				type : 'pie',
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+     th:fragment="navbarEPIC">
+    <a class="navbar-brand" href="#">ZS6BVR PM</a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler" data-target="#navbarNav"
+            data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/kanban-board/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/h2-console" sec:authorize="hasRole('ADMIN')" target="_blank">H2 DB</a></li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-				// The data for our dataset
-				data : {
-					labels : labelData,
-					datasets : [ {
-						label : 'My First dataset',
-						backgroundColor : [ '#33fa33', '#3e95cd', '#8e5ea2' ],
-						//        borderColor: 'rgb(255, 11, 22)',
-						data : numericData
-					} ]
-				},
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+     th:fragment="navbarTEAM">
+    <a class="navbar-brand" href="#">ZS6BVR PM</a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler" data-target="#navbarNav"
+            data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/kanban-board/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/h2-console" sec:authorize="hasRole('ADMIN')" target="_blank">H2 DB</a></li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-				// Configuration options go here    
-				options : {
-					title : {
-						display : true,
-						text : 'Project Status'
-					}
-				}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+     th:fragment="navbarTASK">
+    <a class="navbar-brand" href="#">ZS6BVR PM</a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler" data-target="#navbarNav"
+            data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/kanban-board/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/userstories}">Userstories</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/h2-console" sec:authorize="hasRole('ADMIN')" target="_blank">H2 DB</a></li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-			});
 
-			function decodeHtml(html) {
-				var txt = document.createElement("textarea");
-				txt.innerHTML = html;
-				return txt.value;
-			}
-		</script>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+     th:fragment="navbarSUBTASK">
+    <a class="navbar-brand" href="#">ZS6BVR PM</a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler" data-target="#navbarNav"
+            data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/kanban-board/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks/board}">Task Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/epics}">Epics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/kanban-board/userstories}">Userstories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/tasks}">Tasks</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/kanban-board/subtasks}">Subtasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/employees}">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/teams}">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/kanban-board/customers}">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/h2-console" sec:authorize="hasRole('ADMIN')" target="_blank">H2 DB</a></li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-	</div>
+<div th:fragment="piechartscript">
+    <script type="text/javascript">
+        var chartDataStr = decodeHtml(chartData);
+        var chartJsonArray = JSON.parse(chartDataStr);
+        var arrayLength = chartJsonArray.length;
+        var numericData = [];
+        var labelData = [];
+        var numericData = [];
+        var labelData = [];
+
+        for (var i = 0; i < arrayLength; i++) {
+            numericData[i] = chartJsonArray[i].value;
+            labelData[i] = chartJsonArray[i].label;
+        }
+
+        //For a pie chart
+        new Chart(document.getElementById("myPieChart"), {
+            type: 'pie',
+
+            // The data for our dataset
+            data: {
+                labels: labelData,
+                datasets: [{
+                    label: 'My First dataset',
+                    backgroundColor: ['#33fa33', '#3e95cd', '#8e5ea2'],
+                    //        borderColor: 'rgb(255, 11, 22)',
+                    data: numericData
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                title: {
+                    display: true,
+                    text: 'Project Status'
+                }
+            }
+
+        });
+
+        function decodeHtml(html) {
+            var txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+    </script>
+
+</div>
 </body>
 </html>

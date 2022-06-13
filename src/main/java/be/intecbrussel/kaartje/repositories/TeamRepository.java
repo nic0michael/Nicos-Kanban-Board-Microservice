@@ -1,11 +1,10 @@
-package za.co.kanban.repositories;
+package be.intecbrussel.kaartje.repositories;
 
+import be.intecbrussel.kaartje.model.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import za.co.kanban.model.Team;
 
 public interface TeamRepository extends JpaRepository<Team, Long> {
 
-	public Team findByTeamId(Long teamId);
+    Team findByTeamId(Long teamId);
 
 }

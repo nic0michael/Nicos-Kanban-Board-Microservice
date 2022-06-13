@@ -1,269 +1,239 @@
-package za.co.kanban.model;
-import java.util.Objects;
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotBlank;
+package be.intecbrussel.kaartje.model;
 
 import org.springframework.data.annotation.CreatedDate;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.Date;
 
 @Entity
 @Table(name = "task")
 public class Task {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long taskId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long taskId;
 
-	private String guid;
-	
-	@NotBlank
-    @Column(name="name", unique=true)
+    private String guid;
+
+    @NotBlank
+    @Column(name = "name", unique = true)
     private String name;
-	
-	private String description;
-	
-	@Column(name="customer_reference")
-	private String customerReference;	
 
-	@Column(name="customer_id")
-	private Long customerId;
-	
-	private String status;	
+    private String description;
 
-	@Column(name="assigned_to")
-	private Long assignedTo;
+    @Column(name = "customer_reference")
+    private String customerReference;
 
-	@Column(name="user_story_id")
-	private Long userStoryId;
-	
-	@Column(name="story_points")
-	private Integer storyPoints;
+    @Column(name = "customer_id")
+    private Long customerId;
 
-	@Column(name="due_date")
-	private Date due_date;
-	
-	private String stage; // NOTSTARTED, COMPLETED, INPROGRESS
+    private String status;
 
-	@Column(name="start_date")
-	private Date startDate;
+    @Column(name = "assigned_to")
+    private Long assignedTo;
 
-	@Column(name="end_date")
-	private Date endDate;
+    @Column(name = "user_story_id")
+    private Long userStoryId;
 
-	@Column(name="date_created", nullable = true, updatable = true)
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreatedDate
-	private Date dateCreated;
-	
-	@Column(name="is_active")
-	private String isActive;
-	
-	public Task() {}
+    @Column(name = "story_points")
+    private Integer storyPoints;
 
+    @Column(name = "due_date")
+    private Date due_date;
 
+    private String stage; // NOTSTARTED, COMPLETED, INPROGRESS
 
+    @Column(name = "start_date")
+    private Date startDate;
 
-	public Task(@NotBlank String guid, @NotBlank String name, String description, String customerReference,
-			Long customerId, String status, Long assignedTo, Long userStoryId, Integer storyPoints, Date due_date,
-			String stage, Date startDate, Date endDate, Date dateCreated, String isActive) {
-		super();
-		this.guid = guid;
-		this.name = name;
-		this.description = description;
-		this.customerReference = customerReference;
-		this.customerId = customerId;
-		this.status = status;
-		this.assignedTo = assignedTo;
-		this.userStoryId = userStoryId;
-		this.storyPoints = storyPoints;
-		this.due_date = due_date;
-		this.stage = stage;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.dateCreated = dateCreated;
-		this.isActive = isActive;
-	}
+    @Column(name = "end_date")
+    private Date endDate;
 
+    @Column(name = "date_created", nullable = true, updatable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date dateCreated;
 
+    @Column(name = "is_active")
+    private String isActive;
 
+    public Task() {
+    }
 
-	public String getGuid() {
-		return guid;
-	}
 
+    public Task(@NotBlank String guid, @NotBlank String name, String description, String customerReference,
+                Long customerId, String status, Long assignedTo, Long userStoryId, Integer storyPoints, Date due_date,
+                String stage, Date startDate, Date endDate, Date dateCreated, String isActive) {
+        super();
+        this.guid = guid;
+        this.name = name;
+        this.description = description;
+        this.customerReference = customerReference;
+        this.customerId = customerId;
+        this.status = status;
+        this.assignedTo = assignedTo;
+        this.userStoryId = userStoryId;
+        this.storyPoints = storyPoints;
+        this.due_date = due_date;
+        this.stage = stage;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.dateCreated = dateCreated;
+        this.isActive = isActive;
+    }
 
 
+    public String getGuid() {
+        return guid;
+    }
 
-	public void setGuid(String guid) {
-		this.guid = guid;
-	}
 
+    public void setGuid(String guid) {
+        this.guid = guid;
+    }
 
 
+    public String getCustomerReference() {
+        return customerReference;
+    }
 
-	public String getCustomerReference() {
-		return customerReference;
-	}
 
+    public void setCustomerReference(String customerReference) {
+        this.customerReference = customerReference;
+    }
 
 
+    public Long getCustomerId() {
+        return customerId;
+    }
 
-	public void setCustomerReference(String customerReference) {
-		this.customerReference = customerReference;
-	}
 
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
 
 
+    public String getStage() {
+        return stage;
+    }
 
-	public Long getCustomerId() {
-		return customerId;
-	}
 
+    public void setStage(String stage) {
+        this.stage = stage;
+    }
 
 
+    public Date getStartDate() {
+        return startDate;
+    }
 
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
-	}
 
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
 
 
+    public Date getEndDate() {
+        return endDate;
+    }
 
-	public String getStage() {
-		return stage;
-	}
 
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 
-	public void setStage(String stage) {
-		this.stage = stage;
-	}
 
+    public Long getTaskId() {
+        return taskId;
+    }
 
-	public Date getStartDate() {
-		return startDate;
-	}
+    public void setTaskId(Long subtaskId) {
+        this.taskId = subtaskId;
+    }
 
+    public String getName() {
+        return name;
+    }
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public String getDescription() {
+        return description;
+    }
 
-	public Date getEndDate() {
-		return endDate;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
+    public String getStatus() {
+        return status;
+    }
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
+    public Long getAssignedTo() {
+        return assignedTo;
+    }
 
-	public Long getTaskId() {
-		return taskId;
-	}
+    public void setAssignedTo(Long assignedTo) {
+        this.assignedTo = assignedTo;
+    }
 
-	public void setTaskId(Long subtaskId) {
-		this.taskId = subtaskId;
-	}
+    public Long getUserStoryId() {
+        return userStoryId;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setUserStoryId(Long userStoryId) {
+        this.userStoryId = userStoryId;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Integer getStoryPoints() {
+        return storyPoints;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setStoryPoints(Integer storyPoints) {
+        this.storyPoints = storyPoints;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public Date getDue_date() {
+        return due_date;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public void setDue_date(Date due_date) {
+        this.due_date = due_date;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
-	public Long getAssignedTo() {
-		return assignedTo;
-	}
+    public Date getDateCreated() {
+        return dateCreated;
+    }
 
-	public void setAssignedTo(Long assignedTo) {
-		this.assignedTo = assignedTo;
-	}
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
 
-	public Long getUserStoryId() {
-		return userStoryId;
-	}
+    public String getIsActive() {
+        return isActive;
+    }
 
-	public void setUserStoryId(Long userStoryId) {
-		this.userStoryId = userStoryId;
-	}
+    public void setIsActive(String isActive) {
+        this.isActive = isActive;
+    }
 
-	public Integer getStoryPoints() {
-		return storyPoints;
-	}
 
-	public void setStoryPoints(Integer storyPoints) {
-		this.storyPoints = storyPoints;
-	}
+    @Override
+    public String toString() {
+        return "Task [taskId=" + taskId + ", guid=" + guid + ", name=" + name + ", description=" + description
+                + ", customerReference=" + customerReference + ", customerId=" + customerId + ", status=" + status
+                + ", assignedTo=" + assignedTo + ", userStoryId=" + userStoryId + ", storyPoints=" + storyPoints
+                + ", due_date=" + due_date + ", stage=" + stage + ", startDate=" + startDate + ", endDate=" + endDate
+                + ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
+    }
 
-	public Date getDue_date() {
-		return due_date;
-	}
 
-	public void setDue_date(Date due_date) {
-		this.due_date = due_date;
-	}
-
-
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	public String getIsActive() {
-		return isActive;
-	}
-
-	public void setIsActive(String isActive) {
-		this.isActive = isActive;
-	}
-
-
-
-
-	@Override
-	public String toString() {
-		return "Task [taskId=" + taskId + ", guid=" + guid + ", name=" + name + ", description=" + description
-				+ ", customerReference=" + customerReference + ", customerId=" + customerId + ", status=" + status
-				+ ", assignedTo=" + assignedTo + ", userStoryId=" + userStoryId + ", storyPoints=" + storyPoints
-				+ ", due_date=" + due_date + ", stage=" + stage + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", dateCreated=" + dateCreated + ", isActive=" + isActive + "]";
-	}
-
-
-
-
-
-	
-	
 }

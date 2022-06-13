@@ -1,62 +1,57 @@
-package za.co.kanban.model;
+package be.intecbrussel.kaartje.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "team_employee")
 public class TeamEmployee {
 
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long teamEmployeeId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long teamEmployeeId;
 
-	private Long employeeId;
-	private Long teamId;
-	
-	public TeamEmployee() {}
+    private Long employeeId;
+    private Long teamId;
 
-	public TeamEmployee( Long teamId,Long employeeId) {
-		super();
-		this.employeeId = employeeId;
-		this.teamId = teamId;
-	}
+    public TeamEmployee() {
+    }
 
-	public Long getTeamEmployeeId() {
-		return teamEmployeeId;
-	}
+    public TeamEmployee(Long teamId, Long employeeId) {
+        super();
+        this.employeeId = employeeId;
+        this.teamId = teamId;
+    }
 
-	public void setTeamEmployeeId(Long teamEmployeeId) {
-		this.teamEmployeeId = teamEmployeeId;
-	}
+    public Long getTeamEmployeeId() {
+        return teamEmployeeId;
+    }
 
-	public Long getEmployeeId() {
-		return employeeId;
-	}
+    public void setTeamEmployeeId(Long teamEmployeeId) {
+        this.teamEmployeeId = teamEmployeeId;
+    }
 
-	public void setEmployeeId(Long employeeId) {
-		this.employeeId = employeeId;
-	}
+    public Long getEmployeeId() {
+        return employeeId;
+    }
 
-	public Long getTeamId() {
-		return teamId;
-	}
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
+    }
 
-	public void setTeamId(Long teamId) {
-		this.teamId = teamId;
-	}
+    public Long getTeamId() {
+        return teamId;
+    }
 
-	@Override
-	public String toString() {
-		return "TeamEmployees [teamEmployeeId=" + teamEmployeeId + ", employeeId=" + employeeId + ", teamId=" + teamId
-				+ "]";
-	}
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
+    }
 
-	
-	
-	
+    @Override
+    public String toString() {
+        return "TeamEmployees [teamEmployeeId=" + teamEmployeeId + ", employeeId=" + employeeId + ", teamId=" + teamId
+                + "]";
+    }
+
+
 }

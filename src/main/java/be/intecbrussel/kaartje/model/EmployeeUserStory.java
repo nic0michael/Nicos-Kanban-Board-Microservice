@@ -1,7 +1,8 @@
-package za.co.kanban.model;
+package be.intecbrussel.kaartje.model;
 
 public interface EmployeeUserStory {
 
-	public String getFullName();
-	public int getUserstoryCount();
+    String getFullName();
+
+    int getUserstoryCount();
 }

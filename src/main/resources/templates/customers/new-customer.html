@@ -1,89 +1,88 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layouts :: header">
-  <title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarCUS"></nav>
-	<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
-
-		
-
-		<br>
-		<div class="container">
-
-			<H3>Capture Customer</H3>
-		<br><br>
-			<form th:action="@{/kanban-board/customers/save}" th:object="${customerPersistRequest}" method="POST">
+<nav th:replace="layouts :: navbarCUS"></nav>
+<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
 
 
-				<!--  This will be used to bind to the customer that was clicked on (USED FOR UPDATES)-->
-				<input type="hidden" th:field="${customerPersistRequest.dateCreated}" />
-				<input type="hidden" th:field="${customerPersistRequest.customerId}" />
-				<b>Customer ID:</b>
-				<div class="form-group row" th:text="${customerPersistRequest.customerId}"> 
-				</div>
-				
-				<div class="form-group row">
-					<input type="text" placeholder="Customer Name"
-						th:field="${customerPersistRequest.name}"> <span
-						style="color: red" th:if="${#fields.hasErrors('name')}"
-						th:errors="${customerPersistRequest.name}"> </span>
-				</div>
-				<div class="form-group row">
-					<input type="text" placeholder="Short Name"
-						th:field="${customerPersistRequest.shortName}"> <span
-						style="color: red" th:if="${#fields.hasErrors('shortName')}"
-						th:errors="${customerPersistRequest.shortName}"> </span>
-				</div>
+    <br>
+    <div class="container">
 
-				<div class="form-group row">
-					<input type="text" placeholder="Details"
-						th:field="${customerPersistRequest.details}"> <span
-						style="color: red" th:if="${#fields.hasErrors('details')}"
-						th:errors="${customerPersistRequest.details}"> </span>
-				</div>
-				
-				<div class="form-group row">
-					<input type="text" placeholder="Telephone"
-						th:field="${customerPersistRequest.telephone}"> <span
-						style="color: red" th:if="${#fields.hasErrors('telephone')}"
-						th:errors="${customerPersistRequest.telephone}"> </span>
-				</div>
+        <H3>Capture Customer</H3>
+        <br><br>
+        <form method="POST" th:action="@{/kanban-board/customers/save}" th:object="${customerPersistRequest}">
 
-				
-				<div class="form-group row">
-					<input type="text" placeholder="Cellphone"
-						th:field="${customerPersistRequest.cellphone}"> <span
-						style="color: red" th:if="${#fields.hasErrors('cellphone')}"
-						th:errors="${customerPersistRequest.cellphone}"> </span>
-				</div>
 
-				
-				<div class="form-group row">
-					<input type="text" placeholder="Email"
-						th:field="${customerPersistRequest.email}"> <span
-						style="color: red" th:if="${#fields.hasErrors('email')}"
-						th:errors="${customerPersistRequest.email}"> </span>
-				</div>
+            <!--  This will be used to bind to the customer that was clicked on (USED FOR UPDATES)-->
+            <input th:field="${customerPersistRequest.dateCreated}" type="hidden"/>
+            <input th:field="${customerPersistRequest.customerId}" type="hidden"/>
+            <b>Customer ID:</b>
+            <div class="form-group row" th:text="${customerPersistRequest.customerId}">
+            </div>
 
-				<b>Is Customer Active:</b>
-				<div class="form-group row">
-					<select th:field="${customerPersistRequest.isActive}">
-						<option value="1" selected>Yes</option>
-						<option value="0">No</option>
-					</select>
-				</div>
+            <div class="form-group row">
+                <input placeholder="Customer Name" th:field="${customerPersistRequest.name}"
+                       type="text"> <span
+                    style="color: red" th:errors="${customerPersistRequest.name}"
+                    th:if="${#fields.hasErrors('name')}"> </span>
+            </div>
+            <div class="form-group row">
+                <input placeholder="Short Name" th:field="${customerPersistRequest.shortName}"
+                       type="text"> <span
+                    style="color: red" th:errors="${customerPersistRequest.shortName}"
+                    th:if="${#fields.hasErrors('shortName')}"> </span>
+            </div>
 
-				<div class="form-group row">
-					<button class="btn btn-info col-2" type="submit">Save Customer</button>
-				</div>
+            <div class="form-group row">
+                <input placeholder="Details" th:field="${customerPersistRequest.details}"
+                       type="text"> <span
+                    style="color: red" th:errors="${customerPersistRequest.details}"
+                    th:if="${#fields.hasErrors('details')}"> </span>
+            </div>
 
-			</form>
-		</div>
-	</div>
+            <div class="form-group row">
+                <input placeholder="Telephone" th:field="${customerPersistRequest.telephone}"
+                       type="text"> <span
+                    style="color: red" th:errors="${customerPersistRequest.telephone}"
+                    th:if="${#fields.hasErrors('telephone')}"> </span>
+            </div>
+
+
+            <div class="form-group row">
+                <input placeholder="Cellphone" th:field="${customerPersistRequest.cellphone}"
+                       type="text"> <span
+                    style="color: red" th:errors="${customerPersistRequest.cellphone}"
+                    th:if="${#fields.hasErrors('cellphone')}"> </span>
+            </div>
+
+
+            <div class="form-group row">
+                <input placeholder="Email" th:field="${customerPersistRequest.email}"
+                       type="text"> <span
+                    style="color: red" th:errors="${customerPersistRequest.email}"
+                    th:if="${#fields.hasErrors('email')}"> </span>
+            </div>
+
+            <b>Is Customer Active:</b>
+            <div class="form-group row">
+                <select th:field="${customerPersistRequest.isActive}">
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group row">
+                <button class="btn btn-info col-2" type="submit">Save Customer</button>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 </body>
 

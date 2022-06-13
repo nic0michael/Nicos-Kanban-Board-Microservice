@@ -1,58 +1,54 @@
-package za.co.kanban.modules;
+package be.intecbrussel.kaartje.modules;
 
-import java.util.List;
-
+import be.intecbrussel.kaartje.model.Audit;
+import be.intecbrussel.kaartje.repositories.AuditRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import za.co.kanban.model.Audit;
-import za.co.kanban.model.Employee;
-import za.co.kanban.repositories.AuditRepository;
-import za.co.kanban.repositories.EmployeeRepository;
-import za.co.kanban.utils.Utils;
+import java.util.List;
 
 @Component
 public class AuditModule {
-	private static final Logger log = LoggerFactory.getLogger(AuditModule.class);
-	
-	@Autowired
-	AuditRepository repository;
+    private static final Logger log = LoggerFactory.getLogger(AuditModule.class);
 
-	public List<Audit> findAll() {
-		System.out.println("getting list of Audits");
-		List<Audit> auditList = repository.findAll();
-		return auditList;
-	}
+    @Autowired
+    AuditRepository repository;
 
-	public Audit findByAuditId(Long auditId) {
-		System.out.println("Finding Audit auditId: "+auditId);
-		Audit audit =null;
-		if(auditId != null) {
-			audit = repository.findByAuditId(auditId);
-		}
-		return audit;
-	}
+    public List<Audit> findAll() {
+        System.out.println("getting list of Audits");
+        List<Audit> auditList = repository.findAll();
+        return auditList;
+    }
 
-	public void delete(Long auditId) {
-		System.out.println("Deleting Audit auditId: "+auditId);
-		Audit audit =null;
-		if(auditId != null) {
-			audit = findByAuditId(auditId);
-			if(audit != null) {
-				repository.delete(audit);
-			}
-		}		
-	}
-	
-	public void save(Audit audit) {
-		if(audit != null) {
-			Long auditId = audit.getAuditId();
-			System.out.println("Saving Audit auditId: "+auditId);
-			repository.save(audit);
-		}		
-	}
+    public Audit findByAuditId(Long auditId) {
+        System.out.println("Finding Audit auditId: " + auditId);
+        Audit audit = null;
+        if (auditId != null) {
+            audit = repository.findByAuditId(auditId);
+        }
+        return audit;
+    }
+
+    public void delete(Long auditId) {
+        System.out.println("Deleting Audit auditId: " + auditId);
+        Audit audit = null;
+        if (auditId != null) {
+            audit = findByAuditId(auditId);
+            if (audit != null) {
+                repository.delete(audit);
+            }
+        }
+    }
+
+    public void save(Audit audit) {
+        if (audit != null) {
+            Long auditId = audit.getAuditId();
+            System.out.println("Saving Audit auditId: " + auditId);
+            repository.save(audit);
+        }
+    }
 
 
 }

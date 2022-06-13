@@ -1,11 +1,10 @@
-package za.co.kanban.repositories;
+package be.intecbrussel.kaartje.repositories;
 
+import be.intecbrussel.kaartje.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import za.co.kanban.model.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-	public Customer findByCustomerId(Long customerId);
+    Customer findByCustomerId(Long customerId);
 
 }

@@ -1,11 +1,10 @@
-package za.co.kanban.repositories;
+package be.intecbrussel.kaartje.repositories;
 
+import be.intecbrussel.kaartje.model.Epic;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import za.co.kanban.model.Epic;
 
 public interface EpicRepository extends JpaRepository<Epic, Long> {
 
-	public Epic findByEpicId(Long epicId);
+    Epic findByEpicId(Long epicId);
 
 }

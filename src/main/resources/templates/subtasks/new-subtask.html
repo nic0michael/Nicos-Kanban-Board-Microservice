@@ -1,107 +1,107 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layouts :: header">
-  <title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarSUBTASK"></nav>
-	<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
+<nav th:replace="layouts :: navbarSUBTASK"></nav>
+<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
 
 
+    <br>
+    <div class="container">
 
-		<br>
-		<div class="container">
-
-			<H3>Capture Subtask</H3>
-			<br>
-			<br>
-			<form th:action="@{/kanban-board/subtasks/save}" th:object="${subtaskPersistRequest}"
-				method="POST">
+        <H3>Capture Subtask</H3>
+        <br>
+        <br>
+        <form method="POST" th:action="@{/kanban-board/subtasks/save}"
+              th:object="${subtaskPersistRequest}">
 
 
-				<!--  This will be used to bind to the task that was clicked on (USED FOR UPDATES)-->
-				<input type="hidden" th:field="${subtaskPersistRequest.dateCreated}" />
-				<input type="hidden" th:field="${subtaskPersistRequest.subtaskId}" />
-				<b>Subtask ID:</b>
-				<div class="form-group row" th:text="${subtaskPersistRequest.subtaskId}"></div>
-				
-				<b>Date created:</b>
-				<div class="form-group row" th:text="${subtaskPersistRequest.dateCreated}"></div>
+            <!--  This will be used to bind to the task that was clicked on (USED FOR UPDATES)-->
+            <input th:field="${subtaskPersistRequest.dateCreated}" type="hidden"/>
+            <input th:field="${subtaskPersistRequest.subtaskId}" type="hidden"/>
+            <b>Subtask ID:</b>
+            <div class="form-group row" th:text="${subtaskPersistRequest.subtaskId}"></div>
 
-				<div class="form-group row">
-					<input type="text" placeholder="Task Name"
-						th:field="${subtaskPersistRequest.name}"> <span
-						style="color: red" th:if="${#fields.hasErrors('name')}"
-						th:errors="${subtaskPersistRequest.name}"> </span>
-				</div>
+            <b>Date created:</b>
+            <div class="form-group row" th:text="${subtaskPersistRequest.dateCreated}"></div>
 
-				<div class="form-group row">
-					<input type="text" placeholder="Description"
-						th:field="${subtaskPersistRequest.description}"> <span
-						style="color: red" th:if="${#fields.hasErrors('description')}"
-						th:errors="${subtaskPersistRequest.description}"> </span>
-				</div>
+            <div class="form-group row">
+                <input placeholder="Task Name" th:field="${subtaskPersistRequest.name}"
+                       type="text"> <span
+                    style="color: red" th:errors="${subtaskPersistRequest.name}"
+                    th:if="${#fields.hasErrors('name')}"> </span>
+            </div>
 
-				<div class="form-group row">
-					<input type="text" placeholder="Set Story Points"
-						th:field="${subtaskPersistRequest.storyPoints}"> <span
-						style="color: red" th:if="${#fields.hasErrors('storyPoints')}"
-						th:errors="${subtaskPersistRequest.storyPoints}"> </span>
-				</div>
+            <div class="form-group row">
+                <input placeholder="Description" th:field="${subtaskPersistRequest.description}"
+                       type="text"> <span
+                    style="color: red" th:errors="${subtaskPersistRequest.description}"
+                    th:if="${#fields.hasErrors('description')}"> </span>
+            </div>
 
-				<b>select the Task to subtask:</b>
-				<div class="form-group row">
-					<select th:field="${subtaskPersistRequest.taskId}">
-						<option th:each="task : ${tasks}" th:value="${task.taskId}" th:text="${task.name}"></option>
-					</select>
-				</div>
+            <div class="form-group row">
+                <input placeholder="Set Story Points" th:field="${subtaskPersistRequest.storyPoints}"
+                       type="text"> <span
+                    style="color: red" th:errors="${subtaskPersistRequest.storyPoints}"
+                    th:if="${#fields.hasErrors('storyPoints')}"> </span>
+            </div>
 
-				<b>Assigned the Task to Employee:</b>
-				<div class="form-group row">
-					<select th:field="${subtaskPersistRequest.assignedTo}">
-						<option th:each="employee : ${employees}" th:value="${employee.employeeId}" th:text="${employee.fullName}"></option>
-					</select>
-				</div>
-				
-				<b>Set the Status:</b>
-				<div class="form-group row">
-					<select th:field="${subtaskPersistRequest.status}">
-						<option
-							th:each="statusValue : ${statusValues}"
-							th:value="${statusValue.description}"
-							th:text="${statusValue.displayValue}"></option>
-					</select>
-				</div>
+            <b>select the Task to subtask:</b>
+            <div class="form-group row">
+                <select th:field="${subtaskPersistRequest.taskId}">
+                    <option th:each="task : ${tasks}" th:text="${task.name}" th:value="${task.taskId}"></option>
+                </select>
+            </div>
 
-				<b>Subtask Due Date:</b>
-				<div class="form-group row">
-					<input id="dp3" type="text" class="mb-4 col-2 col-xs-4"
-						value="Due Date" th:field="${subtaskPersistRequest.due_date}">
-				</div>
+            <b>Assigned the Task to Employee:</b>
+            <div class="form-group row">
+                <select th:field="${subtaskPersistRequest.assignedTo}">
+                    <option th:each="employee : ${employees}" th:text="${employee.fullName}"
+                            th:value="${employee.employeeId}"></option>
+                </select>
+            </div>
 
-				<div class="mb-4 col-2 col-xs-4">
-					<script type="text/javascript">
-						$('#dp3').datepicker();
-					</script>
-				</div>
+            <b>Set the Status:</b>
+            <div class="form-group row">
+                <select th:field="${subtaskPersistRequest.status}">
+                    <option
+                            th:each="statusValue : ${statusValues}"
+                            th:text="${statusValue.displayValue}"
+                            th:value="${statusValue.description}"></option>
+                </select>
+            </div>
 
-				<b>Is Task Active:</b>
-				<div class="form-group row">
-					<select th:field="${subtaskPersistRequest.isActive}">
-						<option value="1" selected>Yes</option>
-						<option value="0">No</option>
-					</select>
-				</div>
+            <b>Subtask Due Date:</b>
+            <div class="form-group row">
+                <input class="mb-4 col-2 col-xs-4" id="dp3" th:field="${subtaskPersistRequest.due_date}"
+                       type="text" value="Due Date">
+            </div>
 
-				<div class="form-group row">
-					<button class="btn btn-info col-2" type="submit">Save Task</button>
-				</div>
+            <div class="mb-4 col-2 col-xs-4">
+                <script type="text/javascript">
+                    $('#dp3').datepicker();
+                </script>
+            </div>
 
-			</form>
-		</div>
-	</div>
+            <b>Is Task Active:</b>
+            <div class="form-group row">
+                <select th:field="${subtaskPersistRequest.isActive}">
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group row">
+                <button class="btn btn-info col-2" type="submit">Save Task</button>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 </body>
 

@@ -1,11 +1,6 @@
-package za.co.kanban.model;
+package be.intecbrussel.kaartje.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -13,65 +8,66 @@ import javax.validation.constraints.NotBlank;
 public class StatusValue {
 
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long statusValueId;
-	
-	@NotBlank
-    @Column(name="display_value", unique=true)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long statusValueId;
+
+    @NotBlank
+    @Column(name = "display_value", unique = true)
     private String displayValue;
-	
 
-    @Column(name="sort_order")
-	private int sortOrder;
-	
-	private String description;
 
-	public StatusValue() {}
+    @Column(name = "sort_order")
+    private int sortOrder;
 
-	public StatusValue(@NotBlank String displayValue, int sortOrder, String description) {
-		super();
-		this.displayValue = displayValue;
-		this.sortOrder = sortOrder;
-		this.description = description;
-	}
+    private String description;
 
-	public Long getStatusValueId() {
-		return statusValueId;
-	}
+    public StatusValue() {
+    }
 
-	public void setStatusValueId(Long statusValueId) {
-		this.statusValueId = statusValueId;
-	}
+    public StatusValue(@NotBlank String displayValue, int sortOrder, String description) {
+        super();
+        this.displayValue = displayValue;
+        this.sortOrder = sortOrder;
+        this.description = description;
+    }
 
-	public String getDisplayValue() {
-		return displayValue;
-	}
+    public Long getStatusValueId() {
+        return statusValueId;
+    }
 
-	public void setDisplayValue(String displayValue) {
-		this.displayValue = displayValue;
-	}
+    public void setStatusValueId(Long statusValueId) {
+        this.statusValueId = statusValueId;
+    }
 
-	public int getSortOrder() {
-		return sortOrder;
-	}
+    public String getDisplayValue() {
+        return displayValue;
+    }
 
-	public void setSortOrder(int sortOrder) {
-		this.sortOrder = sortOrder;
-	}
+    public void setDisplayValue(String displayValue) {
+        this.displayValue = displayValue;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public int getSortOrder() {
+        return sortOrder;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setSortOrder(int sortOrder) {
+        this.sortOrder = sortOrder;
+    }
 
-	@Override
-	public String toString() {
-		return "StatusValue [statusValueId=" + statusValueId + ", displayValue=" + displayValue + ", sortOrder="
-				+ sortOrder + ", description=" + description + "]";
-	}
-	
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "StatusValue [statusValueId=" + statusValueId + ", displayValue=" + displayValue + ", sortOrder="
+                + sortOrder + ", description=" + description + "]";
+    }
+
 }

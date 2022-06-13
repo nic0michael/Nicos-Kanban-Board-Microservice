@@ -1,100 +1,100 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layouts :: header">
-  <title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarEMP"></nav>
-	<div sec:authorize="hasRole('ADMIN')">
-
-		
-
-		<br>
-		<div class="container">
-
-			<H3>Capture Employee</H3>
-		<br><br>
-			<form th:action="@{/kanban-board/employees/save}"
-				th:object="${employeetPersistRequest}" method="POST">
+<nav th:replace="layouts :: navbarEMP"></nav>
+<div sec:authorize="hasRole('ADMIN')">
 
 
-				<!--  This will be used to bind to the employee that was clicked on (USED FOR UPDATES)-->
-				<input type="hidden"
-					th:field="${employeetPersistRequest.employeeId}" />
+    <br>
+    <div class="container">
 
-				<div class="form-group row">
-					<input type="text" placeholder="Full Name"
-						th:field="${employeetPersistRequest.fullName}"> <span
-						style="color: red" th:if="${#fields.hasErrors('fullName')}"
-						th:errors="${employeetPersistRequest.fullNamee}"> </span>
-				</div>
-				
-				<div class="form-group row">
-					<input type="text" placeholder="Email Address"
-						th:field="${employeetPersistRequest.email}"> <span
-						style="color: red" th:if="${#fields.hasErrors('email')}"
-						th:errors="${employeetPersistRequest.email}"> </span>
-				</div>
+        <H3>Capture Employee</H3>
+        <br><br>
+        <form method="POST"
+              th:action="@{/kanban-board/employees/save}" th:object="${employeetPersistRequest}">
 
-				<b>Enter a unique Id Number</b>
-				<div class="form-group row">
-					<input type="text" placeholder="Identity Number"
-						th:field="${employeetPersistRequest.idNumber}"> <span
-						style="color: red" th:if="${#fields.hasErrors('idNumber')}"
-						th:errors="${employeetPersistRequest.idNumber}"> </span>
-				</div>
 
-				<b>Enter a unique User Id</b><br>
-				<div class="form-group row">
-					<input type="text" placeholder="User Id"
-						th:field="${employeetPersistRequest.userId}"> <span
-						style="color: red" th:if="${#fields.hasErrors('userId')}"
-						th:errors="${employeetPersistRequest.userId}"> </span>
-				</div>
+            <!--  This will be used to bind to the employee that was clicked on (USED FOR UPDATES)-->
+            <input th:field="${employeetPersistRequest.employeeId}"
+                   type="hidden"/>
 
-				<b>Password:</b>
-				<div class="form-group row">
-					<input type="password" placeholder="User Password"
-						th:field="${employeetPersistRequest.password}"> <span
-						style="color: red" th:if="${#fields.hasErrors('password')}"
-						th:errors="${employeetPersistRequest.password}"> </span>
-				</div>
+            <div class="form-group row">
+                <input placeholder="Full Name" th:field="${employeetPersistRequest.fullName}"
+                       type="text"> <span
+                    style="color: red" th:errors="${employeetPersistRequest.fullNamee}"
+                    th:if="${#fields.hasErrors('fullName')}"> </span>
+            </div>
 
-				<b>Specify the Role of the Employee:</b>
-				<div class="form-group row">
-					<select th:field="${employeetPersistRequest.authority}">
-						<option value="ROLE_USER">Normal user Role</option>
-						<option value="ROLE_ADMIN">Administrator Role</option>
-						<option value="ROLE_TEAMMEMBER">Team member Role</option>
-						<option value="ROLE_MANAGER">Manager Role</option>
-					</select>
-				</div>
+            <div class="form-group row">
+                <input placeholder="Email Address" th:field="${employeetPersistRequest.email}"
+                       type="text"> <span
+                    style="color: red" th:errors="${employeetPersistRequest.email}"
+                    th:if="${#fields.hasErrors('email')}"> </span>
+            </div>
 
-				<b>Assigned the Employee to Team:</b>
-				<div class="form-group row">
-					<select th:field="${employeetPersistRequest.teamId}">
-						<option th:each="team : ${teams}" th:value="${team.teamId}" th:text="${team.name}"></option> 
-					</select>
-				</div>
-				
-				<b>Is Employee Enabled:</b>
-				<div class="form-group row">
-					<select th:field="${employeetPersistRequest.enabled}">
-						<option value="1" selected>Yes</option>
-						<option value="0">No</option>
-					</select>
-				</div>
+            <b>Enter a unique Id Number</b>
+            <div class="form-group row">
+                <input placeholder="Identity Number" th:field="${employeetPersistRequest.idNumber}"
+                       type="text"> <span
+                    style="color: red" th:errors="${employeetPersistRequest.idNumber}"
+                    th:if="${#fields.hasErrors('idNumber')}"> </span>
+            </div>
 
-				<div class="form-group row">
-					<button class="btn btn-info col-2" type="submit">Save
-						Employee</button>
-				</div>
+            <b>Enter a unique User Id</b><br>
+            <div class="form-group row">
+                <input placeholder="User Id" th:field="${employeetPersistRequest.userId}"
+                       type="text"> <span
+                    style="color: red" th:errors="${employeetPersistRequest.userId}"
+                    th:if="${#fields.hasErrors('userId')}"> </span>
+            </div>
 
-			</form>
-		</div>
-	</div>
+            <b>Password:</b>
+            <div class="form-group row">
+                <input placeholder="User Password" th:field="${employeetPersistRequest.password}"
+                       type="password"> <span
+                    style="color: red" th:errors="${employeetPersistRequest.password}"
+                    th:if="${#fields.hasErrors('password')}"> </span>
+            </div>
+
+            <b>Specify the Role of the Employee:</b>
+            <div class="form-group row">
+                <select th:field="${employeetPersistRequest.authority}">
+                    <option value="ROLE_USER">Normal user Role</option>
+                    <option value="ROLE_ADMIN">Administrator Role</option>
+                    <option value="ROLE_TEAMMEMBER">Team member Role</option>
+                    <option value="ROLE_MANAGER">Manager Role</option>
+                </select>
+            </div>
+
+            <b>Assigned the Employee to Team:</b>
+            <div class="form-group row">
+                <select th:field="${employeetPersistRequest.teamId}">
+                    <option th:each="team : ${teams}" th:text="${team.name}" th:value="${team.teamId}"></option>
+                </select>
+            </div>
+
+            <b>Is Employee Enabled:</b>
+            <div class="form-group row">
+                <select th:field="${employeetPersistRequest.enabled}">
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group row">
+                <button class="btn btn-info col-2" type="submit">Save
+                    Employee
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 </body>
 

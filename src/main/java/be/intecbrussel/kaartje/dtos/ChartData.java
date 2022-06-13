@@ -1,7 +1,8 @@
-package za.co.kanban.dtos;
+package be.intecbrussel.kaartje.dtos;
 
 public interface ChartData {
-	public String getLabel();
-	public Long getValue();
+    String getLabel();
+
+    Long getValue();
 
 }

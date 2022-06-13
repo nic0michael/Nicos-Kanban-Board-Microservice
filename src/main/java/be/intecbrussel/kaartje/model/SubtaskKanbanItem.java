@@ -1,11 +1,16 @@
-package za.co.kanban.model;
+package be.intecbrussel.kaartje.model;
 
 public interface SubtaskKanbanItem {
 
-	public String getStatus();
-	public String getSubtaskId();
-	public String getSubtaskName();
-	public String getTaskName();
-	public String getAssignedTo();
-	public String getDueDate();	
+    String getStatus();
+
+    String getSubtaskId();
+
+    String getSubtaskName();
+
+    String getTaskName();
+
+    String getAssignedTo();
+
+    String getDueDate();
 }
