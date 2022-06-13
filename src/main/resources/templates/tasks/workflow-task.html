@@ -1,67 +1,65 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layouts :: header">
-  <title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarTASK"></nav>
-	<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
-
-		
-
-		<br>
-		<div class="container">
-
-			<H3>Assign Task to</H3>
-		<br><br>
-			<form th:action="@{/kanban-board/tasks/save}" th:object="${taskPersistRequest}" method="POST">
+<nav th:replace="layouts :: navbarTASK"></nav>
+<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
 
 
-				<!--  This will be used to bind to the task that was clicked on (USED FOR UPDATES)-->
-				<input type="hidden" th:field="${taskPersistRequest.dateCreated}" />
-				<input type="hidden" th:field="${taskPersistRequest.taskId}" />
-				<input type="hidden" th:field="${taskPersistRequest.name}" />
-				<input type="hidden" th:field="${taskPersistRequest.description}" />
-				<input type="hidden" th:field="${taskPersistRequest.userStoryId}" />
-				<input type="hidden" th:field="${taskPersistRequest.isActive}" />
-				
-				
-				<b>Task:</b>
-				<div class="form-group row" th:text="${taskPersistRequest.name}"></div>
-				<b>Description:</b>
-				<div class="form-group row" th:text="${taskPersistRequest.description}"></div> 
+    <br>
+    <div class="container">
 
-				
-				
-				<b>Assigned the Task to Employee:</b>
-				<div class="form-group row">
-					<select th:field="${taskPersistRequest.assignedTo}">
-						<option th:each="employee : ${employees}" th:value="${employee.employeeId}" th:text="${employee.fullName}"></option> 
-					</select>
-				</div>
-				
-				<b>Set the Status:</b>
-				<div class="form-group row">
-					<select th:field="${taskPersistRequest.status}">
-						<option
-							th:each="statusValue : ${statusValues}"
-							th:value="${statusValue.displayValue}"
-							th:text="${statusValue.description}">
-						</option>
-					</select>
-				</div>
+        <H3>Assign Task to</H3>
+        <br><br>
+        <form method="POST" th:action="@{/kanban-board/tasks/save}" th:object="${taskPersistRequest}">
 
 
+            <!--  This will be used to bind to the task that was clicked on (USED FOR UPDATES)-->
+            <input th:field="${taskPersistRequest.dateCreated}" type="hidden"/>
+            <input th:field="${taskPersistRequest.taskId}" type="hidden"/>
+            <input th:field="${taskPersistRequest.name}" type="hidden"/>
+            <input th:field="${taskPersistRequest.description}" type="hidden"/>
+            <input th:field="${taskPersistRequest.userStoryId}" type="hidden"/>
+            <input th:field="${taskPersistRequest.isActive}" type="hidden"/>
 
-				<div class="form-group row">
-					<button class="btn btn-info col-2" type="submit">Save Task</button>
-				</div>
 
-			</form>
-		</div>
-	</div>
+            <b>Task:</b>
+            <div class="form-group row" th:text="${taskPersistRequest.name}"></div>
+            <b>Description:</b>
+            <div class="form-group row" th:text="${taskPersistRequest.description}"></div>
+
+
+            <b>Assigned the Task to Employee:</b>
+            <div class="form-group row">
+                <select th:field="${taskPersistRequest.assignedTo}">
+                    <option th:each="employee : ${employees}" th:text="${employee.fullName}"
+                            th:value="${employee.employeeId}"></option>
+                </select>
+            </div>
+
+            <b>Set the Status:</b>
+            <div class="form-group row">
+                <select th:field="${taskPersistRequest.status}">
+                    <option
+                            th:each="statusValue : ${statusValues}"
+                            th:text="${statusValue.description}"
+                            th:value="${statusValue.displayValue}">
+                    </option>
+                </select>
+            </div>
+
+
+            <div class="form-group row">
+                <button class="btn btn-info col-2" type="submit">Save Task</button>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 </body>
 

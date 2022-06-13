@@ -1,88 +1,88 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layouts :: header">
-  <title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarEPIC"></nav>
-	<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
-
-		
-
-		<br>
-		<div class="container">
-
-			<H3>Capture Epic</H3>
-		<br><br>
-			<form th:action="@{/kanban-board/epics/save}" th:object="${epicPersistRequest}" method="POST">
+<nav th:replace="layouts :: navbarEPIC"></nav>
+<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
 
 
-				<!--  This will be used to bind to the epic that was clicked on (USED FOR UPDATES)-->
-				<input type="hidden" th:field="${epicPersistRequest.dateCreated}" />
-				<input type="hidden" th:field="${epicPersistRequest.epicId}" />
-				<b>Epic ID:</b>
-				<div class="form-group row" th:text="${epicPersistRequest.epicId}"> 
-				</div>
-				
-				<div class="form-group row">
-					<input type="text" placeholder="Epic Name"
-						th:field="${epicPersistRequest.name}"> <span
-						style="color: red" th:if="${#fields.hasErrors('name')}"
-						th:errors="${epicPersistRequest.name}"> </span>
-				</div>
+    <br>
+    <div class="container">
 
-				<div class="form-group row">
-					<input type="text" placeholder="Description"
-						th:field="${epicPersistRequest.description}"> <span
-						style="color: red" th:if="${#fields.hasErrors('description')}"
-						th:errors="${epicPersistRequest.description}"> </span>
-				</div>
-				
-				<div class="form-group row">
-					<input type="text" placeholder="Customer Reference"
-						th:field="${epicPersistRequest.customerReference}"> <span
-						style="color: red" th:if="${#fields.hasErrors('customerReference')}"
-						th:errors="${epicPersistRequest.customerReference}"> </span>
-				</div>
-
-				<b>select the Customer:</b>
-				<div class="form-group row">
-					<select th:field="${epicPersistRequest.customerId}">
-						<option th:each="customer : ${customers}" th:value="${customer.customerId}" th:text="${customer.name}"></option> 
-					</select>
-				</div>
+        <H3>Capture Epic</H3>
+        <br><br>
+        <form method="POST" th:action="@{/kanban-board/epics/save}" th:object="${epicPersistRequest}">
 
 
-			<b>Project Due Date:</b>
-			<div class="form-group row">
-				<input id="dp3" type="text" class="mb-4 col-2 col-xs-4"
-					value="Due Date" th:field="${epicPersistRequest.due_date}">
-			</div>
+            <!--  This will be used to bind to the epic that was clicked on (USED FOR UPDATES)-->
+            <input th:field="${epicPersistRequest.dateCreated}" type="hidden"/>
+            <input th:field="${epicPersistRequest.epicId}" type="hidden"/>
+            <b>Epic ID:</b>
+            <div class="form-group row" th:text="${epicPersistRequest.epicId}">
+            </div>
+
+            <div class="form-group row">
+                <input placeholder="Epic Name" th:field="${epicPersistRequest.name}"
+                       type="text"> <span
+                    style="color: red" th:errors="${epicPersistRequest.name}"
+                    th:if="${#fields.hasErrors('name')}"> </span>
+            </div>
+
+            <div class="form-group row">
+                <input placeholder="Description" th:field="${epicPersistRequest.description}"
+                       type="text"> <span
+                    style="color: red" th:errors="${epicPersistRequest.description}"
+                    th:if="${#fields.hasErrors('description')}"> </span>
+            </div>
+
+            <div class="form-group row">
+                <input placeholder="Customer Reference" th:field="${epicPersistRequest.customerReference}"
+                       type="text"> <span
+                    style="color: red" th:errors="${epicPersistRequest.customerReference}"
+                    th:if="${#fields.hasErrors('customerReference')}"> </span>
+            </div>
+
+            <b>select the Customer:</b>
+            <div class="form-group row">
+                <select th:field="${epicPersistRequest.customerId}">
+                    <option th:each="customer : ${customers}" th:text="${customer.name}"
+                            th:value="${customer.customerId}"></option>
+                </select>
+            </div>
 
 
-			<div class="mb-4 col-2 col-xs-4">
-				<script type="text/javascript">
-					$('#dp3').datepicker();
-				</script>
-			</div>
+            <b>Project Due Date:</b>
+            <div class="form-group row">
+                <input class="mb-4 col-2 col-xs-4" id="dp3" th:field="${epicPersistRequest.due_date}"
+                       type="text" value="Due Date">
+            </div>
 
-				<b>Is Epic Active:</b>
-				<div class="form-group row">
-					<select th:field="${epicPersistRequest.isActive}">
-						<option value="1" selected>Yes</option>
-						<option value="0">No</option>
-					</select>
-				</div>
 
-				<div class="form-group row">
-					<button class="btn btn-info col-2" type="submit">Save Epic</button>
-				</div>
+            <div class="mb-4 col-2 col-xs-4">
+                <script type="text/javascript">
+                    $('#dp3').datepicker();
+                </script>
+            </div>
 
-			</form>
-		</div>
-	</div>
+            <b>Is Epic Active:</b>
+            <div class="form-group row">
+                <select th:field="${epicPersistRequest.isActive}">
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group row">
+                <button class="btn btn-info col-2" type="submit">Save Epic</button>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 </body>
 

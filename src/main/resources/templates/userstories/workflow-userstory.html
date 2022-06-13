@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layouts :: header">
-<title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarUSR"></nav>
-	<!-- 	<divsecauthorize ="isAuthenticated()">  -->
-	
-	<div sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')">
+<nav th:replace="layouts :: navbarUSR"></nav>
+<!-- 	<divsecauthorize ="isAuthenticated()">  -->
+
+<div sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')">
 
 
+    <br>
 
-		<br>
+    <div class="container">
+        <H3>UserStory Kanban Board</H3>
+        <br>
+        <br>
 
-		<div class="container">
-			<H3>UserStory Kanban Board</H3>
-			<br>
-			<br>
-			
-			<form th:action="@{/kanban-board/userstories/save}" th:object="${userStoryPersistRequest}" method="POST">
-				<input type="hidden" th:field="${userStoryPersistRequest.userStoryId}"> 
-				<input type="hidden" th:field="${userStoryPersistRequest.name}"> 
-				<input type="hidden" th:field="${userStoryPersistRequest.description}">
-				<input type="hidden" th:field="${userStoryPersistRequest.stage}">
-				<input type="hidden" th:field="${userStoryPersistRequest.customerReference}"> 
-				<input type="hidden" th:field="${userStoryPersistRequest.customerId}">
-				<input type="hidden" th:field="${userStoryPersistRequest.epicId}">
-				<input type="hidden" th:field="${userStoryPersistRequest.assignedTo}">
-				<input type="hidden" th:field="${userStoryPersistRequest.startDate}">
-				<input type="hidden" th:field="${userStoryPersistRequest.endDate}">
-				<input type="hidden" th:field="${userStoryPersistRequest.dueDate}">
-				<input type="hidden" th:field="${userStoryPersistRequest.dateCreated}"> 
-				<input type="hidden" th:field="${userStoryPersistRequest.isActive}">
+        <form method="POST" th:action="@{/kanban-board/userstories/save}" th:object="${userStoryPersistRequest}">
+            <input th:field="${userStoryPersistRequest.userStoryId}" type="hidden">
+            <input th:field="${userStoryPersistRequest.name}" type="hidden">
+            <input th:field="${userStoryPersistRequest.description}" type="hidden">
+            <input th:field="${userStoryPersistRequest.stage}" type="hidden">
+            <input th:field="${userStoryPersistRequest.customerReference}" type="hidden">
+            <input th:field="${userStoryPersistRequest.customerId}" type="hidden">
+            <input th:field="${userStoryPersistRequest.epicId}" type="hidden">
+            <input th:field="${userStoryPersistRequest.assignedTo}" type="hidden">
+            <input th:field="${userStoryPersistRequest.startDate}" type="hidden">
+            <input th:field="${userStoryPersistRequest.endDate}" type="hidden">
+            <input th:field="${userStoryPersistRequest.dueDate}" type="hidden">
+            <input th:field="${userStoryPersistRequest.dateCreated}" type="hidden">
+            <input th:field="${userStoryPersistRequest.isActive}" type="hidden">
 
-				<b>Userstory:</b>				
-				<div class="form-group row" th:text="${userStoryPersistRequest.name}"></div>
-				<div class="form-group row" th:text="${userStoryPersistRequest.description}"></div>
+            <b>Userstory:</b>
+            <div class="form-group row" th:text="${userStoryPersistRequest.name}"></div>
+            <div class="form-group row" th:text="${userStoryPersistRequest.description}"></div>
 
-				<b>Set the Status:</b>
-				<div class="form-group row">
-					<select th:field="${userStoryPersistRequest.status}">
-						<option
-							th:each="statusValue : ${statusValues}"
-							th:value="${statusValue.displayValue}"
-							th:text="${statusValue.description}">
-						</option>
-					</select>
-				</div>
+            <b>Set the Status:</b>
+            <div class="form-group row">
+                <select th:field="${userStoryPersistRequest.status}">
+                    <option
+                            th:each="statusValue : ${statusValues}"
+                            th:text="${statusValue.description}"
+                            th:value="${statusValue.displayValue}">
+                    </option>
+                </select>
+            </div>
 
 
-				<div class="form-group row">
-					<button class="btn btn-info col-2" type="submit">Save
-						UserStory</button>
-				</div>
-			</form>
-		</div>
-	</div>
+            <div class="form-group row">
+                <button class="btn btn-info col-2" type="submit">Save
+                    UserStory
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 
 </body>
 

@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head th:replace="layouts :: header">
-  <title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarTASK"></nav>
-	<div sec:authorize="isAuthenticated()">
-	<div>
-		<h4>Task Kanban Board</h4>
-		<br>
-		<table class="table table-bordered table-striped">
-			<thead class="thead-dark">
-				<tr>
-					<th>Status</th>
-					<th>Task Name</th>
-					<th>User Story</th>
-					<th>Assigned to</th>
-					<th>Due Date</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="aTaskBanbanitem : ${taskBanbanitems}">
-					<td th:text="${aTaskBanbanitem.status}"></td>
-					<td th:text="${aTaskBanbanitem.taskName}"></td>
-					<td th:text="${aTaskBanbanitem.userStoryName}"></td>
-					<td th:text="${aTaskBanbanitem.assignedTo}"></td>
-					<td th:text="${aTaskBanbanitem.dueDate}"></td>
-					
-					<td>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	</div>
+<nav th:replace="layouts :: navbarTASK"></nav>
+<div sec:authorize="isAuthenticated()">
+    <div>
+        <h4>Task Kanban Board</h4>
+        <br>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>Status</th>
+                <th>Task Name</th>
+                <th>User Story</th>
+                <th>Assigned to</th>
+                <th>Due Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="aTaskBanbanitem : ${taskBanbanitems}">
+                <td th:text="${aTaskBanbanitem.status}"></td>
+                <td th:text="${aTaskBanbanitem.taskName}"></td>
+                <td th:text="${aTaskBanbanitem.userStoryName}"></td>
+                <td th:text="${aTaskBanbanitem.assignedTo}"></td>
+                <td th:text="${aTaskBanbanitem.dueDate}"></td>
+
+                <td>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 </body>

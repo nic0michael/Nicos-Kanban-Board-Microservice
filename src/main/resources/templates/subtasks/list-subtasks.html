@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head th:replace="layouts :: header">
-  <title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarSUBTASK"></nav>
-	<div sec:authorize="isAuthenticated()">
-	<div>
-		<h4>Current Subtasks</h4>
-		<br>
-		<div>
-			<a th:href="@{/kanban-board/subtasks/board}" class="btn-primary btn-sm mb-3" >Subtask Kanban Board</a>
-		</div>
-		<div>&nbsp;</div>
-		<div>
-			<a th:href="@{/kanban-board/subtasks/new}" class="btn-primary btn-sm mb-3" >Add new Subtask</a>
-		</div>
-		<br>
-		<table class="table table-bordered table-striped">
-			<thead class="thead-dark">
-				<tr>
-					<th>Subtask Name</th>
-					<th>Description</th>
-					<th>Status</th>
-					<th>Subtask Id</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="aSubtask : ${subtasks}">
-					<td th:text="${aSubtask.name}"></td>
-					<td th:text="${aSubtask.description}"></td>
-					<td th:text="${aSubtask.status}"></td>
-					<td th:text="${aSubtask.subtaskId}" sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')"></td>
-					<td sec:authorize=hasAnyRole('MANAGER','TEAMMEMBER','USER')>hidden</td>
-					
-					<td>
-					 <div sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')">
-				  	 	<a th:href="@{/kanban-board/subtasks/workflow/(id=${aSubtask.subtaskId})}" class="btn-info btn-sm" >Assign subtask to</a>&nbsp;&nbsp;&nbsp;
-					 	<a th:href="@{/kanban-board/subtasks/verander/(id=${aSubtask.subtaskId})}" class="btn-info btn-sm" >Edit</a>&nbsp;&nbsp;&nbsp;
-					 	<a th:href="@{/kanban-board/subtasks/maakdood/(id=${aSubtask.subtaskId})}" class="btn-danger btn-sm"  
-				  	 	onClick="if (!(confirm('Are you sure you want to delete this task?'))) return false" >Delete</a>
-				  	 </div>		
-				  	 <div sec:authorize=hasAnyRole('MANAGER','TEAMMEMBER','USER')>No Action</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	</div>
+<nav th:replace="layouts :: navbarSUBTASK"></nav>
+<div sec:authorize="isAuthenticated()">
+    <div>
+        <h4>Current Subtasks</h4>
+        <br>
+        <div>
+            <a class="btn-primary btn-sm mb-3" th:href="@{/kanban-board/subtasks/board}">Subtask Kanban Board</a>
+        </div>
+        <div>&nbsp;</div>
+        <div>
+            <a class="btn-primary btn-sm mb-3" th:href="@{/kanban-board/subtasks/new}">Add new Subtask</a>
+        </div>
+        <br>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>Subtask Name</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Subtask Id</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="aSubtask : ${subtasks}">
+                <td th:text="${aSubtask.name}"></td>
+                <td th:text="${aSubtask.description}"></td>
+                <td th:text="${aSubtask.status}"></td>
+                <td sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')" th:text="${aSubtask.subtaskId}"></td>
+                <td sec:authorize=hasAnyRole('MANAGER','TEAMMEMBER','USER')>hidden</td>
+
+                <td>
+                    <div sec:authorize="hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')">
+                        <a class="btn-info btn-sm"
+                           th:href="@{/kanban-board/subtasks/workflow/(id=${aSubtask.subtaskId})}">Assign subtask to</a>&nbsp;&nbsp;&nbsp;
+                        <a class="btn-info btn-sm"
+                           th:href="@{/kanban-board/subtasks/verander/(id=${aSubtask.subtaskId})}">Edit</a>&nbsp;&nbsp;&nbsp;
+                        <a class="btn-danger btn-sm"
+                           onClick="if (!(confirm('Are you sure you want to delete this task?'))) return false"
+                           th:href="@{/kanban-board/subtasks/maakdood/(id=${aSubtask.subtaskId})}">Delete</a>
+                    </div>
+                    <div sec:authorize=hasAnyRole('MANAGER','TEAMMEMBER','USER')>No Action</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 </body>

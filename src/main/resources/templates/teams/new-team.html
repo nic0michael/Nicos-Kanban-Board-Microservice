@@ -1,64 +1,63 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layouts :: header">
-  <title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarTEAM"></nav>
-	<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
-
-		
-
-		<br>
-		<div class="container">
-
-			<H3>Capture Team</H3>
-		<br><br>
-			<form th:action="@{/kanban-board/teams/save}" th:object="${teamtPersistRequest}" method="POST">
+<nav th:replace="layouts :: navbarTEAM"></nav>
+<div sec:authorize="hasAnyRole('MANAGER','TEAMMEMBER','ADMIN')">
 
 
-				<!--  This will be used to bind to the team that was clicked on (USED FOR UPDATES)-->
-				<input type="hidden" th:field="${teamtPersistRequest.dateCreated}" />
-				<input type="hidden" th:field="${teamtPersistRequest.teamId}" />
-				<b>Team ID:</b>
-				<div class="form-group row" th:text="${teamtPersistRequest.teamId}"> 
-				</div>
-				<b>Date created:</b>
-				<div class="form-group row" th:text="${teamtPersistRequest.dateCreated}"> 
-				</div>
-				
-				<div class="form-group row">
-					<input type="text" placeholder="Team Name"
-						th:field="${teamtPersistRequest.name}"> <span
-						style="color: red" th:if="${#fields.hasErrors('name')}"
-						th:errors="${teamtPersistRequest.name}"> </span>
-				</div>
+    <br>
+    <div class="container">
 
-				<div class="form-group row">
-					<input type="text" placeholder="Description"
-						th:field="${teamtPersistRequest.description}"> <span
-						style="color: red" th:if="${#fields.hasErrors('description')}"
-						th:errors="${teamtPersistRequest.description}"> </span>
-				</div>
+        <H3>Capture Team</H3>
+        <br><br>
+        <form method="POST" th:action="@{/kanban-board/teams/save}" th:object="${teamtPersistRequest}">
 
 
-				<b>Is Team Active:</b>
-				<div class="form-group row">
-					<select th:field="${teamtPersistRequest.isActive}">
-						<option value="1" selected>Yes</option>
-						<option value="0">No</option>
-					</select>
-				</div>
+            <!--  This will be used to bind to the team that was clicked on (USED FOR UPDATES)-->
+            <input th:field="${teamtPersistRequest.dateCreated}" type="hidden"/>
+            <input th:field="${teamtPersistRequest.teamId}" type="hidden"/>
+            <b>Team ID:</b>
+            <div class="form-group row" th:text="${teamtPersistRequest.teamId}">
+            </div>
+            <b>Date created:</b>
+            <div class="form-group row" th:text="${teamtPersistRequest.dateCreated}">
+            </div>
 
-				<div class="form-group row">
-					<button class="btn btn-info col-2" type="submit">Save Team</button>
-				</div>
+            <div class="form-group row">
+                <input placeholder="Team Name" th:field="${teamtPersistRequest.name}"
+                       type="text"> <span
+                    style="color: red" th:errors="${teamtPersistRequest.name}"
+                    th:if="${#fields.hasErrors('name')}"> </span>
+            </div>
 
-			</form>
-		</div>
-	</div>
+            <div class="form-group row">
+                <input placeholder="Description" th:field="${teamtPersistRequest.description}"
+                       type="text"> <span
+                    style="color: red" th:errors="${teamtPersistRequest.description}"
+                    th:if="${#fields.hasErrors('description')}"> </span>
+            </div>
+
+
+            <b>Is Team Active:</b>
+            <div class="form-group row">
+                <select th:field="${teamtPersistRequest.isActive}">
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group row">
+                <button class="btn btn-info col-2" type="submit">Save Team</button>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 </body>
 

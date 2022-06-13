@@ -1,112 +1,111 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layouts :: header">
-  <title>Kanban Board</title>
+    <title>Kanban Board</title>
 </head>
 <body>
-	<nav th:replace="layouts :: navbarUSR"></nav>
+<nav th:replace="layouts :: navbarUSR"></nav>
 <!-- 	<divsecauthorize ="isAuthenticated()">  -->
-	<div  sec:authorize=hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')>
+<div sec:authorize=hasAnyRole('ADMIN','MANAGER','TEAMMEMBER')>
 
-		
 
-		<br>
+    <br>
 
-	<div class="container">
-		<H3>Capture UserStory</H3>
-		<br><br>
-		<form th:action="@{/kanban-board/userstories/save}" th:object="${userStoryPersistRequest}" method="POST">
-			<input type="hidden" th:field="${userStoryPersistRequest.userStoryId}">
-			
-			<b>Userstory Id:</b>
-			<div class="form-group row" th:text="${userStoryPersistRequest.userStoryId}">				
-			</div>
-			<div class="form-group row">
-				<input type="text" placeholder="UserStory Name" th:field="*{name}">
-			</div>
-			
-			<b>Set the Status:</b>
-			<div class="form-group row">
-				<select th:field="${userStoryPersistRequest.status}">
-					<option
-						th:each="statusValue : ${statusValues}"
-						th:value="${statusValue.description}"
-						th:text="${statusValue.name}"></option>
-				</select>
-			</div>
+    <div class="container">
+        <H3>Capture UserStory</H3>
+        <br><br>
+        <form method="POST" th:action="@{/kanban-board/userstories/save}" th:object="${userStoryPersistRequest}">
+            <input th:field="${userStoryPersistRequest.userStoryId}" type="hidden">
 
-			<div class="form-group row">
-				<select th:field="${userStoryPersistRequest.stage}">
-					<option th:value="NOTSTARTED">Not Started</option>
-					<option th:value="INPROGRESS">In Progress</option>
-					<option th:value="COMPLETED">Completed</option>
-				</select>
-			</div>
+            <b>Userstory Id:</b>
+            <div class="form-group row" th:text="${userStoryPersistRequest.userStoryId}">
+            </div>
+            <div class="form-group row">
+                <input placeholder="UserStory Name" th:field="*{name}" type="text">
+            </div>
 
-			<div class="form-group row">
-				<textarea type="text" placeholder="Enter UserStory Description"
-					th:field="${userStoryPersistRequest.description}"></textarea>
-			</div>
-			<div class="form-group row">
-				<textarea type="text" placeholder="Enter Customer Reference"
-					th:field="${userStoryPersistRequest.customerReference}"></textarea>
-			</div>
-			
-			
-			<b>Select the Epic:</b>
-			<div class="form-group row">
-				<select th:field="*{epicId}">
-					<option
-						th:each="epic : ${epics}"
-						th:value="${epic.epicId}"
-						th:text="${epic.name}"></option>
-				</select>
-			</div>
+            <b>Set the Status:</b>
+            <div class="form-group row">
+                <select th:field="${userStoryPersistRequest.status}">
+                    <option
+                            th:each="statusValue : ${statusValues}"
+                            th:text="${statusValue.name}"
+                            th:value="${statusValue.description}"></option>
+                </select>
+            </div>
 
-			<b>Select the Team:</b>
-			<div class="form-group row">
-				<select th:field="*{assignedTo}">
-					<option
-						th:each="team : ${teams}"
-						th:value="${team.teamId}"
-						th:text="${team.name}"></option>
-				</select>
-			</div>
+            <div class="form-group row">
+                <select th:field="${userStoryPersistRequest.stage}">
+                    <option th:value="NOTSTARTED">Not Started</option>
+                    <option th:value="INPROGRESS">In Progress</option>
+                    <option th:value="COMPLETED">Completed</option>
+                </select>
+            </div>
 
-			<b>UserStory Start Date:</b>
-			<div class="form-group row">
-				<input id="dp3" type="text" class="mb-4 col-2 col-xs-4"
-					value="Start Date" th:field="${userStoryPersistRequest.startDate}">
-			</div>
+            <div class="form-group row">
+				<textarea placeholder="Enter UserStory Description" th:field="${userStoryPersistRequest.description}"
+                          type="text"></textarea>
+            </div>
+            <div class="form-group row">
+				<textarea placeholder="Enter Customer Reference" th:field="${userStoryPersistRequest.customerReference}"
+                          type="text"></textarea>
+            </div>
 
-			<b>UserStory End Date:</b>
-			<div class="form-group row">
-				<input id="dp4" type="text" class="mb-4 col-2 col-xs-4"
-					value="End Date" th:field="${userStoryPersistRequest.endDate}">
-			</div>
-			
-			<div class="mb-4 col-2 col-xs-4">
-				<script type="text/javascript">
-					$('#dp3').datepicker();
-					$('#dp4').datepicker();
-				</script>
-			</div>
 
-				<b>Is UserStory Active:</b>
-				<div class="form-group row">
-					<select th:field="${userStoryPersistRequest.isActive}">
-						<option value="1" selected>Yes</option>
-						<option value="0">No</option>
-					</select>
-				</div>
-			<div class="form-group row">
-				<button class="btn btn-info col-2" type="submit">Save UserStory</button>
-			</div>
-		</form>
-	</div>
-	</div>
+            <b>Select the Epic:</b>
+            <div class="form-group row">
+                <select th:field="*{epicId}">
+                    <option
+                            th:each="epic : ${epics}"
+                            th:text="${epic.name}"
+                            th:value="${epic.epicId}"></option>
+                </select>
+            </div>
+
+            <b>Select the Team:</b>
+            <div class="form-group row">
+                <select th:field="*{assignedTo}">
+                    <option
+                            th:each="team : ${teams}"
+                            th:text="${team.name}"
+                            th:value="${team.teamId}"></option>
+                </select>
+            </div>
+
+            <b>UserStory Start Date:</b>
+            <div class="form-group row">
+                <input class="mb-4 col-2 col-xs-4" id="dp3" th:field="${userStoryPersistRequest.startDate}"
+                       type="text" value="Start Date">
+            </div>
+
+            <b>UserStory End Date:</b>
+            <div class="form-group row">
+                <input class="mb-4 col-2 col-xs-4" id="dp4" th:field="${userStoryPersistRequest.endDate}"
+                       type="text" value="End Date">
+            </div>
+
+            <div class="mb-4 col-2 col-xs-4">
+                <script type="text/javascript">
+                    $('#dp3').datepicker();
+                    $('#dp4').datepicker();
+                </script>
+            </div>
+
+            <b>Is UserStory Active:</b>
+            <div class="form-group row">
+                <select th:field="${userStoryPersistRequest.isActive}">
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <button class="btn btn-info col-2" type="submit">Save UserStory</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 </body>
 
