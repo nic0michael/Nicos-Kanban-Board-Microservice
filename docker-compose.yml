@@ -1,0 +1,43 @@
+version: '3.9'
+services:
+  # App backend service
+  app_server:
+    # Configuration for building the docker image for the backend service
+    build:
+      context: . # Use an image built from the specified dockerfile in the `springboot-app-server` directory.
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080" # Forward the exposed port 4000 on the container to port 4000 on the host machine
+    restart: always
+    depends_on:
+      - db_server # This service depends on mysql. Start that first.
+    environment: # Pass environment variables to the service
+      SPRING_DATASOURCE_URL: jdbc:mysql://test-mysql:3306/db?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+      SPRING_DATASOURCE_USERNAME: intec
+      SPRING_DATASOURCE_PASSWORD: intec
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - backend
+
+  # Database Service (Mysql)
+  db_server:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: intec
+      MYSQL_PASSWORD: intec
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - backup:/var/lib/mysql
+    networks:
+      - backend
+
+# Volumes
+volumes:
+  backup:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  backend: 
