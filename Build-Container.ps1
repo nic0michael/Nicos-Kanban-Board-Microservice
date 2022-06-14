@@ -11,5 +11,8 @@ docker run `
 docker run `
         --publish 8888:8080 `
         --rm `
-        --env .\.env `
+        --env SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/db?allowPublicKeyRetrieval=true `
+        --env SPRING_DATASOURCE_USERNAME=intec `
+        --env SPRING_DATASOURCE_PASSWORD=intec `
+        --env SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver `
         --detach yilmazchef/kaartje:latest
