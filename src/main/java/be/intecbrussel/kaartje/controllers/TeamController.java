@@ -63,7 +63,7 @@ public class TeamController {
             custmod.save(team);
         }
         // use a redirect to prevent duplicate submissions
-        log.info("PROJECT_MAN : TeamController : createTeam : redirecting to teams page");
+        log.info("PROJECT_MAN : TeamController : createTeam : redirecting to allTeams page");
         return "redirect:/kanban-board/teams";
     }
 

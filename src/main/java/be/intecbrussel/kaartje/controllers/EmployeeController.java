@@ -11,7 +11,6 @@ import be.intecbrussel.kaartje.utils.Utils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,36 +26,39 @@ import java.util.List;
 public class EmployeeController {
     private static final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
-    @Autowired
-    EmployeeModule emplmod;
+    private final EmployeeModule employeeModule;
 
-    @Autowired
-    TeamModule teammod;
+    private final TeamModule teamModule;
 
-    @Autowired
-    EmployeeTeamModule emplteammod;
+    private final EmployeeTeamModule employeeTeamModule;
+
+    public EmployeeController(EmployeeModule employeeModule, TeamModule teamModule, EmployeeTeamModule employeeTeamModule) {
+        this.employeeModule = employeeModule;
+        this.teamModule = teamModule;
+        this.employeeTeamModule = employeeTeamModule;
+    }
 
     @GetMapping
     public String displayEmployees(Model model) {
-        List<Employee> employees = emplmod.findAll();
+        List<Employee> employees = employeeModule.findAll();
         model.addAttribute("employeesList", employees);
         return "employees/list-employees";
     }
 
     @GetMapping("/list")
     public String displayHome(Model model) {
-        List<Employee> employees = emplmod.findAll();
+        List<Employee> employees = employeeModule.findAll();
         model.addAttribute("employeesList", employees);
         return "employees/list-employees";
     }
 
     @GetMapping("/new")
     public String displayEmployeeForm(Model model) {
-        Employee employee = new Employee();
-        EmployeePersistRequest employeetPersistRequest = Utils.convertToEmployeePersistRequest(employee);
-        List<Team> teams = teammod.findAll();
-        model.addAttribute("teams", teams);
-        model.addAttribute("employeetPersistRequest", employeetPersistRequest);
+        final var employee = new Employee();
+        final var employeePersistRequest = Utils.convertToEmployeePersistRequest(employee);
+        final var allTeams = teamModule.findAll();
+        model.addAttribute("allTeams", allTeams);
+        model.addAttribute("employeeNewRequest", employeePersistRequest);
         return "employees/new-employee";
     }
 
@@ -67,19 +69,19 @@ public class EmployeeController {
 
         if (StringUtils.isNotBlank(employeePersistRequest.getEmployeeId()) && StringUtils.isNumeric(employeePersistRequest.getEmployeeId())) {
             log.info("PROJECT_MAN : EmployeeController : createEmployee : updating employee");
-            emplmod.update(employeePersistRequest);
+            employeeModule.update(employeePersistRequest);
 
             EmployeeTeamPersistRequest employeeTeamPersistRequest = Utils.makeEmployeeTeamPersistRequest(employeePersistRequest);
             log.info("PROJECT_MAN : EmployeeController : createEmployee : saving new EmployeeTeam");
-            emplteammod.save(employeeTeamPersistRequest);
+            employeeTeamModule.save(employeeTeamPersistRequest);
 
         } else {
             log.info("PROJECT_MAN : EmployeeController : createEmployee : saving new employee");
-            emplmod.save(employeePersistRequest);
+            employeeModule.save(employeePersistRequest);
 
             EmployeeTeamPersistRequest employeeTeamPersistRequest = Utils.makeEmployeeTeamPersistRequest(employeePersistRequest);
             log.info("PROJECT_MAN : EmployeeController : createEmployee : saving new EmployeeTeam");
-            emplteammod.save(employeeTeamPersistRequest);
+            employeeTeamModule.save(employeeTeamPersistRequest);
         }
         // use a redirect to prevent duplicate submissions
         log.info("PROJECT_MAN : EmployeeController : createEmployee : redirecting to employees page");
@@ -89,14 +91,14 @@ public class EmployeeController {
 
     @GetMapping("/remove")
     public String deleteEmployee(@RequestParam(value = "id") Long employeeId) {
-        emplmod.delete(employeeId);
+        employeeModule.delete(employeeId);
         return "redirect:/projects";
     }
 
 
     @GetMapping("/change")
     public String updateEmployee(@RequestParam(value = "id") Long employeeId, Model model) {
-        Employee employee = emplmod.findByEmployeeId(employeeId);
+        final var employee = employeeModule.findByEmployeeId(employeeId);
         model.addAttribute("employee", employee);
         return "redirect:/employees/new";
     }
@@ -104,22 +106,22 @@ public class EmployeeController {
     @GetMapping("/maakdood")
     public String removeEmployee(@RequestParam(value = "id") Long employeeId, Model model) {
         log.info("PROJECT_MAN : EmployeeController : removeEmployee : to update project with project_id : " + employeeId);
-        emplmod.delete(employeeId);
+        employeeModule.delete(employeeId);
         return "redirect:/employees";
     }
 
     @GetMapping("/verander")
-    public String displayEmployeetFormToUpdate(@RequestParam(value = "id") Long employeeId, Model model) {
+    public String displayEmployeeFormToUpdate(@RequestParam(value = "id") Long employeeId, Model model) {
         log.info("PROJECT_MAN : EmployeeController : displayEmployeetFormToUpdate : to update project with project_id : " + employeeId);
         if (employeeId != null) {
-            Employee employee = emplmod.findByEmployeeId(employeeId);
-            EmployeePersistRequest employeetPersistRequest = Utils.convertToEmployeePersistRequest(employee);
-            log.info("PROJECT_MAN : EmployeeController : displayEmployeetFormToUpdate : created EmployeePersistRequest : " + employeetPersistRequest);
-            List<Team> teams = teammod.findAll();
+            Employee employee = employeeModule.findByEmployeeId(employeeId);
+            EmployeePersistRequest employeePersistRequest = Utils.convertToEmployeePersistRequest(employee);
+            log.info("PROJECT_MAN : EmployeeController : displayEmployeeFormToUpdate : created EmployeePersistRequest : " + employeePersistRequest);
+            final var teams = teamModule.findAll();
             model.addAttribute("teams", teams);
-            model.addAttribute("employeetPersistRequest", employeetPersistRequest);
+            model.addAttribute("employeePersistRequest", employeePersistRequest);
         }
-        log.info("PROJECT_MAN : EmployeeController : displayEmployeetFormToUpdate : displaying form");
+        log.info("PROJECT_MAN : EmployeeController : displayEmployeeFormToUpdate : displaying form");
         return "employees/new-employee";
     }
 
@@ -127,14 +129,14 @@ public class EmployeeController {
     public String displayEmployeetFormToWorkflow(@RequestParam(value = "id") Long employeeId, Model model) {
         log.info("PROJECT_MAN : EmployeeController : displayEmployeetFormToUpdate : to update project with project_id : " + employeeId);
         if (employeeId != null) {
-            Employee employee = emplmod.findByEmployeeId(employeeId);
-            EmployeePersistRequest employeetPersistRequest = Utils.convertToEmployeePersistRequest(employee);
-            log.info("PROJECT_MAN : EmployeeController : displayEmployeetFormToUpdate : created EmployeePersistRequest : " + employeetPersistRequest);
-            List<Team> teams = teammod.findAll();
+            final var employee = employeeModule.findByEmployeeId(employeeId);
+            final var employeePersistRequest = Utils.convertToEmployeePersistRequest(employee);
+            log.info("PROJECT_MAN : EmployeeController : displayEmployeeFormToUpdate : created EmployeePersistRequest : " + employeePersistRequest);
+            List<Team> teams = teamModule.findAll();
             model.addAttribute("teams", teams);
-            model.addAttribute("employeetPersistRequest", employeetPersistRequest);
+            model.addAttribute("employeePersistRequest", employeePersistRequest);
         }
-        log.info("PROJECT_MAN : EmployeeController : displayEmployeetFormToUpdate : displaying form");
+        log.info("PROJECT_MAN : EmployeeController : displayEmployeeFormToUpdate : displaying form");
         return "employees/workflow-employee";
     }
 

@@ -16,21 +16,21 @@
         <H3>Capture Employee</H3>
         <br><br>
         <form method="POST"
-              th:action="@{/kanban-board/employees/save}" th:object="${employeetPersistRequest}">
+              th:action="@{/kanban-board/employees/save}" th:object="${employeePersistRequest}">
 
 
             <!--  This will be used to bind to the employee that was clicked on (USED FOR UPDATES)-->
-            <input th:field="${employeetPersistRequest.employeeId}" type="hidden"/>
-            <input th:field="${employeetPersistRequest.fullName}" type="hidden"/>
-            <input th:field="${employeetPersistRequest.email}" type="hidden"/>
-            <input th:field="${employeetPersistRequest.idNumber}" type="hidden"/>
-            <input th:field="${employeetPersistRequest.userId}" type="hidden"/>
-            <input th:field="${employeetPersistRequest.enabled}" type="hidden"/>
-            <input th:field="${employeetPersistRequest.authority}" type="hidden"/>
+            <input th:field="${employeePersistRequest.employeeId}" type="hidden"/>
+            <input th:field="${employeePersistRequest.fullName}" type="hidden"/>
+            <input th:field="${employeePersistRequest.email}" type="hidden"/>
+            <input th:field="${employeePersistRequest.idNumber}" type="hidden"/>
+            <input th:field="${employeePersistRequest.userId}" type="hidden"/>
+            <input th:field="${employeePersistRequest.enabled}" type="hidden"/>
+            <input th:field="${employeePersistRequest.authority}" type="hidden"/>
 
             <b>Assigned the Employee to Team:</b>
             <div class="form-group row">
-                <select th:field="${employeetPersistRequest.teamId}">
+                <select th:field="${employeePersistRequest.teamId}">
                     <option th:each="team : ${teams}" th:text="${team.name}" th:value="${team.teamId}"></option>
                 </select>
             </div>

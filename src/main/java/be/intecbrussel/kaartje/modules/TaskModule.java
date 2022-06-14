@@ -27,7 +27,7 @@ public class TaskModule {
 
 
     public List<TaskKanbanItem> getTaskBanbanitems() {
-        List<TaskKanbanItem> taskKanbanItems = repository.getTaskBanbanitems();
+        List<TaskKanbanItem> taskKanbanItems = repository.getTaskItems();
         TaskKanbanItem taskKanbanItem = taskKanbanItems.get(0);
         log.info("PROJECT_MAN : TaskModule : getTaskBanbanitems : taskKanbanItem : " + toString(taskKanbanItem));
         return taskKanbanItems;

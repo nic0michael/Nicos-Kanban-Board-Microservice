@@ -19,6 +19,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
             " LEFT JOIN user_story u ON u.user_story_id = t.user_story_id" +
             " WHERE s.sort_order > 0" +
             " ORDER BY s.sort_order, t.name,t.due_date")
-	List<TaskKanbanItem> getTaskBanbanitems();
+    List<TaskKanbanItem> getTaskItems();
 
 }
