@@ -7,7 +7,6 @@ import be.intecbrussel.kaartje.repositories.TeamRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.text.MessageFormat;
 import java.time.Instant;
 import java.util.Date;
 
@@ -30,11 +29,10 @@ public class MockInitializer implements CommandLineRunner {
                 "Team Development",
                 "Some description about the team",
                 Date.from(Instant.now()),
-                "TRUE"
-        );
+                "TRUE");
 
         final var savedTeam = teamRepository.save(team);
-        out.println(MessageFormat.format("New team: {employee}", savedTeam.getName()));
+        out.println("New team: " + savedTeam.getName());
 
         final var employee = new Employee(
                 "John Doe",
@@ -45,14 +43,13 @@ public class MockInitializer implements CommandLineRunner {
                 "P@ssw0rd",
                 "ADMIN",
                 "86.01.11-677.13",
-                "1",
+                "john.doe",
                 "Programming",
                 Date.from(Instant.now()),
                 savedTeam.getTeamId(),
-                1
-        );
+                1);
 
         final var savedEmployee = employeeRepository.save(employee);
-        out.println(MessageFormat.format("New employee: {employee}", savedEmployee.getFullName()));
+        out.println("New employee: " + savedEmployee.getFullName());
     }
 }

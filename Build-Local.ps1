@@ -7,4 +7,4 @@ docker run `
         --env MYSQL_PASSWORD=intec `
         --env MYSQL_DATABASE=db `
         --detach mysql:latest
-mvn spring-boot:run
+java -jar target/kaartje.jar --server.port=8081
